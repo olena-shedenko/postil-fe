@@ -23,9 +23,9 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "plugin:prettier/recommended",
       "airbnb",
-      "airbnb/hooks"
+      "airbnb/hooks",
+      "plugin:prettier/recommended"
     ],
     "plugins": [
       "prettier"
