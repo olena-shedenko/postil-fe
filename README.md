@@ -2,6 +2,10 @@
 
 This is bed-linen online-shop for DAN-IT final project
 
+## Backend
+
+[postil-bedding.herokuapp.com](https://postil-bedding.herokuapp.com/)
+
 ## Frontend technologies
 
 - React
