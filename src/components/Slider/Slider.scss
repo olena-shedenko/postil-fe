@@ -1,0 +1,108 @@
+.slide-div {
+  position: relative;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  width: 500%;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 20%;
+  transition: ease 2s;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  position: relative;
+}
+
+.slide-content {
+  position: absolute;
+  top: 383px;
+  left: 50px;
+}
+
+.slide-content p {
+  background-color: #373f41;
+  padding: 12px;
+  border-radius: 2px;
+  color: #ffffff;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  font-size: 32px;
+  margin: 0;
+  font-family: "Abel", sans-serif;
+}
+
+.slide img {
+  width: 100%;
+}
+
+.navigation-manual {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 29px 0 0;
+  user-select: none;
+}
+
+.manual-btn {
+  width: 196px;
+  height: 1px;
+  background-color: #373f41;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.manual-btn input {
+  display: none;
+}
+.manual-btn.active {
+  width: 196px;
+  height: 5px;
+  background-color: #373f41;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav-btns {
+  width: 1220px;
+  justify-content: space-between;
+  display: flex;
+  position: absolute;
+  top: calc(312px - 42.5px);
+  left: -25px;
+  align-items: center;
+  z-index: 9999;
+}
+.nav-btn {
+  width: 50px;
+  height: 85px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.nav-btn input {
+  display: none;
+}
+#radio1:checked ~ .first {
+  margin-left: 0;
+}
+#radio2:checked ~ .first {
+  margin-left: -20%;
+}
+#radio3:checked ~ .first {
+  margin-left: -40%;
+}
+#radio4:checked ~ .first {
+  margin-left: -60%;
+}
