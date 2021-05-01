@@ -107,7 +107,7 @@ export default function Slider() {
             <div className="slide first">
               <img src="/images/slider/firstimg.png" alt="img" />
               <div className="slide-content">
-                <p>OCEAN COLLECTION</p>
+                <p>OCEAN COLLECTIO</p>
               </div>
             </div>
             <div className="slide">
