@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import React from "react";
 import "./Slider.scss";
+import "../../index.scss";
 
 export default function Slider() {
   const rad = document.getElementsByClassName("manual-btn");
+  const nav = document.getElementsByClassName("nav-btn");
   let slideNumber = 0;
 
-  const prevSlide = (e) => {
+  const prevSlide = () => {
     for (let index = 0; index < rad.length; index += 1) {
       rad[index].classList.remove("active");
     }
@@ -16,11 +18,11 @@ export default function Slider() {
       slideNumber -= 1;
     }
     const atrib = `radio${slideNumber + 1}`;
-    e.target.setAttribute("for", atrib);
+    nav[0].setAttribute("for", atrib);
     rad[slideNumber].classList.add("active");
   };
 
-  const nextSlide = (e) => {
+  const nextSlide = () => {
     for (let index = 0; index < rad.length; index += 1) {
       rad[index].classList.remove("active");
     }
@@ -30,7 +32,7 @@ export default function Slider() {
       slideNumber += 1;
     }
     const atrib = `radio${slideNumber + 1}`;
-    e.target.setAttribute("for", atrib);
+    nav[1].setAttribute("for", atrib);
     rad[slideNumber].classList.add("active");
   };
 
@@ -106,15 +108,43 @@ export default function Slider() {
 
             <div className="slide first">
               <img src="/images/slider/firstimg.png" alt="img" />
-              <div className="slide-content">
-                <p>OCEAN COLLECTIO</p>
-              </div>
+              <h3 className="slide-title">
+                <span>OCEAN COLLECTION</span>
+              </h3>
+              <p className="slide-parag">
+                <span>
+                  This is the luxury bedding set with absolutely everything in
+                  it,
+                </span>
+                <br />
+                <span>at a price that wont keep you up at night.</span>
+              </p>
+              <button className="slide-button" type="button">
+                SHOP NEW ARRIVALS
+              </button>
             </div>
+
             <div className="slide">
               <img src="/images/slider/seconimg.png" alt="" />
+              <h3 className="slide-title">
+                <span>SUBSCRIBE NOW AND GET 15% OFF</span>
+                <br />
+                <span>ON YOUR FIRST ORDER</span>
+              </h3>
+              <button className="slide-button" type="button">
+                SHOP NEW ARRIVALS
+              </button>
             </div>
             <div className="slide">
               <img src="/images/slider/thirdimg.png" alt="" />
+              <h3 className="slide-title">
+                <span>UP TO 30% OFF</span>
+                <br />
+                <span>ON YOUR FAVOURITE FRENCH LINEN</span>
+              </h3>
+              <button className="slide-button" type="button">
+                SHOP NEW ARRIVALS
+              </button>
             </div>
           </div>
           <div className="navigation-manual">
