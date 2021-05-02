@@ -1,11 +1,13 @@
 import React from "react";
-import AccountModal from "./components/AccountModal/AccountModal";
+import SignUp from "./components/AccountModal/SignUp";
+// import LogIn from "./components/AccountModal/LogIn";
 import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <AccountModal />
+      <SignUp />
+      {/* <LogIn /> */}
     </div>
   );
 }

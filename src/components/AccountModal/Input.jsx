@@ -1,30 +1,25 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
 import { useField } from "formik";
 import React from "react";
-import PropTypes from "prop-types";
 import "./Input.scss";
 
-const Input = ({ type, label, name }) => {
+const Input = ({ type, name, placeholder, classname = "input__field" }) => {
   const [field, meta] = useField(name);
 
   return (
-    <div>
-      <div>
-        <label className="input">
-          <h5 className="input__title">{label}</h5>
-          <input className="input__field" type={type} {...field} />
-        </label>
-      </div>
+    <div className="account-modal__form__input">
+      <input
+        placeholder={placeholder}
+        className={classname}
+        type={type}
+        {...field}
+      />
       {meta.error && meta.touched && (
-        <span className="error">{meta.error}</span>
+        <span className="account-modal__form__input__error">{meta.error}</span>
       )}
     </div>
   );
-};
-
-Input.prototypes = {
-  type: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string,
 };
 
 export default Input;
