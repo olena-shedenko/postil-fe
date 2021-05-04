@@ -1,0 +1,243 @@
+*{
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav{
+  border-bottom: 1px solid #373F41;
+}
+.icon{
+  cursor: pointer;
+}
+.navbar {
+  background-color: white;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  &--arrow{
+    margin-left: 8px;
+  }
+  &--logo {
+    margin-left: 2vh;
+    cursor: pointer;
+      &__link{
+        margin-right: 0;
+      }
+  }
+  &--search{
+    content: "Search";
+    outline: none;
+    border-color: transparent;
+    border-bottom-color: #373F41;
+    width: 36vh;
+    border-width: 1px;
+    background: url("/images/svg/search.svg") no-repeat 100%;
+    height: 30px;
+  }
+
+
+  &--menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-content: flex-end;
+    margin-right: 2rem;
+  }
+
+  &--item {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    justify-content: center;
+    margin-right: 2vh;
+    margin-left: 2vh;
+  }
+
+  &--links {
+    color: #373F41;
+    text-decoration: none;
+    margin: 0 0;
+    cursor: pointer;
+  }
+.dropdown{
+  &--catalog{
+    padding: 32px 30px;
+    display: grid;
+    position: absolute;
+    left: -200%;
+    top: 80px;
+    border-top: 4px solid #373F41;
+    transition: 0.5s ease;
+
+    &__item{
+      padding: 5%
+    }
+  }
+&--lang{
+  position: absolute;
+  right: -200%;
+  top: 80px;
+
+  transition: 0.5s ease;
+}
+  &--lang.active{
+    background: white;
+    width: 5%;
+    right: 28%;
+    text-align: center;
+    opacity: 1;
+    border-top: 4px solid #373F41;
+    transition: 0.5s ease;
+    margin-right: -200px;
+  }
+  &--nav{
+    margin-left: 4vh;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+  }&--nav.active{
+     border-bottom: 1px solid #373F41;
+  transition: 0.5s ease-in-out;
+       padding-bottom: 5px;
+   }
+
+  &--catalog.active{
+    background: white;
+    left: 38%;
+    opacity: 1;
+    transition: 0.5s ease;
+    z-index: 1;
+    margin-left: -200px;
+  }
+}
+}
+
+
+@media screen and (max-width: 1280px) {
+  *{
+    font-size: 14px;
+  }
+  .dropdown{
+    &--nav{
+      margin-left: 0 !important;
+    }
+    &--catalog.active{
+      left: 42% !important;
+      width: 35vh !important;
+    }
+    &--lang{
+      left: -200%;
+      right: 0 !important;
+      transition: 0.5s ease;
+    }
+    &--lang.active{
+      width: 100% !important;
+      left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+  .icon{
+    margin-left: 15px !important;
+    cursor: pointer;
+  }
+.navbar{
+  &--search{
+    width: 18vh;
+    font-size: 10px;
+    background-size: 15px;
+  }
+  &--links{
+      margin: 0 1vh;
+  }
+  &--logo{
+    &__link{
+      margin-right: 0;
+    }
+  }
+  &--item{
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+}
+
+@media screen and (max-width : 767px) {
+  .navbar{
+    &--search{
+      width: 38vh;
+    }
+
+    &--menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 80px;
+      left: -200%;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+
+
+    &--menu.active {
+      border-top: 4px solid #373F41;
+      background: white;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+
+    &--links {
+      padding: 1vh;
+    }
+
+    &--logo {
+      margin-right: 0;
+      margin-left: 0;
+      &__link{
+        margin-right: 0;
+      }
+    }
+  }
+  .dropdown{
+    &--catalog{
+      width: 100%;
+      left: 0;
+      &__item{
+        padding: 2% 2% !important;
+      }
+    }
+    &--nav{
+      margin-right: 3vh;
+    }
+    &--lang{
+      left: -200%;
+      right: 0 !important;
+      transition: 0.5s ease;
+    }
+    &--lang.active{
+      width: 100% !important;
+      left: 0 !important;
+      margin-right: 0 !important;
+    }
+    &--menu{
+      display: grid;
+      position: absolute;
+      left: -200%;
+      top: 10%;
+      transition: 1s;
+    }
+    &--catalog.active{
+      left: 0  !important;
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+  }
+}
+
