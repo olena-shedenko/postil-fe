@@ -45,7 +45,7 @@ export default function Slider() {
   };
 
   return (
-    <div className="container">
+    <div className="slider-container">
       <div className="slide-div">
         <div className="nav-btns">
           <label className="nav-btn" htmlFor="radio1" onClick={prevSlide}>

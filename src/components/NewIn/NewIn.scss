@@ -1,0 +1,21 @@
+.new-in-title {
+  font-family: Abel;
+  font-size: 32px;
+  line-height: 58px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 5px;
+  color: #373f41;
+  margin: 80px 0 30px;
+}
+.new-in-list {
+  display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: 1fr 1fr;
+}
+.new-in-list__item {
+  
+}
+.new-in-list__item img {
+    margin-right: 0px;
+}

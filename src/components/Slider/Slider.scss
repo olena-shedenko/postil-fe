@@ -1,4 +1,4 @@
-.container {
+.slider-container {
   width: 1180px;
   margin: 0 auto;
 }
@@ -158,15 +158,12 @@
 #radio3:checked ~ .first {
   margin-left: -40%;
 }
-#radio4:checked ~ .first {
-  margin-left: -60%;
-}
 
 @media (max-width: 1229px) {
   .nav-btns {
     width: 1074px;
   }
-  .container {
+  .slider-container {
     width: 1024px;
   }
   .slider {
@@ -181,7 +178,7 @@
   .nav-btns {
     width: 818px;
   }
-  .container {
+  .slider-container {
     width: 768px;
   }
   .slider {
@@ -193,7 +190,7 @@
   }
 }
 @media (max-width: 817px) {
-  .container {
+  .slider-container {
     width: 100%;
   }
   .slider {
