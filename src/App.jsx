@@ -1,12 +1,7 @@
 import React from 'react';
-import ButtonTest from './components/Button/ButtonTest';
 
 const App = () => {
-  return (
-    <div>
-      <ButtonTest />
-    </div>
-  );
+  return <div />;
 };
 
 export default App;

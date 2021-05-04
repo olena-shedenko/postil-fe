@@ -10,7 +10,15 @@ const Button = ({ children, onClick, className, backgroundColor, type }) => {
         className={className}
         /* eslint-disable-next-line react/button-has-type */
         type={type}
-        style={{ background: backgroundColor }}
+        style={{
+          background: backgroundColor,
+          textTransform: 'uppercase',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontFamily: 'Mulish',
+          borderRadius: '4px',
+        }}
       >
         {children}
       </button>
