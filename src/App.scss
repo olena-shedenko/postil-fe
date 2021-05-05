@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;600&display=swap");
-* {
+@font-face {
   font-family: "Mulish";
+  src: url(./fonts/Mulish/Mulish-Medium.ttf);
+}
+
+*{
+  font-family: Mulish;
 }

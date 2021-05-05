@@ -1,27 +1,28 @@
-import React from "react";
-import * as Yup from "yup";
-import { Formik, Field, Form } from "formik";
-import "./AccountModal.scss";
-import { useDispatch, useSelector } from "react-redux";
-import Input from "./Input";
-import { setModalSignUp, setModalLogIn } from "../../store/operations";
+import React from 'react';
+import * as Yup from 'yup';
+import { Formik, Field, Form } from 'formik';
+import './AccountModal.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import Input from './Input';
+import Button from '../Button/Button';
+import { setModalSignUp, setModalLogIn } from '../../store/operations';
 
 const validationFormSchema = Yup.object().shape({
   name: Yup.string()
-    .oneOf([/^[A-Za-z ]*$/, null], "Please enter a valid name")
-    .required("This is a necessary field"),
+    .oneOf([/^[A-Za-z ]*$/, null], 'Please enter a valid name')
+    .required('This is a necessary field'),
   password: Yup.string()
-    .required("This is a necessary field")
-    .min(9, "The password sholud consist of minimum 9 symbols")
-    .max(30, "The password sholud not consist of more than 30 symbols"),
+    .required('This is a necessary field')
+    .min(9, 'The password sholud consist of minimum 9 symbols')
+    .max(30, 'The password sholud not consist of more than 30 symbols'),
   password_conf: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .min(9, "The password sholud consist of minimum 9 symbols")
-    .max(30, "The password sholud not consist of more than 30 symbols")
-    .required("This is a necessary field"),
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .min(9, 'The password sholud consist of minimum 9 symbols')
+    .max(30, 'The password sholud not consist of more than 30 symbols')
+    .required('This is a necessary field'),
   email: Yup.string()
-    .email("Invalid email")
-    .required("This is a necessary field"),
+    .email('Invalid email')
+    .required('This is a necessary field'),
 });
 
 const AccountModal = () => {
@@ -32,17 +33,17 @@ const AccountModal = () => {
   const dispatch = useDispatch();
 
   const forSignUp = useSelector(
-    (state) => state.accountModalAction === "signUp"
+    (state) => state.accountModalAction === 'signUp'
   );
 
   return (
     <>
       <Formik
         initialValues={{
-          name: "",
-          password: "",
-          password_conf: "",
-          email: "",
+          name: '',
+          password: '',
+          password_conf: '',
+          email: '',
         }}
         onSubmit={submitForm}
         validationSchema={validationFormSchema}
@@ -66,8 +67,8 @@ const AccountModal = () => {
                     type="button"
                     className={
                       forSignUp
-                        ? "account-modal__buttons-block__button account-modal__buttons-block__button__signup--active"
-                        : "account-modal__buttons-block__button account-modal__buttons-block__button__signup"
+                        ? 'account-modal__buttons-block__button account-modal__buttons-block__button__signup--active'
+                        : 'account-modal__buttons-block__button account-modal__buttons-block__button__signup'
                     }
                   >
                     Sign Up
@@ -79,8 +80,8 @@ const AccountModal = () => {
                     type="button"
                     className={
                       forSignUp
-                        ? "account-modal__buttons-block__button account-modal__buttons-block__button__login"
-                        : "account-modal__buttons-block__button account-modal__buttons-block__button__login--active"
+                        ? 'account-modal__buttons-block__button account-modal__buttons-block__button__login'
+                        : 'account-modal__buttons-block__button account-modal__buttons-block__button__login--active'
                     }
                   >
                     Log In
@@ -139,14 +140,20 @@ const AccountModal = () => {
                   </div>
                 </Form>
                 <span className="account-modal__tos-and-pp">
-                  By signing up you agree to{" "}
-                  <a href="blank">Terms of Service</a> and{" "}
+                  By signing up you agree to{' '}
+                  <a href="blank">Terms of Service</a> and{' '}
                   <a href="blank">Privacy Policy</a>
                 </span>
 
-                <button type="submit" className="account-modal__submit-button">
-                  {forSignUp ? "sign up" : "log in"}
-                </button>
+                <Button
+                  className="account-modal__submit-button"
+                  type="submit"
+                  backgroundColor="#373F41"
+                  elementPadding="90px"
+                  onClick={() => submitForm()}
+                  // eslint-disable-next-line react/no-children-prop
+                  children={forSignUp ? 'sign up' : 'log in'}
+                />
 
                 {forSignUp && (
                   <div className="account-modal__enter-via-socials">

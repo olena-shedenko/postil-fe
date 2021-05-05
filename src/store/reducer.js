@@ -1,7 +1,7 @@
-import { SET_MODAL_LOG_IN, SET_MODAL_SIGN_UP } from "./types";
+import { SET_MODAL_LOG_IN, SET_MODAL_SIGN_UP } from './types';
 
 const initialState = {
-  accountModalAction: "singUp",
+  accountModalAction: 'singUp',
 };
 
 const reducer = (state = initialState, action) => {
