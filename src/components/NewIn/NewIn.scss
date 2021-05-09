@@ -3,7 +3,9 @@
   margin: 0 auto;
 }
 .new-in-title {
-  font-family: Abel;
+  font-family: 'Abel', sans-serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 32px;
   line-height: 58px;
   text-transform: uppercase;
@@ -33,7 +35,7 @@
   position: absolute;
   left: 50px;
   top: 406px;
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-size: 24px;
   line-height: 24px;
   color: #ffffff;
@@ -46,7 +48,7 @@
   position: absolute;
   left: 50px;
   top: 459px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 32px;
   line-height: 25px;
@@ -78,7 +80,7 @@
     position: absolute;
     left: 50px;
     top: 558px;
-    font-family: "Mulish", sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 30px;
     line-height: 28px;
     color: #ffffff;
@@ -91,13 +93,13 @@
     position: absolute;
     left: 50px;
     top: 618px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 35px;
     line-height: 25px;
     color: #ffffff;
     mix-blend-mode: normal;
-    text-shadow: 0px 4px 1px rgba(0, 0, 0,0.25);
+    text-shadow: 0px 4px 1px rgba(0, 0, 0, 0.25);
     margin: 0;
   }
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 const AppRoutes = () => {
   <Switch>
@@ -9,7 +9,12 @@ const AppRoutes = () => {
     <Route path="/bed_linen" />
     <Route path="/bedroom" />
     <Route path="/blog" />
-    <Route path="/catalog" />
+    <Route
+      path="/catalog"
+      render={() => 
+        <div>404</div>
+      }
+    />
     <Route path="/contact" />
     <Route path="/shopping_cart" />
     <Route path="/favourites" />
