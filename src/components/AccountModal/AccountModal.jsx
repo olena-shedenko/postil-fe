@@ -148,8 +148,6 @@ const AccountModal = () => {
                 <Button
                   className="account-modal__submit-button"
                   type="submit"
-                  backgroundColor="#373F41"
-                  elementPadding="90px"
                   onClick={() => submitForm()}
                   // eslint-disable-next-line react/no-children-prop
                   children={forSignUp ? 'sign up' : 'log in'}

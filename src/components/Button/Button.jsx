@@ -2,26 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
 
+const classNames = require('classnames');
+
 const Button = ({
   children,
   onClick,
   className,
   type,
-  backgroundColor,
-  elementPadding,
-  textColor,
+  addCommonStyles,
+  addFooterStyles,
 }) => {
+  const elementsStyles = classNames({
+    'common-btn-styles': addCommonStyles,
+    'footer-button': addFooterStyles,
+  });
+
   return (
     <>
       <button
         onClick={onClick}
-        className={`common-btn-styles ${className}`}
-        style={{
-          background: backgroundColor,
-          paddingLeft: elementPadding,
-          paddingRight: elementPadding,
-          color: textColor,
-        }}
+        className={`${elementsStyles} ${className}`}
         /* eslint-disable-next-line react/button-has-type */
         type={type}
       >
@@ -36,19 +36,17 @@ Button.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  elementPadding: PropTypes.string,
-  textColor: PropTypes.string,
+  addCommonStyles: PropTypes.bool,
+  addFooterStyles: PropTypes.bool,
 };
 
 Button.defaultProps = {
   type: 'button',
   children: 'Button',
   onClick: () => {},
-  className: 'btn',
-  backgroundColor: 'white',
-  elementPadding: '90px',
-  textColor: '#fff',
+  className: null,
+  addCommonStyles: true,
+  addFooterStyles: false,
 };
 
 export default Button;
