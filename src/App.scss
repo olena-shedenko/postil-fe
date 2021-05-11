@@ -1,8 +1,8 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
+@font-face {
+  font-family: "Mulish";
+  src: url(./fonts/Mulish/Mulish-Medium.ttf);
 }
+
 
 .container {
  width: 1180px;
@@ -21,4 +21,8 @@ a {
 
 ul {
   list-style: none;
+}
+*{
+  font-family: Mulish;
+
 }
