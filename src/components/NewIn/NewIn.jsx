@@ -1,6 +1,6 @@
-import React from "react";
-import "./NewIn.scss";
-import "../../index.scss";
+import React from 'react';
+import './NewIn.scss';
+import '../../index.scss';
 
 export default function NewIn() {
   return (
