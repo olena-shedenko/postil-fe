@@ -3,6 +3,26 @@
   src: url(./fonts/Mulish/Mulish-Medium.ttf);
 }
 
+
+.container {
+ width: 1180px;
+ margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+// img {
+//   max-width: 100%;
+//   height: auto;
+//   display: block;
+// }
+
+ul {
+  list-style: none;
+}
 *{
   font-family: Mulish;
+
 }
