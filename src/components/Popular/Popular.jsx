@@ -18,6 +18,8 @@ export default function Popular() {
               <Button
                 backgroundColor="transparent"
                 className="text-block__button"
+                elementPadding="0"
+                textColor="#373F41"
               >
                 Shop
               </Button>
@@ -30,6 +32,8 @@ export default function Popular() {
               <Button
                 className="text-block__button"
                 backgroundColor="transparent"
+                elementPadding="0"
+                textColor="#373F41"
               >
                 Shop
               </Button>
@@ -42,6 +46,8 @@ export default function Popular() {
               <Button
                 className="text-block__button"
                 backgroundColor="transparent"
+                elementPadding="0"
+                textColor="#373F41"
               >
                 Shop
               </Button>
@@ -54,6 +60,8 @@ export default function Popular() {
               <Button
                 className="text-block__button"
                 backgroundColor="transparent"
+                elementPadding="0"
+                textColor="#373F41"
               >
                 Shop
               </Button>
