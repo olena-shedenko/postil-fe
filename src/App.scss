@@ -1,19 +1,8 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
+@font-face {
+  font-family: "Mulish";
+  src: url(./fonts/Mulish/Mulish-Medium.ttf);
 }
 
-a {
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-ul {
-  list-style: none;
+*{
+  font-family: Mulish;
 }

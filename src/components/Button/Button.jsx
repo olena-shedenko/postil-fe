@@ -2,27 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
 
-const Button = ({ children, onClick, className, backgroundColor, type }) => {
+const Button = ({
+  children,
+  onClick,
+  className,
+  type,
+  backgroundColor,
+  elementPadding,
+  textColor,
+}) => {
   return (
-    <div>
+    <>
       <button
         onClick={onClick}
-        className={className}
-        /* eslint-disable-next-line react/button-has-type */
-        type={type}
+        className={`common-btn-styles ${className}`}
         style={{
           background: backgroundColor,
-          textTransform: 'uppercase',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontFamily: 'Mulish',
-          borderRadius: '4px',
+          paddingLeft: elementPadding,
+          paddingRight: elementPadding,
+          color: textColor,
         }}
+        /* eslint-disable-next-line react/button-has-type */
+        type={type}
       >
         {children}
       </button>
-    </div>
+    </>
   );
 };
 
@@ -32,6 +37,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   backgroundColor: PropTypes.string,
+  elementPadding: PropTypes.string,
+  textColor: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -40,6 +47,8 @@ Button.defaultProps = {
   onClick: () => {},
   className: 'btn',
   backgroundColor: 'white',
+  elementPadding: '90px',
+  textColor: '#fff',
 };
 
 export default Button;
