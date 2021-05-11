@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
-import React from "react";
-import "./Slider.scss";
-import "../../index.scss";
+import React from 'react';
+import './Slider.scss';
+import '../../index.scss';
 
 export default function Slider() {
-  const rad = document.getElementsByClassName("manual-btn");
-  const nav = document.getElementsByClassName("nav-btn");
+  const rad = document.getElementsByClassName('manual-btn');
+  const nav = document.getElementsByClassName('nav-btn');
   let slideNumber = 0;
 
   const prevSlide = () => {
     for (let index = 0; index < rad.length; index += 1) {
-      rad[index].classList.remove("active");
+      rad[index].classList.remove('active');
     }
     if (slideNumber < 1) {
       slideNumber = 2;
@@ -18,13 +18,13 @@ export default function Slider() {
       slideNumber -= 1;
     }
     const atrib = `radio${slideNumber + 1}`;
-    nav[0].setAttribute("for", atrib);
-    rad[slideNumber].classList.add("active");
+    nav[0].setAttribute('for', atrib);
+    rad[slideNumber].classList.add('active');
   };
 
   const nextSlide = () => {
     for (let index = 0; index < rad.length; index += 1) {
-      rad[index].classList.remove("active");
+      rad[index].classList.remove('active');
     }
     if (slideNumber > 1) {
       slideNumber = 0;
@@ -32,16 +32,16 @@ export default function Slider() {
       slideNumber += 1;
     }
     const atrib = `radio${slideNumber + 1}`;
-    nav[1].setAttribute("for", atrib);
-    rad[slideNumber].classList.add("active");
+    nav[1].setAttribute('for', atrib);
+    rad[slideNumber].classList.add('active');
   };
 
   const changeSlide = (e) => {
     for (let a = 0; a < rad.length; a += 1) {
-      rad[a].classList.remove("active");
+      rad[a].classList.remove('active');
       slideNumber = a;
     }
-    e.target.className = "manual-btn active";
+    e.target.className = 'manual-btn active';
   };
 
   return (
