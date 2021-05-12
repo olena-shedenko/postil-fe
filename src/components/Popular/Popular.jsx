@@ -2,7 +2,6 @@ import React from 'react';
 import './Popular.scss';
 // import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
-// import Button from '../Button/Button';
 
 export default function Popular() {
   return (
@@ -15,10 +14,7 @@ export default function Popular() {
             <img src="/images/popular/background.png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">BEDROOM</p>
-              <Button
-                backgroundColor="transparent"
-                className="text-block__button"
-              >
+              <Button variant="bordered" className="text-block__button">
                 Shop
               </Button>
             </div>
@@ -27,10 +23,7 @@ export default function Popular() {
             <img src="/images/popular/Rectangle 715 Copy 3.png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">BATHROOM</p>
-              <Button
-                className="text-block__button"
-                backgroundColor="transparent"
-              >
+              <Button className="text-block__button" variant="bordered">
                 Shop
               </Button>
             </div>
@@ -39,10 +32,7 @@ export default function Popular() {
             <img src="/images/popular/Rectangle 715 Copy 3 (1).png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">BED LINEN</p>
-              <Button
-                className="text-block__button"
-                backgroundColor="transparent"
-              >
+              <Button className="text-block__button" variant="bordered">
                 Shop
               </Button>
             </div>
@@ -51,10 +41,7 @@ export default function Popular() {
             <img src="/images/popular/Rectangle 715 Copy 3 (2).png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">LOUNGEWEAR</p>
-              <Button
-                className="text-block__button"
-                backgroundColor="transparent"
-              >
+              <Button className="text-block__button" variant="bordered">
                 Shop
               </Button>
             </div>

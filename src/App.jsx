@@ -3,6 +3,7 @@ import './App.scss';
 import Slider from './components/Slider/Slider';
 import NewIn from './components/NewIn/NewIn';
 import Popular from './components/Popular/Popular';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Slider />
       <NewIn />
       <Popular />
+      <Footer />;
     </div>
   );
 }
