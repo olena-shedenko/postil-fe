@@ -1,0 +1,67 @@
+.bagpopup {
+  &-wrap {
+    z-index: 10000;
+    background: rgba(55, 63, 65, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &-content {
+    position: fixed;
+    top: 75px;
+    bottom: 50px;
+    right: 190px;
+    width: 340px;
+    background: white;
+    padding: 15px 10px 0;
+    overflow-y: auto;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    
+    &__title {
+      color: #373f41;
+      font-weight: 300;
+      font-size: 16px;
+      display: inline-block;
+    }
+
+    &__close {
+      display: inline-flex;
+      margin-right: 10px;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  &-price {
+      margin-top: 15px;
+      font-size: 18px;
+      letter-spacing: .04em;
+      color: #373F41;
+  }
+
+  &-buttons {
+      margin-top: 35px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        font-size: 18px;
+        padding: 10px 0;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+      }
+  }
+}
