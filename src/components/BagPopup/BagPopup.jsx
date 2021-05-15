@@ -6,19 +6,24 @@ import './BagPopup.scss';
 export default function BagPopup(props) {
   const { itemCount, totalPrice } = props;
 
-  const closePopup = () => {
+  const handleClose = (e) => {
     const popup = document.querySelector('.bagpopup-wrap');
-    popup.remove();
+    const closeBtn = document.querySelector('.bagpopup-header__close');
+
+    if (e.target === popup || e.target === closeBtn) {
+      popup.remove();
+    }
   };
 
   return (
-    <div className="bagpopup-wrap">
+    /* eslint-disable-next-line */
+    <div onClick={(e) => handleClose(e)} className="bagpopup-wrap">
       <div className="bagpopup-content">
         <div className="bagpopup-header">
           <div className="bagpopup-header__title">BAG ({itemCount})</div>
           <button
             type="button"
-            onClick={() => closePopup()}
+            onClick={() => handleClose()}
             className="bagpopup-header__close"
           >
             <img
