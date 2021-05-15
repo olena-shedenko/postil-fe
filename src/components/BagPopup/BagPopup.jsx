@@ -8,7 +8,7 @@ export default function BagPopup(props) {
 
   const handleClose = (e) => {
     const popup = document.querySelector('.bagpopup-wrap');
-    const closeBtn = document.querySelector('.bagpopup-header__close');
+    const closeBtn = document.querySelector('.bagpopup-header__close img');
 
     if (e.target === popup || e.target === closeBtn) {
       popup.remove();
@@ -23,7 +23,7 @@ export default function BagPopup(props) {
           <div className="bagpopup-header__title">BAG ({itemCount})</div>
           <button
             type="button"
-            onClick={() => handleClose()}
+            onClick={(e) => handleClose(e)}
             className="bagpopup-header__close"
           >
             <img
