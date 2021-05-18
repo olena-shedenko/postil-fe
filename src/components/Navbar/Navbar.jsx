@@ -10,7 +10,6 @@ import Search from "./Search";
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
-  const [langDropdown, setLangDropdown] = useState(false);
   const [catalog, setCatalog] = useState(false);
 
   const handleCatalog = () => setCatalog(!catalog);
@@ -18,14 +17,12 @@ function Navbar() {
   function closeMenu() {
     setDropdown(false);
     setCatalog(false);
-    setLangDropdown(false);
   }
-  const handleClickLang = () => setLangDropdown(!langDropdown);
 
   return (
     <div className="nav">
       <nav className="navbar">
-        <Link className="navbar--logo__link" to="/" onClick={handleClick}>
+        <Link to="/" onClick={handleClick} data-testid="logo">
           <Logo className="navbar--logo" />
         </Link>
         <div
@@ -36,6 +33,7 @@ function Navbar() {
           Catalog
           <Arrow className="navbar--arrow" />
           <div
+            data-testid="catalog"
             className={
               catalog ? "dropdown--catalog active" : "dropdown--catalog"
             }
@@ -106,44 +104,22 @@ function Navbar() {
               Blog
             </Link>
           </div>
-          <div className="navbar--item">
+          <div className="navbar--item" data-testid="search">
             <Search />
           </div>
-          <div role="presentation" className="navbar--item icon">
+          <div className="navbar--item icon">
             <LogIn onClick={closeMenu} />
           </div>
-          <div role="presentation" className="navbar--item icon">
+          <div className="navbar--item icon">
             <Favourites onClick={closeMenu} />
           </div>
-          <Link to="/cart" className="navbar--item icon" onClick={closeMenu}>
-            <Cart />
-          </Link>
+          <div className="navbar--item icon">
+            <Cart onClick={closeMenu} />
+          </div>
         </div>
-        <div
-          role="presentation"
-          className={langDropdown ? "dropdown--nav active" : "dropdown--nav"}
-          onClick={handleClickLang}
-        >
+        <div>
           En
           <Arrow className="navbar--arrow" />
-        </div>
-        <div
-          className={langDropdown ? "dropdown--lang active" : "dropdown--lang"}
-        >
-          <div
-            role="presentation"
-            className="navbar--links"
-            onClick={closeMenu}
-          >
-            En
-          </div>
-          <div
-            role="presentation"
-            className="navbar--links"
-            onClick={closeMenu}
-          >
-            Ru
-          </div>
         </div>
       </nav>
     </div>
