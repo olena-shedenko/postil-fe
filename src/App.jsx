@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.scss';
-// import ShoppingBag from './components/ShoppingBag/ShoppingBag';
-import getItems from './store/items/operations';
+import { getItems } from './store/operations';
 import AppRoutes from './routes/AppRoutes';
-
-// import Slider from './components/Slider/Slider';
-// import NewIn from './components/NewIn/NewIn';
-// import Popular from './components/Popular/Popular';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,11 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Slider />
-      <NewIn />
-      <Popular /> */}
       <AppRoutes />
-      {/* <ShoppingBag /> */}
     </div>
   );
 }

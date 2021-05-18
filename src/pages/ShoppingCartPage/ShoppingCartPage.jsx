@@ -1,7 +1,9 @@
 /* eslint-disable no-underscore-dangle */
+
 import React from 'react';
 import './ShoppingCart.scss';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 import Button from '../../components/Button/Button';
 
@@ -28,14 +30,16 @@ export default function ShoppingCart() {
         }
         return null;
       })}
-      <Button
-        textColor="#FFFFFF"
-        backgroundColor="#373F41"
-        className="checkout-btn"
-        elementPadding="37px"
-      >
-        PROCEED TO CHECKOUT
-      </Button>
+      <NavLink to="/checkout_bag">
+        <Button
+          textColor="#FFFFFF"
+          backgroundColor="#373F41"
+          className="checkout-btn"
+          elementPadding="37px"
+        >
+          PROCEED TO CHECKOUT
+        </Button>
+      </NavLink>
     </div>
   );
 }

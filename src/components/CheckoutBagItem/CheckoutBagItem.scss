@@ -20,9 +20,7 @@
 
 .text-content__title {
   font-family: 'Abel', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 0.04em;
   color: #373f41;
   margin: 0;
@@ -32,21 +30,18 @@
 .text-content__discribe {
   width: 379px;
   font-family: 'Mulish', sans-serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 19px;
   color: #373f41;
-  margin: 8px 0 27px;
+  margin: 8px 0 20px;
 }
 
 .text-content__price {
   font-family: 'Mulish', sans-serif;
-  font-style: normal;
   font-weight: 600;
   font-size: 18px;
   color: #373f41;
-  margin: 0 0 21px;
+  margin: 0 0 20px;
 }
 
 .ddd {
@@ -139,38 +134,4 @@
   vertical-align: middle;
   margin: 0 20px;
   cursor: pointer;
-}
-
-.functional-content {
-  text-align: right;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-}
-
-.cross {
-  margin: 0 20px;
-  cursor: pointer;
-}
-
-// select {
-//   border: none;
-//   font-family: 'Mulish', sans-serif;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 18px;
-//   line-height: 24px;
-//   color: grey;
-//   text-transform: uppercase;
-//   outline: none;
-// }
-
-hr {
-  width: 100%;
-  height: 1px;
-  background: #373f41;
-  opacity: 0.25;
-  padding: 0;
-  margin: 0;
-  border: none;
 }

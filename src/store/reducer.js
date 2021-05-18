@@ -1,9 +1,10 @@
-import { SET_MODAL_LOG_IN, SET_MODAL_SIGN_UP } from './types';
 import {
+  SET_MODAL_LOG_IN,
+  SET_MODAL_SIGN_UP,
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
   SET_ITEMS,
-} from './items/types';
+} from './types';
 
 const initialState = {
   accountModalAction: 'singUp',
