@@ -1,14 +1,21 @@
-import React from "react";
-import Navbar from "./components/Navbar/Navbar";
-import AppRoutes from "./routes/AppRoutes";
+import React from 'react';
+import './App.scss';
+import Slider from './components/Slider/Slider';
+import NewIn from './components/NewIn/NewIn';
+import Popular from './components/Popular/Popular';
+import Footer from './components/Footer/Footer';
+import Navbar from './components/Navbar/Navbar';
 
-const App = () => {
+function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar />
-      <AppRoutes />
+      <Slider />
+      <NewIn />
+      <Popular />
+      <Footer />;
     </div>
   );
-};
+}
 
 export default App;
