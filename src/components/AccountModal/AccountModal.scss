@@ -1,7 +1,7 @@
 .modal-wrapper {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -10,12 +10,39 @@
   overflow: auto;
   background-color: rgba(55, 63, 65, 0.7);
 }
+.error-wrapper{
+  display: block;
+  position: fixed;
+  z-index: 10;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(55, 63, 65, 0.7);
+  &__error-text{
+    background-color: #fff;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    position: relative;
+    width: 560px;
+    display: inline-flex;
+    flex-shrink: 4;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+}
 .account-modal {
   position: relative;
   padding: 50px 55px;
   width: 560px;
   background-color: #ffffff;
   display: inline-flex;
+  flex-shrink: 4;
   flex-direction: column;
   position: fixed;
   left: 0;
@@ -58,6 +85,8 @@
   }
 
   &__form {
+    display: flex;
+    flex-direction: column;
     &__input {
       position: relative;
       &__field {
@@ -79,42 +108,48 @@
         margin: 0;
       }
     }
-  }
-
-  &__accept-tos {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    // width: 385px;
-    &__checkbox-tick {
-      align-self: flex-start;
-      margin: 4px 15px 0 0;
+    &__submit-button {
+      align-self: center;
+      color: white;
+      background-color: #373f41;
+      margin-top: 45px;
+      padding: 0 90px;
+      font-size: 18px;
     }
-    &__checkbox-text-wrap {
-      margin: 0;
+
+    &__accept-tos {
       display: flex;
-      flex-direction: column;
-      &__item {
-        font-size: 16px;
-        color: #373f41;
+      flex-direction: row;
+      align-items: flex-start;
+      // margin-bottom: 20px;
+      // width: 385px;
+      &__checkbox-tick {
+        align-self: flex-start;
+        margin: 4px 15px 0 0;
+      }
+      &__checkbox-text-wrap {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        &__item {
+          font-size: 16px;
+          color: #373f41;
+        }
+      }
+      &__checkbox-error{
+        position: absolute;
+        font-weight: bold;
+        color: rgb(199, 101, 101);
+        margin: 0;
       }
     }
-  }
 
-  &__submit-button{
-    align-self: center;
-    color: white;
-    background-color: #373F41;
-    padding: 0 90px;
-    font-size: 18px;
-  }
-
-  &__tos-and-pp {
-    margin-bottom: 30px;
-    color: #8c8c8c;
-    a {
-      color: #976060;
+    &__tos-and-pp {
+      margin: 45px 0 30px 0;
+      color: #8c8c8c;
+      a {
+        color: #976060;
+      }
     }
   }
 

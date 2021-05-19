@@ -1,7 +1,13 @@
-import { SET_MODAL_LOG_IN, SET_MODAL_SIGN_UP } from './types';
+import {
+  SET_MODAL_LOG_IN,
+  SET_MODAL_SIGN_UP,
+  TOGGLE_ACCOUNT_ERROR,
+} from './types';
 
 const initialState = {
-  accountModalAction: 'singUp',
+  accountModalAction: 'signUp',
+  isError: false,
+  errMessage: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +16,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, accountModalAction: action.payload };
     case SET_MODAL_SIGN_UP:
       return { ...state, accountModalAction: action.payload };
+    case TOGGLE_ACCOUNT_ERROR:
+      return { ...state, isError: !state.isError, errMessage: action.payload };
     default:
       return state;
   }
