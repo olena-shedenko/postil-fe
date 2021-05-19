@@ -1,29 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
+import classnames from 'classnames';
 
-const classNames = require('classnames');
-
-const Button = ({
-  children,
-  onClick,
-  className,
-  type,
-  addCommonStyles,
-  addFooterStyles,
-}) => {
-  const elementsStyles = classNames({
-    'common-btn-styles': addCommonStyles,
-    'footer-button': addFooterStyles,
+/*
+ * params:
+ *   variant: "dark", "light", "bordered" "light-bordered"//needs to be passed via props <Button variant="light">
+ */
+const Button = (props) => {
+  const { children, onClick, className, type, variant } = props;
+  const btnClass = classnames('btn', className, {
+    'btn-dark': variant === 'dark',
+    'btn-light': variant === 'light',
+    'btn-bordered': variant === 'bordered',
+    'btn-light-bordered': variant === 'light-bordered',
   });
-
   return (
     <>
       <button
         onClick={onClick}
-        className={`${elementsStyles} ${className}`}
-        /* eslint-disable-next-line react/button-has-type */
-        type={type}
+        className={btnClass}
+        type={type === 'submit' ? 'submit' : 'button'}
       >
         {children}
       </button>
@@ -36,17 +33,15 @@ Button.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,
-  addCommonStyles: PropTypes.bool,
-  addFooterStyles: PropTypes.bool,
+  variant: PropTypes.string,
 };
 
 Button.defaultProps = {
-  type: 'button',
-  children: 'Button',
+  type: '',
+  children: '',
   onClick: () => {},
-  className: null,
-  addCommonStyles: true,
-  addFooterStyles: false,
+  className: '',
+  variant: '',
 };
 
 export default Button;

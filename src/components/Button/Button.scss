@@ -1,17 +1,32 @@
 @font-face {
-  font-family: "Abel";
+  font-family: 'Abel';
   src: url(../../fonts/Abel/Abel-Regular.ttf);
 }
 
-.common-btn-styles{
+.btn {
+  background: transparent;
   outline: none;
   border: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
   display: flex;
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
   font-family: Abel;
   border-radius: 4px;
+  &-dark {
+    background-color: #373f41;
+    color: #fff;
+  }
+  &-light {
+    background-color: #fff;
+    color: #373f41;
+  }
+  &-bordered {
+    border: 1px solid #373f41;
+  }
+  &-light-bordered {
+    background-color: #fff;
+    border: 1px solid #373f41;
+    color: #373f41;
+  }
 }
