@@ -50,13 +50,10 @@ export default function Delivery() {
               <span>TOTAL</span>
               <span>${(totalPrice += 5)}</span>
             </p>
-            <NavLink to="/delivery">
+            <NavLink to="/payment">
               <Button
-                elementPadding="86px"
-                backgroundColor="#373F41"
-                textColor="#FFFFFF"
                 className="buy__button"
-                type="submit"
+                variant='dark'
               >
                 Next
               </Button>

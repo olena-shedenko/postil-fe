@@ -4,6 +4,7 @@ import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
 import MainPage from '../pages/MainPage/MainPage';
 import CheckoutBagPage from '../pages/CheckoutBagPage/CheckoutBagPage';
 import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
+import PaymentPage from '../pages/PaymentPage/PaymentPage';
 
 const AppRoutes = () => {
   return (
@@ -23,7 +24,7 @@ const AppRoutes = () => {
       <Route path="/favourites" />
       <Route path="/loungewear" />
       <Route exact path="/delivery" render={() => <DeliveryPage />} />
-      <Route path="/payment" />
+      <Route exact path="/payment" render={() => <PaymentPage />} />
       <Route path="/privacy_policy" />
       <Route path="/returns" />
       <Route path="/reviews" />

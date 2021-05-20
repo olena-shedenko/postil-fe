@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 import Button from '../../components/Button/Button';
+import Footer from '../../components/Footer/Footer';
 
 export default function ShoppingCart() {
   const items = useSelector((state) => state.items.data);
@@ -19,27 +20,25 @@ export default function ShoppingCart() {
   });
 
   return (
-    <div className="container">
-      <div className="bag-header">
-        <p className="bag-header__title">SHOPPING BAG</p>
-        <p className="bag-header__price">TOTAL USD ${totalPrice}.00</p>
+    <>
+      <div className="container">
+        <div className="bag-header">
+          <p className="bag-header__title">SHOPPING BAG</p>
+          <p className="bag-header__price">TOTAL USD ${totalPrice}.00</p>
+        </div>
+        {items.map((el) => {
+          if (el.inShoppingBag === true) {
+            return <ShoppingBagItem key={el.itemNo} items={items} item={el} />;
+          }
+          return null;
+        })}
+        <NavLink to="/checkout_bag">
+          <Button className="checkout-btn" variant="dark">
+            PROCEED TO CHECKOUT
+          </Button>
+        </NavLink>
       </div>
-      {items.map((el) => {
-        if (el.inShoppingBag === true) {
-          return <ShoppingBagItem key={el.itemNo} items={items} item={el} />;
-        }
-        return null;
-      })}
-      <NavLink to="/checkout_bag">
-        <Button
-          textColor="#FFFFFF"
-          backgroundColor="#373F41"
-          className="checkout-btn"
-          elementPadding="37px"
-        >
-          PROCEED TO CHECKOUT
-        </Button>
-      </NavLink>
-    </div>
+      <Footer />
+    </>
   );
 }

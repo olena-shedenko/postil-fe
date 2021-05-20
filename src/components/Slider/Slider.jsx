@@ -2,6 +2,7 @@
 import React from 'react';
 import './Slider.scss';
 import '../../index.scss';
+import Button from '../Button/Button';
 
 export default function Slider() {
   const rad = document.getElementsByClassName('manual-btn');
@@ -119,9 +120,9 @@ export default function Slider() {
                 <br />
                 <span>at a price that wont keep you up at night.</span>
               </p>
-              <button className="slide-button" type="button">
+              <Button className="slide-button" type="button" variant="light">
                 SHOP NEW ARRIVALS
-              </button>
+              </Button>
             </div>
 
             <div className="slide">
@@ -131,9 +132,9 @@ export default function Slider() {
                 <br />
                 <span>ON YOUR FIRST ORDER</span>
               </h3>
-              <button className="slide-button" type="button">
+              <Button className="slide-button" type="button" variant="light">
                 SHOP NEW ARRIVALS
-              </button>
+              </Button>
             </div>
             <div className="slide">
               <img src="/images/slider/thirdimg.png" alt="" />
@@ -142,9 +143,9 @@ export default function Slider() {
                 <br />
                 <span>ON YOUR FAVOURITE FRENCH LINEN</span>
               </h3>
-              <button className="slide-button" type="button">
+              <Button className="slide-button" type="button" variant="light">
                 SHOP NEW ARRIVALS
-              </button>
+              </Button>
             </div>
           </div>
           <div className="navigation-manual">

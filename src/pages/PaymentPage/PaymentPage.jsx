@@ -1,13 +1,10 @@
-/* eslint-disable */
 import React from 'react';
-import { useSelector } from 'react-redux';
-import './CheckoutBag.scss';
-import { NavLink } from 'react-router-dom';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
-import CheckoutBagItem from '../../components/CheckoutBagItem/CheckoutBagItem';
-import Button from '../../components/Button/Button';
+import { useSelector } from 'react-redux';
+import Footer from '../../components/Footer/Footer';
+import "./PaymentPage.scss"
 
-export default function CheckoutBag() {
+export default function PaymentPage() {
   const items = useSelector((state) => state.items.data);
   let totalPrice = 0;
 
@@ -17,26 +14,40 @@ export default function CheckoutBag() {
     }
     return el;
   });
+
   return (
     <div>
-      <CheckoutHeader shoppingBag />
+      <CheckoutHeader />
       <div className="container">
         <div className="registration">
           <div className="registration-right__block">
-            <p className="registration__title">SHOPPING BAG</p>
+            <p className="registration__title">PAYMENT METHOD</p>
+            <hr />
+            <p>
+              <span>/</span> Back
+            </p>
+          </div>
+          <div className="registration-left__block">
+            <p className="registration__title">SUMMARY</p>
             {items.map((el) => {
               if (el.inShoppingBag === true) {
                 return (
-                  <CheckoutBagItem key={el.itemNo} items={items} item={el} />
+                  <div className="card">
+                    <img
+                      src={el.imageUrls[0]}
+                      alt="image"
+                      width="100px"
+                      height="100px"
+                    />
+                    <div className="card-text-content">
+                      <p className="card-text-content__title">{el.name}</p>
+                      <p className="card-text-content__price">${el.currentPrice}</p>
+                    </div>
+                  </div>
                 );
               }
               return null;
             })}
-            <hr />
-            <p><span>/</span> Back</p>
-          </div>
-          <div className="registration-left__block">
-            <p className="registration__title">SUMMARY</p>
             <p className="registration-coupone">ENTER COUPONE CODE</p>
             <p className="registration-price">
               <span>SUBTOTAL</span>
@@ -54,17 +65,19 @@ export default function CheckoutBag() {
               <span>TOTAL</span>
               <span>${(totalPrice += 5)}</span>
             </p>
-            <NavLink to="/delivery">
+            {/* <NavLink to="/delivery">
               <Button
                 className="buy__button"
                 variant='dark'
               >
                 Buy
               </Button>
-            </NavLink>
+            </NavLink> */}
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
