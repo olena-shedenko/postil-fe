@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.scss';
-import Slider from './components/Slider/Slider';
-import NewIn from './components/NewIn/NewIn';
-import Popular from './components/Popular/Popular';
-import Footer from './components/Footer/Footer';
-import Navbar from './components/Navbar/Navbar';
+import { getItems } from './store/operations';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getItems());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <Navbar />
-      <Slider />
-      <NewIn />
-      <Popular />
-      <Footer />;
+      <AppRoutes />
     </div>
   );
 }

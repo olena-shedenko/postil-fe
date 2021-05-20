@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../images/svg/postil.svg";
-import { ReactComponent as Arrow } from "../../images/svg/vector.svg";
-import { ReactComponent as LogIn } from "../../images/svg/person.svg";
-import { ReactComponent as Favourites } from "../../images/svg/heart.svg";
-import { ReactComponent as Cart } from "../../images/svg/basket.svg";
-import "./Navbar.scss";
-import Search from "./Search";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../images/svg/postil.svg';
+import { ReactComponent as Arrow } from '../../images/svg/vector.svg';
+import { ReactComponent as LogIn } from '../../images/svg/person.svg';
+import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
+import { ReactComponent as Cart } from '../../images/svg/basket.svg';
+import './Navbar.scss';
+import Search from './Search';
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
@@ -28,14 +28,14 @@ function Navbar() {
         <div
           role="presentation"
           onClick={handleCatalog}
-          className={catalog ? "dropdown--nav active" : "dropdown--nav"}
+          className={catalog ? 'dropdown--nav active' : 'dropdown--nav'}
         >
           Catalog
           <Arrow className="navbar--arrow" />
           <div
             data-testid="catalog"
             className={
-              catalog ? "dropdown--catalog active" : "dropdown--catalog"
+              catalog ? 'dropdown--catalog active' : 'dropdown--catalog'
             }
           >
             <div className="dropdown--catalog__item">
@@ -88,7 +88,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className={dropdown ? "navbar--menu active" : "navbar--menu"}>
+        <div className={dropdown ? 'navbar--menu active' : 'navbar--menu'}>
           <div className="navbar--item">
             <Link to="/about_us" className="navbar--links" onClick={closeMenu}>
               About
@@ -114,7 +114,9 @@ function Navbar() {
             <Favourites onClick={closeMenu} />
           </div>
           <div className="navbar--item icon">
-            <Cart onClick={closeMenu} />
+            <Link to="/shopping_cart" className="navbar--links" onClick={closeMenu}>
+              <Cart onClick={closeMenu} />
+            </Link>
           </div>
         </div>
         <div>

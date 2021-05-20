@@ -1,0 +1,30 @@
+.header {
+  background-color: #373f41;
+  height: 99px;
+}
+.container {
+  width: 1180px;
+  margin: 0 auto;
+}
+
+.header-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-list__item {
+  width: 100%;
+  text-align: center;
+  padding: 29px 0 18px;
+  border-bottom: 1px solid #ffffff;
+  font-family: 'Mulish',sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #949697;
+}
+.header-list__item.active{
+    color: #FFFFFF;
+    border-bottom: 5px solid #ffffff;
+}

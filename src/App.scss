@@ -3,7 +3,6 @@
   src: url(./fonts/Mulish/Mulish-Medium.ttf);
 }
 
-
 .container {
  width: 1180px;
  margin: 0 auto;
@@ -18,6 +17,9 @@ a {
 //   height: auto;
 //   display: block;
 // }
+p {
+  margin: 0;
+}
 
 ul {
   list-style: none;
@@ -26,3 +28,6 @@ ul {
   font-family: Mulish;
 
 }
+// *{
+//   font-family: Mulish;
+// }
