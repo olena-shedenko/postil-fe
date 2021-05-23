@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Button/Button';
+import BagPopupItems from '../BagPopupItems/BagPopupItems';
 import { closeBagPopup } from '../../store/operations';
 import './BagPopup.scss';
 
@@ -50,7 +51,9 @@ export default function BagPopup(props) {
                 CHECKOUT
               </Button>
             </div>
-            <div className="bagpopup-items">items</div>
+            <div className="bagpopup-items">
+              <BagPopupItems />
+            </div>
           </div>
         </div>
       )}
