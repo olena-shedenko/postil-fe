@@ -5,6 +5,7 @@ import { ReactComponent as Arrow } from '../../images/svg/vector.svg';
 import { ReactComponent as LogIn } from '../../images/svg/person.svg';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
+import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 
@@ -22,13 +23,14 @@ function Navbar() {
   return (
     <div className="nav">
       <nav className="navbar">
-        <Link to="/" onClick={handleClick} data-testid="logo">
+        <Bars onClick={handleClick} className="navbar--bars" />
+        <Link to="/" data-testid="logo">
           <Logo className="navbar--logo" />
         </Link>
         <div
           role="presentation"
           onClick={handleCatalog}
-          className={catalog ? 'dropdown--nav active' : 'dropdown--nav'}
+          className="dropdown--nav"
         >
           Catalog
           <Arrow className="navbar--arrow" />
@@ -114,7 +116,11 @@ function Navbar() {
             <Favourites onClick={closeMenu} />
           </div>
           <div className="navbar--item icon">
-            <Link to="/shopping_cart" className="navbar--links" onClick={closeMenu}>
+            <Link
+              to="/shopping_cart"
+              className="navbar--links"
+              onClick={closeMenu}
+            >
               <Cart onClick={closeMenu} />
             </Link>
           </div>
