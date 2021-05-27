@@ -8,6 +8,7 @@ import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
 import { toggleBagPopup } from '../../store/operations';
 
+// import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 import BagPopup from '../BagPopup/BagPopup';
