@@ -5,6 +5,8 @@ import MainPage from '../pages/MainPage/MainPage';
 import CheckoutBagPage from '../pages/CheckoutBagPage/CheckoutBagPage';
 import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
+import Catalog from '../pages/Catalog/Catalog';
+// import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
   return (
@@ -17,7 +19,7 @@ const AppRoutes = () => {
       <Route path="/bed_linen" />
       <Route path="/bedroom" />
       <Route path="/blog" />
-      <Route path="/catalog" />
+      <Route path="/catalog" render={() => <Catalog />} />
       <Route path="/contact" />
       <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
       <Route exact path="/shopping_cart" render={() => <ShoppingCartPage />} />

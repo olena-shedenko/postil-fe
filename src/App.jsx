@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.scss';
-import { getItems } from './store/operations';
+import { getItems, getProductOperation } from './store/operations';
+import Footer from './components/Footer/Footer';
 import AppRoutes from './routes/AppRoutes';
 
 function App() {
@@ -11,9 +12,14 @@ function App() {
     dispatch(getItems());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getProductOperation());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <AppRoutes />
+      <Footer />;
     </div>
   );
 }

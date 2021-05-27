@@ -1,0 +1,354 @@
+.catalog-container {
+  width: 75em;
+  margin: 0 auto;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-gap: 3.125em;
+}
+
+// MAIN SECTION BUTTONS STYLES
+
+.main-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 23px;
+  &__btn {
+    box-sizing: border-box;
+    padding: 10.5px 20.5px;
+    border: 1.5px solid #8c8c8c;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    cursor: pointer;
+    &:hover {
+      border: 2px solid #373f41;
+      padding: 10px 20px;
+    }
+    &:focus {
+      border: 2px solid #373f41;
+      padding: 10px 20px;
+    }
+    &.selected {
+      border: 2px solid #373f41;
+      padding: 10px 20px;
+    }
+  }
+}
+// END OF MAIN SECTION BUTTONS STYLES
+
+// ASIDE SECTION STYLES
+
+.aside {
+  &__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: Abel, sans-serif;
+    margin-bottom: 0.875rem;
+  }
+}
+.aside-section {
+  &__title {
+    text-transform: uppercase;
+    margin: 0;
+    padding: 15px 0;
+    &::before {
+      content: '';
+      width: 14px;
+      height: 2px;
+      display: inline-block;
+      margin-bottom: 6px;
+      background-color: #000f08;
+      margin-right: 0.875rem;
+    }
+  }
+}
+// END OF ASIDE SECTION STYLES
+// RADIO BUTTONS STYLES SECTION
+
+.btns-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 22px;
+  &__btn-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  &__btn-label {
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding-left: 27px;
+    position: relative;
+  }
+  &__btn {
+    z-index: 1;
+    margin: 0;
+    position: relative;
+    top: 7px;
+    margin-bottom: 15px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.check {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  border: 1px solid #373f41;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  top: 7px;
+  left: 0;
+  transition: border 0.25s linear;
+  &:hover {
+    border-color: #000;
+  }
+}
+.check.checked {
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    top: 4px;
+    margin: auto;
+    transition: background-color 0.15s linear;
+    background-color: #8c8c8c;
+  }
+}
+
+.color-btns {
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  width: 75%;
+  &__btn-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  &__btn {
+    z-index: 1;
+    margin-right: 10px;
+    position: relative;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.color {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  top: 7px;
+  left: 0;
+  &.red {
+    background-color: #b63625;
+  }
+  &.blue {
+    background-color: #464a5d;
+  }
+  &.green {
+    background-color: #50b68f;
+  }
+  &.pink {
+    background-color: #e4cfcc;
+  }
+  &.white {
+    border: 1px solid #c7cdcf;
+  }
+  &.brown {
+    background-color: #6b3005;
+  }
+  &.olive {
+    background-color: #5d641d;
+  }
+  &.grey {
+    background-color: #a5aeb7;
+  }
+  &.multi {
+    background-color: #b7a593;
+  }
+  &.checked {
+    border: 2px solid #373f41;
+  }
+}
+
+// END OF RADIO BUTTONS STYLES SECTION
+
+// SLIDER STYLES SECTION
+
+.range-slider {
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+.range-slider-input {
+  width: 80px;
+  margin: 0 9px;
+  text-align: center;
+}
+
+.rc-slider-handle {
+  background-color: #373f41;
+  border-radius: 0;
+  width: 17px;
+  height: 10px;
+  border: none;
+  bottom: 2px;
+}
+
+.rc-slider-track,
+.rc-slider-rail {
+  background-color: #373f41;
+}
+
+.rc-slider-rail {
+  border-radius: 0;
+  width: 100%;
+}
+
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+  border: none;
+  box-shadow: none;
+}
+
+// END OF SLIDER STYLES SECTION
+
+// CATALOG MAIN SECTION
+
+.catalog-main-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+}
+
+.select-item {
+  border: none;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  font-size: 1rem;
+  background-color: #fff;
+  &.right {
+    width: 7%;
+  }
+  &.left {
+    width: 18%;
+  }
+  &__item {
+    text-align-last: right;
+    direction: rtl;
+    font-size: 14px;
+    line-height: 19px;
+    color: #8a9394;
+    background-color: #fff;
+    // margin-right: 25px;
+  }
+}
+
+// // CATALOG ITEMS STYLES SECTION
+// .cg-products {
+//   display: grid;
+//   grid-template-columns: repeat(3, 31.85%);
+//   grid-gap: 20px;
+//   margin-bottom: 60px;
+// }
+
+// .cg-item {
+//   position: relative;
+//   text-align: center;
+//   &:hover .item-hover {
+//     opacity: 1;
+//     transition-property: opacity;
+//     transition-duration: 0.3s;
+//     transition-delay: 0.1s;
+//   }
+//   &:hover .cg-item__name {
+//     opacity: 0;
+//     transition-property: opacity;
+//     transition-duration: 0.3s;
+//     transition-delay: 0.1s;
+//   }
+//   &__img {
+//     max-width: 100%;
+//     height: auto;
+//     display: block;
+//   }
+//   &__name {
+//     margin: 0;
+//     position: absolute;
+//     width: 90%;
+//     left: 14px;
+//     bottom: 21px;
+//     background-color: #373f41;
+//     color: #fff;
+//     font-size: 18px;
+//     line-height: 30px;
+//   }
+// }
+
+// .item-hover {
+//   opacity: 0;
+//   position: absolute;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   z-index: 1;
+//   top: -4px;
+//   left: -4px;
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   border: 4px solid rgba(38, 37, 36, 0.7);
+//   border-radius: 3px;
+//   &__name {
+//     color: #fff;
+//     font-size: 18px;
+//     line-height: 30px;
+//     font-weight: 700;
+//     margin-bottom: 20px;
+//   }
+//   &__price {
+//     color: #fff;
+//     font-size: 32px;
+//     line-height: 25px;
+//     font-weight: 700;
+//     margin-bottom: 20px;
+//   }
+// }
+
+// .hover-btn__btn {
+//   padding: 11px 35px;
+//   transition: background-color 0.3s, color 0.3s;
+//   &:hover {
+//     background-color: #373f41;
+//     color: #fff;
+//   }
+// }
+// // END OF CATALOG ITEMS STYLES SECTION
+
+// END OF CATALOG MAIN SECTION

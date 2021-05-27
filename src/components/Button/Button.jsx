@@ -31,7 +31,7 @@ const Button = (props) => {
 };
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['button', 'reset', 'submit']),
+  type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,
@@ -39,7 +39,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  type: '',
+  type: 'button',
   children: '',
   onClick: () => {},
   className: '',
