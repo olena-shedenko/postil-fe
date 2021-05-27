@@ -7,7 +7,7 @@ import {
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
 } from './types';
-import { setProducts, filteredProducts } from './actions';
+import { filteredProducts } from './actions';
 import { getProducts } from './selectors';
 
 export const setModalSignUp = () => (dispatch) => {
@@ -36,13 +36,6 @@ export const getItems = () => (dispatch) => {
     });
     dispatch({ type: LOAD_ITEMS_SUCCESS, payload: newArr });
   });
-};
-
-export const getProductOperation = () => (dispatch) => {
-  axios
-    .get('https://postil-bedding.herokuapp.com/api/products')
-    .then((res) => res.data)
-    .then((data) => dispatch(setProducts(data)));
 };
 
 const sortAsc = (arr, field) => {

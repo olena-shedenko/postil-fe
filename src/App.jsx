@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.scss';
-import { getItems, getProductOperation } from './store/operations';
+import { getItems } from './store/operations';
+import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import AppRoutes from './routes/AppRoutes';
 
@@ -12,12 +13,9 @@ function App() {
     dispatch(getItems());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getProductOperation());
-  }, [dispatch]);
-
   return (
     <div className="App">
+      <Navbar />
       <AppRoutes />
       <Footer />;
     </div>
