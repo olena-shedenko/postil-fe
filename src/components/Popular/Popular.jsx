@@ -14,7 +14,7 @@ export default function Popular() {
             <img src="/images/popular/background.png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">BEDROOM</p>
-              <Button variant="bordered" className="text-block__button">
+              <Button variant="bordered" className="text-block__button" type="button">
                 Shop
               </Button>
             </div>
@@ -23,7 +23,7 @@ export default function Popular() {
             <img src="/images/popular/Rectangle 715 Copy 3.png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">BATHROOM</p>
-              <Button className="text-block__button" variant="bordered">
+              <Button className="text-block__button" variant="bordered" type="button">
                 Shop
               </Button>
             </div>
@@ -32,7 +32,7 @@ export default function Popular() {
             <img src="/images/popular/Rectangle 715 Copy 3 (1).png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">BED LINEN</p>
-              <Button className="text-block__button" variant="bordered">
+              <Button className="text-block__button" variant="bordered" type="button">
                 Shop
               </Button>
             </div>
@@ -41,7 +41,7 @@ export default function Popular() {
             <img src="/images/popular/Rectangle 715 Copy 3 (2).png" alt="" />
             <div className="popular-list-item__text-block">
               <p className="text-block__title">LOUNGEWEAR</p>
-              <Button className="text-block__button" variant="bordered">
+              <Button className="text-block__button" variant="bordered" type="button">
                 Shop
               </Button>
             </div>

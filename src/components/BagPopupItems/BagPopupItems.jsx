@@ -1,27 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
-// import BagPopupItem from '../BagPopupItem/BagPopupItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCartProducts } from '../../store/operations';
+import { useSelector } from 'react-redux';
+import BagPopupItem from '../BagPopupItem/BagPopupItem';
 
-async function BagPopupItems() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setCartProducts());
-  }, [dispatch]);
-
-  const products = useSelector((state) => state.productsInCart);
+function BagPopupItems() {
+  const products = useSelector((state) => state.productsInCart.data);
+  const loading = useSelector((state) => state.productsInCart.isLoading);
 
   return (
     <>
-      {/* {items.map(() => ( */}
-      {/*  <BagPopupItem /> */}
-      {/* ))} */}
-      {/* {items.forEach((i) => { */}
-      {/*  console.log(i.product); */}
-      {/* })} */}
-      {console.log(products)}
+      {!loading &&
+        products.map((el) => (
+          <BagPopupItem
+            key={el.product.itemNo}
+            quantity={el.currentQuantity}
+            product={el.product.quantity}
+          />
+        ))}
     </>
   );
 }

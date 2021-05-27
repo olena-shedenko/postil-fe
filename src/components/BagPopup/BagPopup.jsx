@@ -1,41 +1,54 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import BagPopupItems from '../BagPopupItems/BagPopupItems';
-import { closeBagPopup } from '../../store/operations';
+import { toggleBagPopup, setCartProducts } from '../../store/operations';
 import './BagPopup.scss';
 
-export default function BagPopup(props) {
-  const { itemCount, totalPrice } = props;
+export default function BagPopup() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCartProducts());
+  }, [dispatch]);
+
   const opened = useSelector((state) => state.openedBagPopup);
-
-  const handleClose = (e) => {
-    const popup = document.querySelector('.bagpopup-wrap');
-    const closeBtn = document.querySelector('.bagpopup-header__close img');
-
-    if (e.target === popup || e.target === closeBtn) {
-      dispatch(closeBagPopup());
-    }
-  };
+  const products = useSelector((state) => state.productsInCart.data);
+  let totalPrice = 0;
+  let itemCount = 0;
+  products.forEach((i) => {
+    totalPrice = i.cartQuantity * i.product.currentPrice + totalPrice;
+    itemCount = i.cartQuantity + itemCount;
+    console.log(totalPrice);
+  });
 
   return (
     <>
       {opened && (
         /* eslint-disable-next-line */
-        <div onClick={(e) => handleClose(e)} className="bagpopup-wrap">
+        <div onClick={(e) => {
+            if (e.target.className === 'bagpopup-wrap') {
+              dispatch(toggleBagPopup());
+            }
+          }}
+          className="bagpopup-wrap"
+        >
           <div className="bagpopup-content">
             <div className="bagpopup-header">
               <div className="bagpopup-header__title">BAG ({itemCount})</div>
               <button
                 type="button"
-                onClick={(e) => handleClose(e)}
+                onClick={(e) => {
+                  if (e.target.className === 'bagpopup-header__close__img') {
+                    dispatch(toggleBagPopup());
+                  }
+                }}
                 className="bagpopup-header__close"
               >
                 <img
                   src={`${process.env.PUBLIC_URL}/images/close-icon.svg`}
                   alt="close"
+                  className="bagpopup-header__close__img"
                 />
               </button>
             </div>
@@ -44,8 +57,17 @@ export default function BagPopup(props) {
               <Button
                 className="bagpopup-buttons__item"
                 variant="light-bordered"
+                onClick={() => {
+                  // eslint-disable-next-line
+                  location.href = '/shopping_cart';
+                }}
               >
-                VIEW BAG
+                <Link
+                  onClick={() => dispatch(toggleBagPopup())}
+                  to="shopping_cart"
+                >
+                  VIEW BAG
+                </Link>
               </Button>
               <Button className="bagpopup-buttons__item" variant="dark">
                 CHECKOUT
@@ -60,13 +82,3 @@ export default function BagPopup(props) {
     </>
   );
 }
-
-BagPopup.defaultProps = {
-  itemCount: 0,
-  totalPrice: 0,
-};
-
-BagPopup.propTypes = {
-  itemCount: PropTypes.number,
-  totalPrice: PropTypes.number,
-};
