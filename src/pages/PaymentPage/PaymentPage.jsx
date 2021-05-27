@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
@@ -67,7 +68,7 @@ export default function PaymentPage() {
             </p>
             <p className="total-price">
               <span>TOTAL</span>
-              <span>${totalPrice === totalPrice + 5}</span>
+              <span>${(totalPrice += 5)}</span>
             </p>
             {/* <NavLink to="/delivery">
               <Button

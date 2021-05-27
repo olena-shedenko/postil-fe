@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable no-return-assign */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './CheckoutBag.scss';
@@ -36,7 +36,9 @@ export default function CheckoutBag() {
               return null;
             })}
             <hr />
-            <p><span>/</span> Back</p>
+            <p>
+              <span>/</span> Back
+            </p>
           </div>
           <div className="registration-left__block">
             <p className="registration__title">SUMMARY</p>
@@ -58,11 +60,7 @@ export default function CheckoutBag() {
               <span>${(totalPrice += 5)}</span>
             </p>
             <NavLink to="/delivery">
-              <Button
-                className="buy__button"
-                variant='dark'
-                type="button"
-              >
+              <Button className="buy__button" variant="dark" type="button">
                 Buy
               </Button>
             </NavLink>

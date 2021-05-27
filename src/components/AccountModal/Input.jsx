@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import { useField } from "formik";
-import React from "react";
-import "./Input.scss";
+import { useField } from 'formik';
+import React from 'react';
+import './Input.scss';
 
-const Input = ({ type, name, placeholder, classname = "input__field" }) => {
+const Input = ({ type, name, placeholder, classname = 'input__field' }) => {
   const [field, meta] = useField(name);
 
   return (
