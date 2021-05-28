@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, useField } from 'formik';
-import './AccountModal.scss';
+import '../AccountModal.scss';
 
 // eslint-disable-next-line react/prop-types
 const Checkbox = ({ name = 'accept' }) => {

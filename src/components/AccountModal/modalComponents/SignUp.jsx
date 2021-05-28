@@ -2,12 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import './AccountModal.scss';
+import '../AccountModal.scss';
 import { useDispatch } from 'react-redux';
-import { toggleAccountError } from '../../store/operations';
+import { toggleAccountError } from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
-import Button from '../Button/Button';
+import Button from '../../Button/Button';
 
 const validationFormSchema = Yup.object().shape({
   login: Yup.string()
@@ -47,8 +47,7 @@ const SignUp = () => {
     delete userInfo.name;
     axios
       .post('https://postil-bedding.herokuapp.com/api/customers', userInfo)
-      .catch((err) => {
-        console.log(err.message);
+      .catch(() => {
         dispatch(toggleAccountError('This user already exists, retry please'));
       });
   };
@@ -69,52 +68,56 @@ const SignUp = () => {
       >
         {() => {
           return (
-            <Form className="account-modal__form">
-              <Input
-                classname="account-modal__form__input__field"
-                placeholder="Name Surname"
-                name="name"
-                type="text"
-              />
-              <Input
-                classname="account-modal__form__input__field"
-                placeholder="Login"
-                name="login"
-                type="text"
-              />
-              <Input
-                classname="account-modal__form__input__field"
-                placeholder="Email"
-                name="email"
-                type="text"
-              />
-              <Input
-                classname="account-modal__form__input__field"
-                placeholder="Password"
-                name="password"
-                type="password"
-              />
-              <Input
-                classname="account-modal__form__input__field"
-                placeholder="Confirm Password"
-                name="passwordconf"
-                type="password"
-              />
+            <>
+              <h5 className="account-modal__mobile-heading">Sign up</h5>
+              <Form className="account-modal__form">
+                <Input
+                  classname="account-modal__form__input__field"
+                  placeholder="Name Surname"
+                  name="name"
+                  type="text"
+                />
+                <Input
+                  classname="account-modal__form__input__field"
+                  placeholder="Login"
+                  name="login"
+                  type="text"
+                />
+                <Input
+                  classname="account-modal__form__input__field"
+                  placeholder="Email"
+                  name="email"
+                  type="text"
+                />
+                <Input
+                  classname="account-modal__form__input__field"
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                />
+                <Input
+                  classname="account-modal__form__input__field"
+                  placeholder="Confirm Password"
+                  name="passwordconf"
+                  type="password"
+                />
 
-              <Checkbox name="accept" />
+                <Checkbox name="accept" />
 
-              <span className="account-modal__form__tos-and-pp">
-                By signing up you agree to <a href="blank">Terms of Service</a>{' '}
-                and <a href="blank">Privacy Policy</a>
-              </span>
+                <span className="account-modal__form__tos-and-pp">
+                  By signing up you agree to{' '}
+                  <a href="blank">Terms of Service</a> and{' '}
+                  <a href="blank">Privacy Policy</a>
+                </span>
 
-              <Button
-                className="account-modal__form__submit-button"
-                type="submit"
-                // eslint-disable-next-line react/no-children-prop
-                children="sign up"
-              />
-            </Form>
+                <Button
+                  className="account-modal__form__submit-button"
+                  type="submit"
+                  // eslint-disable-next-line react/no-children-prop
+                  children="sign up"
+                />
+              </Form>
+            </>
           );
         }}
       </Formik>

@@ -1,18 +1,19 @@
-import React from 'react';
-// import AccountModal from './components/AccountModal/AccountModal';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.scss';
-import Slider from './components/Slider/Slider';
-import NewIn from './components/NewIn/NewIn';
-import Popular from './components/Popular/Popular';
-import Footer from './components/Footer/Footer';
+import { getItems } from './store/operations';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getItems());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <Slider />
-      <NewIn />
-      <Popular />
-      <Footer />;
+      <AppRoutes />
     </div>
   );
 }

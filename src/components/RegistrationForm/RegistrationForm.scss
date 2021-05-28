@@ -1,0 +1,65 @@
+.label {
+  color: white;
+  width: 100%;
+}
+.error {
+  color: red;
+}
+.delivery-page__form {
+  // position: absolute;
+  // top: 150px;
+  // left: calc(50% - 241px);
+  // padding: 40px;
+  // width: 400px;
+  // background-color: rgba(0, 0, 0, 0.726);
+  // backdrop-filter: blur(5px);
+  // box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  // border-radius: 10px;
+  // border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.delivery-page__form input {
+  width: 100%;
+  border: 1px solid #8c8c8c;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #8c8c8c;
+  padding: 10px 0 10px 25px;
+  //   margin: 20px;
+}
+.sss {
+  display: flex;
+  justify-content: space-between;
+}
+
+// .registration-form__input:nth-child(1){
+//     margin: 10px 10px 10px;
+// }
+// .registration-form__input:nth-child(2){
+//     margin: 10px 0 10px 10px;
+// }
+
+.registration-form__input {
+  width: 100%;
+  margin: 10px 0 10px;
+}
+.form input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  color: #8c8c8c;
+  padding: 10px 0 10px 25px;
+}
+.submit {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 35px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  background-color: #fff;
+  color: #000;
+}
