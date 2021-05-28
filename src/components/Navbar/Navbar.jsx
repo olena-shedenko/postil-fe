@@ -8,6 +8,7 @@ import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
 import AccountModal from '../AccountModal/AccountModal';
 import { toggleAccountModal } from '../../store/operations';
+import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 
@@ -32,7 +33,8 @@ function Navbar() {
       {accountModal && <AccountModal />}
       <div className="nav">
         <nav className="navbar">
-          <Link to="/" onClick={handleClick} data-testid="logo">
+          <Bars onClick={handleClick} className="navbar--bars" />
+          <Link to="/" data-testid="logo">
             <Logo className="navbar--logo" />
           </Link>
           <div
@@ -109,7 +111,6 @@ function Navbar() {
               </div>
             </div>
           </div>
-
           <div className={dropdown ? 'navbar--menu active' : 'navbar--menu'}>
             <div className="navbar--item">
               <Link
@@ -137,7 +138,6 @@ function Navbar() {
               <LogIn
                 onClick={() => {
                   dispatch(toggleAccountModal());
-                  closeMenu();
                 }}
               />
             </div>
@@ -154,9 +154,14 @@ function Navbar() {
               </Link>
             </div>
           </div>
-          <div>
-            En
-            <Arrow className="navbar--arrow" />
+          <div className="navbar--item icon">
+            <Link
+              to="/shopping_cart"
+              className="navbar--links"
+              onClick={closeMenu}
+            >
+              <Cart onClick={closeMenu} />
+            </Link>
           </div>
         </nav>
       </div>

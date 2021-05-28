@@ -7,7 +7,6 @@ export default function Popular() {
   return (
     <div className="popular-container">
       <h2 className="new-in-title">Popular</h2>
-
       <div className="popular-block">
         <ul className="popular-list">
           <li className="popular-list__item1 popular-list-item">

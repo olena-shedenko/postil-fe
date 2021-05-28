@@ -38,7 +38,7 @@ export default function PaymentPage() {
                   <div className="card">
                     <img
                       src={el.imageUrls[0]}
-                      alt="item"
+                      alt="img"
                       width="100px"
                       height="100px"
                     />
@@ -68,7 +68,7 @@ export default function PaymentPage() {
             </p>
             <p className="total-price">
               <span>TOTAL</span>
-              <span>${(totalPrice += 5)}</span>
+              <span>${totalPrice === totalPrice + 5}</span>
             </p>
             {/* <NavLink to="/delivery">
               <Button
