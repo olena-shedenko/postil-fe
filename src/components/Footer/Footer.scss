@@ -107,17 +107,11 @@ h3 {
   }
 
   &__btn {
-    outline: none;
     padding: 8px 40px 11px;
-    background-color: #373f41;
-    border: 1px solid #373f41;
-    color: #fff;
     border-radius: 0 4px 4px 0;
-    font-family: 'Abel', sans-serif;
     font-size: 16px;
     transition: background-color 0.3s;
     cursor: pointer;
-    padding: 0 40px;
     &:hover {
       background-color: darken(#373f41, 30%);
     }

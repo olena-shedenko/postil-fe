@@ -1,0 +1,15 @@
+.bc {
+  &-container {
+    padding: 1.9375rem 0 1.5625rem;
+  }
+  &-item {
+    margin-right: 0.5rem;
+    &:hover {
+      color: #000;
+    }
+    &::after {
+      content: '/';
+      margin-left: 0.4375rem;
+    }
+  }
+}

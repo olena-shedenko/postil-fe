@@ -1,7 +1,7 @@
 import React from 'react';
-import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import Footer from '../../components/Footer/Footer';
 import { ReactComponent as MasterCard } from '../../images/svg/masterCard.svg';
 import { ReactComponent as Visa } from '../../images/svg/visa-logo.svg';
@@ -156,7 +156,7 @@ export default function PaymentPage(props) {
             </p>
             <p className="total-price">
               <span>TOTAL</span>
-              <span>${(totalPrice += 5)}</span>
+              <span>${totalPrice === totalPrice + 5}</span>
             </p>
             <NavLink to="/delivery">
               <Button className="next__button" variant="dark" type="button">
