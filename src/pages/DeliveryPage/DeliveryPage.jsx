@@ -8,9 +8,7 @@ import Footer from '../../components/Footer/Footer';
 export default function Delivery() {
   return (
     <div>
-      <Navbar />
       <CheckoutHeader shipping />
-      <Footer />
     </div>
   );
 }

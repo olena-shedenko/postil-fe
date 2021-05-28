@@ -165,7 +165,7 @@
 //   outline: none;
 // }
 
-hr {
+.decor_line {
   width: 100%;
   height: 1px;
   background: #373f41;
@@ -173,4 +173,44 @@ hr {
   padding: 0;
   margin: 0;
   border: none;
+}
+
+@media (max-width: 1200px) {
+  .text-content {
+    margin-left: 40px;
+  }
+}
+@media (max-width: 1020px) {
+  .favourites {
+    margin: 0 20px;
+    text-align: right;
+    & span {
+      display: block;
+      margin: 5px 0px;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .favourites {
+    font-size: 0;
+    margin: 0;
+    & span {
+      margin: 5px 20px;
+    }
+  }
+  .ddd {
+    width: 150px;
+  }
+  .optiop__color {
+    padding: 0;
+  }
+  .optiop__size {
+    padding: 0;
+    width: 111px;
+  }
+  .quantity__block {
+    margin: 40px 0 0 20px;
+  }
+}
+@media (max-width: 630px) {
 }
