@@ -3,7 +3,7 @@ import React from 'react';
 import './CheckoutHeader.scss';
 
 export default function CheckoutHeader(props) {
-  const { shoppingBag, shipping } = props;
+  const { shoppingBag, shipping, payment } = props;
   return (
     <div>
       <div className="header">
@@ -19,7 +19,11 @@ export default function CheckoutHeader(props) {
             ) : (
               <li className="header-list__item">2. Shipping Details</li>
             )}
-            <li className="header-list__item">3. Payment Options</li>
+            {payment ? (
+              <li className="header-list__item active">3. Payment Options</li>
+            ) : (
+              <li className="header-list__item">3. Payment Options</li>
+            )}
           </ul>
         </div>
       </div>
