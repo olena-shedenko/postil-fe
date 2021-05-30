@@ -1,10 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import axios from 'axios';
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import '../AccountModal.scss';
 import { useDispatch } from 'react-redux';
-import { toggleAccountError } from '../../../store/operations';
+import {
+  toggleAccountError,
+  // toggleAccountModal,
+} from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
@@ -30,6 +35,7 @@ const LogIn = () => {
       loginOrEmail: values.loginOrEmail,
       password: values.password,
     };
+    console.log(userInfo);
     axios
       .post(
         'https://postil-bedding.herokuapp.com/api/customers/login',
@@ -59,29 +65,33 @@ const LogIn = () => {
         {() => {
           return (
             <>
-              <h5 className="account-modal__mobile-heading">Login</h5>
-              <Form className="account-modal__form">
+              <h5 className="mobile-modal-heading">Login</h5>
+              <Form className="form">
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Login Or Email"
                   name="loginOrEmail"
                   type="text"
                 />
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Password"
                   name="password"
                   type="password"
                 />
                 <Checkbox name="accept" />
-                <span className="account-modal__form__tos-and-pp">
+                <span className="tos-and-pp">
                   By signing up you agree to{' '}
                   <a href="blank">Terms of Service</a> and{' '}
                   <a href="blank">Privacy Policy</a>
                 </span>
+
                 <Button
-                  className="account-modal__form__submit-button"
+                  className="submit-button"
                   type="submit"
+                  onClick={() => {
+                    console.log('yore logged in');
+                  }}
                   // eslint-disable-next-line react/no-children-prop
                   children="log in"
                 />

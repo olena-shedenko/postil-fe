@@ -11,7 +11,7 @@ const ChoiseButtons = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="account-modal__buttons-block">
+    <div className="buttons-block">
       <Button
         onClick={() => {
           dispatch(setModalSignUp());
@@ -20,8 +20,8 @@ const ChoiseButtons = () => {
         addCommonStyles={false}
         className={
           forSignUp
-            ? 'account-modal__buttons-block__button account-modal__buttons-block__button__signup--active'
-            : 'account-modal__buttons-block__button account-modal__buttons-block__button__signup'
+            ? 'buttons-block__button buttons-block__button__signup--active'
+            : 'buttons-block__button buttons-block__button__signup'
         }
         // eslint-disable-next-line react/no-children-prop
         children="Sign Up"
@@ -36,8 +36,8 @@ const ChoiseButtons = () => {
         addCommonStyles={false}
         className={
           forSignUp
-            ? 'account-modal__buttons-block__button account-modal__buttons-block__button__login'
-            : 'account-modal__buttons-block__button account-modal__buttons-block__button__login--active'
+            ? 'buttons-block__button buttons-block__button__login'
+            : 'buttons-block__button buttons-block__button__login--active'
         }
         // eslint-disable-next-line react/no-children-prop
         children="Log In"

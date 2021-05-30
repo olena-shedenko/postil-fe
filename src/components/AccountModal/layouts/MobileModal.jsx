@@ -17,35 +17,25 @@ const MobileModal = () => {
 
   return (
     <>
-      <div className="account-modal">
+      <div className="mobile-account-modal">
         <img
           onClick={() => dispatch(toggleAccountModal())}
           src={`${process.env.PUBLIC_URL}/images/accountModal/back.svg`}
           alt="close"
-          className="account-modal__back"
+          className="back-button"
         />
 
         {forSignUp ? <SignUp /> : <LogIn />}
 
-        {forSignUp ? (
-          <a href="blank" className="account-modal__bottom-link">
-            i have an account
-          </a>
-        ) : (
-          <a href="blank" className="account-modal__bottom-link">
-            forgot password?
-          </a>
-        )}
-
         {forSignUp && (
-          <div className="account-modal__enter-via-socials">
+          <div className="enter-via-socials">
             <img
-              className="account-modal__enter-via-socials__item"
+              className="enter-via-socials__item"
               src={`${process.env.PUBLIC_URL}/images/google.svg`}
               alt="google"
             />
             <img
-              className="account-modal__enter-via-socials__item"
+              className="enter-via-socials__item"
               src={`${process.env.PUBLIC_URL}/images/fb.svg`}
               alt="facebook"
             />

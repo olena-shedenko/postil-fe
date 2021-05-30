@@ -8,6 +8,7 @@ import {
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
   TOGGLE_ACCOUNT_MODAL,
+  SET_MODAL_FORGOT_PASSWORD,
 } from './types';
 import { filteredProducts } from './actions';
 import { getProducts } from './selectors';
@@ -18,12 +19,16 @@ export const setModalSignUp = () => (dispatch) => {
 export const setModalLogIn = () => (dispatch) => {
   dispatch({ type: SET_MODAL_LOG_IN, payload: 'logIn' });
 };
+export const setModalForgotPassword = () => (dispatch) => {
+  dispatch({ type: SET_MODAL_FORGOT_PASSWORD, payload: 'forgotPassword' });
+};
 export const toggleAccountError = (errMessage) => (dispatch) => {
   dispatch({ type: TOGGLE_ACCOUNT_ERROR, payload: errMessage });
 };
 export const toggleAccountModal = () => (dispatch) => {
   dispatch({ type: TOGGLE_ACCOUNT_MODAL });
 };
+
 export const getItems = () => (dispatch) => {
   dispatch({ type: LOAD_ITEMS_REQUEST, payload: true });
   axios('https://postil-bedding.herokuapp.com/api/products').then((res) => {

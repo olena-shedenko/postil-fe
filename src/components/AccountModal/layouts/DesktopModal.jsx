@@ -20,7 +20,7 @@ const DesktopModal = () => {
         onClick={() => dispatch(toggleAccountModal())}
         src={`${process.env.PUBLIC_URL}/images/accountModal/close-icon.svg`}
         alt="close"
-        className="account-modal__cross"
+        className="cross-button"
       />
 
       <ChoiseButtons />
@@ -28,28 +28,18 @@ const DesktopModal = () => {
       {forSignUp ? <SignUp /> : <LogIn />}
 
       {forSignUp && (
-        <div className="account-modal__enter-via-socials">
+        <div className="enter-via-socials">
           <img
-            className="account-modal__enter-via-socials__item"
+            className="enter-via-socials__item"
             src={`${process.env.PUBLIC_URL}/images/google.svg`}
             alt="google"
           />
           <img
-            className="account-modal__enter-via-socials__item"
+            className="enter-via-socials__item"
             src={`${process.env.PUBLIC_URL}/images/fb.svg`}
             alt="facebook"
           />
         </div>
-      )}
-
-      {forSignUp ? (
-        <a href="blank" className="account-modal__bottom-link">
-          i have an account
-        </a>
-      ) : (
-        <a href="blank" className="account-modal__bottom-link">
-          forgot password?
-        </a>
       )}
     </div>
   );

@@ -8,7 +8,7 @@ const Input = ({ type, name, placeholder, classname = 'input__field' }) => {
   const [field, meta] = useField(name);
 
   return (
-    <div className="account-modal__form__input">
+    <div className="form__input">
       <input
         placeholder={placeholder}
         className={classname}
@@ -17,7 +17,7 @@ const Input = ({ type, name, placeholder, classname = 'input__field' }) => {
         {...field}
       />
       {meta.error && meta.touched && (
-        <span className="account-modal__form__input__error">{meta.error}</span>
+        <span className="form__input__error">{meta.error}</span>
       )}
     </div>
   );

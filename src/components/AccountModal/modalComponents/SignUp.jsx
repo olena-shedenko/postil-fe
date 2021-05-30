@@ -1,17 +1,23 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import axios from 'axios';
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import '../AccountModal.scss';
 import { useDispatch } from 'react-redux';
-import { toggleAccountError } from '../../../store/operations';
+import {
+  toggleAccountError,
+  // toggleAccountModal,
+  setModalLogIn,
+} from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
 
 const validationFormSchema = Yup.object().shape({
   login: Yup.string()
-    .matches(/^[a-zA-Z0-9]*$/, 'Invalid login')
+    .matches(/^[a-zA-Z0-9.-_]*$/, 'Invalid login')
     .min(3, 'Login must be between 3 and 10 characters')
     .max(10, 'Login must be between 3 and 10 characters')
     .required('This is a necessary field'),
@@ -69,49 +75,54 @@ const SignUp = () => {
         {() => {
           return (
             <>
-              <h5 className="account-modal__mobile-heading">Sign up</h5>
-              <Form className="account-modal__form">
+              <h5 className="mobile-modal-heading">Sign up</h5>
+              <Form className="form">
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Name Surname"
                   name="name"
                   type="text"
                 />
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Login"
                   name="login"
                   type="text"
                 />
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Email"
                   name="email"
                   type="text"
                 />
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Password"
                   name="password"
                   type="password"
                 />
                 <Input
-                  classname="account-modal__form__input__field"
+                  classname="form__input__field"
                   placeholder="Confirm Password"
                   name="passwordconf"
                   type="password"
                 />
-
                 <Checkbox name="accept" />
-
-                <span className="account-modal__form__tos-and-pp">
+                <span className="tos-and-pp">
                   By signing up you agree to{' '}
                   <a href="blank">Terms of Service</a> and{' '}
                   <a href="blank">Privacy Policy</a>
                 </span>
 
+                <span
+                  className="bottom-link"
+                  onClick={() => dispatch(setModalLogIn())}
+                >
+                  i have an account
+                </span>
+
                 <Button
-                  className="account-modal__form__submit-button"
+                  className="submit-button"
                   type="submit"
                   // eslint-disable-next-line react/no-children-prop
                   children="sign up"

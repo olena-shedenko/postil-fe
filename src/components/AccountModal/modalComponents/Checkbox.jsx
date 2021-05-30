@@ -6,27 +6,19 @@ import '../AccountModal.scss';
 const Checkbox = ({ name = 'accept' }) => {
   const [meta] = useField(name);
   return (
-    <div className="account-modal__form__accept-tos">
-      <Field
-        type="checkbox"
-        name={name}
-        className="account-modal__form__accept-tos__checkbox-tick"
-      />
-      <p className="account-modal__form__accept-tos__checkbox-text-wrap">
-        <span className="account-modal__form__accept-tos__checkbox-text-wrap-item">
+    <div className="accept-tos">
+      <Field type="checkbox" name={name} className="checkbox-tick" />
+      <p className="checkbox-text-wrap">
+        <span className="checkbox-text-wrap__item">
           Let&#39;s get personal! We&#39;ll send you only the good stuff:
         </span>
-        <span className="account-modal__form__accept-tos__checkbox-text-wrap-item">
+        <span className="checkbox-text-wrap__item">
           Exclusive early access to Sale, new arrivals and promotions.
         </span>
-        <span className="account-modal__form__accept-tos__checkbox-text-wrap-item">
-          No nasties.
-        </span>
+        <span className="checkbox-text-wrap__item">No nasties.</span>
       </p>
       {meta.error && meta.touched && (
-        <span className="account-modal__form__accept-tos__checkbox-error">
-          {meta.error}
-        </span>
+        <span className="checkbox-error">{meta.error}</span>
       )}
     </div>
   );
