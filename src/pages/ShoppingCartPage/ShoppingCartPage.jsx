@@ -6,8 +6,6 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 import Button from '../../components/Button/Button';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/Navbar/Navbar';
 
 export default function ShoppingCart() {
   const items = useSelector((state) => state.items.data);

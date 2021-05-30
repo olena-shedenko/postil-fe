@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -56,7 +58,7 @@ export default function PaymentPage(props) {
               <div className="pay__container">
                 <div className="payment-by-card__header">
                   <div className="pay__text-content">
-                    <div className="checked active"></div>
+                    <div className="checked active" />
                     <div className="">
                       <p className="credit-card">Credit Card</p>
                       <p className="attention">
@@ -79,7 +81,7 @@ export default function PaymentPage(props) {
               <div className="pay__container">
                 <div className="payment-by-card__header">
                   <div className="pay__text-content">
-                    <div className="checked"></div>
+                    <div className="checked" />
                     <div className="">
                       <p className="credit-card">Payment to the courier</p>
                       <p className="attention">
@@ -155,7 +157,7 @@ export default function PaymentPage(props) {
               <span>TOTAL</span>
               <span>${totalPrice === totalPrice + 5}</span>
             </p>
-            <NavLink to="/delivery">
+            <NavLink to="/thank_you_screen">
               <Button className="next__button" variant="dark" type="button">
                 Next
               </Button>
