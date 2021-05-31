@@ -35,7 +35,6 @@ const LogIn = () => {
       loginOrEmail: values.loginOrEmail,
       password: values.password,
     };
-    console.log(userInfo);
     axios
       .post(
         'https://postil-bedding.herokuapp.com/api/customers/login',
@@ -89,9 +88,6 @@ const LogIn = () => {
                 <Button
                   className="submit-button"
                   type="submit"
-                  onClick={() => {
-                    console.log('yore logged in');
-                  }}
                   // eslint-disable-next-line react/no-children-prop
                   children="log in"
                 />
