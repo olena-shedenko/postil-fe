@@ -13,6 +13,7 @@ import {
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
+import { setCart } from '../../../store/actions';
 
 const validationFormSchema = Yup.object().shape({
   loginOrEmail: Yup.string()
@@ -43,7 +44,15 @@ const LogIn = () => {
       )
       .then(({ data }) => {
         if (typeof window !== 'undefined')
-          sessionStorage.setItem('token', JSON.stringify(data.token));
+          sessionStorage.setItem('token', data.token);
+        axios.get('https://postil-bedding.herokuapp.com/api/cart', {
+          headers: {
+            Authorization: data.token,
+          },
+        });
+      })
+      .then((res) => {
+        if (res) dispatch(setCart(res.data));
       })
       .catch(() => {
         dispatch(toggleAccountError('Such user does not exist'));

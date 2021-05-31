@@ -21,6 +21,7 @@ import {
   SET_MAX_SLIDER_VALUE,
   SET_CURRENT_PAGE,
   SET_PER_PAGE,
+  SET_CART,
 } from './types';
 
 const initialState = {
@@ -43,6 +44,7 @@ const initialState = {
   },
   currentPage: 0,
   perPage: 18,
+  cart: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -114,6 +116,9 @@ const reducer = (state = initialState, action) => {
     }
     case SET_PER_PAGE: {
       return { ...state, perPage: action.payload };
+    }
+    case SET_CART: {
+      return { ...state, cart: action.payload };
     }
     default:
       return state;
