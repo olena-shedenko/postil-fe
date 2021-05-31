@@ -1,28 +1,29 @@
-.catalog-container {
-  width: 75em;
-  margin: 0 auto;
-}
-
 .catalog {
+  width: 100%;
   display: grid;
-  grid-template-columns: 25% 75%;
-  grid-gap: 3.125em;
+  padding-bottom: 5rem;
 }
 
 // MAIN SECTION BUTTONS STYLES
-
+.catalog-main {
+  width: 100%;
+  grid-column: 1;
+}
 .main-btns {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 23px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 23px 0;
   &__btn {
     box-sizing: border-box;
-    padding: 10.5px 20.5px;
+    padding: 8px 16px;
     border: 1.5px solid #8c8c8c;
-    font-size: 1rem;
-    line-height: 1.25rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     cursor: pointer;
+    margin: 10px 0;
+    width: 40%;
     &:hover {
       border: 2px solid #373f41;
       padding: 10px 20px;
@@ -42,6 +43,9 @@
 // ASIDE SECTION STYLES
 
 .aside {
+  width: 100%;
+  grid-column: 1;
+  padding-left: 0.625rem;
   &__title {
     font-size: 2rem;
     text-transform: uppercase;
@@ -71,9 +75,10 @@
 
 .btns-group {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 22px;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 0;
   &__btn-container {
     position: relative;
     display: flex;
@@ -83,7 +88,7 @@
     font-size: 14px;
     line-height: 24px;
     text-transform: uppercase;
-    padding-left: 27px;
+    padding: 0 1rem;
     position: relative;
   }
   &__btn {
@@ -131,8 +136,8 @@
 }
 
 .color-btns {
-  flex-direction: row;
-  justify-content: start;
+  // flex-direction: row;
+  // justify-content: start;
   flex-wrap: wrap;
   width: 75%;
   &__btn-container {
@@ -199,9 +204,13 @@
 
 // SLIDER STYLES SECTION
 
+.range-slider-form {
+  padding: 0 15px;
+}
+
 .range-slider {
   margin-bottom: 15px;
-  width: 90%;
+  width: 98%;
 }
 
 .range-slider-input {
@@ -236,9 +245,10 @@
 
 // END OF SLIDER STYLES SECTION
 
-// CATALOG MAIN SECTION
+// CATALOG SELECT SECTION
 
 .catalog-main-select {
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -254,12 +264,14 @@
   background-color: #fff;
   cursor: pointer;
   &.right {
-    width: 7%;
+    width: 40%;
   }
   &.left {
-    width: 18%;
+    width: 45%;
   }
   &__item {
+    position: absolute;
+    right: 10px;
     text-align-last: right;
     direction: rtl;
     font-size: 14px;
@@ -270,4 +282,124 @@
   }
 }
 
-// END OF CATALOG MAIN SECTION
+// END OF CATALOG SELECT SECTION
+
+// MEDIA QUERY SECTION
+@media (min-width: 450px) {
+  .select-item {
+    &.right {
+      width: 25%;
+    }
+    &.left {
+      width: 35%;
+    }
+  }
+}
+
+@media (min-width: 630px) {
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(2, 48.3%);
+    grid-gap: 1.5em;
+    padding-bottom: 5rem;
+  }
+
+  .catalog-main {
+    grid-column: 2;
+  }
+  .range-slider-input {
+    width: 24%;
+  }
+  .aside {
+    width: 100%;
+  }
+  .btns-group {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 22px;
+    &__btn-label {
+      padding-left: 27px;
+      font-size: 14px;
+      line-height: 24px;
+      text-transform: uppercase;
+      padding: 0 0.5rem;
+      position: relative;
+    }
+  }
+
+  .color-btns {
+    flex-direction: row;
+    justify-content: start;
+  }
+  .range-slider {
+    margin-bottom: 15px;
+    width: 90%;
+  }
+  .main-btns {
+    justify-content: space-between;
+    &__btn {
+      padding: 10.5px 20.5px;
+      font-size: 0.9rem;
+      line-height: 1.25rem;
+      width: 46%;
+    }
+  }
+  .catalog-main {
+    width: 100%;
+  }
+  .catalog-main-select {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
+  }
+  .select-item {
+    &.left {
+      width: 45%;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .catalog {
+    grid-template-columns: 27% 70.5%;
+  }
+  .main-btns {
+    flex-wrap: nowrap;
+    &__btn {
+      width: auto;
+      padding: 10.5px 20.5px;
+      font-size: 1rem;
+    }
+  }
+  .range-slider {
+    width: 96%;
+  }
+  .range-slider-input {
+    width: 25%;
+  }
+  .select-item {
+    &.left {
+      width: 20%;
+    }
+    &.right {
+      width: 9%;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .catalog-container {
+    width: 75em;
+    margin: 0 auto;
+  }
+  .catalog {
+    width: 100%;
+    grid-template-columns: 25% 65.3%;
+    grid-gap: 2.5em;
+  }
+  .range-slider-input {
+    width: 27.5%;
+  }
+}

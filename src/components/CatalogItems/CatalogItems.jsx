@@ -1,11 +1,19 @@
+// /* eslint-disable no-unused-expressions */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { sliceProductsForPagination } from '../../store/selectors';
+import {
+  sliceProductsForPagination,
+  getPerPage,
+  getProducts,
+} from '../../store/selectors';
 import Button from '../Button/Button';
 import './CatalogItems.scss';
 
 const CatalogItems = () => {
-  const products = useSelector(sliceProductsForPagination);
+  const perPage = useSelector(getPerPage);
+  const slicedProducts = useSelector(sliceProductsForPagination);
+  const productsAll = useSelector(getProducts);
+  const products = perPage ? slicedProducts : productsAll;
   return (
     <div className="catalog-main-products cg-products">
       {products &&

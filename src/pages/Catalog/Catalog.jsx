@@ -17,6 +17,7 @@ import {
   getFilterFabric,
   getFilterByCategory,
   getSliderValues,
+  getPerPage,
 } from '../../store/selectors';
 import { filterAndSortOperation } from '../../store/operations';
 import {
@@ -36,6 +37,7 @@ const RangeSlider = createSliderWithTooltip(Slider.Range);
 
 const Catalog = () => {
   const dispatch = useDispatch();
+  const perPage = useSelector(getPerPage);
   const selected = useSelector(getFilterByCategory);
   const sliderValues = useSelector(getSliderValues);
   return (
@@ -45,6 +47,7 @@ const Catalog = () => {
         <div className="catalog">
           <aside className="catalog-aside aside">
             <h3 className="aside__title">Catalog</h3>
+            {/* ASIDE SECTION */}
             <section className="aside-section">
               <h4 className="aside-section__title">Price</h4>
               <div className="range-slider-form">
@@ -159,6 +162,8 @@ const Catalog = () => {
               </div>
             </section>
           </aside>
+          {/* END OF ASIDE SECTION */}
+          {/* MAIN SECTION */}
           <div className="catalog-main">
             <div className="catalog-main-btns main-btns">
               <Button
@@ -241,9 +246,6 @@ const Catalog = () => {
                 onChange={(e) => {
                   console.log(e.target.value);
                   const value = parseFloat(e.target.value);
-                  // if (value === 'Infinity') {
-                  //   value = Infinity;
-                  // }
                   console.log(value, typeof value);
                   dispatch(setPerPage(value));
                 }}
@@ -257,7 +259,7 @@ const Catalog = () => {
                 <option className="select-item__item" value="36">
                   36
                 </option>
-                <option className="select-item__item" value="null">
+                <option className="select-item__item" value="all">
                   All
                 </option>
               </select>
@@ -282,8 +284,8 @@ const Catalog = () => {
               </select>
             </div>
             <CatalogItems />
-            <Pagination />
           </div>
+          {!perPage ? <></> : <Pagination />}
         </div>
       </div>
     </>
