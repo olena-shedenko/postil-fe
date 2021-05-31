@@ -1,6 +1,9 @@
 import {
   SET_MODAL_LOG_IN,
   SET_MODAL_SIGN_UP,
+  SET_MODAL_FORGOT_PASSWORD,
+  TOGGLE_ACCOUNT_ERROR,
+  TOGGLE_ACCOUNT_MODAL,
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
   SET_ITEMS,
@@ -21,7 +24,10 @@ import {
 } from './types';
 
 const initialState = {
-  accountModalAction: 'singUp',
+  accountModalAction: 'signUp',
+  accountModal: false,
+  isError: false,
+  errMessage: null,
   items: {
     data: [],
     isLoading: true,
@@ -45,6 +51,12 @@ const reducer = (state = initialState, action) => {
       return { ...state, accountModalAction: action.payload };
     case SET_MODAL_SIGN_UP:
       return { ...state, accountModalAction: action.payload };
+    case SET_MODAL_FORGOT_PASSWORD:
+      return { ...state, accountModalAction: action.payload };
+    case TOGGLE_ACCOUNT_ERROR:
+      return { ...state, isError: !state.isError, errMessage: action.payload };
+    case TOGGLE_ACCOUNT_MODAL:
+      return { ...state, accountModal: !state.accountModal };
     case LOAD_ITEMS_REQUEST:
       return { ...state, items: { ...state.items, isLoading: action.payload } };
     case LOAD_ITEMS_SUCCESS:
