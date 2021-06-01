@@ -10,7 +10,6 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-end;
     z-index: 10;
     left: 0;
@@ -23,11 +22,8 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     z-index: 13;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(55, 63, 65, 0.7);
@@ -42,10 +38,11 @@
   }
   .account-modal {
     z-index: 12;
-    transform: scale(0.6);
+    transform: scale(0.7);
     transform-origin: 0 0;
     padding: 50px 55px;
     width: 560px;
+    margin-top: 100px;
     background-color: #ffffff;
     display: inline-flex;
     flex-direction: column;
@@ -155,26 +152,22 @@
     &-text-wrap {
       margin: 0;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      font-size: 16px;
+      color: #373f41;
       &__item {
-        font-size: 16px;
-        color: #373f41;
+        text-decoration: underline;
+        margin: 0 8px;
+        color: #976060;
       }
     }
+  }
     &-error {
       position: absolute;
       font-weight: bold;
       color: rgb(199, 101, 101);
       margin: 0;
     }
-  }
-  .tos-and-pp {
-    margin-top: 27px;
-    color: #8c8c8c;
-    a {
-      color: #976060;
-    }
-  }
   .bottom-link {
     display: inline-block;
     margin: 30px 0 20px 0;
@@ -301,19 +294,23 @@
     font-size: 11px;
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 98%;
+    padding: 30px 0;
   }
 
   .checkbox {
     &-text-wrap {
+      margin: 0;
       display: inline-block;
+      font-size: 16px;
+      color: #373f41;
+      &__item {
+        text-decoration: underline;
+        margin: 0 8px;
+        color: #976060;
+      }
     }
   }
-
-  .tos-and-pp {
-    display: none;
-  }
-
   .bottom-link {
     display: inline-block;
     right: 0;

@@ -111,12 +111,6 @@ const SignUp = () => {
                   type="password"
                 />
                 <Checkbox name="accept" />
-                <span className="tos-and-pp">
-                  By signing up you agree to{' '}
-                  <a href="blank">Terms of Service</a> and{' '}
-                  <a href="blank">Privacy Policy</a>
-                </span>
-
                 <span
                   className="bottom-link"
                   onClick={() => dispatch(setModalLogIn())}
