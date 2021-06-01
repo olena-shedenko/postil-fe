@@ -8,33 +8,33 @@
 @media (min-width: 993px) {
   .modal-wrapper {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
     z-index: 10;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(55, 63, 65, 0.7);
   }
   .error-wrapper {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     z-index: 13;
-    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(55, 63, 65, 0.7);
     &__error-text {
       text-align: center;
       background-color: #fff;
-      justify-content: center;
-      align-content: center;
       padding: 20px;
-      width: 560px;
-      display: inline-flex;
-      flex-direction: column;
-      position: fixed;
-      left: 30%;
-      top: 40%;
     }
   }
   .mobile-account-modal {
@@ -49,9 +49,6 @@
     background-color: #ffffff;
     display: inline-flex;
     flex-direction: column;
-    position: absolute;
-    top: 2%;
-    right: 19%;
   }
   .back-button {
     display: none;
@@ -209,13 +206,15 @@
 @media (max-width: 992px) {
   .error-wrapper {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     z-index: 13;
-    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100vh;
+    width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(55, 63, 65, 0.7);
     &__error-text {
       text-align: center;
@@ -223,12 +222,7 @@
       justify-content: center;
       align-content: center;
       padding: 20px;
-      width: 560px;
       display: inline-flex;
-      flex-direction: column;
-      position: fixed;
-      left: 30%;
-      top: 40%;
     }
   }
   .account-modal {
@@ -307,6 +301,7 @@
     font-size: 11px;
     display: flex;
     flex-direction: row;
+    width: 90%;
   }
 
   .checkbox {

@@ -8,7 +8,8 @@ import '../AccountModal.scss';
 import { useDispatch } from 'react-redux';
 import {
   toggleAccountError,
-  // toggleAccountModal,
+  toggleAccountModal,
+  setModalSignUp,
 } from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
@@ -44,9 +45,14 @@ const LogIn = () => {
       .then(({ data }) => {
         if (typeof window !== 'undefined')
           sessionStorage.setItem('token', JSON.stringify(data.token));
+        dispatch(toggleAccountModal());
       })
       .catch(() => {
-        dispatch(toggleAccountError('Such user does not exist'));
+        dispatch(
+          toggleAccountError(
+            'The password is incorrect or such user does not exist'
+          )
+        );
       });
   };
 
@@ -83,6 +89,13 @@ const LogIn = () => {
                   By signing up you agree to{' '}
                   <a href="blank">Terms of Service</a> and{' '}
                   <a href="blank">Privacy Policy</a>
+                </span>
+
+                <span
+                  className="bottom-link"
+                  onClick={() => dispatch(setModalSignUp())}
+                >
+                  i don&apos;t have an account
                 </span>
 
                 <Button

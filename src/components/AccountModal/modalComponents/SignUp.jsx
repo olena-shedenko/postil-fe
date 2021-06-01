@@ -8,7 +8,7 @@ import '../AccountModal.scss';
 import { useDispatch } from 'react-redux';
 import {
   toggleAccountError,
-  // toggleAccountModal,
+  toggleAccountModal,
   setModalLogIn,
 } from '../../../store/operations';
 import Input from './Input';
@@ -53,8 +53,11 @@ const SignUp = () => {
     delete userInfo.name;
     axios
       .post('https://postil-bedding.herokuapp.com/api/customers', userInfo)
+      .then(({ message }) => {
+        if (!message) dispatch(toggleAccountModal());
+      })
       .catch(() => {
-        dispatch(toggleAccountError('This user already exists, retry please'));
+        dispatch(toggleAccountError('Such user already exists'));
       });
   };
 

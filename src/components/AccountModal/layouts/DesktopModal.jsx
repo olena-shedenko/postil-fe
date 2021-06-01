@@ -27,7 +27,7 @@ const DesktopModal = () => {
 
       {forSignUp ? <SignUp /> : <LogIn />}
 
-      {forSignUp && (
+      {/* {forSignUp && (
         <div className="enter-via-socials">
           <img
             className="enter-via-socials__item"
@@ -40,7 +40,7 @@ const DesktopModal = () => {
             alt="facebook"
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

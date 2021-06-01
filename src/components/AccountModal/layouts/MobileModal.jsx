@@ -26,21 +26,6 @@ const MobileModal = () => {
         />
 
         {forSignUp ? <SignUp /> : <LogIn />}
-
-        {forSignUp && (
-          <div className="enter-via-socials">
-            <img
-              className="enter-via-socials__item"
-              src={`${process.env.PUBLIC_URL}/images/google.svg`}
-              alt="google"
-            />
-            <img
-              className="enter-via-socials__item"
-              src={`${process.env.PUBLIC_URL}/images/fb.svg`}
-              alt="facebook"
-            />
-          </div>
-        )}
       </div>
     </>
   );
