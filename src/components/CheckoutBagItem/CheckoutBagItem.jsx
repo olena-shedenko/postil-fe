@@ -77,7 +77,7 @@ export default function ShoppingBagItem(props) {
             </p>
             <p className="text-content__price">${currentPrice}</p>
             <div className="ddd">
-              <div className="quantity__block">
+              <div className="quantity__block quantity__block2">
                 <p className="quantity">{quantityInBag}</p>
                 <div className="add-quantity">
                   <p className="quantity-add" onClick={() => addItem(item)}>

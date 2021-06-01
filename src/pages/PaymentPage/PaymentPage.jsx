@@ -1,13 +1,13 @@
+/* eslint-disable */
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
-import Footer from '../../components/Footer/Footer';
 import { ReactComponent as MasterCard } from '../../images/svg/masterCard.svg';
 import { ReactComponent as Visa } from '../../images/svg/visa-logo.svg';
 import { ReactComponent as HandsWithMoneysa } from '../../images/svg/HandsWithMoney.svg';
 import './PaymentPage.scss';
-import Navbar from '../../components/Navbar/Navbar';
 import Button from '../../components/Button/Button';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
 
@@ -48,7 +48,6 @@ export default function PaymentPage(props) {
   return (
     <div>
       {getLocalCart()}
-      <Navbar />
       <CheckoutHeader payment />
       <div className="payment__container">
         <div className="registration">
@@ -59,7 +58,7 @@ export default function PaymentPage(props) {
               <div className="pay__container">
                 <div className="payment-by-card__header">
                   <div className="pay__text-content">
-                    <div className="checked active"></div>
+                    <div className="checked active" />
                     <div className="">
                       <p className="credit-card">Credit Card</p>
                       <p className="attention">
@@ -82,7 +81,7 @@ export default function PaymentPage(props) {
               <div className="pay__container">
                 <div className="payment-by-card__header">
                   <div className="pay__text-content">
-                    <div className="checked"></div>
+                    <div className="checked" />
                     <div className="">
                       <p className="credit-card">Payment to the courier</p>
                       <p className="attention">
@@ -158,7 +157,7 @@ export default function PaymentPage(props) {
               <span>TOTAL</span>
               <span>${totalPrice === totalPrice + 5}</span>
             </p>
-            <NavLink to="/delivery">
+            <NavLink to="/thank_you_screen">
               <Button className="next__button" variant="dark" type="button">
                 Next
               </Button>
@@ -166,8 +165,6 @@ export default function PaymentPage(props) {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

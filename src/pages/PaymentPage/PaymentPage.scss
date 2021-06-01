@@ -1,6 +1,7 @@
 .payment__container {
-  width: 1180px;
+  width: 81.75%;
   margin: 0 auto;
+  max-width: 1180px;
 }
 
 .card {
@@ -35,6 +36,7 @@
   box-sizing: border-box;
   border-radius: 2px;
   margin: 30px 0;
+  cursor: pointer;
   &.active {
     background: #373f41;
     border: 1px solid #8c8c8c;
@@ -223,6 +225,7 @@
   text-align: right;
   margin: 0px 0 80px 27%;
   padding: 15px 86px;
+  cursor: pointer;
 }
 
 .decor-line {

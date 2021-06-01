@@ -6,8 +6,6 @@ import { NavLink } from 'react-router-dom';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import CheckoutBagItem from '../../components/CheckoutBagItem/CheckoutBagItem';
 import Button from '../../components/Button/Button';
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
 
 export default function CheckoutBag(props) {
   const { history } = props;
@@ -36,9 +34,8 @@ export default function CheckoutBag(props) {
   return (
     <div>
       {getLocalCart()}
-      <Navbar />
       <CheckoutHeader shoppingBag />
-      <div className="container">
+      <div className="registration__container">
         <div className="registration">
           <div className="registration-right__block">
             <p className="registration__title">SHOPPING BAG</p>
@@ -99,7 +96,6 @@ export default function CheckoutBag(props) {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

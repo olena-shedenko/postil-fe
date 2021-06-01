@@ -1,9 +1,10 @@
+/* eslint-disable */
 import { useField } from 'formik';
 import React from 'react';
 
 const PaymentImput = (props) => {
-  const { type, label, name, className, maxlength,onKeyDown } = props;
-  const [field, meta,input] = useField(name);
+  const { type, label, name, className, maxlength, onKeyDown } = props;
+  const [field] = useField(name);
   return (
     <>
       <input
@@ -14,12 +15,6 @@ const PaymentImput = (props) => {
         maxLength={maxlength}
         onKeyDown={onKeyDown}
       />
-      {/* {formikProps.values.CVV &&
-        meta.touched && 
-        // console.log(meta),
-        console.log(2)
-        // <span className="error">{meta.error}</span>
-      } */}
     </>
   );
 };
