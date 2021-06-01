@@ -6,6 +6,7 @@ import CheckoutBagPage from '../pages/CheckoutBagPage/CheckoutBagPage';
 import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
+import ContactUs from '../pages/ContactUs/ContactUs';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -20,7 +21,7 @@ const AppRoutes = () => {
       <Route path="/bedroom" />
       <Route path="/blog" />
       <Route path="/catalog" render={() => <Catalog />} />
-      <Route path="/contact" />
+      <Route path="/contact-us" render={() => <ContactUs />} />
       <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
       <Route exact path="/shopping_cart" render={() => <ShoppingCartPage />} />
       <Route path="/favourites" />
