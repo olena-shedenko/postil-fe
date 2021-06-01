@@ -7,7 +7,7 @@ export default function CheckoutHeader(props) {
   return (
     <div>
       <div className="header">
-        <div className="container">
+        <div className="header-list__container">
           <ul className="header-list">
             {shoppingBag ? (
               <li className="header-list__item active">1. Shopping Bag</li>

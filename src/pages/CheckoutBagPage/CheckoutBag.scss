@@ -1,6 +1,7 @@
-.container {
-  width: 1180px;
+.registration__container {
+  width: 81.75%;
   margin: 0 auto;
+  max-width: 1180px;
 }
 
 .registration {
@@ -8,12 +9,16 @@
 }
 
 .registration-right__block {
-  width: 812px;
+  // width: 812px;
+  width: 69%;
+  max-width: 812px;
   margin-right: 84px;
 }
 
 .registration-left__block {
-  width: 284px;
+  // width: 284px;
+  width: 24.2%;
+  max-width: 284px;
 }
 
 .registration__title {
@@ -61,10 +66,11 @@
 
 .buy__button {
   border: none;
-  font-family: 'Abel',sans-serif;
+  font-family: 'Abel', sans-serif;
   font-size: 18px;
   text-align: right;
-  margin: 0 0 80px 30%;
+  // margin: 0 0 80px 30%;
+  float: right;
   padding: 15px 86px;
   cursor: pointer;
 }

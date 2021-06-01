@@ -15,12 +15,6 @@ const PaymentImput = (props) => {
         maxLength={maxlength}
         onKeyDown={onKeyDown}
       />
-      {/* {formikProps.values.CVV &&
-        meta.touched && 
-        // console.log(meta),
-        console.log(2)
-        // <span className="error">{meta.error}</span>
-      } */}
     </>
   );
 };

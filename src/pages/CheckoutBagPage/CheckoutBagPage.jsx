@@ -35,7 +35,7 @@ export default function CheckoutBag(props) {
     <div>
       {getLocalCart()}
       <CheckoutHeader shoppingBag />
-      <div className="container">
+      <div className="registration__container">
         <div className="registration">
           <div className="registration-right__block">
             <p className="registration__title">SHOPPING BAG</p>
