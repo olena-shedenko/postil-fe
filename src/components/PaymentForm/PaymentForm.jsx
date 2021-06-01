@@ -1,19 +1,19 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
+// import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
 import './CartForm.scss';
-import { useDispatch, useSelector } from 'react-redux';
+
 // import { CREATE_USER } from '../../store/user/types';
 // import { TOGGLE_FORM } from '../../store/form/types';
 // import { SET_ITEMS } from '../../store/items/types';
 
 export default function PaymentForm() {
-  const dispatch = useDispatch();
-  const items = useSelector((state) => state.items.data);
-  const cardValidityPeriod = document.getElementsByClassName(
-    'cardValidityPeriod'
-  );
+  // const dispatch = useDispatch();
+  // const items = useSelector((state) => state.items.data);
+  const cardValidityPeriod =
+    document.getElementsByClassName('cardValidityPeriod');
 
   // const submitForm = (values) => {
   //     dispatch({type:TOGGLE_FORM,payload:false})
@@ -46,13 +46,18 @@ export default function PaymentForm() {
         validationSchema={validationFormSchema}
       >
         {(formikProps) => {
-
-          for (let index = 0; index < cardValidityPeriod.length; index++) {
+          for (let index = 0; index < cardValidityPeriod.length; index += 1) {
             cardValidityPeriod[index].addEventListener('keydown', (e) => {
-              if (formikProps.values.cardValidityPeriod.length === 1 && e.key !== "Backspace") {
+              if (
+                formikProps.values.cardValidityPeriod.length === 1 &&
+                e.key !== 'Backspace'
+              ) {
+                // eslint-disable-next-line no-param-reassign
                 formikProps.values.cardValidityPeriod = `${formikProps.values.cardValidityPeriod}/`;
-              }else if (e.key === "Backspace") {
+              } else if (e.key === 'Backspace') {
+                // eslint-disable-next-line no-param-reassign
                 formikProps.values.cardValidityPeriod =
+                  // eslint-disable-next-line no-self-assign
                   formikProps.values.cardValidityPeriod;
               }
             });
@@ -74,7 +79,7 @@ export default function PaymentForm() {
           return (
             <Form className="form">
               <div className="card-info">
-                {formikProps.values.cardNo == '' &&
+                {formikProps.values.cardNo === '' &&
                 formikProps.touched.cardNo ? (
                   <PaymentImput
                     name="cardNo"
@@ -108,7 +113,7 @@ export default function PaymentForm() {
                     // }}
                   />
                 )}
-                {formikProps.values.cardValidityPeriod == '' &&
+                {formikProps.values.cardValidityPeriod === '' &&
                 formikProps.touched.cardValidityPeriod ? (
                   <PaymentImput
                     name="cardValidityPeriod"
@@ -138,7 +143,7 @@ export default function PaymentForm() {
                     // }}
                   />
                 )}
-                {formikProps.values.CVV == '' && formikProps.touched.CVV ? (
+                {formikProps.values.CVV === '' && formikProps.touched.CVV ? (
                   <PaymentImput
                     name="CVV"
                     type="text"
@@ -162,7 +167,7 @@ export default function PaymentForm() {
                   />
                 )}
               </div>
-              {formikProps.values.cardHolder == '' &&
+              {formikProps.values.cardHolder === '' &&
               formikProps.touched.cardHolder ? (
                 <PaymentImput
                   name="cardHolder"
