@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
 import './ItemPage.scss';
 import { useSelector } from 'react-redux';
 import {
@@ -17,7 +18,7 @@ const ItemPage = () => {
 
   return (
     <>
-      <div className="item">
+      <div className="item-container">
         {products &&
           products.map((product) => (
             <div className="item" key={product.itemNo}>

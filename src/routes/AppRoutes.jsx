@@ -6,13 +6,14 @@ import CheckoutBagPage from '../pages/CheckoutBagPage/CheckoutBagPage';
 import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
+import ItemPage from '../pages/ItemPage/ItemPage';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
   return (
     <Switch>
       <Redirect exact from="/" to="/main" />
-      <Route path="/about_us" />
+      <Route path="/about_us" render={() => <ItemPage />} />
       <Route path="/account" />
       <Route exact path="/main" render={() => <MainPage />} />
       <Route path="/bathroom" />
