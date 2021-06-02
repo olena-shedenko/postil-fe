@@ -1,6 +1,7 @@
 .bc {
   &-container {
-    padding: 1.9375rem 0 1.5625rem;
+    width: 98%;
+    padding: 1.9375rem 0 1.5625rem 0.625rem;
   }
   &-item {
     margin-right: 0.5rem;
@@ -13,3 +14,12 @@
     }
   }
 }
+
+// @media (min-width: 630px) {
+//   .bc {
+//     &-container {
+//       width: 100%;
+//       padding: 1.9375rem 0 1.5625rem 0.625rem;
+//     }
+//   }
+// }

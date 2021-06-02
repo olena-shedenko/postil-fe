@@ -2,12 +2,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import SignUp from '../modalComponents/SignUp';
 import LogIn from '../modalComponents/LogIn';
 import ChoiseButtons from '../modalComponents/ChoiseButtons';
 import { toggleAccountModal } from '../../../store/operations';
 
-const DesktopModal = () => {
+const DesktopModal = ({ loginSubmit, signUpSubmit }) => {
   const dispatch = useDispatch();
 
   const forSignUp = useSelector(
@@ -25,7 +26,11 @@ const DesktopModal = () => {
 
       <ChoiseButtons />
 
-      {forSignUp ? <SignUp /> : <LogIn />}
+      {forSignUp ? (
+        <SignUp handleSubmit={signUpSubmit} />
+      ) : (
+        <LogIn handleSubmit={loginSubmit} />
+      )}
 
       {/* {forSignUp && (
         <div className="enter-via-socials">
@@ -43,6 +48,11 @@ const DesktopModal = () => {
       )} */}
     </div>
   );
+};
+
+DesktopModal.propTypes = {
+  signUpSubmit: PropTypes.func.isRequired,
+  loginSubmit: PropTypes.func.isRequired,
 };
 
 export default DesktopModal;

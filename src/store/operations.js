@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
@@ -10,7 +11,7 @@ import {
   TOGGLE_ACCOUNT_MODAL,
   SET_MODAL_FORGOT_PASSWORD,
 } from './types';
-import { filteredProducts } from './actions';
+import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
 
 export const setModalSignUp = () => (dispatch) => {
@@ -105,3 +106,19 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   // console.log('Final products', products);
   dispatch(filteredProducts(products));
 };
+
+export const addToCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .put(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, null, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };

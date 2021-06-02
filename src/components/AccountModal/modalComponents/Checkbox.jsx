@@ -7,7 +7,12 @@ const Checkbox = ({ name = 'accept' }) => {
   const [meta] = useField(name);
   return (
     <div className="accept-tos">
-      <Field type="checkbox" name={name} className="checkbox-tick" />
+      <Field
+        type="checkbox"
+        name={name}
+        className="checkbox-tick"
+        data-testid="account-modal-checkbox"
+      />
 
       <span className="checkbox-text-wrap">
         By signing up you agree to{' '}
