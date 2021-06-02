@@ -1,16 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import axios from 'axios';
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import '../AccountModal.scss';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import {
-  toggleAccountError,
-  // toggleAccountModal,
-  setModalLogIn,
-} from '../../../store/operations';
+import { setModalLogIn } from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
@@ -39,24 +35,8 @@ const validationFormSchema = Yup.object().shape({
     .required('Agree to ToS and Privecy Policy'),
 });
 
-const SignUp = () => {
+const SignUp = ({ handleSubmit }) => {
   const dispatch = useDispatch();
-
-  const submitForm = (values) => {
-    const userInfo = {
-      ...values,
-      firstName: values.name.split(' ')[0],
-      lastName: values.name.split(' ')[1],
-    };
-    delete userInfo.accept;
-    delete userInfo.passwordconf;
-    delete userInfo.name;
-    axios
-      .post('https://postil-bedding.herokuapp.com/api/customers', userInfo)
-      .catch(() => {
-        dispatch(toggleAccountError('This user already exists, retry please'));
-      });
-  };
 
   return (
     <>
@@ -69,7 +49,7 @@ const SignUp = () => {
           email: '',
           accept: false,
         }}
-        onSubmit={submitForm}
+        onSubmit={handleSubmit}
         validationSchema={validationFormSchema}
       >
         {() => {
@@ -108,12 +88,6 @@ const SignUp = () => {
                   type="password"
                 />
                 <Checkbox name="accept" />
-                <span className="tos-and-pp">
-                  By signing up you agree to{' '}
-                  <a href="blank">Terms of Service</a> and{' '}
-                  <a href="blank">Privacy Policy</a>
-                </span>
-
                 <span
                   className="bottom-link"
                   onClick={() => dispatch(setModalLogIn())}
@@ -134,6 +108,10 @@ const SignUp = () => {
       </Formik>
     </>
   );
+};
+
+SignUp.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default SignUp;
