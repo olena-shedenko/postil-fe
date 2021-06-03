@@ -33,7 +33,7 @@
   }
 
   &__name {
-    font-size: 32px;
+    font-size: 20px;
     line-height: 58px;
     font-weight: 400;
     color: #373f41;
@@ -90,5 +90,12 @@
     font-weight: 600;
     text-transform: uppercase;
     color: #373f41;
+  }
+}
+
+.btn {
+  &__add {
+  width: 180px;
+  padding: 21px 33px;
   }
 }

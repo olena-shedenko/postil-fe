@@ -58,7 +58,7 @@ const ItemPage = () => {
                 <p className="item__size">Size</p>
                 <p className="item__price">${product.currentPrice}.00</p>
 
-                <Button variant="dark" type="button" className="btn">
+                <Button variant="dark" type="button" className="btn__add">
                   ADD TO BAG
                 </Button>
 
