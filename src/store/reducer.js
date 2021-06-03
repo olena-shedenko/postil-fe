@@ -8,6 +8,9 @@ import {
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
   SET_ITEMS,
+  REQUEST_REMOVE_PRODUCT_FROM_CART,
+  SUCCESS_REMOVE_PRODUCT_FROM_CART,
+  ERROR_REMOVE_PRODUCT_FROM_CART,
 } from './types';
 
 const initialState = {
@@ -44,6 +47,7 @@ const reducer = (state = initialState, action) => {
       console.log(action.payload);
       return { ...state };
     case SET_PRODUCTS_IN_CART:
+      console.log(action.payload);
       return {
         ...state,
         productsInCart: { ...state.productsInCart, data: action.payload },
@@ -57,6 +61,20 @@ const reducer = (state = initialState, action) => {
       };
     case SET_ITEMS:
       return { ...state, items: { ...state.items, data: action.payload } };
+    case REQUEST_REMOVE_PRODUCT_FROM_CART:
+      return { ...state };
+    case SUCCESS_REMOVE_PRODUCT_FROM_CART:
+      console.log(state.productsInCart.data);
+      return {
+        ...state,
+        productsInCart: {
+          ...state.productsInCart,
+          data: action.payload.data.products,
+        },
+      };
+    case ERROR_REMOVE_PRODUCT_FROM_CART:
+      console.log(action.payload);
+      return { ...state };
     default:
       return state;
   }

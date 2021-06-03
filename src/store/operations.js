@@ -10,6 +10,9 @@ import {
   ERROR_REQUEST_PRODUCTS_IN_CART,
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
+  REQUEST_REMOVE_PRODUCT_FROM_CART,
+  SUCCESS_REMOVE_PRODUCT_FROM_CART,
+  ERROR_REMOVE_PRODUCT_FROM_CART,
 } from './types';
 
 export const setModalSignUp = () => (dispatch) => {
@@ -29,14 +32,35 @@ export const setCartProducts = () => (dispatch) => {
     .get('https://postil-bedding.herokuapp.com/api/cart', {
       headers: {
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTY5ZTdhZDI3YjM1MDAxNTk2ZGUwMCIsImZpcnN0TmFtZSI6IkN1c3RvbWVyIiwibGFzdE5hbWUiOiJOZXdvbmUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MjE5NjIxMDksImV4cCI6MTYyMTk5ODEwOX0.Ryb-PRWFFlNdwNBKWGoI7P2GWbGELE3vWWWnWi1FE5M',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTY5ZTdhZDI3YjM1MDAxNTk2ZGUwMCIsImZpcnN0TmFtZSI6IkN1c3RvbWVyIiwibGFzdE5hbWUiOiJOZXdvbmUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MjI0MDQwMDAsImV4cCI6MTYyMjQ0MDAwMH0._JSYGk94lUDVNHWuzG4SMjZI13-YqOROQcgjqAHO6I0',
       },
     })
     .then((cart) => {
+      console.log(cart.data);
       dispatch({ type: SET_PRODUCTS_IN_CART, payload: cart.data.products });
     })
     .catch((err) => {
       dispatch({ type: ERROR_REQUEST_PRODUCTS_IN_CART, payload: err });
+    });
+};
+
+export const removeProductFromCart = (id) => (dispatch) => {
+  dispatch({ type: REQUEST_REMOVE_PRODUCT_FROM_CART });
+  axios
+    .delete(`https://postil-bedding.herokuapp.com/api/cart/${id}`, {
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTY5ZTdhZDI3YjM1MDAxNTk2ZGUwMCIsImZpcnN0TmFtZSI6IkN1c3RvbWVyIiwibGFzdE5hbWUiOiJOZXdvbmUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MjI0MDQwMDAsImV4cCI6MTYyMjQ0MDAwMH0._JSYGk94lUDVNHWuzG4SMjZI13-YqOROQcgjqAHO6I0',
+      },
+    })
+    .then((data) => {
+      dispatch({
+        type: SUCCESS_REMOVE_PRODUCT_FROM_CART,
+        payload: data,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_CART, payload: err });
     });
 };
 
