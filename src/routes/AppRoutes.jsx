@@ -13,7 +13,7 @@ const AppRoutes = () => {
   return (
     <Switch>
       <Redirect exact from="/" to="/main" />
-      <Route path="/about_us" render={() => <ItemPage />} />
+      <Route path="/about_us" />
       <Route path="/account" />
       <Route exact path="/main" render={() => <MainPage />} />
       <Route path="/bathroom" />
@@ -21,6 +21,7 @@ const AppRoutes = () => {
       <Route path="/bedroom" />
       <Route path="/blog" />
       <Route path="/catalog" render={() => <Catalog />} />
+      <Route path="/product/:id" render={() => <ItemPage />} />
       <Route path="/contact" />
       <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
       <Route exact path="/shopping_cart" render={() => <ShoppingCartPage />} />

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import './ItemPage.scss';
 import { useSelector } from 'react-redux';
 import {
@@ -9,6 +8,16 @@ import {
 } from '../../store/selectors';
 import Button from '../../components/Button/Button';
 import { Facebook, Twitter, Instagram } from '../../components/Icons';
+
+// const ItemPage = () => {
+//   return (
+//     <div className="item-container">
+//       <Product product={product._id} />
+//     </div>
+//   );
+// };
+
+// export default ItemPage;
 
 const ItemPage = () => {
   const perPage = useSelector(getPerPage);
@@ -21,7 +30,8 @@ const ItemPage = () => {
       <div className="item-container">
         {products &&
           products.map((product) => (
-            <div className="item" key={product.itemNo}>
+            /* eslint no-underscore-dangle: 0 */
+            <div className="item" key={product._id}>
               <img
                 src={`${product.imageUrls[0]}`}
                 alt="product"
