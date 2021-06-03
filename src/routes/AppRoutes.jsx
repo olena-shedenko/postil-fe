@@ -7,6 +7,7 @@ import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
 import ContactUs from '../pages/ContactUs/ContactUs';
+import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -32,7 +33,7 @@ const AppRoutes = () => {
       <Route path="/returns" />
       <Route path="/reviews" />
       <Route path="/sale" />
-      <Route path="/terms_of_service" />
+      <Route path="/terms_of_service" render={() => <TermsAndServices />} />
       <Route path="*" render={() => <div>404</div>} />
     </Switch>
   );
