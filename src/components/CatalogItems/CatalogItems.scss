@@ -1,8 +1,8 @@
 // CATALOG ITEMS STYLES SECTION
 .cg-products {
+  width: 100vw;
   display: grid;
-  grid-template-columns: repeat(3, 31.85%);
-  grid-gap: 20px;
+  grid-gap: 1.25rem;
 }
 
 .cg-item {
@@ -21,15 +21,15 @@
     transition-delay: 0.1s;
   }
   &__img {
-    max-width: 100%;
+    width: 100vw;
     height: auto;
     display: block;
   }
   &__name {
     margin: 0;
     position: absolute;
-    width: 90%;
-    left: 14px;
+    width: 100vw;
+    // left: 14px;
     bottom: 21px;
     background-color: #373f41;
     color: #fff;
@@ -75,6 +75,38 @@
   &:hover {
     background-color: #373f41;
     color: #fff;
+    cursor: pointer;
   }
 }
 // END OF CATALOG ITEMS STYLES SECTION
+
+// MEDIA QUERY RULES
+
+@media (min-width: 630px) {
+  .cg-products {
+    width: 100%;
+  }
+  .cg-item {
+    &__img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    &__name {
+      width: 90%;
+      left: 14px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .cg-products {
+    grid-template-columns: repeat(2, 48.5%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cg-products {
+    grid-template-columns: repeat(3, 31.5%);
+  }
+}

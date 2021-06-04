@@ -42,7 +42,7 @@ export default function ShoppingCart() {
           return <ShoppingBagItem key={el.itemNo} items={items} item={el} />;
         })}
         <NavLink to="/checkout_bag">
-          <Button className="checkout-btn" variant="dark" type="button">
+          <Button className="checkout-btn btn" variant="dark" type="button">
             PROCEED TO CHECKOUT
           </Button>
         </NavLink>

@@ -89,7 +89,7 @@ export default function CheckoutBag(props) {
               <span>${(totalPrice += 5)}</span>
             </p>
             <NavLink to="/delivery">
-              <Button className="buy__button" variant="dark" type="button">
+              <Button className="buy__button btn" variant="dark" type="button">
                 Buy
               </Button>
             </NavLink>

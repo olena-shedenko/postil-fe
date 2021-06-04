@@ -14,6 +14,7 @@ import {
   SET_MAX_SLIDER_VALUE,
   SET_CURRENT_PAGE,
   SET_PER_PAGE,
+  SET_CART,
 } from './types';
 
 export const setProducts = (data) => {
@@ -70,4 +71,8 @@ export const setCurrentPage = (data) => {
 
 export const setPerPage = (data) => {
   return { type: SET_PER_PAGE, payload: data };
+};
+
+export const setCart = (data) => {
+  return { type: SET_CART, payload: data };
 };

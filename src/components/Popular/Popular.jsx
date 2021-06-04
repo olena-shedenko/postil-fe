@@ -17,7 +17,7 @@ export default function Popular() {
               <NavLink to="/catalog">
                 <Button
                   variant="bordered"
-                  className="text-block__button"
+                  className="text-block__button btn"
                   type="button"
                 >
                   Shop
@@ -32,7 +32,7 @@ export default function Popular() {
               <NavLink to="/catalog">
                 <Button
                   variant="bordered"
-                  className="text-block__button"
+                  className="text-block__button btn"
                   type="button"
                 >
                   Shop
@@ -47,7 +47,7 @@ export default function Popular() {
               <NavLink to="/catalog">
                 <Button
                   variant="bordered"
-                  className="text-block__button"
+                  className="text-block__button btn"
                   type="button"
                 >
                   Shop
@@ -62,7 +62,7 @@ export default function Popular() {
               <NavLink to="/catalog">
                 <Button
                   variant="bordered"
-                  className="text-block__button"
+                  className="text-block__button btn"
                   type="button"
                 >
                   Shop

@@ -82,7 +82,12 @@ const Footer = () => {
                   {errors.email && touched.email ? (
                     <div className="email-error">{errors.email}</div>
                   ) : null}
-                  <Button type="submit" className="ft-form__btn" variant="dark">
+                  <Button
+                    type="submit"
+                    className="ft-form__btn"
+                    commonStyles
+                    variant="dark"
+                  >
                     Send
                   </Button>
                 </Form>

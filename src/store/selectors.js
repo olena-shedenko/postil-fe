@@ -23,3 +23,5 @@ export const sliceProductsForPagination = (state) => {
       )
     : [];
 };
+
+export const getCart = (state) => state.cart;

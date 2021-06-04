@@ -109,15 +109,14 @@
     grid-template-rows: 342px 342px;
     grid-template-areas:
       'popular-img1'
-      "popular-img2";
+      'popular-img2';
     grid-template-columns: 1fr;
     padding: 10px;
   }
-  .popular-list-item:nth-child(3){
+  .popular-list-item:nth-child(3) {
     display: none;
   }
-  .popular-list-item:nth-child(4){
+  .popular-list-item:nth-child(4) {
     display: none;
   }
 }
-

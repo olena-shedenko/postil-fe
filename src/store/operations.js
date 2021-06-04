@@ -1,13 +1,17 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
 import {
   SET_MODAL_SIGN_UP,
   SET_MODAL_LOG_IN,
+  TOGGLE_ACCOUNT_ERROR,
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
+  TOGGLE_ACCOUNT_MODAL,
+  SET_MODAL_FORGOT_PASSWORD,
 } from './types';
-import { filteredProducts } from './actions';
+import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
 
 export const setModalSignUp = () => (dispatch) => {
@@ -16,6 +20,15 @@ export const setModalSignUp = () => (dispatch) => {
 export const setModalLogIn = () => (dispatch) => {
   dispatch({ type: SET_MODAL_LOG_IN, payload: 'logIn' });
 };
+export const setModalForgotPassword = () => (dispatch) => {
+  dispatch({ type: SET_MODAL_FORGOT_PASSWORD, payload: 'forgotPassword' });
+};
+export const toggleAccountError = (errMessage) => (dispatch) => {
+  dispatch({ type: TOGGLE_ACCOUNT_ERROR, payload: errMessage });
+};
+export const toggleAccountModal = () => (dispatch) => {
+  dispatch({ type: TOGGLE_ACCOUNT_MODAL });
+};
 
 export const getItems = () => (dispatch) => {
   dispatch({ type: LOAD_ITEMS_REQUEST, payload: true });
@@ -23,14 +36,15 @@ export const getItems = () => (dispatch) => {
     const favouriteInLocal = JSON.parse(localStorage.getItem('liked')) || [];
     const cartInLocal = JSON.parse(localStorage.getItem('bag')) || [];
     const newArr = res.data.map((el) => {
+      el.quantityInBag = 0;
       if (favouriteInLocal.includes(el.itemNo)) {
         el.isFavorite = !el.isFavorite;
       }
       if (cartInLocal.includes(el.itemNo)) {
         el.inShoppingBag = !el.inShoppingBag;
+        el.quantityInBag = 1;
       }
       // el.inShoppingBag = true;
-      el.quantityInBag = 1;
       return el;
     });
 
@@ -93,3 +107,19 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   // console.log('Final products', products);
   dispatch(filteredProducts(products));
 };
+
+export const addToCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .put(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, null, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };
