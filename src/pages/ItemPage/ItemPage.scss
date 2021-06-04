@@ -1,7 +1,8 @@
 .item {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 30px 130px;
+  grid-gap: 50px;
+  margin: 30px 150px;
   background: white;
   position: relative;
 
@@ -22,22 +23,18 @@
     padding-bottom: 23px;
   }
 
-  &__img-small {
-    width: 150px;
-    height: 150px;
-  }
-
   &__id {
     text-transform: uppercase;
     color: darkgrey;
   }
 
   &__name {
-    font-size: 20px;
+    font-size: 32px;
     line-height: 58px;
     font-weight: 400;
     color: #373f41;
     text-transform: uppercase;
+    display: flex;
   }
 
   &__color {
@@ -47,11 +44,19 @@
     text-transform: uppercase;
   }
 
+  &__color-btn {
+    display: flex;
+  }
+
   &__size {
     font-size: 14px;
     line-height: 24px;
     font-weight: 600;
     text-transform: uppercase;
+  }
+
+  &__size-btn {
+    display: flex;
   }
 
   &__price {
@@ -72,6 +77,7 @@
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
+    text-transform: uppercase;
     color: #373f41;
     border-top: 1px solid #000;
   }
@@ -91,11 +97,156 @@
     text-transform: uppercase;
     color: #373f41;
   }
+  .btns-group {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 0;
+    &__btn-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    &__btn-label {
+      font-size: 14px;
+      line-height: 24px;
+      text-transform: uppercase;
+      padding: 0 1rem;
+      position: relative;
+    }
+    &__btn {
+      z-index: 1;
+      margin: 0;
+      position: relative;
+      top: 7px;
+      margin-bottom: 15px;
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  .check {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    border: 1px solid #373f41;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    top: 7px;
+    left: 0;
+    transition: border 0.25s linear;
+    &:hover {
+      border-color: #000;
+    }
+  }
+  .check.checked {
+    &::before {
+      display: block;
+      position: absolute;
+      content: '';
+      border-radius: 100%;
+      height: 12px;
+      width: 12px;
+      left: 4px;
+      top: 4px;
+      margin: auto;
+      transition: background-color 0.15s linear;
+      background-color: #8c8c8c;
+    }
+  }
+
+  .color-btns {
+    // flex-direction: row;
+    // justify-content: start;
+    flex-wrap: wrap;
+    width: 75%;
+    &__btn-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    &__btn {
+      z-index: 1;
+      margin-right: 10px;
+      position: relative;
+      top: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  .color {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    top: 7px;
+    left: 0;
+    &.red {
+      background-color: #b63625;
+    }
+    &.blue {
+      background-color: #464a5d;
+    }
+    &.green {
+      background-color: #50b68f;
+    }
+    &.pink {
+      background-color: #e4cfcc;
+    }
+    &.white {
+      border: 1px solid #c7cdcf;
+    }
+    &.brown {
+      background-color: #6b3005;
+    }
+    &.olive {
+      background-color: #5d641d;
+    }
+    &.grey {
+      background-color: #a5aeb7;
+    }
+    &.multi {
+      background-color: #b7a593;
+    }
+    &.checked {
+      border: 2px solid #373f41;
+    }
+  }
+}
+
+.small {
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  flex-basis: 150px;
+  margin-bottom: 80px;
 }
 
 .btn {
   &__add {
-  width: 180px;
-  padding: 21px 33px;
+    width: 180px;
+    padding: 21px 33px;
+  }
+}
+
+.slider {
+  &__title {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 58px;
+    text-transform: uppercase;
+
+    padding: 0 400px;
   }
 }
