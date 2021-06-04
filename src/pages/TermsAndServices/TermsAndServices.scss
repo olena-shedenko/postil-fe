@@ -1,17 +1,20 @@
-.container {
-  width: 75em;
-  margin: 0 auto;
-}
-
 ul,
 li {
   margin: 0;
   padding: 0;
 }
 
+.ts-container {
+  width: 100vw;
+}
+.breadcrumbs {
+  width: 100vw;
+}
+
 .terms {
+  padding: 0 15px;
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 100%;
   &-aside__header {
     font-size: 1.125rem;
     color: #373f41;
@@ -19,7 +22,7 @@ li {
     padding-top: 15px;
   }
   &-main {
-    padding-bottom: 70px;
+    padding: 0 20px;
   }
 }
 
@@ -98,5 +101,26 @@ li {
       font-weight: 600;
       text-transform: uppercase;
     }
+  }
+}
+
+// MEDIA QUERIES
+
+@media (min-width: 630px) {
+  .terms {
+    grid-template-columns: 25% 74%;
+    &-aside__header {
+      font-size: 1rem;
+    }
+  }
+  .aside-list {
+    font-size: 0.875em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ts-container {
+    width: 75em;
+    margin: 0 auto;
   }
 }

@@ -1,11 +1,13 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import './TermsAndServices.scss';
 import { useDisclosureState, Disclosure, DisclosureContent } from 'reakit';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const TermsAndServices = () => {
+  const isDesktop = useMediaQuery({ query: '(min-width: 630px)' });
   const disclosure1 = useDisclosureState({ visible: false });
   const disclosure2 = useDisclosureState({ visible: false });
   const disclosure3 = useDisclosureState({ visible: false });
@@ -20,19 +22,21 @@ const TermsAndServices = () => {
   const disclosure12 = useDisclosureState({ visible: false });
   const disclosure13 = useDisclosureState({ visible: false });
   return (
-    <div className="container">
-      <Breadcrumbs />
+    <div className="ts-container">
+      <Breadcrumbs className="breadcrumbs" />
       <div className="terms-container terms">
-        <aside className="terms-aside">
-          <h3 className="terms-aside__header">TERMS OF SERVICE</h3>
-          <ul className="terms-aside__list aside-list">
-            <li className="aside-list__item">ORDER ISSUES</li>
-            <li className="aside-list__item">DELIVERY</li>
-            <li className="aside-list__item">RETURNS & REFUNDS</li>
-            <li className="aside-list__item">PAYMENT</li>
-            <li className="aside-list__item">LEGAL POLICIES</li>
-          </ul>
-        </aside>
+        {isDesktop && (
+          <aside className="terms-aside">
+            <h3 className="terms-aside__header">TERMS OF SERVICE</h3>
+            <ul className="terms-aside__list aside-list">
+              <li className="aside-list__item">ORDER ISSUES</li>
+              <li className="aside-list__item">DELIVERY</li>
+              <li className="aside-list__item">RETURNS & REFUNDS</li>
+              <li className="aside-list__item">PAYMENT</li>
+              <li className="aside-list__item">LEGAL POLICIES</li>
+            </ul>
+          </aside>
+        )}
         <section className="terms-main">
           <div className="terms-main-section section">
             <h4 className="section__header">ORDER ISSUES</h4>
