@@ -1,15 +1,17 @@
-/* eslint-disable */
 import React from 'react';
 import { Formik, Form } from 'formik';
+// import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
 import './CartForm.scss';
-import { useDispatch, useSelector } from 'react-redux';
+
 // import { CREATE_USER } from '../../store/user/types';
 // import { TOGGLE_FORM } from '../../store/form/types';
 // import { SET_ITEMS } from '../../store/items/types';
 
 export default function PaymentForm() {
+  // const dispatch = useDispatch();
+  // const items = useSelector((state) => state.items.data);
   const cardValidityPeriod =
     document.getElementsByClassName('cardValidityPeriod');
 
@@ -44,24 +46,40 @@ export default function PaymentForm() {
         validationSchema={validationFormSchema}
       >
         {(formikProps) => {
-          for (let index = 0; index < cardValidityPeriod.length; index++) {
+          for (let index = 0; index < cardValidityPeriod.length; index += 1) {
             cardValidityPeriod[index].addEventListener('keydown', (e) => {
               if (
                 formikProps.values.cardValidityPeriod.length === 1 &&
                 e.key !== 'Backspace'
               ) {
+                // eslint-disable-next-line no-param-reassign
                 formikProps.values.cardValidityPeriod = `${formikProps.values.cardValidityPeriod}/`;
               } else if (e.key === 'Backspace') {
+                // eslint-disable-next-line no-param-reassign
                 formikProps.values.cardValidityPeriod =
+                  // eslint-disable-next-line no-self-assign
                   formikProps.values.cardValidityPeriod;
               }
             });
           }
 
+          //   cardNo.addEventListener('onKeyDown', (e) => {
+          //     if (formikProps.values.cardNo.length === 4) {
+          //       formikProps.values.cardNo = `${formikProps.values.cardNo}    `;
+          //     } else if (e.key === 'Backspace') {
+          //       formikProps.values.cardNo = formikProps.values.cardNo;
+          //     }
+          //     if (formikProps.values.cardNo.length === 12) {
+          //       formikProps.values.cardNo = `${formikProps.values.cardNo}    `;
+          //     } else if (formikProps.values.cardNo.length === 20) {
+          //       formikProps.values.cardNo = `${formikProps.values.cardNo}    `;
+          //     }
+          //   });
+
           return (
             <Form className="form">
               <div className="card-info">
-                {formikProps.values.cardNo == '' &&
+                {formikProps.values.cardNo === '' &&
                 formikProps.touched.cardNo ? (
                   <PaymentImput
                     name="cardNo"
@@ -69,6 +87,14 @@ export default function PaymentForm() {
                     label="0000    0000    0000    0000"
                     className="cardNo error"
                     maxlength="19"
+                    // onKeyDown={(e) => {
+                    //   if (formikProps.values.cardNo.length === 4 && e.keyCode === 8) {
+                    //     console.log(2);
+                    //     formikProps.values.cardNo = `${formikProps.values.cardNo}    `;
+                    //   } else if (e.keyCode === 8) {
+                    //     formikProps.values.cardNo = formikProps.values.cardNo;
+                    //   }
+                    // }}
                   />
                 ) : (
                   <PaymentImput
@@ -77,9 +103,17 @@ export default function PaymentForm() {
                     label="0000    0000    0000    0000"
                     className="cardNo"
                     maxlength="19"
+                    // onKeyDown={(e) => {
+                    //   if (formikProps.values.cardNo.length === 4) {
+                    //     console.log(2);
+                    //     formikProps.values.cardNo = `${formikProps.values.cardNo}    `;
+                    //   } else if (e.keyCode === 8) {
+                    //     formikProps.values.cardNo = formikProps.values.cardNo;
+                    //   }
+                    // }}
                   />
                 )}
-                {formikProps.values.cardValidityPeriod == '' &&
+                {formikProps.values.cardValidityPeriod === '' &&
                 formikProps.touched.cardValidityPeriod ? (
                   <PaymentImput
                     name="cardValidityPeriod"
@@ -87,6 +121,12 @@ export default function PaymentForm() {
                     label="MM/YY"
                     className="cardValidityPeriod error"
                     maxlength="5"
+                    // onKeyDown={(e) => {
+                    //   if (formikProps.values.cardValidityPeriod.length === 2) {
+                    //       console.log(3);
+                    //     formikProps.values.cardValidityPeriod = `${formikProps.values.cardValidityPeriod}/`;
+                    //   }
+                    // }}
                   />
                 ) : (
                   <PaymentImput
@@ -95,15 +135,24 @@ export default function PaymentForm() {
                     label="MM/YY"
                     className="cardValidityPeriod"
                     maxlength="5"
+                    // onKeyDown={(e) => {
+                    //   if (formikProps.values.cardValidityPeriod.length === 2) {
+                    //     console.log(formikProps.values);
+                    //     formikProps.values.cardValidityPeriod = `${formikProps.values.cardValidityPeriod}/`;
+                    //   }
+                    // }}
                   />
                 )}
-                {formikProps.values.CVV == '' && formikProps.touched.CVV ? (
+                {formikProps.values.CVV === '' && formikProps.touched.CVV ? (
                   <PaymentImput
                     name="CVV"
                     type="text"
                     label="CVV"
                     className="CVV error"
                     maxlength="3"
+                    // onKeyDown={(e) => {
+                    //   console.log(e);
+                    // }}
                   />
                 ) : (
                   <PaymentImput
@@ -112,16 +161,22 @@ export default function PaymentForm() {
                     label="CVV"
                     className="CVV"
                     maxlength="3"
+                    // onKeyDown={(e) => {
+                    //   console.log(e);
+                    // }}
                   />
                 )}
               </div>
-              {formikProps.values.cardHolder == '' &&
+              {formikProps.values.cardHolder === '' &&
               formikProps.touched.cardHolder ? (
                 <PaymentImput
                   name="cardHolder"
                   type="text"
                   label="Card Holder Name"
                   className="cardHolder error"
+                  //   onKeyDown={(e) => {
+                  //     console.log(e);
+                  //   }}
                 />
               ) : (
                 <PaymentImput
@@ -129,6 +184,9 @@ export default function PaymentForm() {
                   type="text"
                   label="Card Holder Name"
                   className="cardHolder"
+                  //   onKeyDown={(e) => {
+                  //     console.log(e);
+                  //   }}
                 />
               )}
               {/* <div>

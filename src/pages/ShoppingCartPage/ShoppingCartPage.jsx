@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 import Button from '../../components/Button/Button';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 export default function ShoppingCart() {
   const items = useSelector((state) => state.items.data);
@@ -34,6 +35,7 @@ export default function ShoppingCart() {
     <div>
       {getLocalCart()}
       <div className="bag__container">
+        <Breadcrumbs />
         <div className="bag-header">
           <p className="bag-header__title">SHOPPING BAG</p>
           <p className="bag-header__price">TOTAL USD ${totalPrice}.00</p>

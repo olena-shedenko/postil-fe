@@ -1,6 +1,6 @@
 .bag__container {
   // width: 1180px;
-  width: 91.4%;
+  width: 81.75%;
   max-width: 1180px;
   margin: 0 auto;
 }
@@ -67,3 +67,28 @@
     margin: 0 auto;
   }
 }
+@media (max-width: 500px) {
+  .bag-header__title {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+
+  }
+  .bag-header__price {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+  }
+  .bag-header {
+    flex-flow: column;
+  }
+}
+@media (max-width: 433px) {
+  .bag-header__title {
+    font-size: 18px;
+  }
+  .bag-header__price {
+    font-size: 18px;
+  }
+}
+
