@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
@@ -21,12 +22,20 @@ const AppRoutes = () => {
       <Route path="/blog" />
       <Route path="/catalog" render={() => <Catalog />} />
       <Route path="/contact" />
-      <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
+      <Route
+        exact
+        path="/checkout_bag"
+        render={(routerProps) => <CheckoutBagPage {...routerProps} />}
+      />
       <Route exact path="/shopping_cart" render={() => <ShoppingCartPage />} />
       <Route path="/favourites" />
       <Route path="/loungewear" />
       <Route exact path="/delivery" render={() => <DeliveryPage />} />
-      <Route exact path="/payment" render={() => <PaymentPage />} />
+      <Route
+        exact
+        path="/payment"
+        render={(routerProps) => <PaymentPage {...routerProps} />}
+      />
       <Route path="/privacy_policy" />
       <Route path="/returns" />
       <Route path="/reviews" />

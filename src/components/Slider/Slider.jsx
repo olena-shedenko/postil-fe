@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import './Slider.scss';
-import '../../index.scss';
+import { NavLink } from 'react-router-dom';
 import Button from '../Button/Button';
 
 export default function Slider() {
@@ -120,14 +120,11 @@ export default function Slider() {
                 <br />
                 <span>at a price that wont keep you up at night.</span>
               </p>
-              <Button
-                className="slide-button"
-                type="button"
-                commonStyles
-                variant="light"
-              >
-                SHOP NEW ARRIVALS
-              </Button>
+              <NavLink to="/catalog">
+                <Button className="slide-button" type="button" variant="light">
+                  SHOP NEW ARRIVALS
+                </Button>
+              </NavLink>
             </div>
 
             <div className="slide">
@@ -137,9 +134,11 @@ export default function Slider() {
                 <br />
                 <span>ON YOUR FIRST ORDER</span>
               </h3>
-              <Button className="slide-button" type="button" variant="light">
-                SHOP NEW ARRIVALS
-              </Button>
+              <NavLink to="/catalog">
+                <Button className="slide-button" type="button" variant="light">
+                  SHOP NEW ARRIVALS
+                </Button>
+              </NavLink>
             </div>
             <div className="slide">
               <img src="/images/slider/thirdimg.png" alt="" />
@@ -148,9 +147,11 @@ export default function Slider() {
                 <br />
                 <span>ON YOUR FAVOURITE FRENCH LINEN</span>
               </h3>
-              <Button className="slide-button" type="button" variant="light">
-                SHOP NEW ARRIVALS
-              </Button>
+              <NavLink to="/catalog">
+                <Button className="slide-button" type="button" variant="light">
+                  SHOP NEW ARRIVALS
+                </Button>
+              </NavLink>
             </div>
           </div>
           <div className="navigation-manual">
