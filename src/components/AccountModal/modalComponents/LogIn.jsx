@@ -1,19 +1,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import axios from 'axios';
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
+import PropTypes from 'prop-types';
 import '../AccountModal.scss';
 import { useDispatch } from 'react-redux';
-import {
-  toggleAccountError,
-  // toggleAccountModal,
-} from '../../../store/operations';
+import { setModalSignUp } from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
-import { setCart } from '../../../store/actions';
 
 const validationFormSchema = Yup.object().shape({
   loginOrEmail: Yup.string()
@@ -28,37 +24,8 @@ const validationFormSchema = Yup.object().shape({
     .required('Agree to ToS and Privacy Policy'),
 });
 
-const LogIn = () => {
+const LogIn = ({ handleSubmit }) => {
   const dispatch = useDispatch();
-
-  const submitForm = (values) => {
-    const userInfo = {
-      loginOrEmail: values.loginOrEmail,
-      password: values.password,
-    };
-    axios
-      .post(
-        'https://postil-bedding.herokuapp.com/api/customers/login',
-        JSON.stringify(userInfo),
-        { headers: { 'content-type': 'Application/JSON' } }
-      )
-      .then(({ data }) => {
-        if (typeof window !== 'undefined')
-          sessionStorage.setItem('token', data.token);
-        axios.get('https://postil-bedding.herokuapp.com/api/cart', {
-          headers: {
-            Authorization: data.token,
-          },
-        });
-      })
-      .then((res) => {
-        if (res) dispatch(setCart(res.data));
-      })
-      .catch(() => {
-        dispatch(toggleAccountError('Such user does not exist'));
-      });
-  };
-
   return (
     <>
       <Formik
@@ -67,7 +34,7 @@ const LogIn = () => {
           password: '',
           accept: false,
         }}
-        onSubmit={submitForm}
+        onSubmit={handleSubmit}
         validationSchema={validationFormSchema}
       >
         {() => {
@@ -88,10 +55,12 @@ const LogIn = () => {
                   type="password"
                 />
                 <Checkbox name="accept" />
-                <span className="tos-and-pp">
-                  By signing up you agree to{' '}
-                  <a href="blank">Terms of Service</a> and{' '}
-                  <a href="blank">Privacy Policy</a>
+
+                <span
+                  className="bottom-link"
+                  onClick={() => dispatch(setModalSignUp())}
+                >
+                  i don&apos;t have an account
                 </span>
 
                 <Button
@@ -107,6 +76,10 @@ const LogIn = () => {
       </Formik>
     </>
   );
+};
+
+LogIn.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default LogIn;
