@@ -15,7 +15,7 @@ export default function ShoppingBagItem(props) {
       currentPrice,
       isFavourite,
       sizes,
-      quantity,
+      quantityInBag,
     },
   } = props;
 
@@ -32,6 +32,21 @@ export default function ShoppingBagItem(props) {
     });
 
     dispatch({ type: SET_ITEMS, payload: newArr });
+    localStorageToggleBag(item);
+  };
+
+  const localStorageToggleBag = () => {
+    let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
+
+    if (cartArr.includes(item.itemNo)) {
+      const newCartArr = cartArr.filter((el) => el !== item.itemNo);
+      cartArr = newCartArr;
+    } else {
+      cartArr.push(item.itemNo);
+    }
+
+    const cart = JSON.stringify(cartArr);
+    localStorage.setItem('bag', cart);
   };
 
   const toggleLiked = (item) => {
@@ -43,12 +58,28 @@ export default function ShoppingBagItem(props) {
     });
 
     dispatch({ type: SET_ITEMS, payload: newArr });
+    localStorageToggleLiked(item);
+  };
+
+  const localStorageToggleLiked = (item) => {
+    console.log(item);
+    let likedArr = JSON.parse(localStorage.getItem('liked')) || [];
+
+    if (likedArr.includes(item.itemNo)) {
+      const newlikedArr = likedArr.filter((el) => el !== item.itemNo);
+      likedArr = newlikedArr;
+    } else {
+      likedArr.push(item.itemNo);
+    }
+
+    const liked = JSON.stringify(likedArr);
+    localStorage.setItem('liked', liked);
   };
 
   const addItem = (item) => {
     const newArr = items.map((el) => {
       if (el.itemNo === item.itemNo) {
-        el.quantity += 1;
+        el.quantityInBag += 1;
       }
       return el;
     });
@@ -59,9 +90,10 @@ export default function ShoppingBagItem(props) {
   const removeItem = (item) => {
     const newArr = items.map((el) => {
       if (el.itemNo === item.itemNo) {
-        el.quantity -= 1;
-        if (el.quantity === 0) {
+        el.quantityInBag -= 1;
+        if (el.quantityInBag === 0) {
           el.inShoppingBag = !el.inShoppingBag;
+          localStorageToggleBag(item)
         }
       }
       return el;
@@ -108,7 +140,7 @@ export default function ShoppingBagItem(props) {
                 </p>
               </div>
               <div className="quantity__block">
-                <p className="quantity">{quantity}</p>
+                <p className="quantity">{quantityInBag}</p>
                 <div className="add-quantity">
                   <p className="quantity-add" onClick={() => addItem(item)}>
                     <svg
@@ -172,7 +204,7 @@ export default function ShoppingBagItem(props) {
           </p>
         </div>
       </div>
-      <hr />
+      <hr className="decor_line"/>
     </>
   );
 }

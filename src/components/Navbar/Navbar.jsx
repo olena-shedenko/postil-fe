@@ -158,15 +158,6 @@ function Navbar() {
               </Link>
             </div>
           </div>
-          <div className="navbar--item icon">
-            <Link
-              to="/shopping_cart"
-              className="navbar--links"
-              onClick={closeMenu}
-            >
-              <Cart onClick={closeMenu} />
-            </Link>
-          </div>
         </nav>
       </div>
     </>

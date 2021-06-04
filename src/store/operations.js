@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
@@ -10,7 +11,7 @@ import {
   TOGGLE_ACCOUNT_MODAL,
   SET_MODAL_FORGOT_PASSWORD,
 } from './types';
-import { filteredProducts } from './actions';
+import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
 
 export const setModalSignUp = () => (dispatch) => {
@@ -32,20 +33,21 @@ export const toggleAccountModal = () => (dispatch) => {
 export const getItems = () => (dispatch) => {
   dispatch({ type: LOAD_ITEMS_REQUEST, payload: true });
   axios('https://postil-bedding.herokuapp.com/api/products').then((res) => {
-    const favouriteInLocal = JSON.parse(localStorage.getItem('Liked')) || [];
-    const cartInLocal = JSON.parse(localStorage.getItem('Bag')) || [];
+    const favouriteInLocal = JSON.parse(localStorage.getItem('liked')) || [];
+    const cartInLocal = JSON.parse(localStorage.getItem('bag')) || [];
     const newArr = res.data.map((el) => {
-      if (favouriteInLocal.includes(el.id)) {
+      el.quantityInBag = 0;
+      if (favouriteInLocal.includes(el.itemNo)) {
         el.isFavorite = !el.isFavorite;
       }
-      if (cartInLocal.includes(el.id)) {
-        el.inCart = !el.inCart;
+      if (cartInLocal.includes(el.itemNo)) {
+        el.inShoppingBag = !el.inShoppingBag;
+        el.quantityInBag = 1;
       }
-      el.inShoppingBag = true;
-      el.isFavourite = false;
-      el.quantity = 1;
+      // el.inShoppingBag = true;
       return el;
     });
+
     dispatch({ type: LOAD_ITEMS_SUCCESS, payload: newArr });
   });
 };
@@ -105,3 +107,19 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   // console.log('Final products', products);
   dispatch(filteredProducts(products));
 };
+
+export const addToCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .put(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, null, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };

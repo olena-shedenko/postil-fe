@@ -25,3 +25,5 @@ export const SET_MAX_SLIDER_VALUE = 'SET_MAX_SLIDER_VALUE';
 
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_PER_PAGE = 'SET_PER_PAGE';
+
+export const SET_CART = 'SET_CART';
