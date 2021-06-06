@@ -7,7 +7,6 @@ import { NavLink } from 'react-router-dom';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/Navbar/Navbar';
 
 export default function ShoppingCart() {
   const items = useSelector((state) => state.items.data);
@@ -22,7 +21,6 @@ export default function ShoppingCart() {
 
   return (
     <div>
-      <Navbar />
       <div className="container">
         <div className="bag-header">
           <p className="bag-header__title">SHOPPING BAG</p>
