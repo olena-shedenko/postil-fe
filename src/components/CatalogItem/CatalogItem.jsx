@@ -27,7 +27,7 @@ const CatalogItem = ({ id, img, name, currentPrice }) => {
             onClick={() => {
               //   const id = product._id;
               // eslint-disable-next-line no-console
-              console.log(id);
+              // console.log(id);
               dispatch(
                 addToCart({
                   productId: id,

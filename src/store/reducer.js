@@ -39,8 +39,8 @@ const initialState = {
   },
   filters: {},
   sliderValues: {
-    min: 15,
-    max: 250,
+    min: 10,
+    max: 280,
   },
   currentPage: 0,
   perPage: 18,
