@@ -7,6 +7,7 @@ import {
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
   SET_ITEMS,
+  SET_PRODUCT,
   SET_PRODUCTS,
   FILTERED_PRODUCTS,
   CLEAR_FILTERED_PRODUCTS,
@@ -68,6 +69,8 @@ const reducer = (state = initialState, action) => {
       };
     case SET_ITEMS:
       return { ...state, items: { ...state.items, data: action.payload } };
+    case SET_PRODUCT:
+      return { ...state, item: action.payload };
     case SET_PRODUCTS:
       return { ...state, products: action.payload };
     case FILTERED_PRODUCTS:

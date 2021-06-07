@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+export const getProduct = (state) => state.items.data;
 export const getProducts = (state) => state.items.data;
 export const getFilteredProducts = (state) => state.filteredProducts;
 export const getFilterSize = (state) => state.filters.sizes;

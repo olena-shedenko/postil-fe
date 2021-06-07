@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import {
+  SET_PRODUCT,
   SET_PRODUCTS,
   FILTERED_PRODUCTS,
   CLEAR_FILTERED_PRODUCTS,
@@ -16,6 +17,10 @@ import {
   SET_PER_PAGE,
   SET_CART,
 } from './types';
+
+export const setProduct = (data) => {
+  return { type: SET_PRODUCT, payload: data };
+};
 
 export const setProducts = (data) => {
   return { type: SET_PRODUCTS, payload: data };
