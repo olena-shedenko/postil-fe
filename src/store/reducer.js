@@ -1,4 +1,22 @@
 import {
+  SET_MODAL_FORGOT_PASSWORD,
+  TOGGLE_ACCOUNT_ERROR,
+  TOGGLE_ACCOUNT_MODAL,
+  SET_PRODUCTS,
+  FILTERED_PRODUCTS,
+  CLEAR_FILTERED_PRODUCTS,
+  FILTER_SIZE,
+  FILTER_COLOR,
+  FILTER_FABRIC,
+  FILTER_CATALOG,
+  FILTER_BY_CATEGORY,
+  CLEAR_CATEGORY,
+  SET_SELECTED_OPTION,
+  SET_MIN_SLIDER_VALUE,
+  SET_MAX_SLIDER_VALUE,
+  SET_CURRENT_PAGE,
+  SET_PER_PAGE,
+  SET_CART,
   SET_MODAL_LOG_IN,
   SET_MODAL_SIGN_UP,
   TOGGLE_BAG_POPUP,
@@ -14,7 +32,10 @@ import {
 } from './types';
 
 const initialState = {
-  accountModalAction: 'singUp',
+  accountModalAction: 'signUp',
+  accountModal: false,
+  isError: false,
+  errMessage: null,
   openedBagPopup: false,
   productsInCart: {
     data: [],
@@ -28,6 +49,14 @@ const initialState = {
     data: [],
     isLoading: true,
   },
+  filters: {},
+  sliderValues: {
+    min: 15,
+    max: 250,
+  },
+  currentPage: 0,
+  perPage: 18,
+  cart: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -52,6 +81,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         productsInCart: { ...state.productsInCart, data: action.payload },
       };
+    case SET_MODAL_FORGOT_PASSWORD:
+      return { ...state, accountModalAction: action.payload };
+    case TOGGLE_ACCOUNT_ERROR:
+      return { ...state, isError: !state.isError, errMessage: action.payload };
+    case TOGGLE_ACCOUNT_MODAL:
+      return { ...state, accountModal: !state.accountModal };
     case LOAD_ITEMS_REQUEST:
       return { ...state, items: { ...state.items, isLoading: action.payload } };
     case LOAD_ITEMS_SUCCESS:
@@ -75,6 +110,58 @@ const reducer = (state = initialState, action) => {
     case ERROR_REMOVE_PRODUCT_FROM_CART:
       console.log(action.payload);
       return { ...state };
+    case SET_PRODUCTS:
+      return { ...state, products: action.payload };
+    case FILTERED_PRODUCTS:
+      return { ...state, filteredProducts: action.payload };
+    case CLEAR_FILTERED_PRODUCTS:
+      return { ...state, filteredProducts: null };
+    case FILTER_SIZE:
+      return { ...state, filters: { ...state.filters, sizes: action.payload } };
+    case FILTER_COLOR:
+      return { ...state, filters: { ...state.filters, color: action.payload } };
+    case FILTER_FABRIC:
+      return {
+        ...state,
+        filters: { ...state.filters, fabric: action.payload },
+      };
+    case FILTER_CATALOG:
+      return { ...state, filterCatalog: action.payload };
+    case FILTER_BY_CATEGORY:
+      return {
+        ...state,
+        filters: { ...state.filters, categories: action.payload },
+      };
+    case CLEAR_CATEGORY: {
+      return { ...state, filters: {} };
+    }
+    case SET_MIN_SLIDER_VALUE: {
+      return {
+        ...state,
+        sliderValues: { ...state.sliderValues, min: action.payload },
+      };
+    }
+    case SET_MAX_SLIDER_VALUE: {
+      return {
+        ...state,
+        sliderValues: { ...state.sliderValues, max: action.payload },
+      };
+    }
+    case SET_SELECTED_OPTION: {
+      return {
+        ...state,
+        filters: { ...state.filters, selectedOption: action.payload },
+      };
+    }
+    case SET_CURRENT_PAGE: {
+      return { ...state, currentPage: action.payload };
+    }
+    case SET_PER_PAGE: {
+      return { ...state, perPage: action.payload };
+    }
+    case SET_CART: {
+      return { ...state, cart: action.payload };
+    }
     default:
       return state;
   }

@@ -1,15 +1,20 @@
 @font-face {
-  font-family: "Mulish";
+  font-family: 'Mulish';
   src: url(./fonts/Mulish/Mulish-Medium.ttf);
 }
 
 .container {
- width: 1180px;
- margin: 0 auto;
+  width: 1180px;
+  margin: 0 auto;
 }
 
 a {
   text-decoration: none;
+}
+
+.active {
+  color: #8c8c8c;
+  font-size: 0.875rem;
 }
 
 // img {
@@ -24,10 +29,6 @@ p {
 ul {
   list-style: none;
 }
-*{
+* {
   font-family: Mulish;
-
 }
-// *{
-//   font-family: Mulish;
-// }

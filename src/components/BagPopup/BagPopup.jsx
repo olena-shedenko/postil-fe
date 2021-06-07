@@ -57,7 +57,7 @@ export default function BagPopup() {
                   className="bagpopup-header__close"
                 >
                   <img
-                    src={`${process.env.PUBLIC_URL}/images/close-icon.svg`}
+                    src={`${process.env.PUBLIC_URL}/images/bagPopup/close-icon.svg`}
                     alt="close"
                     className="bagpopup-header__close__img"
                   />

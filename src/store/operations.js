@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
@@ -13,13 +14,27 @@ import {
   REQUEST_REMOVE_PRODUCT_FROM_CART,
   SUCCESS_REMOVE_PRODUCT_FROM_CART,
   ERROR_REMOVE_PRODUCT_FROM_CART,
+  TOGGLE_ACCOUNT_ERROR,
+  TOGGLE_ACCOUNT_MODAL,
+  SET_MODAL_FORGOT_PASSWORD,
 } from './types';
+import { filteredProducts, setCart } from './actions';
+import { getProducts } from './selectors';
 
 export const setModalSignUp = () => (dispatch) => {
   dispatch({ type: SET_MODAL_SIGN_UP, payload: 'signUp' });
 };
 export const setModalLogIn = () => (dispatch) => {
   dispatch({ type: SET_MODAL_LOG_IN, payload: 'logIn' });
+};
+export const setModalForgotPassword = () => (dispatch) => {
+  dispatch({ type: SET_MODAL_FORGOT_PASSWORD, payload: 'forgotPassword' });
+};
+export const toggleAccountError = (errMessage) => (dispatch) => {
+  dispatch({ type: TOGGLE_ACCOUNT_ERROR, payload: errMessage });
+};
+export const toggleAccountModal = () => (dispatch) => {
+  dispatch({ type: TOGGLE_ACCOUNT_MODAL });
 };
 
 export const toggleBagPopup = () => (dispatch) => {
@@ -31,8 +46,7 @@ export const setCartProducts = () => (dispatch) => {
   axios
     .get('https://postil-bedding.herokuapp.com/api/cart', {
       headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTY5ZTdhZDI3YjM1MDAxNTk2ZGUwMCIsImZpcnN0TmFtZSI6IkN1c3RvbWVyIiwibGFzdE5hbWUiOiJOZXdvbmUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MjI0MDQwMDAsImV4cCI6MTYyMjQ0MDAwMH0._JSYGk94lUDVNHWuzG4SMjZI13-YqOROQcgjqAHO6I0',
+        Authorization: sessionStorage.getItem('token'),
       },
     })
     .then((cart) => {
@@ -49,8 +63,7 @@ export const removeProductFromCart = (id) => (dispatch) => {
   axios
     .delete(`https://postil-bedding.herokuapp.com/api/cart/${id}`, {
       headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTY5ZTdhZDI3YjM1MDAxNTk2ZGUwMCIsImZpcnN0TmFtZSI6IkN1c3RvbWVyIiwibGFzdE5hbWUiOiJOZXdvbmUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MjI0MDQwMDAsImV4cCI6MTYyMjQ0MDAwMH0._JSYGk94lUDVNHWuzG4SMjZI13-YqOROQcgjqAHO6I0',
+        Authorization: sessionStorage.getItem('token'),
       },
     })
     .then((data) => {
@@ -84,3 +97,75 @@ export const getItems = () => (dispatch) => {
     dispatch({ type: LOAD_ITEMS_SUCCESS, payload: newArr });
   });
 };
+
+const sortAsc = (arr, field) => {
+  return arr.sort((a, b) => {
+    if (a[field] > b[field]) return 1;
+    if (b[field] > a[field]) return -1;
+    return 0;
+  });
+};
+
+const sortDesc = (arr, field) => {
+  return arr.sort((a, b) => {
+    if (a[field] > b[field]) return -1;
+    if (b[field] > a[field]) return 1;
+    return 0;
+  });
+};
+
+export const filterAndSortOperation = () => (dispatch, getState) => {
+  const state = getState();
+  let products = getProducts(state);
+  const { filters, sliderValues } = state;
+  const { categories, color, fabric, sizes, selectedOption } = filters;
+  const { min, max } = sliderValues;
+
+  if (sizes) {
+    products = products.filter((product) => product.sizes === sizes);
+  }
+
+  if (color) {
+    products = products.filter((product) => product.color === color);
+  }
+
+  if (fabric) {
+    products = products.filter((product) => product.fabric === fabric);
+  }
+
+  if (categories) {
+    products = products.filter((product) => product.categories === categories);
+  }
+
+  if (selectedOption && selectedOption === 'low-to-high') {
+    products = sortAsc([...products], 'currentPrice');
+  }
+
+  if (min && max)
+    products = products.filter(
+      (item) => item.currentPrice >= min && item.currentPrice <= max
+    );
+
+  if (selectedOption && selectedOption === 'high-to-low') {
+    products = sortDesc([...products], 'currentPrice');
+  }
+  // eslint-disable-next-line no-console
+  // console.log('Final products', products);
+  dispatch(filteredProducts(products));
+};
+
+export const addToCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .put(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, null, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };

@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Logo } from '../../images/svg/postil.svg';
 import { ReactComponent as Arrow } from '../../images/svg/vector.svg';
 import { ReactComponent as LogIn } from '../../images/svg/person.svg';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
-import { toggleBagPopup } from '../../store/operations';
+import { toggleBagPopup, toggleAccountModal } from '../../store/operations';
 
-// import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
+import AccountModal from '../AccountModal/AccountModal';
+
+import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 import BagPopup from '../BagPopup/BagPopup';
 
 function Navbar() {
+  const dispatch = useDispatch();
+
   const [dropdown, setDropdown] = useState(false);
   const [catalog, setCatalog] = useState(false);
 
-  const dispatch = useDispatch();
-
   const handleCatalog = () => setCatalog(!catalog);
   const handleClick = () => setDropdown(!dropdown);
+
+  const accountModal = useSelector((state) => state.accountModal);
+
   function closeMenu() {
     setDropdown(false);
     setCatalog(false);
@@ -29,9 +34,11 @@ function Navbar() {
   return (
     <>
       <BagPopup />
+      {accountModal && <AccountModal />}
       <div className="nav">
         <nav className="navbar">
-          <Link to="/" onClick={handleClick} data-testid="logo">
+          <Bars onClick={handleClick} className="navbar--bars" />
+          <Link to="/" data-testid="logo">
             <Logo className="navbar--logo" />
           </Link>
           <div
@@ -108,7 +115,6 @@ function Navbar() {
               </div>
             </div>
           </div>
-
           <div className={dropdown ? 'navbar--menu active' : 'navbar--menu'}>
             <div className="navbar--item">
               <Link
@@ -132,26 +138,27 @@ function Navbar() {
             <div className="navbar--item" data-testid="search">
               <Search />
             </div>
-            <div className="navbar--item icon">
-              <LogIn onClick={closeMenu} />
+            <div className="navbar--item navbar--item--account icon">
+              <LogIn
+                onClick={() => {
+                  dispatch(toggleAccountModal());
+                }}
+              />
             </div>
-            <div className="navbar--item icon">
+            <div className="navbar--item  icon">
               <Favourites onClick={closeMenu} />
             </div>
             <div className="navbar--item icon">
-              {/* eslint-disable-next-line */}
-            <div
-                // to="/shopping_cart"
-                className="navbar--links"
-                onClick={() => dispatch(toggleBagPopup())}
-              >
-                <Cart onClick={closeMenu} />
+              <div className="navbar--item icon">
+                {/* eslint-disable-next-line */}
+                    <div
+                  className="navbar--links"
+                  onClick={() => dispatch(toggleBagPopup())}
+                >
+                  <Cart onClick={closeMenu} />
+                </div>
               </div>
             </div>
-          </div>
-          <div>
-            En
-            <Arrow className="navbar--arrow" />
           </div>
         </nav>
       </div>

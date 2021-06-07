@@ -120,7 +120,12 @@ export default function Slider() {
                 <br />
                 <span>at a price that wont keep you up at night.</span>
               </p>
-              <Button className="slide-button" type="button" variant="light">
+              <Button
+                className="slide-button"
+                type="button"
+                commonStyles
+                variant="light"
+              >
                 SHOP NEW ARRIVALS
               </Button>
             </div>

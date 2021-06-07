@@ -1,0 +1,112 @@
+// CATALOG ITEMS STYLES SECTION
+.cg-products {
+  width: 100vw;
+  display: grid;
+  grid-gap: 1.25rem;
+}
+
+.cg-item {
+  position: relative;
+  text-align: center;
+  &:hover .item-hover {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-delay: 0.1s;
+  }
+  &:hover .cg-item__name {
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-delay: 0.1s;
+  }
+  &__img {
+    width: 100vw;
+    height: auto;
+    display: block;
+  }
+  &__name {
+    margin: 0;
+    position: absolute;
+    width: 100vw;
+    // left: 14px;
+    bottom: 21px;
+    background-color: #373f41;
+    color: #fff;
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+.item-hover {
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  top: -4px;
+  left: -4px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 4px solid rgba(38, 37, 36, 0.7);
+  border-radius: 3px;
+  &__name {
+    color: #fff;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  &__price {
+    color: #fff;
+    font-size: 32px;
+    line-height: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+}
+
+.hover-btn__btn {
+  padding: 11px 35px;
+  transition: background-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: #373f41;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+// END OF CATALOG ITEMS STYLES SECTION
+
+// MEDIA QUERY RULES
+
+@media (min-width: 630px) {
+  .cg-products {
+    width: 100%;
+  }
+  .cg-item {
+    &__img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    &__name {
+      width: 90%;
+      left: 14px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .cg-products {
+    grid-template-columns: repeat(2, 48.5%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cg-products {
+    grid-template-columns: repeat(3, 31.5%);
+  }
+}

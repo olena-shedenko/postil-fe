@@ -56,7 +56,7 @@ const Footer = () => {
             <p className="ft-item__text">
               Studio M, 4th Floor8 Lower Manchester street, M1 5QF
             </p>
-            <a className="ft-item__link" href="tel:++380938759922">
+            <a className="ft-item__link" href="tel:+380938759922">
               +38 093 875 9922
             </a>
           </div>
@@ -82,7 +82,12 @@ const Footer = () => {
                   {errors.email && touched.email ? (
                     <div className="email-error">{errors.email}</div>
                   ) : null}
-                  <Button type="submit" className="ft-form__btn" variant="dark">
+                  <Button
+                    type="submit"
+                    className="ft-form__btn"
+                    commonStyles
+                    variant="dark"
+                  >
                     Send
                   </Button>
                 </Form>

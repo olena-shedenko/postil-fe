@@ -17,6 +17,7 @@ export default function Popular() {
                 variant="bordered"
                 className="text-block__button"
                 type="button"
+                commonStyles
               >
                 Shop
               </Button>
@@ -30,6 +31,7 @@ export default function Popular() {
                 className="text-block__button"
                 variant="bordered"
                 type="button"
+                commonStyles
               >
                 Shop
               </Button>
@@ -43,6 +45,7 @@ export default function Popular() {
                 className="text-block__button"
                 variant="bordered"
                 type="button"
+                commonStyles
               >
                 Shop
               </Button>
@@ -56,6 +59,7 @@ export default function Popular() {
                 className="text-block__button"
                 variant="bordered"
                 type="button"
+                commonStyles
               >
                 Shop
               </Button>

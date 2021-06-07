@@ -4,16 +4,10 @@ import './CheckoutBagItem.scss';
 import { useDispatch } from 'react-redux';
 import { SET_ITEMS } from '../../store/types';
 
-
 export default function ShoppingBagItem(props) {
   const { item, items } = props;
   const {
-    item: {
-      imageUrls,
-      name,
-      currentPrice,
-      quantity,
-    },
+    item: { imageUrls, name, currentPrice, quantity },
   } = props;
 
   const dispatch = useDispatch();

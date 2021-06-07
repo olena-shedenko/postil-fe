@@ -21,14 +21,14 @@ function BagPopupItem(props) {
         >
           <img
             className="bagpopup__item__image_close"
-            src={`${process.env.PUBLIC_URL}/images/close-icon.svg`}
-            alt=""
+            src={`${process.env.PUBLIC_URL}/images/bagPopup/close-icon.svg`}
+            alt="close"
           />
         </button>
         <img
           className="bagpopup__item__image"
           src={product.imageUrls[0]}
-          alt=""
+          alt="item"
         />
         <div className="bagpopup__item__text_wrap">
           <span className="bagpopup__item__text">{product.name}</span>

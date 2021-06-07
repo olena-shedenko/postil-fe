@@ -1,53 +1,53 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { render, screen } from "@testing-library/react";
-import Footer from "./Footer";
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
+import Footer from './Footer';
 
-describe("component Footer", () => {
-  it("should render properly", () => {
+describe('component Footer', () => {
+  it('should render properly', () => {
     render(
       <Router>
         <Footer />
       </Router>
     );
-    const footer = screen.getByRole("contentinfo");
+    const footer = screen.getByRole('contentinfo');
     expect(footer).toBeVisible();
   });
 
-  it("should render properly headers", () => {
+  it('should render properly headers', () => {
     render(
       <Router>
         <Footer />
       </Router>
     );
-    const header = screen.getByRole("heading", { name: /shop/i });
+    const header = screen.getByRole('heading', { name: /shop/i });
     expect(header).toBeVisible();
   });
-  it("should render properly links", () => {
+  it('should render properly links', () => {
     render(
       <Router>
         <Footer />
       </Router>
     );
-    const link = screen.getByRole("link", { name: /catalog/i });
+    const link = screen.getByRole('link', { name: /catalog/i });
     expect(link).toBeVisible();
   });
-  it("should render properly input field", () => {
+  it('should render properly input field', () => {
     render(
       <Router>
         <Footer />
       </Router>
     );
-    const input = screen.getByRole("textbox");
+    const input = screen.getByRole('textbox');
     expect(input).toBeVisible();
   });
-  it("should render properly button", () => {
+  it('should render properly button', () => {
     render(
       <Router>
         <Footer />
       </Router>
     );
-    const button = screen.getByRole("button", { name: /send/i });
+    const button = screen.getByRole('button', { name: /send/i });
     expect(button).toBeVisible();
   });
 });

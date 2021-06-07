@@ -18,6 +18,10 @@
     background: white;
     padding: 15px 10px 0;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &-header {

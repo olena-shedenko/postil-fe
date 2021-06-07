@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
