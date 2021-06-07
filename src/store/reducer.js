@@ -4,6 +4,7 @@ import {
   SET_MODAL_FORGOT_PASSWORD,
   TOGGLE_ACCOUNT_ERROR,
   TOGGLE_ACCOUNT_MODAL,
+  GET_BLOG_POSTS,
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
   SET_ITEMS,
@@ -29,6 +30,7 @@ const initialState = {
   accountModal: false,
   isError: false,
   errMessage: null,
+  blogposts: [],
   items: {
     data: [],
     isLoading: true,
@@ -59,6 +61,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, isError: !state.isError, errMessage: action.payload };
     case TOGGLE_ACCOUNT_MODAL:
       return { ...state, accountModal: !state.accountModal };
+    case GET_BLOG_POSTS:
+      return { ...state, blogposts: action.payload };
     case LOAD_ITEMS_REQUEST:
       return { ...state, items: { ...state.items, isLoading: action.payload } };
     case LOAD_ITEMS_SUCCESS:

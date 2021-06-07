@@ -1,0 +1,17 @@
+[
+  {
+    "heading": "New offers exclusive for you!",
+    "text": "Up to 50% sale for all stock",
+    "image": "../public/images/blogposts/testimg1.jpg"
+  },
+  {
+    "heading": "Wonderful White Bedroom Inspiration",
+    "text": "There's nothing quite like a wonderful white bedroom, so we're here to give you some handy tips and inspiration for your white bedroom décor.",
+    "image": "../public/images/blogposts/testimg2.jpg"
+  },
+  {
+    "heading": "Our Planet, Your Bed",
+    "text": "Read all about the steps we're taking to not only bring you beautiful bedrooms, but how we are busy keeping the planet clean, too.",
+    "image": "../public/images/blogposts/testimg3.jpg"
+  }
+]

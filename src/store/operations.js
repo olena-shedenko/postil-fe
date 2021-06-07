@@ -10,6 +10,7 @@ import {
   LOAD_ITEMS_SUCCESS,
   TOGGLE_ACCOUNT_MODAL,
   SET_MODAL_FORGOT_PASSWORD,
+  GET_BLOG_POSTS,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -28,6 +29,12 @@ export const toggleAccountError = (errMessage) => (dispatch) => {
 };
 export const toggleAccountModal = () => (dispatch) => {
   dispatch({ type: TOGGLE_ACCOUNT_MODAL });
+};
+
+export const getBlogPosts = () => (dispatch) => {
+  axios('http://localhost:3000/blogposts.json').then((res) =>
+    dispatch({ type: GET_BLOG_POSTS, payload: res.data })
+  );
 };
 
 export const getItems = () => (dispatch) => {
