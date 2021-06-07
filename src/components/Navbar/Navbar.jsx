@@ -122,7 +122,11 @@ function Navbar() {
               </Link>
             </div>
             <div className="navbar--item">
-              <Link to="/contact" className="navbar--links" onClick={closeMenu}>
+              <Link
+                to="/contact-us"
+                className="navbar--links"
+                onClick={closeMenu}
+              >
                 Contact
               </Link>
             </div>
