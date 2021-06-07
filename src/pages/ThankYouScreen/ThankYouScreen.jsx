@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './ThankYouScreen.scss';
 
-export default function ThankYouScreen() {
+const ThankYouScreen = () => {
   return (
     <div>
       <div className="thanks__container">
@@ -16,4 +16,6 @@ export default function ThankYouScreen() {
       </div>
     </div>
   );
-}
+};
+
+export default ThankYouScreen;

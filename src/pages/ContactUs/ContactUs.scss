@@ -1,0 +1,53 @@
+.contact-us {
+  padding: 40px 20px;
+  color: #373f41;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid #cdcfcf;
+  border-collapse: collapse;
+  color: #373f41;
+  font-size: 0.75rem;
+  &-header {
+    text-align: left;
+    background-color: #cdcfcf;
+  }
+  & th,
+  & td {
+    border: 1px solid #373f41;
+    padding: 5px 20px 5px 4px;
+  }
+  & td {
+    width: calc(100% / 3);
+  }
+}
+
+.details-email__email {
+  padding-left: 5px;
+}
+
+.details-post__text {
+  padding: 10px 0;
+}
+
+// MEDIA QUERY
+@media (min-width: 630px) {
+  .table {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .table {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .contact-us {
+    width: 75em;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+}
