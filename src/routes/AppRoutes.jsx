@@ -9,6 +9,7 @@ import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
+import ThankYouScreen from '../pages/ThankYouScreen/ThankYouScreen';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -29,6 +30,7 @@ const AppRoutes = () => {
         path="/checkout_bag"
         render={(routerProps) => <CheckoutBagPage {...routerProps} />}
       />
+      <Route exact path="/thank_you_screen" render={() => <ThankYouScreen />} />
       <Route exact path="/shopping_cart" render={() => <ShoppingCartPage />} />
       <Route path="/favourites" />
       <Route path="/loungewear" />

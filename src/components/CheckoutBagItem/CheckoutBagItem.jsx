@@ -70,7 +70,7 @@ export default function ShoppingBagItem(props) {
           />
           <div className="text-content">
             <p className="text-content__title">{name}</p>
-            <p className="text-content__discribe">
+            <p className="text-content__discribe discribe">
               This is the luxury bedding set with absolutely everything in it,
               at a price that won't keep you up at night.
             </p>
