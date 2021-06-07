@@ -7,6 +7,7 @@ import CheckoutBagPage from '../pages/CheckoutBagPage/CheckoutBagPage';
 import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
+import ThankYouScreen from '../pages/ThankYouScreen/ThankYouScreen';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -27,6 +28,7 @@ const AppRoutes = () => {
         path="/checkout_bag"
         render={(routerProps) => <CheckoutBagPage {...routerProps} />}
       />
+      <Route exact path="/thank_you_screen" render={() => <ThankYouScreen />} />
       <Route exact path="/shopping_cart" render={() => <ShoppingCartPage />} />
       <Route path="/favourites" />
       <Route path="/loungewear" />
