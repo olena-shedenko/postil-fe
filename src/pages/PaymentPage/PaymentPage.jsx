@@ -155,10 +155,10 @@ export default function PaymentPage(props) {
             </p>
             <p className="total-price">
               <span>TOTAL</span>
-              <span>${totalPrice === totalPrice + 5}</span>
+              <span>${totalPrice += 5}</span>
             </p>
             <NavLink to="/thank_you_screen">
-              <Button className="next__button" variant="dark" type="button">
+              <Button className="next__button btn" variant="dark" type="button">
                 Next
               </Button>
             </NavLink>
