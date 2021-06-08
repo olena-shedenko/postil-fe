@@ -9,7 +9,9 @@ import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
+import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import ThankYouScreen from '../pages/ThankYouScreen/ThankYouScreen';
+
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -40,7 +42,7 @@ const AppRoutes = () => {
         path="/payment"
         render={(routerProps) => <PaymentPage {...routerProps} />}
       />
-      <Route path="/privacy_policy" />
+      <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
       <Route path="/returns" />
       <Route path="/reviews" />
       <Route path="/sale" />
