@@ -7,7 +7,7 @@ import CheckoutBagPage from '../pages/CheckoutBagPage/CheckoutBagPage';
 import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import Catalog from '../pages/Catalog/Catalog';
-import Product from '../components/Product/Product';
+import OneProduct from '../pages/OneProduct/OneProduct';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
@@ -26,7 +26,7 @@ const AppRoutes = () => {
       <Route path="/bedroom" />
       <Route path="/blog" />
       <Route path="/catalog" render={() => <Catalog />} />
-      <Route path="/product/:id" component={Product} />
+      <Route path="/product/:id" component={OneProduct} />
       <Route path="/contact" />
       <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
       <Route path="/contact-us" render={() => <ContactUs />} />
