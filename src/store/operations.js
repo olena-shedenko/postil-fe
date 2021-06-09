@@ -110,8 +110,6 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   if (selectedOption && selectedOption === 'high-to-low') {
     products = sortDesc([...products], 'currentPrice');
   }
-  // eslint-disable-next-line no-console
-  // console.log('Final products', products);
   dispatch(filteredProducts(products));
 };
 
