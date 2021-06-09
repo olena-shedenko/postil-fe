@@ -1,0 +1,51 @@
+.policy {
+  &-container {
+    padding: 20px;
+  }
+
+  &__main-title {
+    width: 100%;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: Mulish, sans-serif;
+    color: #373f41;
+  }
+  &__off-title {
+    width: 100%;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  &__text {
+    margin-bottom: 15px;
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
+    color: #8c8c8c;
+  }
+  &__list {
+    width: 100%;
+    color: #8c8c8c;
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+.list {
+  &__item {
+    margin-right: 15px;
+  }
+}
+
+// MEDIA QUERIES
+
+@media (min-width: 1200px) {
+  .policy {
+    &-container {
+      width: 75em;
+      margin: 0 auto;
+      padding: 0 0 15px 0;
+    }
+  }
+}

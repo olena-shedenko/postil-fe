@@ -5,9 +5,14 @@ import { useDispatch } from 'react-redux';
 import { SET_ITEMS } from '../../store/types';
 
 export default function ShoppingBagItem(props) {
-  const { item, items } = props;
+  const { items } = props;
   const {
-    item: { imageUrls, name, currentPrice, quantity },
+    item: {
+      imageUrls,
+      name,
+      currentPrice,
+      quantityInBag,
+    },
   } = props;
 
   const dispatch = useDispatch();
@@ -15,7 +20,7 @@ export default function ShoppingBagItem(props) {
   const addItem = (item) => {
     const newArr = items.map((el) => {
       if (el.itemNo === item.itemNo) {
-        el.quantity += 1;
+        el.quantityInBag += 1;
       }
       return el;
     });
@@ -23,12 +28,27 @@ export default function ShoppingBagItem(props) {
     dispatch({ type: SET_ITEMS, payload: newArr });
   };
 
+  const localStorageToggleBag = () => {
+    let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
+
+    if (cartArr.includes(item.itemNo)) {
+      const newCartArr = cartArr.filter((el) => el !== item.itemNo);
+      cartArr = newCartArr;
+    } else {
+      cartArr.push(item.itemNo);
+    }
+
+    const cart = JSON.stringify(cartArr);
+    localStorage.setItem('bag', cart);
+  };
+
   const removeItem = (item) => {
     const newArr = items.map((el) => {
       if (el.itemNo === item.itemNo) {
-        el.quantity -= 1;
-        if (el.quantity === 0) {
+        el.quantityInBag -= 1;
+        if (el.quantityInBag === 0) {
           el.inShoppingBag = !el.inShoppingBag;
+          localStorageToggleBag(item);
         }
       }
       return el;
@@ -50,14 +70,14 @@ export default function ShoppingBagItem(props) {
           />
           <div className="text-content">
             <p className="text-content__title">{name}</p>
-            <p className="text-content__discribe">
+            <p className="text-content__discribe discribe">
               This is the luxury bedding set with absolutely everything in it,
               at a price that won't keep you up at night.
             </p>
             <p className="text-content__price">${currentPrice}</p>
             <div className="ddd">
-              <div className="quantity__block">
-                <p className="quantity">{quantity}</p>
+              <div className="quantity__block quantity__block2">
+                <p className="quantity">{quantityInBag}</p>
                 <div className="add-quantity">
                   <p className="quantity-add" onClick={() => addItem(item)}>
                     <svg

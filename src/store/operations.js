@@ -33,20 +33,21 @@ export const toggleAccountModal = () => (dispatch) => {
 export const getItems = () => (dispatch) => {
   dispatch({ type: LOAD_ITEMS_REQUEST, payload: true });
   axios('https://postil-bedding.herokuapp.com/api/products').then((res) => {
-    const favouriteInLocal = JSON.parse(localStorage.getItem('Liked')) || [];
-    const cartInLocal = JSON.parse(localStorage.getItem('Bag')) || [];
+    const favouriteInLocal = JSON.parse(localStorage.getItem('liked')) || [];
+    const cartInLocal = JSON.parse(localStorage.getItem('bag')) || [];
     const newArr = res.data.map((el) => {
-      if (favouriteInLocal.includes(el.id)) {
+      el.quantityInBag = 0;
+      if (favouriteInLocal.includes(el.itemNo)) {
         el.isFavorite = !el.isFavorite;
       }
-      if (cartInLocal.includes(el.id)) {
-        el.inCart = !el.inCart;
+      if (cartInLocal.includes(el.itemNo)) {
+        el.inShoppingBag = !el.inShoppingBag;
+        el.quantityInBag = 1;
       }
-      el.inShoppingBag = true;
-      el.isFavourite = false;
-      el.quantity = 1;
+      // el.inShoppingBag = true;
       return el;
     });
+
     dispatch({ type: LOAD_ITEMS_SUCCESS, payload: newArr });
   });
 };
@@ -102,8 +103,6 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   if (selectedOption && selectedOption === 'high-to-low') {
     products = sortDesc([...products], 'currentPrice');
   }
-  // eslint-disable-next-line no-console
-  // console.log('Final products', products);
   dispatch(filteredProducts(products));
 };
 
