@@ -12,6 +12,7 @@ import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import ThankYouScreen from '../pages/ThankYouScreen/ThankYouScreen';
 import Returns from '../pages/Returns/Returns';
+import PaymentDelivery from '../pages/PaymentDelivery/PaymentDelivery';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -42,6 +43,7 @@ const AppRoutes = () => {
         path="/payment"
         render={(routerProps) => <PaymentPage {...routerProps} />}
       />
+      <Route path="/payment_and_delivery" render={() => <PaymentDelivery />} />
       <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
       <Route path="/returns" render={() => <Returns />} />
       <Route path="/reviews" />
