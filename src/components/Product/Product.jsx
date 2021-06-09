@@ -28,9 +28,11 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
             <div>{sizes}</div>
             <div className="product__price-wrapper">
               <h5 className="product__price">USD ${currentPrice}</h5>
-              <Button variant="dark" type="button" className="btn__add">
-                ADD TO BAG
-              </Button>
+              <div>
+                <Button variant="dark" type="button" className="btn__add">
+                  ADD TO BAG
+                </Button>
+              </div>
               <div className="navbar--item  icon">
                 <Favourites />
               </div>
