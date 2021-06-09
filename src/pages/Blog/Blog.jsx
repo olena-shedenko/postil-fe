@@ -14,8 +14,10 @@ const Blog = () => {
 
   return (
     <div className="blogpost-block">
-      {blogContent.map(({ heading, text, image }) => {
-        return <BlogPost heading={heading} text={text} image={image} />;
+      {blogContent.map(({ heading, text, image, link }) => {
+        return (
+          <BlogPost heading={heading} text={text} image={image} link={link} />
+        );
       })}
     </div>
   );

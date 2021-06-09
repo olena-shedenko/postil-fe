@@ -2,16 +2,19 @@
   {
     "heading": "New offers exclusive for you!",
     "text": "Up to 50% sale for all stock",
-    "image": "https://www.happybeds.co.uk/media/catalog/product/cache/2760f187cb7d1bcdeca5818f247800d3/f/e/fenton_grey_ottoman_2.jpg"
+    "image": "https://www.happybeds.co.uk/media/catalog/product/cache/2760f187cb7d1bcdeca5818f247800d3/f/e/fenton_grey_ottoman_2.jpg",
+    "link" : "google.com"
   },
   {
     "heading": "Wonderful White Bedroom Inspiration",
     "text": "There's nothing quite like a wonderful white bedroom, so we're here to give you some handy tips and inspiration for your white bedroom décor.",
-    "image": "https://media.sweetpeaandwillow.com/media/catalog/product/cache/08a0b36ebc62d1aabd4a717a82ad731c/o/l/olivia-bed.jpg"
+    "image": "https://media.sweetpeaandwillow.com/media/catalog/product/cache/08a0b36ebc62d1aabd4a717a82ad731c/o/l/olivia-bed.jpg",
+    "link" : "google.com"
   },
   {
     "heading": "Our Planet, Your Bed",
     "text": "Read all about the steps we're taking to not only bring you beautiful bedrooms, but how we are busy keeping the planet clean, too.",
-    "image": "https://www.noaandnani.co.uk/images/arundel-kingsize-bed-frame-p1053-8159_image.jpg"
+    "image": "https://www.noaandnani.co.uk/images/arundel-kingsize-bed-frame-p1053-8159_image.jpg",
+    "link" : "google.com"
   }
 ]
