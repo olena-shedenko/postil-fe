@@ -1,12 +1,31 @@
+@media (max-width: 680px) {
+  .item-wrapper {
+    margin: 3px 10px;
+    padding: 15px 22px;
+    width: 90%;
+  }
+}
+@media (min-width: 681px) and (max-width: 992px) {
+  .item-wrapper {
+    margin-top: 10px;
+    padding: 5px 5%;
+    width: 40%;
+  }
+}
+@media (min-width: 993px) {
+  .item-wrapper {
+    margin-top: 25px;
+    padding: 10px 2%;
+    width: 20%;
+  }
+}
+
 .blogpost-block {
-  padding: 60px 90px;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 .item-wrapper {
-  margin: 10px 25px;
-  width: 20%;
   display: flex;
   flex-direction: column;
   &:hover {
