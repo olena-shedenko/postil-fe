@@ -1,0 +1,31 @@
+.payment {
+  &-container {
+    padding: 20px;
+  }
+  &__main-title {
+    margin: 15px 0;
+    text-transform: uppercase;
+    font-family: Mulish, sans-serif;
+    color: #373f41;
+  }
+  &__off-title {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  &__text {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
+    color: #373f41;
+  }
+}
+
+@media (min-width: 1200px) {
+  .payment {
+    &-container {
+      width: 75em;
+      margin: 0 auto;
+    }
+  }
+}
