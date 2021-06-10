@@ -1,0 +1,36 @@
+.returns {
+  &-container {
+    padding: 20px;
+  }
+  &__title {
+    font-family: Mulish, sans-serif;
+    text-transform: uppercase;
+    margin: 15px 0;
+    color: #373f41;
+  }
+  &__text {
+    padding-bottom: 15px;
+    color: #8c8c8c;
+    & strong {
+      color: #373f41;
+    }
+  }
+  &-list {
+    color: #8c8c8c;
+    list-style-type: disc;
+    margin-left: 15px;
+    &__item {
+      padding-bottom: 15px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .returns {
+    &-container {
+      width: 75em;
+      margin: 0 auto;
+      padding: 0 0 15px 0;
+    }
+  }
+}

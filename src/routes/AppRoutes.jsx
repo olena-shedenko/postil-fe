@@ -12,6 +12,7 @@ import ContactUs from '../pages/ContactUs/ContactUs';
 import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import ThankYouScreen from '../pages/ThankYouScreen/ThankYouScreen';
+import Returns from '../pages/Returns/Returns';
 // import Home from '../pages/Home/Home';
 
 const AppRoutes = () => {
@@ -46,7 +47,7 @@ const AppRoutes = () => {
         render={(routerProps) => <PaymentPage {...routerProps} />}
       />
       <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
-      <Route path="/returns" />
+      <Route path="/returns" render={() => <Returns />} />
       <Route path="/reviews" />
       <Route path="/sale" />
       <Route path="/terms_of_service" render={() => <TermsAndServices />} />
