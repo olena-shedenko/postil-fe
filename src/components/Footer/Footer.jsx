@@ -7,9 +7,12 @@ import { Facebook, Twitter, Instagram, LogoFt } from '../Icons';
 
 import Button from '../Button/Button';
 
-// const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGEXP =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const validationEmailSchema = Yup.object().shape({
-  email: Yup.string().required('*Required').email('*Invalid email'),
+  email: Yup.string()
+    .matches(EMAIL_REGEXP, '*Invalid email')
+    .email('*Invalid email'),
 });
 
 const Footer = () => {
