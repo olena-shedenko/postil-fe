@@ -2,6 +2,10 @@ import {
   SET_MODAL_FORGOT_PASSWORD,
   TOGGLE_ACCOUNT_ERROR,
   TOGGLE_ACCOUNT_MODAL,
+  GET_BLOG_POSTS,
+  LOAD_ITEMS_REQUEST,
+  LOAD_ITEMS_SUCCESS,
+  SET_ITEMS,
   SET_PRODUCTS,
   FILTERED_PRODUCTS,
   CLEAR_FILTERED_PRODUCTS,
@@ -41,6 +45,7 @@ const initialState = {
     data: [],
     isLoading: false,
   },
+  blogposts: [],
   items: {
     data: [],
     isLoading: true,
@@ -51,8 +56,8 @@ const initialState = {
   },
   filters: {},
   sliderValues: {
-    min: 15,
-    max: 250,
+    min: 10,
+    max: 280,
   },
   currentPage: 0,
   perPage: 18,
@@ -85,6 +90,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, isError: !state.isError, errMessage: action.payload };
     case TOGGLE_ACCOUNT_MODAL:
       return { ...state, accountModal: !state.accountModal };
+    case GET_BLOG_POSTS:
+      return { ...state, blogposts: action.payload };
     case LOAD_ITEMS_REQUEST:
       return { ...state, items: { ...state.items, isLoading: action.payload } };
     case LOAD_ITEMS_SUCCESS:

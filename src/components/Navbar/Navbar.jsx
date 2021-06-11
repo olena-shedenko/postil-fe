@@ -6,7 +6,7 @@ import { ReactComponent as Arrow } from '../../images/svg/vector.svg';
 import { ReactComponent as LogIn } from '../../images/svg/person.svg';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
-import { toggleBagPopup, toggleAccountModal } from '../../store/operations';
+import { toggleBagPopup, toggleAccountModal, filterAndSortOperation } from '../../store/operations';
 
 import AccountModal from '../AccountModal/AccountModal';
 
@@ -14,6 +14,12 @@ import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 import BagPopup from '../BagPopup/BagPopup';
+
+import {
+  filterByCategory,
+  clearFilteredProducts,
+  clearCategory,
+} from '../../store/actions';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -56,59 +62,65 @@ function Navbar() {
             >
               <div className="dropdown--catalog__item">
                 <Link
-                  to="/bedroom"
+                  to="/catalog"
                   className="navbar--links"
-                  onClick={closeMenu}
+                  onClick={() => {
+                    closeMenu();
+                    dispatch(filterByCategory('bed-linen-sets'));
+                    dispatch(filterAndSortOperation());
+                  }}
                 >
-                  Bedroom
-                </Link>
-              </div>
-              <div className="dropdown--catalog__item">
-                <Link
-                  to="/bed_linen"
-                  className="navbar--links"
-                  onClick={closeMenu}
-                >
-                  Bed linen
-                </Link>
-              </div>
-              <div className="dropdown--catalog__item">
-                <Link
-                  to="/kitchen"
-                  className="navbar--links"
-                  onClick={closeMenu}
-                >
-                  Kitchen
-                </Link>
-              </div>
-              <div className="dropdown--catalog__item">
-                <Link
-                  to="/bathroom"
-                  className="navbar--links"
-                  onClick={closeMenu}
-                >
-                  Bathroom
-                </Link>
-              </div>
-              <div className="dropdown--catalog__item">
-                <Link
-                  to="/loungewear"
-                  className="navbar--links"
-                  onClick={closeMenu}
-                >
-                  Loungewear
-                </Link>
-              </div>
-              <div className="dropdown--catalog__item">
-                <Link to="/sale" className="navbar--links" onClick={closeMenu}>
-                  Sale
+                  Bed Linen Sets
                 </Link>
               </div>
               <div className="dropdown--catalog__item">
                 <Link
                   to="/catalog"
                   className="navbar--links"
-                  onClick={closeMenu}
+                  onClick={() => {
+                    closeMenu();
+                    dispatch(filterByCategory('duvet-covers'));
+                    dispatch(filterAndSortOperation());
+                  }}
+                >
+                  Duvet Covers
+                </Link>
+              </div>
+              <div className="dropdown--catalog__item">
+                <Link
+                  to="/catalog"
+                  className="navbar--links"
+                  onClick={() => {
+                    closeMenu();
+                    dispatch(filterByCategory('flat-sheets'));
+                    dispatch(filterAndSortOperation());
+                  }}
+                >
+                  Flat Sheets
+                </Link>
+              </div>
+              <div className="dropdown--catalog__item">
+                <Link
+                  to="/catalog"
+                  className="navbar--links"
+                  onClick={() => {
+                    closeMenu();
+                    dispatch(filterByCategory('pillowcases'));
+                    dispatch(filterAndSortOperation());
+                  }}
+                >
+                  Pillowcases
+                </Link>
+              </div>
+              <div className="dropdown--catalog__item">
+                <Link
+                  to="/catalog"
+                  className="navbar--links"
+                  onClick={() => {
+                    closeMenu();
+                    dispatch(clearFilteredProducts());
+                    dispatch(clearCategory());
+                  }}
                 >
                   Shop All
                 </Link>
@@ -126,7 +138,11 @@ function Navbar() {
               </Link>
             </div>
             <div className="navbar--item">
-              <Link to="/contact" className="navbar--links" onClick={closeMenu}>
+              <Link
+                to="/contact-us"
+                className="navbar--links"
+                onClick={closeMenu}
+              >
                 Contact
               </Link>
             </div>

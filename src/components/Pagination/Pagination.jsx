@@ -10,6 +10,10 @@ const Pagination = () => {
   const pageCount = useSelector(pageCounter);
   const handlePageClick = ({ selected: selectedPage }) => {
     dispatch(setCurrentPage(selectedPage));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
   return (
     <div className="wrapper-pagination pagination">

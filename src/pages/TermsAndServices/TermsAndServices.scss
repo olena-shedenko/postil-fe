@@ -1,0 +1,136 @@
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.ts-container {
+  width: 100vw;
+}
+.breadcrumbs {
+  width: 100vw;
+}
+
+.terms {
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: 100%;
+  &-aside__header {
+    font-size: 1.125rem;
+    color: #373f41;
+    margin-bottom: 30px;
+    padding-top: 15px;
+  }
+  &-main {
+    padding: 0 20px;
+  }
+}
+
+.section {
+  &__header {
+    margin: 0;
+    color: #8c8c8c;
+    padding: 15px 0;
+    border-bottom: 1px solid #8c8c8c;
+    text-transform: uppercase;
+    &--simple {
+      border-bottom: 1px solid #dadada;
+    }
+  }
+  &__text {
+    padding: 15px 0;
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+
+.aside-list {
+  margin: 0;
+  padding: 0;
+  &__item {
+    margin-bottom: 25px;
+  }
+}
+
+.disclosure {
+  border-bottom: 1px solid #dadada;
+  &__content {
+    font-size: 14px;
+    line-height: 25px;
+    color: #000;
+    padding: 0 0 15px 15px;
+    text-indent: 15px;
+    &__text {
+      text-indent: 15px;
+    }
+  }
+  &__btn {
+    outline: none;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    transition: 0.3s;
+    position: relative;
+    background: none;
+    cursor: pointer;
+    &::before {
+      content: '+';
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &[aria-expanded='true']::before {
+      content: '_';
+      font-size: 1.5rem;
+      position: absolute;
+      bottom: 8px;
+    }
+  }
+  &-header {
+    display: flex;
+    align-items: center;
+    &__header {
+      color: #373f41;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  &--boredered {
+    border-top: 1px solid #dadada;
+  }
+}
+
+.content {
+  &-list {
+    list-style: disc;
+    margin-left: 30px;
+  }
+}
+
+// MEDIA QUERIES
+
+@media (min-width: 630px) {
+  .terms {
+    grid-template-columns: 25% 74%;
+    &-aside__header {
+      font-size: 1rem;
+    }
+  }
+  .aside-list {
+    font-size: 0.875em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ts-container {
+    width: 75em;
+    margin: 0 auto;
+  }
+}
