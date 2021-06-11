@@ -4,29 +4,20 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { Facebook, Twitter, Instagram } from '../Icons';
-import RadioButtonsGroup from '../RadioButtonsGroup/RadioButtonsGroup';
 
-const Product = ({
-  img,
-  name,
-  itemNo,
-  color,
-  sizes,
-  currentPrice,
-  isColored,
-}) => {
+const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
   return (
     <>
       <div className="product-container container">
         <div className="product">
           <div className="product-img">
             <div className="product__img-wrapper">
-              <img src={img} alt="bed-sheets" className="product__img" />
+              <img src={img[0]} alt="bed-sheets" className="product__img" />
             </div>
             <div className="product__img-wrapper small">
-              <img src={img} alt="bed-sheets" className="product__img" />
-              <img src={img} alt="bed-sheets" className="product__img" />
-              <img src={img} alt="bed-sheets" className="product__img" />
+              <img src={img[1]} alt="bed-sheets" className="product__img" />
+              <img src={img[2]} alt="bed-sheets" className="product__img" />
+              <img src={img[3]} alt="bed-sheets" className="product__img" />
             </div>
           </div>
           <div className="product__info">
@@ -47,27 +38,39 @@ const Product = ({
             </div>
             <h5 className="product__id">Product id: {itemNo}</h5>
             <h5 className="product__color">Color</h5>
-            <div>
-              {' '}
-              <RadioButtonsGroup values={{ color, isColored }} />
+            <div
+              style={{
+                borderRadius: '100%',
+                width: '20px',
+                height: '20px',
+                backgroundColor: `${color}`,
+                color: 'transparent',
+                border: '1px solid black',
+              }}
+            >
+              {color}
             </div>
-            <h5 className="product__size">Size</h5>
-            <div>
-              {' '}
-              <RadioButtonsGroup values={{ sizes }} />
-            </div>
+            <h5 className="product__size-title">Size</h5>
+            <div className="product__size">{sizes}</div>
             <div className="product__price-wrapper">
-              <h5 className="product__price">USD ${currentPrice}</h5>
+              <h5 className="product__price">
+                USD ${currentPrice}
+                <p className="product__preorder">pre-order</p>
+              </h5>
               <div>
                 <Button variant="dark" type="button" className="btn__add">
                   ADD TO BAG
                 </Button>
               </div>
-              <div className="navbar--item  icon">
-                <Favourites />
+              <div>
+                <Button variant="dark" type="button" className="btn">
+                  <div className="navbar--item  icon">
+                    <Favourites fill="white" />
+                  </div>
+                </Button>
               </div>
             </div>
-            <p className="product__preorder">pre-order</p>
+
             <div className="product__description">
               <h5 className="product__description-title">
                 - PRODUCT DESCRIPTION
@@ -84,7 +87,7 @@ const Product = ({
         </div>
       </div>
       <div className="slider-container container">
-        <h1 className="slider-title">related items</h1>
+        <h1 className="slider__title">related items</h1>
       </div>
     </>
   );
@@ -97,7 +100,6 @@ Product.propTypes = {
   color: PropTypes.string.isRequired,
   sizes: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
-  isColored: PropTypes.bool.isRequired,
 };
 
 export default Product;

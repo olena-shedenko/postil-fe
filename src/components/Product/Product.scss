@@ -1,30 +1,51 @@
+h1,
+h5 {
+  margin: 0;
+}
 .product {
   display: flex;
+  font-family: 'Mulish', 'Abel', sans-serif;
 
   &__name {
-    font-size: 2em;
-    color: #000;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 58px;
+    color: #373f41;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    font-family: 'Abel', sans-serif;
   }
 
   &__img-wrapper {
     width: 525px;
     height: 525px;
+    padding-bottom: 23px;
   }
 
   &__img {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
     margin-left: 8%;
+
+    .ft-social-icons {
+      margin: 0;
+    }
   }
 
   &__id {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    font-family: 'Mulish', sans-serif;
     text-transform: uppercase;
     color: darkgrey;
+    padding-bottom: 26px;
   }
 
   &__color {
@@ -32,18 +53,31 @@
     line-height: 24px;
     font-weight: 600;
     text-transform: uppercase;
+    padding-bottom: 10px;
+  }
+
+  &__size-title {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #373f41;
+    text-transform: uppercase;
+    padding: 24px 0 10px;
   }
 
   &__size {
     font-size: 14px;
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 400;
+    color: #373f41;
     text-transform: uppercase;
+    padding-bottom: 26px;
   }
 
   &__price-wrapper {
     display: flex;
     flex-direction: row;
+    padding-bottom: 27px;
   }
 
   &__price {
@@ -53,14 +87,14 @@
     text-transform: uppercase;
     margin-block-start: 0;
     margin-block-end: 0;
-    padding-right: 100px;
+    padding-right: 170px;
   }
 
   &__preorder {
     font-size: 14px;
     line-height: 24px;
     text-transform: uppercase;
-    color: #5c5e60;
+    color: rgba($color: #5c5e60, $alpha: 0.5);
   }
 
   &__description-title {
@@ -70,13 +104,15 @@
     text-transform: uppercase;
     color: #373f41;
     border-top: 1px solid #000;
+    padding: 30px 0 20px;
   }
 
   &__description-text {
     font-size: 16px;
     line-height: 30px;
     font-weight: 400;
-    color: #5c5e60;
+    color: rgba($color: #5c5e60, $alpha: 0.5);
+    padding-bottom: 30px;
   }
 
   &__reviews {
@@ -96,7 +132,24 @@
 
 .btn {
   &__add {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    font-family: 'Abel', sans-serif;
     width: 180px;
     padding: 11px 23px;
+    border-radius: 3px;
+    margin-right: 15px;
+  }
+}
+
+.slider {
+  &__title {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 58px;
+    text-transform: uppercase;
+    color: #373f41;
+    font-family: 'Abel', sans-serif;
   }
 }

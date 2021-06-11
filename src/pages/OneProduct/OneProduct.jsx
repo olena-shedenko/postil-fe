@@ -20,13 +20,13 @@ const OneProduct = () => {
   /* eslint no-console: 0 */
   console.log('product name:', product.name);
   /* eslint no-console: 0 */
-  console.log('product color:', params.color);
+  console.log('product color:', product.color);
   return (
     <div>
       <Breadcrumbs />
       <Product
         name={product.name}
-        img={product.imageUrls[0]}
+        img={product.imageUrls}
         itemNo={product.itemNo}
         color={product.color}
         sizes={product.sizes}
