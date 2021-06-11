@@ -50,7 +50,6 @@ export const setCartProducts = () => (dispatch) => {
       },
     })
     .then((cart) => {
-      console.log(cart.data);
       dispatch({ type: SET_PRODUCTS_IN_CART, payload: cart.data.products });
     })
     .catch((err) => {

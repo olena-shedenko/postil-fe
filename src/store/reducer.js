@@ -73,10 +73,8 @@ const reducer = (state = initialState, action) => {
         productsInCart: { ...state.productsInCart, isLoading: false },
       };
     case ERROR_REQUEST_PRODUCTS_IN_CART:
-      console.log(action.payload);
       return { ...state };
     case SET_PRODUCTS_IN_CART:
-      console.log(action.payload);
       return {
         ...state,
         productsInCart: { ...state.productsInCart, data: action.payload },
@@ -99,7 +97,6 @@ const reducer = (state = initialState, action) => {
     case REQUEST_REMOVE_PRODUCT_FROM_CART:
       return { ...state };
     case SUCCESS_REMOVE_PRODUCT_FROM_CART:
-      console.log(state.productsInCart.data);
       return {
         ...state,
         productsInCart: {
@@ -108,7 +105,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case ERROR_REMOVE_PRODUCT_FROM_CART:
-      console.log(action.payload);
       return { ...state };
     case SET_PRODUCTS:
       return { ...state, products: action.payload };

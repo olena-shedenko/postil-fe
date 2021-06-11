@@ -19,8 +19,6 @@ function BagPopupItems() {
             id={el.product._id}
           />
         ))}
-
-      {products === null && console.log(1)}
     </>
   );
 }
