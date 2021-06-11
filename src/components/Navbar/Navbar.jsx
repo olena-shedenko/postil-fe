@@ -6,14 +6,18 @@ import { ReactComponent as Arrow } from '../../images/svg/vector.svg';
 import { ReactComponent as LogIn } from '../../images/svg/person.svg';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
-import AccountModal from '../AccountModal/AccountModal';
 import {
+  toggleBagPopup,
   toggleAccountModal,
   filterAndSortOperation,
 } from '../../store/operations';
+
+import AccountModal from '../AccountModal/AccountModal';
+
 import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
+import BagPopup from '../BagPopup/BagPopup';
 
 import {
   filterByCategory,
@@ -39,6 +43,7 @@ function Navbar() {
 
   return (
     <>
+      <BagPopup />
       {accountModal && <AccountModal />}
       <div className="nav">
         <nav className="navbar">
@@ -164,13 +169,15 @@ function Navbar() {
               <Favourites onClick={closeMenu} />
             </div>
             <div className="navbar--item icon">
-              <Link
-                to="/shopping_cart"
-                className="navbar--links"
-                onClick={closeMenu}
-              >
-                <Cart onClick={closeMenu} />
-              </Link>
+              <div className="navbar--item icon">
+                {/* eslint-disable-next-line */}
+                    <div
+                  className="navbar--links"
+                  onClick={() => dispatch(toggleBagPopup())}
+                >
+                  <Cart onClick={closeMenu} />
+                </div>
+              </div>
             </div>
           </div>
         </nav>
