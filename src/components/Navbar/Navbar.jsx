@@ -6,7 +6,11 @@ import { ReactComponent as Arrow } from '../../images/svg/vector.svg';
 import { ReactComponent as LogIn } from '../../images/svg/person.svg';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { ReactComponent as Cart } from '../../images/svg/basket.svg';
-import { toggleBagPopup, toggleAccountModal, filterAndSortOperation } from '../../store/operations';
+import {
+  toggleBagPopup,
+  toggleAccountModal,
+  filterAndSortOperation,
+} from '../../store/operations';
 
 import AccountModal from '../AccountModal/AccountModal';
 
