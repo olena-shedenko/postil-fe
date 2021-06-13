@@ -95,7 +95,6 @@ export const getItems = () => (dispatch) => {
         el.inShoppingBag = !el.inShoppingBag;
         el.quantityInBag = 1;
       }
-      // el.inShoppingBag = true;
       return el;
     });
 
@@ -168,6 +167,24 @@ export const addToCart =
         },
       })
       .then((res) => {
+        console.log(res.data);
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };
+
+export const removeFromCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .delete(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
         dispatch(setCart(res.data));
         if (typeof onSuccess === 'function') onSuccess();
       });

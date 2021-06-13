@@ -128,7 +128,7 @@
   border-bottom: 1px solid #373f41;
 }
 
-.favourites {
+.favorites {
   font-family: 'Mulish', sans-serif;
   font-size: 18px;
   color: #373f41;
@@ -137,7 +137,7 @@
   user-select: none;
 }
 
-.favourites span {
+.favorites span {
   vertical-align: middle;
   margin: 0 20px;
   cursor: pointer;
@@ -183,7 +183,7 @@
   }
 }
 @media (max-width: 1020px) {
-  .favourites {
+  .favorites {
     margin: 0 20px;
     text-align: right;
     & span {
@@ -193,7 +193,7 @@
   }
 }
 @media (max-width: 915px) {
-  .favourites {
+  .favorites {
     font-size: 0;
     margin: 0;
     & span {
@@ -265,7 +265,7 @@
   .cross {
     margin: 0 20px 0 0;
   }
-  .favourites {
+  .favorites {
     margin: 0;
   }
   .item-text-content {

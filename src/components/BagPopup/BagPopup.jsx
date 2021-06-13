@@ -13,14 +13,28 @@ export default function BagPopup() {
   }, [dispatch]);
 
   const opened = useSelector((state) => state.openedBagPopup);
-  const products = useSelector((state) => state.productsInCart.data);
+  // const products = useSelector((state) => state.productsInCart.data);
+  const products = [];
+  const items = useSelector((state) => state.items.data);
+  
   let totalPrice = 0;
-  let itemCount = 0;
+  let itemCount = 1;
+  const jwt = sessionStorage.getItem('token');
+  const bag = JSON.parse(localStorage.getItem('bag')) || [];
 
+  if(jwt === null){
+    items.forEach((el) => {
+      bag.forEach((element) => {
+        if (element === el.itemNo) {
+          products.push(el);
+        }
+      });
+    });
+  }
   if (products) {
     products.forEach((i) => {
-      totalPrice = i.cartQuantity * i.product.currentPrice + totalPrice;
-      itemCount = i.cartQuantity + itemCount;
+      totalPrice = i.quantityInBag * i.currentPrice + totalPrice;
+      itemCount = i.quantityInBag + itemCount;
     });
   }
 
@@ -72,7 +86,7 @@ export default function BagPopup() {
                       to="shopping_cart"
                     >
                       <Button
-                        className="bagpopup-buttons__item"
+                        className="bagpopup-buttons__item btn"
                         variant="light-bordered"
                       >
                         VIEW BAG
@@ -82,20 +96,20 @@ export default function BagPopup() {
                       onClick={() => dispatch(toggleBagPopup())}
                       to="/checkout_bag"
                     >
-                      <Button className="bagpopup-buttons__item" variant="dark">
+                      <Button className="bagpopup-buttons__item btn" variant="dark">
                         CHECKOUT
                       </Button>
                     </Link>
                   </div>
                   <div className="bagpopup-items">
-                    <BagPopupItems />
+                    <BagPopupItems products={products}/>
                   </div>
                 </>
               )}
               {!itemCount && (
                 <div className="bagpopup-buttons centered">
                   <Link to="/main" onClick={() => dispatch(toggleBagPopup())}>
-                    <Button className="bagpopup-buttons__item" variant="dark">
+                    <Button className="bagpopup-buttons__item btn" variant="dark">
                       continue shopping
                     </Button>
                   </Link>

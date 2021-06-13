@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { SET_ITEMS } from '../../store/types';
 
 export default function ShoppingBagItem(props) {
-  const { items } = props;
+  const { items, item } = props;
   const {
     item: {
       imageUrls,
