@@ -99,10 +99,8 @@ const reducer = (state = initialState, action) => {
       };
     case SET_ITEMS:
       return { ...state, items: { ...state.items, data: action.payload } };
-<<<<<<< HEAD
     case SET_PRODUCT:
       return { ...state, item: action.payload };
-=======
     case REQUEST_REMOVE_PRODUCT_FROM_CART:
       return { ...state };
     case SUCCESS_REMOVE_PRODUCT_FROM_CART:
@@ -115,7 +113,6 @@ const reducer = (state = initialState, action) => {
       };
     case ERROR_REMOVE_PRODUCT_FROM_CART:
       return { ...state };
->>>>>>> origin
     case SET_PRODUCTS:
       return { ...state, products: action.payload };
     case FILTERED_PRODUCTS:
