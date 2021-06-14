@@ -25,9 +25,7 @@ const ShippingDetailsForms = () => {
     setPaid(!paid);
     setFree(false);
   }
-  const onSubmit = (values) => {
-    console.log('Form data', values);
-  };
+  const onSubmit = () => {};
   return (
     <div>
       <Formik
