@@ -86,8 +86,8 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
           </div>
         </div>
       </div>
-      <div className="slick-container container">
-        <h1 className="slick__title">related items</h1>
+      <div className="carousel-container container">
+        <h1 className="carousel__title">related items</h1>
       </div>
     </>
   );

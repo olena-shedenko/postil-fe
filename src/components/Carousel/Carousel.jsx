@@ -1,12 +1,13 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default function CarouselComponent() {
   return (
-    <div className="carousel-wrapper">
+    <div className="carousel-container">
       <Carousel infiniteLoop useKeyboardArrows autoPlay>
         <div>
-          <img src="../img-01.jpg" alt="pr" />
+          <img src="" alt="pr" />
         </div>
         <div>
           <img src="../img-02.jpg" alt="pr" />
