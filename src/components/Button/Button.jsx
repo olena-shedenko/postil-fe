@@ -32,6 +32,7 @@ const Button = (props) => {
 };
 
 Button.propTypes = {
+  testId: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.node,
   onClick: PropTypes.func,
@@ -41,6 +42,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  testId: 'button',
   type: 'button',
   children: '',
   onClick: () => {},
