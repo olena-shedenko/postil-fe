@@ -60,7 +60,7 @@ li {
     color: #000;
     padding: 0 0 15px 15px;
     text-indent: 15px;
-    & p {
+    &__text {
       text-indent: 15px;
     }
   }
@@ -101,6 +101,16 @@ li {
       font-weight: 600;
       text-transform: uppercase;
     }
+  }
+  &--boredered {
+    border-top: 1px solid #dadada;
+  }
+}
+
+.content {
+  &-list {
+    list-style: disc;
+    margin-left: 30px;
   }
 }
 

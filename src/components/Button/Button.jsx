@@ -22,7 +22,7 @@ const Button = (props) => {
       <button
         data-testid={testId}
         onClick={onClick}
-        className={btnClass}
+        className={`${btnClass}`}
         type={type === 'submit' ? 'submit' : 'button'}
       >
         {children}
