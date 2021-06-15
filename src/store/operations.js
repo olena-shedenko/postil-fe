@@ -5,9 +5,16 @@ import axios from 'axios';
 import {
   SET_MODAL_SIGN_UP,
   SET_MODAL_LOG_IN,
-  TOGGLE_ACCOUNT_ERROR,
+  TOGGLE_BAG_POPUP,
+  SET_PRODUCTS_IN_CART,
+  REQUEST_PRODUCTS_IN_CART,
+  ERROR_REQUEST_PRODUCTS_IN_CART,
   LOAD_ITEMS_REQUEST,
   LOAD_ITEMS_SUCCESS,
+  REQUEST_REMOVE_PRODUCT_FROM_CART,
+  SUCCESS_REMOVE_PRODUCT_FROM_CART,
+  ERROR_REMOVE_PRODUCT_FROM_CART,
+  TOGGLE_ACCOUNT_ERROR,
   TOGGLE_ACCOUNT_MODAL,
   SET_MODAL_FORGOT_PASSWORD,
   GET_BLOG_POSTS,
@@ -30,7 +37,44 @@ export const toggleAccountError = (errMessage) => (dispatch) => {
 export const toggleAccountModal = () => (dispatch) => {
   dispatch({ type: TOGGLE_ACCOUNT_MODAL });
 };
+export const toggleBagPopup = () => (dispatch) => {
+  dispatch({ type: TOGGLE_BAG_POPUP });
+};
 
+export const setCartProducts = () => (dispatch) => {
+  dispatch({ type: REQUEST_PRODUCTS_IN_CART });
+  axios
+    .get('https://postil-bedding.herokuapp.com/api/cart', {
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+    .then((cart) => {
+      dispatch({ type: SET_PRODUCTS_IN_CART, payload: cart.data.products });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_REQUEST_PRODUCTS_IN_CART, payload: err });
+    });
+};
+
+export const removeProductFromCart = (id) => (dispatch) => {
+  dispatch({ type: REQUEST_REMOVE_PRODUCT_FROM_CART });
+  axios
+    .delete(`https://postil-bedding.herokuapp.com/api/cart/${id}`, {
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+    .then((data) => {
+      dispatch({
+        type: SUCCESS_REMOVE_PRODUCT_FROM_CART,
+        payload: data,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_CART, payload: err });
+    });
+};
 export const getBlogPosts = () => (dispatch) => {
   axios('http://localhost:3000/blogposts.json').then((res) =>
     dispatch({ type: GET_BLOG_POSTS, payload: res.data })

@@ -1,13 +1,8 @@
 import {
-  SET_MODAL_LOG_IN,
-  SET_MODAL_SIGN_UP,
   SET_MODAL_FORGOT_PASSWORD,
   TOGGLE_ACCOUNT_ERROR,
   TOGGLE_ACCOUNT_MODAL,
   GET_BLOG_POSTS,
-  LOAD_ITEMS_REQUEST,
-  LOAD_ITEMS_SUCCESS,
-  SET_ITEMS,
   SET_PRODUCTS,
   FILTERED_PRODUCTS,
   CLEAR_FILTERED_PRODUCTS,
@@ -23,6 +18,18 @@ import {
   SET_CURRENT_PAGE,
   SET_PER_PAGE,
   SET_CART,
+  SET_MODAL_LOG_IN,
+  SET_MODAL_SIGN_UP,
+  TOGGLE_BAG_POPUP,
+  SET_PRODUCTS_IN_CART,
+  REQUEST_PRODUCTS_IN_CART,
+  ERROR_REQUEST_PRODUCTS_IN_CART,
+  LOAD_ITEMS_REQUEST,
+  LOAD_ITEMS_SUCCESS,
+  SET_ITEMS,
+  REQUEST_REMOVE_PRODUCT_FROM_CART,
+  SUCCESS_REMOVE_PRODUCT_FROM_CART,
+  ERROR_REMOVE_PRODUCT_FROM_CART,
 } from './types';
 
 const initialState = {
@@ -30,6 +37,11 @@ const initialState = {
   accountModal: false,
   isError: false,
   errMessage: null,
+  openedBagPopup: false,
+  productsInCart: {
+    data: [],
+    isLoading: false,
+  },
   blogposts: [],
   items: {
     data: [],
@@ -55,6 +67,20 @@ const reducer = (state = initialState, action) => {
       return { ...state, accountModalAction: action.payload };
     case SET_MODAL_SIGN_UP:
       return { ...state, accountModalAction: action.payload };
+    case TOGGLE_BAG_POPUP:
+      return { ...state, openedBagPopup: !state.openedBagPopup };
+    case REQUEST_PRODUCTS_IN_CART:
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, isLoading: false },
+      };
+    case ERROR_REQUEST_PRODUCTS_IN_CART:
+      return { ...state };
+    case SET_PRODUCTS_IN_CART:
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: action.payload },
+      };
     case SET_MODAL_FORGOT_PASSWORD:
       return { ...state, accountModalAction: action.payload };
     case TOGGLE_ACCOUNT_ERROR:
@@ -72,6 +98,18 @@ const reducer = (state = initialState, action) => {
       };
     case SET_ITEMS:
       return { ...state, items: { ...state.items, data: action.payload } };
+    case REQUEST_REMOVE_PRODUCT_FROM_CART:
+      return { ...state };
+    case SUCCESS_REMOVE_PRODUCT_FROM_CART:
+      return {
+        ...state,
+        productsInCart: {
+          ...state.productsInCart,
+          data: action.payload.data.products,
+        },
+      };
+    case ERROR_REMOVE_PRODUCT_FROM_CART:
+      return { ...state };
     case SET_PRODUCTS:
       return { ...state, products: action.payload };
     case FILTERED_PRODUCTS:
