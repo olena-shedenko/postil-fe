@@ -152,4 +152,40 @@ h5 {
     color: #373f41;
     font-family: 'Abel', sans-serif;
   }
+
+  &__img {
+    width: 380px;
+    height: 380px;
+    padding-right: 20px;
+    position: relative;
+  }
+
+  &__product-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #373f41;
+    font-family: 'Mulish', sans-serif;
+    padding: 10px;
+    position: absolute;
+    top: 270px;
+    left: 20px;
+  }
+
+  &__product-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #373f41;
+    font-family: 'Mulish', sans-serif;
+    padding: 10px;
+    position: absolute;
+    top: 320px;
+    left: 20px;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    border-radius: 4px;
+  }
 }

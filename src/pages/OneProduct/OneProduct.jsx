@@ -23,7 +23,7 @@ const OneProduct = () => {
   /* eslint no-console: 0 */
   console.log('product color:', product.color);
   return (
-    <div>
+    <div className="container">
       <Breadcrumbs />
       <Product
         name={product.name}
