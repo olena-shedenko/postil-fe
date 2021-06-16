@@ -16,7 +16,7 @@ const Pagination = () => {
     });
   };
   return (
-    <div className="wrapper-pagination pagination">
+    <div className="wrapper-pagination pagination" data-testid="pagination">
       <ReactPaginate
         previousLabel="<"
         nextLabel=">"
