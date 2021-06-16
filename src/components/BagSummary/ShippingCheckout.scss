@@ -1,0 +1,107 @@
+.delivery{
+  &--product{
+    max-height: 230px;
+    width: 19vw;
+    overflow-y: scroll;
+    margin-bottom: 46px;
+    min-width: 200px;
+  }
+  &--product::-webkit-scrollbar {
+    display: none;
+  }
+  &--item{
+    display: flex;
+    justify-content: space-between;
+    margin: 1vw 0 1vw;
+    &__text{
+      display: flex;
+    }
+    &__img{
+      margin-right: 2vw;
+    }
+  }
+  &--button{
+    outline: none;
+    border-radius: 4px;
+    padding: 12px 80px;
+    margin-bottom: 80px;
+    float: right;
+    font-family: Abel, monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+  }
+  &--text{
+    max-width: 12vw;
+    &__title{
+      font-family: sans-serif, Abel;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+    &__price{
+      font-family: Abel, monospace;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    &__count{
+      font-family: Abel, monospace;
+      font-size: 18px;
+      font-weight: 600;}
+  }
+&--coupone{
+  font-family: 'Mulish', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: #373f41;
+  padding: 10px 0;
+  border-bottom: 1px solid #373f41;
+  border-top: 1px solid #373f41;
+}
+&--summary{display: flex;
+  justify-content: space-between;
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  color: #373f41;
+  margin: 25px 0;
+&__total{
+  font-family: 'Mulish', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: #373f41;
+  padding-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #373f41 ;
+}}}
+.back{
+  cursor: pointer;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &--text{
+    font-family: Mulish, monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 48px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .delivery-container {
+width: 94%;
+    margin: 0 auto;
+  }
+  .delivery{
+    &--product{
+      width: 100%;
+    }
+    &--text{
+      width: 80%;
+      max-width: 100%;
+    }
+  }
+}

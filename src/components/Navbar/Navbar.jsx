@@ -30,9 +30,24 @@ function Navbar() {
 
   const [dropdown, setDropdown] = useState(false);
   const [catalog, setCatalog] = useState(false);
+  const onMouseEnter = () => {
+    if (window.innerWidth < 1024) {
+      setCatalog(false);
+    } else {
+      setCatalog(true);
+    }
+  };
 
-  const handleCatalog = () => setCatalog(!catalog);
+  const onMouseLeave = () => {
+    if (window.innerWidth < 1024) {
+      setCatalog(false);
+    } else {
+      setCatalog(false);
+    }
+  };
+
   const handleClick = () => setDropdown(!dropdown);
+  const handleCatalog = () => setCatalog(!catalog);
 
   const accountModal = useSelector((state) => state.accountModal);
 
@@ -53,16 +68,20 @@ function Navbar() {
           </Link>
           <div
             role="presentation"
+            onMouseEnter={onMouseEnter}
             onClick={handleCatalog}
             className={catalog ? 'dropdown--nav active' : 'dropdown--nav'}
           >
-            Catalog
+            <Link to="/catalog" className="navbar--links" onClick={closeMenu}>
+              Catalog
+            </Link>
             <Arrow className="navbar--arrow" />
             <div
               data-testid="catalog"
               className={
                 catalog ? 'dropdown--catalog active' : 'dropdown--catalog'
               }
+              onMouseLeave={onMouseLeave}
             >
               <div className="dropdown--catalog__item">
                 <Link
