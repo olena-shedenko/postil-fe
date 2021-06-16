@@ -13,7 +13,15 @@ const OneProduct = () => {
         state.items.data.find((item) => item._id === params.id)
       : null
   );
+  const shortInfo = useSelector((state) =>
+    state.items.data.length
+      ? /* eslint no-underscore-dangle: 0 */
+        state.items.data.find((item) => item._id === params.id)
+      : null
+  );
   if (!product) return null;
+
+  if (!shortInfo) return null;
   /* eslint no-console: 0 */
   console.log('productId:', params.id);
   /* eslint no-console: 0 */
@@ -22,6 +30,7 @@ const OneProduct = () => {
   console.log('product name:', product.name);
   /* eslint no-console: 0 */
   console.log('product color:', product.color);
+
   return (
     <div className="container">
       <Breadcrumbs />
@@ -33,7 +42,11 @@ const OneProduct = () => {
         sizes={product.sizes}
         currentPrice={product.currentPrice}
       />
-      <SlickSlider />
+      <SlickSlider
+        name={shortInfo.name}
+        img={shortInfo.imageUrls}
+        currentPrice={shortInfo.currentPrice}
+      />
     </div>
   );
 };

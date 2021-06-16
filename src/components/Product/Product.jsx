@@ -14,10 +14,22 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
             <div className="product__img-wrapper">
               <img src={img[0]} alt="bed-sheets" className="product__img" />
             </div>
-            <div className="product__img-wrapper small">
-              <img src={img[1]} alt="bed-sheets" className="product__img" />
-              <img src={img[2]} alt="bed-sheets" className="product__img" />
-              <img src={img[3]} alt="bed-sheets" className="product__img" />
+            <div className="product__wrapper-small">
+              <img
+                src={img[1]}
+                alt="bed-sheets"
+                className="product__img-small"
+              />
+              <img
+                src={img[2]}
+                alt="bed-sheets"
+                className="product__img-small"
+              />
+              <img
+                src={img[3]}
+                alt="bed-sheets"
+                className="product__img-small"
+              />
             </div>
           </div>
           <div className="product__info">
