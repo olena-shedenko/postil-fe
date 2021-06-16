@@ -8,7 +8,7 @@ import classnames from 'classnames';
  *   variant: "dark", "light", "bordered" "light-bordered"//needs to be passed via props <Button variant="light">
  */
 const Button = (props) => {
-  const { children, onClick, className, type, variant, commonStyles } = props;
+  const { children, onClick, className, type, variant, commonStyles,form } = props;
   const btnClass = classnames(className, {
     btn: commonStyles,
     'btn-dark': variant === 'dark',
@@ -21,6 +21,7 @@ const Button = (props) => {
       <button
         onClick={onClick}
         className={`${btnClass}`}
+        form={form}
         type={type === 'submit' ? 'submit' : 'button'}
       >
         {children}

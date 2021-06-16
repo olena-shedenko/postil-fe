@@ -18,6 +18,7 @@ import {
   TOGGLE_ACCOUNT_MODAL,
   SET_MODAL_FORGOT_PASSWORD,
   GET_BLOG_POSTS,
+  SET_ITEMS,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -157,20 +158,48 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
 };
 
 export const addToCart =
-  ({ productId, onSuccess }) =>
+  ({ productId, onSuccess,productNo,items,history }) =>
   (dispatch) => {
     const jwt = sessionStorage.getItem('token');
-    axios
-      .put(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, null, {
-        headers: {
-          Authorization: jwt,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        dispatch(setCart(res.data));
-        if (typeof onSuccess === 'function') onSuccess();
+    if (jwt !== null) {
+      axios
+        .put(
+          `https://postil-bedding.herokuapp.com/api/cart/${productId}`,
+          null,
+          {
+            headers: {
+              Authorization: jwt,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          dispatch(setCart(res.data));
+          dispatch(setCartProducts());
+          if (typeof onSuccess === 'function') onSuccess();
+        });
+    } else if (jwt === null) {
+      const newArr = items.map((el) => {
+        if (el.itemNo === productNo) {
+          el.inShoppingBag = true;
+          el.quantityInBag = el.quantityInBag + 1;
+        }
+        return el;
       });
+
+      dispatch({ type: SET_ITEMS, payload: newArr });
+    
+      console.log(history);
+      history.push('/shopping_cart')
+      history.goForward()
+      let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
+      if (cartArr.includes(productNo)) {
+      } else {
+        cartArr.push(productNo);
+      }
+      const cart = JSON.stringify(cartArr);
+      localStorage.setItem('bag', cart);
+    }
   };
 
 export const removeFromCart =
@@ -184,7 +213,21 @@ export const removeFromCart =
         },
       })
       .then((res) => {
-        console.log(res.data);
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };
+export const removeOneFromCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .delete(`https://postil-bedding.herokuapp.com/api/cart/product/${productId}`, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
         dispatch(setCart(res.data));
         if (typeof onSuccess === 'function') onSuccess();
       });

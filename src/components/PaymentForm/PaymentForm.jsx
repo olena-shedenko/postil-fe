@@ -1,30 +1,75 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
+import axios from 'axios';
 // import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
 import './CartForm.scss';
+import { useEffect } from 'react';
 
 // import { CREATE_USER } from '../../store/user/types';
 // import { TOGGLE_FORM } from '../../store/form/types';
 // import { SET_ITEMS } from '../../store/items/types';
 
-export default function PaymentForm() {
+export default function PaymentForm(props) {
+  const { history } = props;
+  // const payBy = document.getElementsByClassName('pay_by');
+  // const payBy = document.getElementsByClassName('pay_by');
   // const dispatch = useDispatch();
+  // console.log(payBy);
   // const items = useSelector((state) => state.items.data);
   // const cardValidityPeriod =
   //   document.getElementsByClassName('cardValidityPeriod');
 
-  // const submitForm = (values) => {
-  //     dispatch({type:TOGGLE_FORM,payload:false})
-  //     localStorage.removeItem("Cart")
-  //     dispatch({type:CREATE_USER,payload:values})
-  //     const newArr = items.map(el => {
-  //         el.inCart = false
-  //         return el
-  //     })
-  //     dispatch({type:SET_ITEMS,payload:newArr})
-  // }
+  const submitForm = (values) => {
+    const payBy = document.getElementsByClassName('pay_by');
+
+    if(payBy[0].classList[1] === "active"){
+      const newPaymentMethod = {
+        customId: values.cardNo,
+        name: values.cardHolder,
+        paymentProcessor: values.cardHolder,
+        ...values,
+      };
+      console.log(newPaymentMethod);
+      const jwt = sessionStorage.getItem('token');
+      axios
+        .post(
+          'https://postil-bedding.herokuapp.com/api/payment-methods',
+          newPaymentMethod,
+          {
+            headers: {
+              Authorization: jwt,
+            },
+          }
+        )
+        .then((values) => {
+          history.push('/thank_you_screen');
+        })
+        .catch((err) => {});
+    }else if(payBy[1].classList[1] === "active"){
+      const newPaymentMethod = {
+        customId: "unknown",
+        name: "unknown",
+        paymentProcessor: "courier",
+      };
+      const jwt = sessionStorage.getItem('token');
+      axios
+        .post(
+          'https://postil-bedding.herokuapp.com/api/payment-methods',
+          newPaymentMethod,
+          {
+            headers: {
+              Authorization: jwt,
+            },
+          }
+        )
+        .then((values) => {
+          history.push('/thank_you_screen');
+        })
+        .catch((err) => {});
+    }
+  };
 
   const validationFormSchema = Yup.object().shape({
     cardNo: Yup.number().required('Required').min(16, 'Too Short!'),
@@ -42,28 +87,12 @@ export default function PaymentForm() {
           CVV: '',
           cardHolder: '',
         }}
-        // onSubmit={submitForm}
+        onSubmit={submitForm}
         validationSchema={validationFormSchema}
       >
         {(formikProps) => {
-          // for (let index = 0; index < cardValidityPeriod.length; index += 1) {
-          //   cardValidityPeriod[index].addEventListener('keydown', (e) => {
-          //     if (
-          //       formikProps.values.cardValidityPeriod.length === 1 &&
-          //       e.key !== 'Backspace'
-          //     ) {
-          //       // eslint-disable-next-line no-param-reassign
-          //       formikProps.values.cardValidityPeriod = `${formikProps.values.cardValidityPeriod}/`;
-          //     } else if (e.key === 'Backspace') {
-          //       // eslint-disable-next-line no-param-reassign
-          //       formikProps.values.cardValidityPeriod =
-          //         // eslint-disable-next-line no-self-assign
-          //         formikProps.values.cardValidityPeriod;
-          //     }
-          //   });
-          // }
           return (
-            <Form className="form">
+            <Form className="form" id="payment-form">
               <div className="card-info">
                 {formikProps.values.cardNo === '' &&
                 formikProps.touched.cardNo ? (
@@ -135,9 +164,6 @@ export default function PaymentForm() {
                   className="cardHolder"
                 />
               )}
-              {/* <div>
-                                <button type="submit" className="submit">Checkout</button>
-                            </div> */}
             </Form>
           );
         }}

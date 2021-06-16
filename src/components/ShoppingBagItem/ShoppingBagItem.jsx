@@ -2,25 +2,35 @@
 import React, { useEffect } from 'react';
 import './ShoppingBagItem.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_ITEMS, SET_QUANTITY, SET_CART_AFTER_DELETE } from '../../store/types';
+import {
+  SET_ITEMS,
+  SET_QUANTITY,
+  SET_CART_AFTER_DELETE,
+} from '../../store/types';
 import Icon from '../Icon/Icon';
-import { addToCart, removeFromCart, setCartProducts } from '../../store/operations';
+import {
+  addToCart,
+  removeFromCart,
+  setCartProducts,
+  removeOneFromCart,
+} from '../../store/operations';
 
 export default function ShoppingBagItem(props) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setCartProducts());
-  }, [dispatch]);
-  
+  const jwt = sessionStorage.getItem('token');
+  if(jwt !== null){
+    useEffect(() => {
+      dispatch(setCartProducts());
+    }, [dispatch]);
+  }
+
   const { item, items, cartQuantity } = props;
   const productsInCart = useSelector((state) => state.productsInCart.data);
-  const jwt = sessionStorage.getItem('token');
   const {
     item: { color, imageUrls, name, currentPrice, isFavourite, sizes, _id },
   } = props;
   const colors = color.split('/');
   const size = sizes.split(', ');
-  
 
   const deleteFromCart = (item) => {
     if (jwt === null) {
@@ -34,7 +44,9 @@ export default function ShoppingBagItem(props) {
       dispatch({ type: SET_ITEMS, payload: newArr });
       localStorageToggleBag(item);
     } else if (jwt !== null) {
-      const newCartArr = productsInCart.filter((el) => el.product.itemNo !== item);
+      const newCartArr = productsInCart.filter(
+        (el) => el.product.itemNo !== item
+      );
       dispatch({ type: SET_CART_AFTER_DELETE, payload: newCartArr });
     }
   };
@@ -101,18 +113,35 @@ export default function ShoppingBagItem(props) {
   };
 
   const removeItem = (item) => {
-    const newArr = items.map((el) => {
-      if (el.itemNo === item.itemNo) {
-        el.quantityInBag -= 1;
-        if (el.quantityInBag === 0) {
-          el.inShoppingBag = !el.inShoppingBag;
-          localStorageToggleBag(item);
+    if (jwt === null) {
+      const newArr = items.map((el) => {
+        if (el.itemNo === item.itemNo) {
+          el.quantityInBag -= 1;
+          if (el.quantityInBag === 0) {
+            el.inShoppingBag = !el.inShoppingBag;
+            localStorageToggleBag(item);
+          }
         }
-      }
-      return el;
-    });
+        return el;
+      });
 
-    dispatch({ type: SET_ITEMS, payload: newArr });
+      dispatch({ type: SET_ITEMS, payload: newArr });
+    } else if (jwt !== null) {
+      const newArr = productsInCart.map((el) => {
+        if (el.product.itemNo === item) {
+          el.cartQuantity -= 1;
+        }
+        return el;
+      });
+
+      dispatch({ type: SET_QUANTITY, payload: newArr });
+
+      productsInCart.map((el) => {
+        if (el.cartQuantity === 0) {
+          deleteFromCart(item);
+        }
+      })
+    }
   };
 
   return (
@@ -225,11 +254,11 @@ export default function ShoppingBagItem(props) {
                       className="quantity-add"
                       onClick={() => {
                         dispatch(
-                          removeFromCart({
+                          removeOneFromCart({
                             productId: _id,
                           })
                         );
-                        // addItem(item.itemNo);
+                        removeItem(item.itemNo);
                       }}
                     >
                       <svg

@@ -6,7 +6,7 @@ import { addToCart } from '../../store/operations';
 import Button from '../Button/Button';
 import './CatalogItem.scss';
 
-const CatalogItem = ({ id, img, name, currentPrice }) => {
+const CatalogItem = ({ id, img, name, currentPrice, itemNo, items }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   return (
@@ -31,6 +31,9 @@ const CatalogItem = ({ id, img, name, currentPrice }) => {
               dispatch(
                 addToCart({
                   productId: id,
+                  productNo: itemNo,
+                  items: items,
+                  history: history,
                   onSuccess: () => history.push('/shopping_cart'),
                 })
               );

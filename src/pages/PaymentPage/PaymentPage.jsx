@@ -18,15 +18,9 @@ export default function PaymentPage(props) {
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
   const payBy = document.getElementsByClassName('pay_by');
+  const jwt = sessionStorage.getItem('token');
 
-  items.map((el) => {
-    if (el.inShoppingBag === true) {
-      totalPrice += el.currentPrice * el.quantityInBag;
-    }
-    return el;
-  });
-
-  for (let index = 0; index < payBy.length; index++) {
+  for (let index = 0; index < payBy.length; index++) { 
     payBy[index].addEventListener('click', () => {
       for (let index = 0; index < payBy.length; index++) {
         payBy[index].classList.remove('active');
@@ -36,13 +30,30 @@ export default function PaymentPage(props) {
   }
 
   const getLocalCart = () => {
-    items.forEach((el) => {
-      bag.forEach((element) => {
-        if (element === el.itemNo) {
-          bagItems.push(el);
-        }
+    if (jwt === null) {
+      items.forEach((el) => {
+        bag.forEach((element) => {
+          if (element === el.itemNo) {
+            bagItems.push(el);
+          }
+        });
       });
-    });
+      items.map((el) => {
+        if (el.inShoppingBag === true) {
+          totalPrice += el.currentPrice * el.quantityInBag;
+        }
+        return el;
+      });
+    } else if (jwt !== null) {
+      const productsInCart = useSelector((state) => state.productsInCart.data);
+      productsInCart.forEach((el) => {
+        bagItems.push(el);
+      });
+      bagItems.map((el) => {
+        totalPrice += el.product.currentPrice * el.cartQuantity;
+        return el;
+      });
+    }
   };
 
   return (
@@ -71,7 +82,7 @@ export default function PaymentPage(props) {
                     <Visa />
                   </div>
                 </div>
-                <PaymentForm />
+                <PaymentForm history={history}/>
               </div>
             </div>
 
@@ -121,24 +132,45 @@ export default function PaymentPage(props) {
           </div>
           <div className="registration-left__block">
             <p className="registration__title">SUMMARY</p>
-            {bagItems.map((el) => {
-              return (
-                <div className="card" key={el.itemNo}>
-                  <img
-                    src={el.imageUrls[0]}
-                    alt="image"
-                    width="150px"
-                    height="150px"
-                  />
-                  <div className="card-text-content">
-                    <p className="card-text-content__title">{el.name}</p>
-                    <p className="card-text-content__price">
-                      ${el.currentPrice}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            {jwt === null
+              ? bagItems.map((el) => {
+                  return (
+                    <div className="card" key={el.itemNo}>
+                      <img
+                        src={el.imageUrls[0]}
+                        alt="image"
+                        width="150px"
+                        height="150px"
+                      />
+                      <div className="card-text-content">
+                        <p className="card-text-content__title">{el.name}</p>
+                        <p className="card-text-content__price">
+                          ${el.currentPrice}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })
+              : bagItems.map((el) => {
+                  return (
+                    <div className="card" key={el.product.itemNo}>
+                      <img
+                        src={el.product.imageUrls[0]}
+                        alt="image"
+                        width="150px"
+                        height="150px"
+                      />
+                      <div className="card-text-content">
+                        <p className="card-text-content__title">
+                          {el.product.name}
+                        </p>
+                        <p className="card-text-content__price">
+                          ${el.product.currentPrice}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
             <hr className="decor-line" />
             <p className="registration-coupone">ENTER COUPONE CODE</p>
             <p className="registration-price">
@@ -155,13 +187,11 @@ export default function PaymentPage(props) {
             </p>
             <p className="total-price">
               <span>TOTAL</span>
-              <span>${totalPrice += 5}</span>
+              <span>${(totalPrice += 5)}</span>
             </p>
-            <NavLink to="/thank_you_screen">
-              <Button className="next__button btn" variant="dark" type="button">
+              <button className="next__button btn" variant="dark" type="submit" form="payment-form">
                 Next
-              </Button>
-            </NavLink>
+              </button>
           </div>
         </div>
       </div>
