@@ -5,8 +5,6 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import '../AccountModal.scss';
-import { useDispatch } from 'react-redux';
-import { setModalSignUp } from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
@@ -24,8 +22,7 @@ const validationFormSchema = Yup.object().shape({
     .required('Agree to ToS and Privacy Policy'),
 });
 
-const LogIn = ({ handleSubmit }) => {
-  const dispatch = useDispatch();
+const LogIn = ({ handleSubmit, handleBottomLink }) => {
   return (
     <>
       <Formik
@@ -41,14 +38,16 @@ const LogIn = ({ handleSubmit }) => {
           return (
             <>
               <h5 className="mobile-modal-heading">Login</h5>
-              <Form className="form">
+              <Form data-testid="form" className="form">
                 <Input
+                  testId="loginOrEmail"
                   classname="form__input__field"
                   placeholder="Login Or Email"
                   name="loginOrEmail"
                   type="text"
                 />
                 <Input
+                  testId="login-password"
                   classname="form__input__field"
                   placeholder="Password"
                   name="password"
@@ -56,14 +55,12 @@ const LogIn = ({ handleSubmit }) => {
                 />
                 <Checkbox name="accept" />
 
-                <span
-                  className="bottom-link"
-                  onClick={() => dispatch(setModalSignUp())}
-                >
+                <span className="bottom-link" onClick={handleBottomLink}>
                   i don&apos;t have an account
                 </span>
 
                 <Button
+                  testId="account-modal-button"
                   className="submit-button"
                   type="submit"
                   // eslint-disable-next-line react/no-children-prop
@@ -80,6 +77,7 @@ const LogIn = ({ handleSubmit }) => {
 
 LogIn.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  handleBottomLink: PropTypes.func.isRequired,
 };
 
 export default LogIn;
