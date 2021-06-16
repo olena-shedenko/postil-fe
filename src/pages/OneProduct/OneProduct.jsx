@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Product from '../../components/Product/Product';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import Carousel from '../../components/Carousel/Carousel';
+import SlickSlider from '../../components/SlickSlider/SlickSlider';
 
 const OneProduct = () => {
   const params = useParams();
@@ -33,7 +33,7 @@ const OneProduct = () => {
         sizes={product.sizes}
         currentPrice={product.currentPrice}
       />
-      <Carousel />
+      <SlickSlider />
     </div>
   );
 };

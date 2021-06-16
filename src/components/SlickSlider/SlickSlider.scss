@@ -1,0 +1,34 @@
+.slick-slide {
+  width: 380px;
+  height: 380px;
+  padding: 20px;
+}
+
+.slider {
+  &__img-wrapper {
+    width: 380px;
+    height: 380px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.slick-arrow,
+.slick-prev,
+.slick-next {
+  background-color: royalblue;
+}
+
+.slick-prev,
+.slick-next {
+  width: 15px;
+  height: 29px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  opacity: 1;
+}

@@ -86,23 +86,8 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
           </div>
         </div>
       </div>
-      <div className="carousel-container">
-        <h1 className="carousel__title">related items</h1>
-        <div className="carousel carousel-slider">
-          <div className="slider-wrapper axis-horisontal">
-            <img src={img[1]} alt="bed-sheets" className="carousel__img" />
-            <h1 className="carousel__product-name">{name}</h1>
-            <h5 className="carousel__product-price">${currentPrice}</h5>
-
-            <img src={img[2]} alt="bed-sheets" className="carousel__img" />
-            <h1 className="carousel__product-name">{name}</h1>
-            <h5 className="carousel__product-price">${currentPrice}</h5>
-
-            <img src={img[3]} alt="bed-sheets" className="carousel__img" />
-            <h1 className="carousel__product-name">{name}</h1>
-            <h5 className="carousel__product-price">${currentPrice}</h5>
-          </div>
-        </div>
+      <div className="slider-container">
+        <h1 className="slider__title">related items</h1>
       </div>
     </>
   );
