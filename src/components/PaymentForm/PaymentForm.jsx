@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
@@ -13,6 +14,7 @@ import { deleteCart } from '../../store/operations';
 
 export default function PaymentForm(props) {
   const { history } = props;
+  console.log(history);
   const dispatch = useDispatch();
 
   const submitForm = (values) => {
@@ -173,3 +175,7 @@ export default function PaymentForm(props) {
     </div>
   );
 }
+
+PaymentForm.propTypes = {
+  history: PropTypes.object.isRequired,
+};

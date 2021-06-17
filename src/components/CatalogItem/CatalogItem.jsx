@@ -32,8 +32,8 @@ const CatalogItem = ({ id, img, name, currentPrice, itemNo, items }) => {
                 addToCart({
                   productId: id,
                   productNo: itemNo,
-                  items: items,
-                  history: history,
+                  item: items,
+                  historys: history,
                   onSuccess: () => history.push('/shopping_cart'),
                 })
               );

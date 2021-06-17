@@ -159,7 +159,7 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
 };
 
 export const addToCart =
-  ({ productId, onSuccess, productNo, items, history }) =>
+  ({ productId, onSuccess, productNo, item, historys }) =>
   (dispatch) => {
     const jwt = sessionStorage.getItem('token');
     if (jwt !== null) {
@@ -180,17 +180,17 @@ export const addToCart =
           if (typeof onSuccess === 'function') onSuccess();
         });
     } else if (jwt === null) {
-      const newArr = items.map((el) => {
+      const newArr = item.map((el) => {
         if (el.itemNo === productNo) {
           el.inShoppingBag = true;
-          el.quantityInBag = el.quantityInBag + 1;
+          el.quantityInBag += 1;
         }
         return el;
       });
 
       dispatch({ type: SET_ITEMS, payload: newArr });
 
-      console.log(history);
+      console.log(historys);
       // history.go('/shopping_cart')
       // history.goForward()
       const cartArr = JSON.parse(localStorage.getItem('bag')) || [];
