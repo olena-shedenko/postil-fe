@@ -28,24 +28,26 @@ function BagPopupItems() {
       {getItems()}
       {jwt !== null && product
         ? product.map((el) => {
-            <BagPopupItem
-              key={el.product.itemNo}
-              quantity={el.cartQuantity}
-              product={el.product}
-              // eslint-disable-next-line
-              id={el.product._id}
-            />;
-            return null;
+            return (
+              <BagPopupItem
+                key={el.product.itemNo}
+                quantity={el.cartQuantity}
+                product={el.product}
+                // eslint-disable-next-line
+                id={el.product._id}
+              />
+            );
           })
         : product.map((el) => {
-            <BagPopupItem
-              key={el.itemNo}
-              quantity={el.quantityInBag}
-              product={el}
-              // eslint-disable-next-line
-              id={el._id}
-            />;
-            return null;
+            return (
+              <BagPopupItem
+                key={el.itemNo}
+                quantity={el.quantityInBag}
+                product={el}
+                // eslint-disable-next-line
+                id={el._id}
+              />
+            );
           })}
     </>
   );

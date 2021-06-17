@@ -18,14 +18,14 @@ import {
 export default function ShoppingBagItem(props) {
   const dispatch = useDispatch();
   const jwt = sessionStorage.getItem('token');
-  if (jwt !== null) {
-    useEffect(() => {
-      dispatch(setCartProducts());
-    }, [dispatch]);
-  }
+
+  useEffect(() => {
+    dispatch(setCartProducts());
+  }, [dispatch]);
 
   const { item, items, cartQuantity } = props;
-  const productsInCart = useSelector((state) => state.productsInCart.data);
+  const productsInCart =
+    useSelector((state) => state.productsInCart.data) || [];
   const {
     item: { color, imageUrls, name, currentPrice, isFavourite, sizes, _id },
   } = props;

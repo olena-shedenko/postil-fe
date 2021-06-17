@@ -9,7 +9,7 @@ import Button from '../../components/Button/Button';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 export default function ShoppingCart() {
-  const items = useSelector((state) => state.items.data);
+  const items = useSelector((state) => state.items.data) || [];
   let totalPrice = 0;
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];

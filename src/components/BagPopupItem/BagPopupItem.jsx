@@ -7,7 +7,7 @@ import { removeProductFromCart, setCartProducts } from '../../store/operations';
 function BagPopupItem(props) {
   const { quantity, product, id } = props;
   const dispatch = useDispatch();
-
+  
   return (
     <div className="bagpopup__item">
       <picture className="bagpopup__item__image_wrap">

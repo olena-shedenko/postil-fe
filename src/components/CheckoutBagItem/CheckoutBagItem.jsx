@@ -3,16 +3,19 @@ import React, { useEffect } from 'react';
 import './CheckoutBagItem.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_ITEMS, SET_QUANTITY } from '../../store/types';
-import { addToCart, removeOneFromCart, setCartProducts } from '../../store/operations';
+import {
+  addToCart,
+  removeOneFromCart,
+  setCartProducts,
+} from '../../store/operations';
 
 export default function CheckoutBagItem(props) {
   const dispatch = useDispatch();
   const jwt = sessionStorage.getItem('token');
-  if(jwt !== null){
-    useEffect(() => {
-      dispatch(setCartProducts());
-    }, [dispatch]);
-  }
+
+  useEffect(() => {
+    dispatch(setCartProducts());
+  }, [dispatch]);
 
   const { items, item, cartQuantity } = props;
   const productsInCart = useSelector((state) => state.productsInCart.data);
@@ -67,9 +70,8 @@ export default function CheckoutBagItem(props) {
         }
         return el;
       });
-  
-      dispatch({ type: SET_ITEMS, payload: newArr });
 
+      dispatch({ type: SET_ITEMS, payload: newArr });
     } else if (jwt !== null) {
       const newArr = productsInCart.map((el) => {
         if (el.product.itemNo === item) {

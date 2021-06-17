@@ -28,9 +28,9 @@ export default function PaymentForm(props) {
       const jwt = sessionStorage.getItem('token');
       axios
         .post(
-          'https://postil-bedding.herokuapp.com/api/payment-methods',
-          newPaymentMethod,
+          'https://postil-bedding.herokuapp.com/api/payment-methods', 
           {
+            newPaymentMethod,
             headers: {
               Authorization: jwt,
             },
@@ -85,6 +85,7 @@ export default function PaymentForm(props) {
 
   return (
     <div>
+      
       <Formik
         initialValues={{
           cardNo: '',
