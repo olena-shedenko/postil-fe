@@ -15,10 +15,12 @@ function BagPopupItems() {
         if (el.inShoppingBag === true) {
           product.push(el);
         }
+        return el;
       });
     } else if (jwt !== null) {
       products.map((el) => {
         product.push(el);
+        return el;
       });
     }
   };

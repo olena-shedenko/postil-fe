@@ -54,4 +54,6 @@ CatalogItem.propTypes = {
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
+  itemNo: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
 };

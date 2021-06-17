@@ -193,9 +193,8 @@ export const addToCart =
       console.log(history);
       // history.go('/shopping_cart')
       // history.goForward()
-      let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
-      if (cartArr.includes(productNo)) {
-      } else {
+      const cartArr = JSON.parse(localStorage.getItem('bag')) || [];
+      if (!cartArr.includes(productNo)) {
         cartArr.push(productNo);
       }
       const cart = JSON.stringify(cartArr);
@@ -244,7 +243,7 @@ export const deleteCart = () => (dispatch) => {
         Authorization: jwt,
       },
     })
-    .then((res) => {
+    .then(() => {
       dispatch({ type: CLEAR_CART });
     });
 };

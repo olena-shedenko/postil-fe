@@ -17,12 +17,11 @@ export default function BagPopup() {
   const jwt = sessionStorage.getItem('token');
   let totalPrice = 0;
   let itemCount = 0;
-  if(jwt === null){
+  if (jwt === null) {
     itemCount = 1;
-  }else if(jwt !== null){
+  } else if (jwt !== null) {
     itemCount = 0;
   }
-  
 
   if (products) {
     products.forEach((i) => {
@@ -89,7 +88,10 @@ export default function BagPopup() {
                       onClick={() => dispatch(toggleBagPopup())}
                       to="/checkout_bag"
                     >
-                      <Button className="bagpopup-buttons__item btn" variant="dark">
+                      <Button
+                        className="bagpopup-buttons__item btn"
+                        variant="dark"
+                      >
                         CHECKOUT
                       </Button>
                     </Link>
@@ -102,7 +104,10 @@ export default function BagPopup() {
               {!itemCount && (
                 <div className="bagpopup-buttons centered">
                   <Link to="/main" onClick={() => dispatch(toggleBagPopup())}>
-                    <Button className="bagpopup-buttons__item btn" variant="dark">
+                    <Button
+                      className="bagpopup-buttons__item btn"
+                      variant="dark"
+                    >
                       continue shopping
                     </Button>
                   </Link>
