@@ -1,0 +1,316 @@
+.payment__container {
+  width: 81.75%;
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+.card {
+  display: flex;
+  margin: 10px 0;
+  &:nth-of-type(1) {
+    margin: 20px 0 10px;
+  }
+  &:nth-last-of-type(1) {
+    margin: 10px 0 41px;
+  }
+}
+
+.card-text-content__title {
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+  padding: 0 0 0 29px;
+  color: #373f41;
+}
+
+.card-text-content__price {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  padding: 20px 0 0 29px;
+  color: #373f41;
+}
+
+.pay_by {
+  border: 1px solid #8c8c8c;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin: 30px 0;
+  cursor: pointer;
+  &.active {
+    background: #373f41;
+    border: 1px solid #8c8c8c;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin: 30px 0;
+    & .credit-card {
+      color: #ffffff;
+    }
+    & .checked {
+      width: 16px;
+      height: 16px;
+      border: none;
+      margin: 0 3px 0 6px;
+      background-color: #dadada;
+      position: relative;
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 21px;
+        height: 21px;
+        border: 3px solid #dadada;
+        position: absolute;
+        border-radius: 100%;
+        left: -6px;
+        top: -6px;
+      }
+    }
+    & .attention {
+      color: #ffffff;
+    }
+    & .master-card {
+      border: 1px solid #dadada;
+      & path {
+        fill: #ffffff;
+      }
+    }
+    & .visa {
+      border: 1px solid #dadada;
+      & path {
+        fill: #ffffff;
+      }
+    }
+    & .hands-with-moneysa {
+      & path {
+        fill: #ffffff;
+      }
+    }
+    & .cardNo {
+      background-color: rgba($color: #ffff, $alpha: 0.05);
+      border: 1px solid rgba($color: #ffff, $alpha: 0.05);
+      color: #ffffff;
+      &.input-error {
+        border: 1px solid tomato;
+      }
+    }
+    & .cardValidityPeriod {
+      background-color: rgba($color: #ffff, $alpha: 0.05);
+      border: 1px solid rgba($color: #ffff, $alpha: 0.05);
+      color: #ffffff;
+      &.input-error {
+        border: 1px solid tomato;
+      }
+    }
+    & .CVV {
+      background-color: rgba($color: #ffff, $alpha: 0.05);
+      border: 1px solid rgba($color: #ffff, $alpha: 0.05);
+      color: #ffffff;
+      &.input-error {
+        border: 1px solid tomato;
+      }
+    }
+    & .cardHolder {
+      background-color: rgba($color: #ffff, $alpha: 0.05);
+      border: 1px solid rgba($color: #ffff, $alpha: 0.05);
+      color: #ffffff;
+      &.input-error {
+        border: 1px solid tomato;
+      }
+    }
+  }
+}
+
+.cardNo {
+  width: 100%;
+  margin: 22px 25px 29px 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  padding: 4px 30px;
+  color: gray;
+  background-color: rgba($color: #000, $alpha: 0.05);
+  border-radius: 4px;
+  border: 1px solid rgba($color: #000, $alpha: 0.05);
+  outline: none;
+}
+
+.cardValidityPeriod {
+  width: 33%;
+  margin: 22px 25px 29px 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  padding: 4px 26px;
+  color: gray;
+  background-color: rgba($color: #000, $alpha: 0.05);
+  border-radius: 4px;
+  border: 1px solid rgba($color: #000, $alpha: 0.05);
+  outline: none;
+}
+
+.CVV {
+  width: 33%;
+  margin: 22px 0 29px 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  color: gray;
+  padding: 4px 26px;
+  border: 1px solid rgba($color: #000, $alpha: 0.05);
+  background-color: rgba($color: #000, $alpha: 0.05);
+  border-radius: 4px;
+  outline: none;
+}
+
+.cardHolder {
+  width: 65%;
+  margin: 0 25px 0 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  color: gray;
+  padding: 4px 30px;
+  background: rgba($color: #000, $alpha: 0.05);
+  border-radius: 4px;
+  border: 1px solid rgba($color: #000, $alpha: 0.05);
+  outline: none;
+}
+
+.checked {
+  width: 21px;
+  height: 21px;
+  border: 3px solid #8c8c8c;
+  border-radius: 100%;
+}
+
+.pay__container {
+  margin: 30px 20px;
+}
+
+.master-card {
+  padding: 9px 15px;
+  border: 1px solid #828788;
+  border-radius: 8px;
+  margin: 0 8px 0 0;
+  & path {
+    fill: #828788;
+  }
+}
+
+.visa {
+  padding: 13px 11px;
+  border: 1px solid #828788;
+  border-radius: 8px;
+  & path {
+    fill: #828788;
+  }
+}
+
+.hands-with-moneysa {
+  & path {
+    fill: #828788;
+  }
+}
+
+.payment-by-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next__button {
+  border: none;
+  font-family: 'Abel', sans-serif;
+  font-size: 18px;
+  text-align: right;
+  margin: 0px 0 80px 0;
+  padding: 15px 86px;
+  cursor: pointer;
+  float: right;
+}
+
+.decor-line {
+  width: 100%;
+  height: 1px;
+  background-color: #373f41;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pay__text-content {
+  display: flex;
+  align-items: center;
+}
+
+.credit-card {
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  color: #373f41;
+  margin-left: 40px;
+}
+.attention {
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  line-height: 32px;
+  color: #a1adb0;
+  margin-left: 40px;
+}
+
+.back__button {
+  font-family: Mulish;
+  font-size: 18px;
+  line-height: 48px;
+  letter-spacing: 0.04em;
+  color: #373f41;
+  margin: 20px 0 80px;
+  cursor: pointer;
+  width: 70px;
+  & svg {
+    padding: 0 9px 0 0;
+  }
+}
+@media (max-width: 1100px) {
+  .back__button {
+    margin: 20px 0 0px;
+  }
+}
+
+@media (max-width: 712px) {
+  .checked {
+    display: none;
+  }
+  .credit-card {
+    margin-left: 0px;
+  }
+  .attention {
+    margin-left: 0px;
+  }
+  .payment-by-card__header {
+    flex-flow: column;
+    align-items: flex-start;
+  }
+  .card-info {
+    flex-flow: column;
+  }
+  .cardNo {
+    margin: 10px 0;
+    width: 90%;
+    padding: 4px 0px 4px 15px;
+  }
+  .cardValidityPeriod {
+    margin: 0px 0;
+    padding: 4px 0px 4px 15px;
+  }
+  .CVV {
+    margin: 10px 0 0;
+    padding: 4px 0px 4px 15px;
+  }
+  .cardHolder {
+    margin: 10px 0;
+    width: 90%;
+    padding: 4px 0px 4px 15px;
+  }
+}

@@ -1,0 +1,14 @@
+.card-info {
+  display: flex;
+  flex-flow: row;
+}
+@media (max-width: 712px) {
+  .card-info {
+    flex-flow: column;
+  }
+}
+
+
+
+
+

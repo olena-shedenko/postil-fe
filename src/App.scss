@@ -1,19 +1,34 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Mulish';
+  src: url(./fonts/Mulish/Mulish-Medium.ttf);
+}
+
+.container {
+  width: 1180px;
+  margin: 0 auto;
 }
 
 a {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.active {
+  color: #8c8c8c;
+  font-size: 0.875rem;
+}
+
+// img {
+//   max-width: 100%;
+//   height: auto;
+//   display: block;
+// }
+p {
+  margin: 0;
 }
 
 ul {
   list-style: none;
+}
+* {
+  font-family: Mulish;
 }

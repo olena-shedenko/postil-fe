@@ -1,0 +1,39 @@
+// CATALOG ITEMS STYLES SECTION
+.cg-products {
+  width: 100vw;
+  display: grid;
+  grid-gap: 1.25rem;
+}
+
+// END OF CATALOG ITEMS STYLES SECTION
+
+// MEDIA QUERY RULES
+
+@media (min-width: 630px) {
+  .cg-products {
+    width: 100%;
+  }
+  .cg-item {
+    &__img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    &__name {
+      width: 90%;
+      left: 14px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .cg-products {
+    grid-template-columns: repeat(2, 48.5%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cg-products {
+    grid-template-columns: repeat(3, 31.5%);
+  }
+}

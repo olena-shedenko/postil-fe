@@ -1,0 +1,62 @@
+.pagination {
+  grid-column: 1 / 3;
+  width: 100vw;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-list {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 262px;
+    font-size: 20px;
+    line-height: 30px;
+    border-bottom: 1px solid #373f41;
+  }
+}
+
+.pg-list {
+  &__link {
+    width: calc(100% / 3);
+    text-align: center;
+    padding-bottom: 17px;
+    transition: all 0.5s;
+    border-bottom: 5px solid transparent;
+    position: relative;
+    &--disabled {
+      padding-bottom: 18px;
+    }
+    &--active {
+      font-weight: 700;
+      border-bottom: 5px solid #373f41;
+      padding-bottom: 18px;
+    }
+  }
+}
+
+.previous,
+.next {
+  padding-bottom: 21px;
+}
+
+// MEDIA QUERY RULES
+
+@media (min-width: 630px) {
+  .pagination {
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pagination {
+    grid-column: 2 / 3;
+  }
+}

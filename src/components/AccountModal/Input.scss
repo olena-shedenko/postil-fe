@@ -1,0 +1,20 @@
+.input {
+  position: relative;
+  &__field {
+    width: 100%;
+    margin: 32px 0;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+    outline: none;
+    padding-left: 3px;
+  }
+}
+
+.error {
+  position: absolute;
+  top: 0;
+  font-weight: bold;
+  color: rgb(199, 101, 101);
+  margin: 0;
+}
