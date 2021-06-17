@@ -159,7 +159,7 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
 };
 
 export const addToCart =
-  ({ productId, onSuccess, productNo, item, historys }) =>
+  ({ productId, onSuccess, productNo, item }) =>
   (dispatch) => {
     const jwt = sessionStorage.getItem('token');
     if (jwt !== null) {
@@ -174,7 +174,6 @@ export const addToCart =
           }
         )
         .then((res) => {
-          console.log(res.data);
           dispatch(setCart(res.data));
           dispatch(setCartProducts());
           if (typeof onSuccess === 'function') onSuccess();
@@ -190,7 +189,7 @@ export const addToCart =
 
       dispatch({ type: SET_ITEMS, payload: newArr });
 
-      console.log(historys);
+      // console.log(historys);
       // history.go('/shopping_cart')
       // history.goForward()
       const cartArr = JSON.parse(localStorage.getItem('bag')) || [];

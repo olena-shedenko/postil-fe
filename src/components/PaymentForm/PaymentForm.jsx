@@ -14,7 +14,6 @@ import { deleteCart } from '../../store/operations';
 
 export default function PaymentForm(props) {
   const { history } = props;
-  console.log(history);
   const dispatch = useDispatch();
 
   const submitForm = (values) => {
