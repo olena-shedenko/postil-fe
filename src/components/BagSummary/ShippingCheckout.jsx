@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 
 const ShippingCheckout = (props) => {
   const items = useSelector((state) => state.items.data);
+  const productsInCart = useSelector((state) => state.productsInCart.data) || [];
   let totalPrice = 0;
   const bagItems = [];
   const jwt = sessionStorage.getItem('token');
@@ -31,7 +32,6 @@ const ShippingCheckout = (props) => {
         return el;
       });
     } else if (jwt !== null) {
-      const productsInCart = useSelector((state) => state.productsInCart.data);
       productsInCart.forEach((el) => {
         bagItems.push(el);
       });
