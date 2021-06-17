@@ -6,7 +6,11 @@ import PropTypes from 'prop-types';
 import SignUp from '../modalComponents/SignUp';
 import LogIn from '../modalComponents/LogIn';
 import ChoiseButtons from '../modalComponents/ChoiseButtons';
-import { toggleAccountModal } from '../../../store/operations';
+import {
+  toggleAccountModal,
+  setModalLogIn,
+  setModalSignUp,
+} from '../../../store/operations';
 
 const DesktopModal = ({ loginSubmit, signUpSubmit }) => {
   const dispatch = useDispatch();
@@ -27,9 +31,15 @@ const DesktopModal = ({ loginSubmit, signUpSubmit }) => {
       <ChoiseButtons />
 
       {forSignUp ? (
-        <SignUp handleSubmit={signUpSubmit} />
+        <SignUp
+          handleSubmit={signUpSubmit}
+          handleBottomLink={() => dispatch(setModalLogIn())}
+        />
       ) : (
-        <LogIn handleSubmit={loginSubmit} />
+        <LogIn
+          handleSubmit={loginSubmit}
+          handleBottomLink={() => dispatch(setModalSignUp())}
+        />
       )}
 
       {/* {forSignUp && (

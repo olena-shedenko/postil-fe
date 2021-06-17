@@ -67,6 +67,7 @@ const Catalog = () => {
                 <label htmlFor="price-range-min">
                   FROM
                   <input
+                    data-testid="input-min"
                     id="price-range-min"
                     className="range-slider-input"
                     type="text"
@@ -79,9 +80,10 @@ const Catalog = () => {
                     }}
                   />
                 </label>
-                <label htmlFor="price-range-min">
+                <label htmlFor="price-range-max">
                   TO
                   <input
+                    data-testid="input-max"
                     id="price-range-max"
                     type="text"
                     className="range-slider-input"
@@ -132,7 +134,7 @@ const Catalog = () => {
                     grey: '',
                     'ivory/natural/cream': '',
                   }}
-                  name="size"
+                  name="color"
                   className="color-btns__btn"
                   isColored
                   onChange={(color) => {
@@ -152,7 +154,7 @@ const Catalog = () => {
                     linen: 'linen',
                     silk: 'silk',
                   }}
-                  name="size"
+                  name="fabric"
                   className="btns-group__btn"
                   onChange={(fabric) => {
                     dispatch(filterFabric(fabric));
@@ -185,9 +187,8 @@ const Catalog = () => {
                     ? 'main-btns__btn selected'
                     : 'main-btns__btn'
                 }
-                onClick={(e) => {
-                  const category = e.target.innerHTML.split(' ').join('-');
-                  dispatch(filterByCategory(category));
+                onClick={() => {
+                  dispatch(filterByCategory('bed-linen-sets'));
                   dispatch(filterAndSortOperation());
                 }}
               >
@@ -200,9 +201,8 @@ const Catalog = () => {
                     ? 'main-btns__btn selected'
                     : 'main-btns__btn'
                 }
-                onClick={(e) => {
-                  const category = e.target.innerHTML.split(' ').join('-');
-                  dispatch(filterByCategory(category));
+                onClick={() => {
+                  dispatch(filterByCategory('duvet-covers'));
                   dispatch(filterAndSortOperation());
                 }}
               >
@@ -215,9 +215,8 @@ const Catalog = () => {
                     ? 'main-btns__btn selected'
                     : 'main-btns__btn'
                 }
-                onClick={(e) => {
-                  const category = e.target.innerHTML.split(' ').join('-');
-                  dispatch(filterByCategory(category));
+                onClick={() => {
+                  dispatch(filterByCategory('flat-sheets'));
                   dispatch(filterAndSortOperation());
                 }}
               >
@@ -230,9 +229,8 @@ const Catalog = () => {
                     ? 'main-btns__btn selected'
                     : 'main-btns__btn'
                 }
-                onClick={(e) => {
-                  const category = e.target.innerHTML.split(' ').join('-');
-                  dispatch(filterByCategory(category));
+                onClick={() => {
+                  dispatch(filterByCategory('pillowcases'));
                   dispatch(filterAndSortOperation());
                 }}
               >
@@ -244,9 +242,7 @@ const Catalog = () => {
                 className="select-item right"
                 defaultValue="Show"
                 onChange={(e) => {
-                  console.log(e.target.value);
                   const value = parseFloat(e.target.value);
-                  console.log(value, typeof value);
                   dispatch(setPerPage(value));
                 }}
               >
@@ -285,7 +281,7 @@ const Catalog = () => {
             </div>
             <CatalogItems />
           </div>
-          {!perPage ? <></> : <Pagination />}
+          {!perPage ? <></> : <Pagination data-testid="pagination" />}
         </div>
       </div>
     </>
