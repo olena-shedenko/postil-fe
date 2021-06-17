@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-import * as Yup from 'yup';
-import { Formik, Field, Form } from 'formik';
+// import * as Yup from 'yup';
+// import { Formik, Field, Form } from 'formik';
 import { Facebook, Twitter, Instagram, LogoFt } from '../Icons';
 
-import Button from '../Button/Button';
-
-// const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const validationEmailSchema = Yup.object().shape({
-  email: Yup.string().required('*Required').email('*Invalid email'),
-});
+// import Button from '../Button/Button';
+// const EMAIL_REGEXP =
+//   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+// const validationEmailSchema = Yup.object().shape({
+//   email: Yup.string()
+//     .matches(EMAIL_REGEXP, '*Invalid email')
+//     .email('*Invalid email'),
+// });
 
 const Footer = () => {
-  const handleSubscribeForm = () => {};
+  // const handleSubscribeForm = () => {};
   return (
     <footer className="footer ft">
       <section className="ft-container">
@@ -61,7 +63,8 @@ const Footer = () => {
             </a>
           </div>
           <div className="ft-main-item ft-item">
-            <h3 className="ft-item__title">Subscribe</h3>
+            {/* No subscribe implementation */}
+            {/* <h3 className="ft-item__title">Subscribe</h3>
             <p className="ft-item__subscribe">
               Subscribe now and get 15% off on your first order
             </p>
@@ -92,7 +95,7 @@ const Footer = () => {
                   </Button>
                 </Form>
               )}
-            </Formik>
+            </Formik> */}
 
             <div className="ft-item__social ft-social">
               <h4 className="ft-social-title">Follow us</h4>
