@@ -120,14 +120,18 @@ h3 {
 }
 
 .ft-social {
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: flex-start;
+  &-title {
+    margin: 0;
+  }
 
   &-icons {
     display: flex;
     align-items: center;
-    margin-left: 35px;
+    justify-content: flex-start;
     cursor: pointer;
+    margin-top: 15px;
   }
 }
 

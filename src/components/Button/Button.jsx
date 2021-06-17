@@ -8,7 +8,8 @@ import classnames from 'classnames';
  *   variant: "dark", "light", "bordered" "light-bordered"//needs to be passed via props <Button variant="light">
  */
 const Button = (props) => {
-  const { children, onClick, className, type, variant, commonStyles,form } = props;
+  const { children, onClick, className, type, variant, commonStyles, testId } =
+    props;
   const btnClass = classnames(className, {
     btn: commonStyles,
     'btn-dark': variant === 'dark',
@@ -19,6 +20,7 @@ const Button = (props) => {
   return (
     <>
       <button
+        data-testid={testId}
         onClick={onClick}
         className={`${btnClass}`}
         form={form}
@@ -31,6 +33,7 @@ const Button = (props) => {
 };
 
 Button.propTypes = {
+  testId: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.node,
   onClick: PropTypes.func,
@@ -40,6 +43,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  testId: 'button',
   type: 'button',
   children: '',
   onClick: () => {},
