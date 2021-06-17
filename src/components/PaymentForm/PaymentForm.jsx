@@ -5,17 +5,20 @@ import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
 import './CartForm.scss';
 import { useDispatch } from 'react-redux';
-import { SUCCESS_REMOVE_PRODUCT_FROM_CART, CLEAR_CART } from '../../store/types';
+// import {
+//   SUCCESS_REMOVE_PRODUCT_FROM_CART,
+//   CLEAR_CART,
+// } from '../../store/types';
 import { deleteCart } from '../../store/operations';
 
 export default function PaymentForm(props) {
   const { history } = props;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const submitForm = (values) => {
     const payBy = document.getElementsByClassName('pay_by');
 
-    if(payBy[0].classList[1] === "active"){
+    if (payBy[0].classList[1] === 'active') {
       const newPaymentMethod = {
         customId: values.cardNo,
         name: values.cardHolder,
@@ -33,21 +36,21 @@ export default function PaymentForm(props) {
             },
           }
         )
-        .then((values) => {
+        .then(() => {
           history.push('/thank_you_screen');
           dispatch(deleteCart());
-          localStorage.clear("bag")
+          localStorage.clear('bag');
         })
-        .catch((err) => {
+        .catch(() => {
           history.push('/thank_you_screen');
           dispatch(deleteCart());
-          localStorage.clear("bag")
+          localStorage.clear('bag');
         });
-    }else if(payBy[1].classList[1] === "active"){
+    } else if (payBy[1].classList[1] === 'active') {
       const newPaymentMethod = {
-        customId: "unknown",
-        name: "unknown",
-        paymentProcessor: "courier",
+        customId: 'unknown',
+        name: 'unknown',
+        paymentProcessor: 'courier',
       };
       const jwt = sessionStorage.getItem('token');
       axios
@@ -60,15 +63,15 @@ export default function PaymentForm(props) {
             },
           }
         )
-        .then((values) => {
+        .then(() => {
           history.push('/thank_you_screen');
           dispatch(deleteCart());
-          localStorage.clear("bag")
+          localStorage.clear('bag');
         })
-        .catch((err) => {
+        .catch(() => {
           history.push('/thank_you_screen');
           dispatch(deleteCart());
-          localStorage.clear("bag")
+          localStorage.clear('bag');
         });
     }
   };

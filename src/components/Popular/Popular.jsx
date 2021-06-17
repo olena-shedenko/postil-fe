@@ -72,12 +72,8 @@ export default function Popular() {
           </li>
         </ul>
         <NavLink to="/catalog">
-          <Button
-            variant="bordered"
-            className="see-all__btn btn"
-            type="button"
-          >
-            SEE ALL  {' >'}
+          <Button variant="bordered" className="see-all__btn btn" type="button">
+            SEE ALL {' >'}
           </Button>
         </NavLink>
       </div>

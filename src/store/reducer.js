@@ -166,13 +166,22 @@ const reducer = (state = initialState, action) => {
       return { ...state, cart: action.payload };
     }
     case SET_QUANTITY: {
-      return { ...state, productsInCart: { ...state.productsInCart, data: action.payload } };
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: action.payload },
+      };
     }
     case SET_CART_AFTER_DELETE: {
-      return { ...state, productsInCart: { ...state.productsInCart, data: action.payload } };
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: action.payload },
+      };
     }
     case CLEAR_CART: {
-      return {...state, productsInCart: {...state.productsInCart, data:[]}}
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: [] },
+      };
     }
     default:
       return state;

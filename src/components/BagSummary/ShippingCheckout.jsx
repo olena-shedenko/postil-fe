@@ -52,7 +52,12 @@ const ShippingCheckout = (props) => {
               return <ShippingCheckoutBag key={el.itemNo} item={el} />;
             })
           : bagItems.map((el) => {
-              return <ShippingCheckoutBag key={el.product.itemNo} item={el.product} />;
+              return (
+                <ShippingCheckoutBag
+                  key={el.product.itemNo}
+                  item={el.product}
+                />
+              );
             })}
       </div>
       <p className="delivery--coupone">ENTER COUPONE CODE</p>

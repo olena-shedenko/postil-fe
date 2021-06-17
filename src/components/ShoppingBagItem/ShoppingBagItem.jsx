@@ -18,7 +18,7 @@ import {
 export default function ShoppingBagItem(props) {
   const dispatch = useDispatch();
   const jwt = sessionStorage.getItem('token');
-  if(jwt !== null){
+  if (jwt !== null) {
     useEffect(() => {
       dispatch(setCartProducts());
     }, [dispatch]);
@@ -140,7 +140,7 @@ export default function ShoppingBagItem(props) {
         if (el.cartQuantity === 0) {
           deleteFromCart(item);
         }
-      })
+      });
     }
   };
 

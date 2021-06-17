@@ -15,7 +15,6 @@ const CatalogItems = () => {
   const products = perPage ? slicedProducts : productsAll;
   const items = useSelector((state) => state.items.data);
 
-
   return (
     <div className="catalog-main-products cg-products">
       {products &&

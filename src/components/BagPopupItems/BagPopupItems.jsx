@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import BagPopupItem from '../BagPopupItem/BagPopupItem';
-import { useEffect } from 'react';
 
 function BagPopupItems() {
   const products = useSelector((state) => state.productsInCart.data);
   const items = useSelector((state) => state.items.data);
   const jwt = sessionStorage.getItem('token');
   let product = [];
-  const loading = useSelector((state) => state.productsInCart.isLoading);
+  // const loading = useSelector((state) => state.productsInCart.isLoading);
 
   const getItems = () => {
     if (jwt === null) {
