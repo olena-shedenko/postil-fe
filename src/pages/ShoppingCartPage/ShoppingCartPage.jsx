@@ -54,7 +54,6 @@ export default function ShoppingCart() {
         </div>
         {jwt === null
           ? bagItems.map((el) => {
-            console.log(el);
               return (
                 <ShoppingBagItem
                   key={el._id}

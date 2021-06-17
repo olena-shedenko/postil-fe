@@ -19,6 +19,7 @@ import {
   SET_MODAL_FORGOT_PASSWORD,
   GET_BLOG_POSTS,
   SET_ITEMS,
+  CLEAR_CART,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -190,8 +191,8 @@ export const addToCart =
       dispatch({ type: SET_ITEMS, payload: newArr });
     
       console.log(history);
-      history.push('/shopping_cart')
-      history.goForward()
+      // history.go('/shopping_cart')
+      // history.goForward()
       let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
       if (cartArr.includes(productNo)) {
       } else {
@@ -230,5 +231,19 @@ export const removeOneFromCart =
       .then((res) => {
         dispatch(setCart(res.data));
         if (typeof onSuccess === 'function') onSuccess();
+      });
+  };
+export const deleteCart =
+  () =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .delete(`https://postil-bedding.herokuapp.com/api/cart`, {
+        headers: {
+          Authorization: jwt,
+        },
+      })
+      .then((res) => {
+        dispatch({type:CLEAR_CART})
       });
   };

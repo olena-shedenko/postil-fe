@@ -1,25 +1,16 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import axios from 'axios';
-// import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
 import './CartForm.scss';
-import { useEffect } from 'react';
-
-// import { CREATE_USER } from '../../store/user/types';
-// import { TOGGLE_FORM } from '../../store/form/types';
-// import { SET_ITEMS } from '../../store/items/types';
+import { useDispatch } from 'react-redux';
+import { SUCCESS_REMOVE_PRODUCT_FROM_CART, CLEAR_CART } from '../../store/types';
+import { deleteCart } from '../../store/operations';
 
 export default function PaymentForm(props) {
   const { history } = props;
-  // const payBy = document.getElementsByClassName('pay_by');
-  // const payBy = document.getElementsByClassName('pay_by');
-  // const dispatch = useDispatch();
-  // console.log(payBy);
-  // const items = useSelector((state) => state.items.data);
-  // const cardValidityPeriod =
-  //   document.getElementsByClassName('cardValidityPeriod');
+  const dispatch = useDispatch()
 
   const submitForm = (values) => {
     const payBy = document.getElementsByClassName('pay_by');
@@ -31,7 +22,6 @@ export default function PaymentForm(props) {
         paymentProcessor: values.cardHolder,
         ...values,
       };
-      console.log(newPaymentMethod);
       const jwt = sessionStorage.getItem('token');
       axios
         .post(
@@ -45,8 +35,14 @@ export default function PaymentForm(props) {
         )
         .then((values) => {
           history.push('/thank_you_screen');
+          dispatch(deleteCart());
+          localStorage.clear("bag")
         })
-        .catch((err) => {});
+        .catch((err) => {
+          history.push('/thank_you_screen');
+          dispatch(deleteCart());
+          localStorage.clear("bag")
+        });
     }else if(payBy[1].classList[1] === "active"){
       const newPaymentMethod = {
         customId: "unknown",
@@ -66,14 +62,20 @@ export default function PaymentForm(props) {
         )
         .then((values) => {
           history.push('/thank_you_screen');
+          dispatch(deleteCart());
+          localStorage.clear("bag")
         })
-        .catch((err) => {});
+        .catch((err) => {
+          history.push('/thank_you_screen');
+          dispatch(deleteCart());
+          localStorage.clear("bag")
+        });
     }
   };
 
   const validationFormSchema = Yup.object().shape({
     cardNo: Yup.number().required('Required').min(16, 'Too Short!'),
-    cardValidityPeriod: Yup.string().required(null).min(5, '-5').max(5, '5'),
+    cardValidityPeriod: Yup.string().required(null).min(4, '-5').max(4, '5'),
     CVV: Yup.number().required('Required').min(3, 'Too Short!'),
     cardHolder: Yup.string().required('Required'),
   });
@@ -101,7 +103,7 @@ export default function PaymentForm(props) {
                     type="text"
                     label="0000 0000 0000 0000"
                     className="cardNo input-error"
-                    maxlength="19"
+                    maxlength="16"
                   />
                 ) : (
                   <PaymentImput
@@ -109,7 +111,7 @@ export default function PaymentForm(props) {
                     type="text"
                     label="0000 0000 0000 0000"
                     className="cardNo"
-                    maxlength="19"
+                    maxlength="16"
                   />
                 )}
                 {formikProps.values.cardValidityPeriod === '' &&
@@ -119,7 +121,7 @@ export default function PaymentForm(props) {
                     type="text"
                     label="MM/YY"
                     className="cardValidityPeriod input-error"
-                    maxlength="5"
+                    maxlength="4"
                   />
                 ) : (
                   <PaymentImput
@@ -127,7 +129,7 @@ export default function PaymentForm(props) {
                     type="text"
                     label="MM/YY"
                     className="cardValidityPeriod"
-                    maxlength="5"
+                    maxlength="4"
                   />
                 )}
                 {formikProps.values.CVV === '' && formikProps.touched.CVV ? (

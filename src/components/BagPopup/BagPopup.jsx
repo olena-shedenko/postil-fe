@@ -69,7 +69,7 @@ export default function BagPopup() {
                   <div className="bagpopup-buttons">
                     <Link
                       onClick={() => dispatch(toggleBagPopup())}
-                      to="/shopping_cart"
+                      to="shopping_cart"
                     >
                       <Button
                         className="bagpopup-buttons__item"

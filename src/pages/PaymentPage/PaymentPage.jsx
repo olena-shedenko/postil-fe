@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import { ReactComponent as MasterCard } from '../../images/svg/masterCard.svg';
 import { ReactComponent as Visa } from '../../images/svg/visa-logo.svg';
@@ -10,8 +10,10 @@ import { ReactComponent as HandsWithMoneysa } from '../../images/svg/HandsWithMo
 import './PaymentPage.scss';
 import Button from '../../components/Button/Button';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
+import { setCartProducts } from '../../store/operations';
 
 export default function PaymentPage(props) {
+  const dispatch = useDispatch();
   const { history } = props;
   const items = useSelector((state) => state.items.data);
   let totalPrice = 0;
@@ -19,15 +21,20 @@ export default function PaymentPage(props) {
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
   const payBy = document.getElementsByClassName('pay_by');
   const jwt = sessionStorage.getItem('token');
+  useEffect(() => {
+    dispatch(setCartProducts());
+  }, [dispatch]);
 
-  for (let index = 0; index < payBy.length; index++) { 
-    payBy[index].addEventListener('click', () => {
-      for (let index = 0; index < payBy.length; index++) {
-        payBy[index].classList.remove('active');
-      }
-      payBy[index].classList.add('active');
-    });
-  }
+  const changePaymentMethod = () => {
+    for (let index = 0; index < payBy.length; index++) {
+      payBy[index].addEventListener('click', () => {
+        for (let index = 0; index < payBy.length; index++) {
+          payBy[index].classList.remove('active');
+        }
+        payBy[index].classList.add('active');
+      });
+    }
+  };
 
   const getLocalCart = () => {
     if (jwt === null) {
@@ -59,6 +66,7 @@ export default function PaymentPage(props) {
   return (
     <div>
       {getLocalCart()}
+      {changePaymentMethod()}
       <CheckoutHeader payment />
       <div className="payment__container">
         <div className="registration">
@@ -82,7 +90,7 @@ export default function PaymentPage(props) {
                     <Visa />
                   </div>
                 </div>
-                <PaymentForm history={history}/>
+                <PaymentForm history={history} />
               </div>
             </div>
 
@@ -189,9 +197,14 @@ export default function PaymentPage(props) {
               <span>TOTAL</span>
               <span>${(totalPrice += 5)}</span>
             </p>
-              <button className="next__button btn" variant="dark" type="submit" form="payment-form">
-                Next
-              </button>
+            <button
+              className="next__button btn"
+              variant="dark"
+              type="submit"
+              form="payment-form"
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>

@@ -32,6 +32,7 @@ import {
   ERROR_REMOVE_PRODUCT_FROM_CART,
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
+  CLEAR_CART,
 } from './types';
 
 const initialState = {
@@ -169,6 +170,9 @@ const reducer = (state = initialState, action) => {
     }
     case SET_CART_AFTER_DELETE: {
       return { ...state, productsInCart: { ...state.productsInCart, data: action.payload } };
+    }
+    case CLEAR_CART: {
+      return {...state, productsInCart: {...state.productsInCart, data:[]}}
     }
     default:
       return state;
