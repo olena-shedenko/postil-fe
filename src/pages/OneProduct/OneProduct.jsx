@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Product from '../../components/Product/Product';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import SlickSlider from '../../components/SlickSlider/SlickSlider';
+import { filterByCategory } from '../../store/actions';
 
 const OneProduct = () => {
   const params = useParams();
@@ -13,15 +14,17 @@ const OneProduct = () => {
         state.items.data.find((item) => item._id === params.id)
       : null
   );
-  const shortInfo = useSelector((state) =>
-    state.items.data.length
-      ? /* eslint no-underscore-dangle: 0 */
-        state.items.data.find((item) => item._id === params.id)
-      : null
-  );
+  const relatedItems = useSelector(filterByCategory);
+  console.log(relatedItems);
+  // const shortInfo = useSelector((state) =>
+  //   state.items.data.length
+  //     ? /* eslint no-underscore-dangle: 0 */
+  //       state.items.data.find((item) => item._id === params.id)
+  //     : null
+  // );
   if (!product) return null;
 
-  if (!shortInfo) return null;
+  // if (!shortInfo) return null;
   /* eslint no-console: 0 */
   console.log('productId:', params.id);
   /* eslint no-console: 0 */
