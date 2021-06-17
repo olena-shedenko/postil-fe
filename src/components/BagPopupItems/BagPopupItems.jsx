@@ -6,7 +6,7 @@ function BagPopupItems() {
   const products = useSelector((state) => state.productsInCart.data);
   const items = useSelector((state) => state.items.data);
   const jwt = sessionStorage.getItem('token');
-  let product = [];
+  const product = [];
   // const loading = useSelector((state) => state.productsInCart.isLoading);
 
   const getItems = () => {
@@ -27,24 +27,26 @@ function BagPopupItems() {
     <>
       {getItems()}
       {jwt !== null && product
-        ? product.map((el) => (
+        ? product.map((el) => {
             <BagPopupItem
               key={el.product.itemNo}
               quantity={el.cartQuantity}
               product={el.product}
               // eslint-disable-next-line
               id={el.product._id}
-            />
-          ))
-        : product.map((el) => (
+            />;
+            return null;
+          })
+        : product.map((el) => {
             <BagPopupItem
               key={el.itemNo}
               quantity={el.quantityInBag}
               product={el}
               // eslint-disable-next-line
               id={el._id}
-            />
-          ))}
+            />;
+            return null;
+          })}
     </>
   );
 }

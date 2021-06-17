@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable  */
 
 import React from 'react';
 import './ShoppingCart.scss';
@@ -14,7 +14,6 @@ export default function ShoppingCart() {
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
   const jwt = sessionStorage.getItem('token');
-  
 
   const getLocalCart = () => {
     if (jwt === null) {
