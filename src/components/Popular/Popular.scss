@@ -33,6 +33,15 @@
 .popular-list-item {
   position: relative;
 }
+.see-all__btn {
+  padding: 17px 0;
+  width: 180px;
+  margin: 30px auto 80px;
+  cursor: pointer;
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
+  color: #373f41;
+}
 .popular-list-item__text-block {
   position: absolute;
   left: 0;
