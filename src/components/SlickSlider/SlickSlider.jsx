@@ -16,6 +16,7 @@ export default function SimpleSlider({ img, name, currentPrice }) {
     className: '',
     variableWidth: true,
   };
+
   return (
     // eslint-disable-next-line
     <Slider {...settings}>
