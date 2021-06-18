@@ -70,7 +70,7 @@ function Navbar() {
             role="presentation"
             onMouseEnter={onMouseEnter}
             onClick={handleCatalog}
-            className={catalog ? 'dropdown--nav active' : 'dropdown--nav'}
+            className={catalog ? 'dropdown--nav actived' : 'dropdown--nav'}
           >
             <Link to="/catalog" className="navbar--links" onClick={closeMenu}>
               Catalog
@@ -79,7 +79,7 @@ function Navbar() {
             <div
               data-testid="catalog"
               className={
-                catalog ? 'dropdown--catalog active' : 'dropdown--catalog'
+                catalog ? 'dropdown--catalog actived' : 'dropdown--catalog'
               }
               onMouseLeave={onMouseLeave}
             >
@@ -190,7 +190,7 @@ function Navbar() {
             <div className="navbar--item icon">
               <div className="navbar--item icon">
                 {/* eslint-disable-next-line */}
-                    <div
+                <div
                   className="navbar--links"
                   onClick={() => dispatch(toggleBagPopup())}
                 >

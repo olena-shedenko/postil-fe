@@ -7,7 +7,14 @@
     min-width: 200px;
   }
   &--product::-webkit-scrollbar {
-    display: none;
+    background-color: #ddd;
+    border-radius: 8px;
+    width: 7px;
+    overflow: hidden;
+  }
+  &--product::-webkit-scrollbar-thumb{
+    background-color: #8a9394;
+    border-radius: 8px;
   }
   &--item{
     display: flex;
