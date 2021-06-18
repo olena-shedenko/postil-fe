@@ -13,6 +13,7 @@ const CatalogItems = () => {
   const slicedProducts = useSelector(sliceProductsForPagination);
   const productsAll = useSelector(getProducts);
   const products = perPage ? slicedProducts : productsAll;
+  const items = useSelector((state) => state.items.data);
 
   return (
     <div className="catalog-main-products cg-products">
@@ -23,7 +24,9 @@ const CatalogItems = () => {
             id={product._id}
             name={product.name}
             img={product.imageUrls[0]}
+            itemNo={product.itemNo}
             currentPrice={product.currentPrice}
+            items={items}
           />
         ))}
     </div>
