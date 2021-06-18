@@ -13,6 +13,7 @@ const OneProduct = () => {
         state.items.data.find((item) => item._id === params.id)
       : null
   );
+
   const shortInfo = useSelector((state) =>
     state.items.data.length
       ? /* eslint no-underscore-dangle: 0 */
@@ -21,7 +22,7 @@ const OneProduct = () => {
   );
   if (!product) return null;
 
-  if (!shortInfo) return null;
+  // if (!shortInfo) return null;
   /* eslint no-console: 0 */
   console.log('productId:', params.id);
   /* eslint no-console: 0 */

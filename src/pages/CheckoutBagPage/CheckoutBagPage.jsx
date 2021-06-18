@@ -7,30 +7,40 @@ import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import CheckoutBagItem from '../../components/CheckoutBagItem/CheckoutBagItem';
 import Button from '../../components/Button/Button';
 
-export default function CheckoutBag(props) {
+export default function CheckoutBagPage(props) {
   const { history } = props;
   const items = useSelector((state) => state.items.data);
   let totalPrice = 0;
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
-
-  items.map((el) => {
-    if (el.inShoppingBag === true) {
-      totalPrice += el.currentPrice * el.quantityInBag;
-    }
-    return el;
-  });
+  const jwt = sessionStorage.getItem('token');
 
   const getLocalCart = () => {
-    items.forEach((el) => {
-      bag.forEach((element) => {
-        if (element === el.itemNo) {
-          bagItems.push(el);
-        }
+    if (jwt === null) {
+      items.forEach((el) => {
+        bag.forEach((element) => {
+          if (element === el.itemNo) {
+            bagItems.push(el);
+          }
+        });
       });
-    });
+      items.map((el) => {
+        if (el.inShoppingBag === true) {
+          totalPrice += el.currentPrice * el.quantityInBag;
+        }
+        return el;
+      });
+    } else if (jwt !== null) {
+      const productsInCart = useSelector((state) => state.productsInCart.data);
+      productsInCart.forEach((el) => {
+        bagItems.push(el);
+      });
+      bagItems.map((el) => {
+        totalPrice += el.product.currentPrice * el.cartQuantity;
+        return el;
+      });
+    }
   };
-
   return (
     <div>
       {getLocalCart()}
@@ -39,11 +49,27 @@ export default function CheckoutBag(props) {
         <div className="registration">
           <div className="registration-right__block">
             <p className="registration__title">SHOPPING BAG</p>
-            {bagItems.map((el) => {
-              return (
-                <CheckoutBagItem key={el.itemNo} items={items} item={el} />
-              );
-            })}
+            {jwt === null
+              ? bagItems.map((el) => {
+                  return (
+                    <CheckoutBagItem
+                      key={el._id}
+                      items={items}
+                      item={el}
+                      cartQuantity={el.quantityInBag}
+                    />
+                  );
+                })
+              : bagItems.map((el) => {
+                  return (
+                    <CheckoutBagItem
+                      key={el._id}
+                      items={items}
+                      item={el.product}
+                      cartQuantity={el.cartQuantity}
+                    />
+                  );
+                })}
             <hr className="decor-line" />
             <p
               className="back__button"

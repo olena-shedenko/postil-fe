@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import { ReactComponent as MasterCard } from '../../images/svg/masterCard.svg';
 import { ReactComponent as Visa } from '../../images/svg/visa-logo.svg';
@@ -10,44 +10,63 @@ import { ReactComponent as HandsWithMoneysa } from '../../images/svg/HandsWithMo
 import './PaymentPage.scss';
 import Button from '../../components/Button/Button';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
+import { setCartProducts } from '../../store/operations';
 
 export default function PaymentPage(props) {
+  const dispatch = useDispatch();
   const { history } = props;
   const items = useSelector((state) => state.items.data);
   let totalPrice = 0;
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
   const payBy = document.getElementsByClassName('pay_by');
+  const jwt = sessionStorage.getItem('token');
+  useEffect(() => {
+    dispatch(setCartProducts());
+  }, [dispatch]);
 
-  items.map((el) => {
-    if (el.inShoppingBag === true) {
-      totalPrice += el.currentPrice * el.quantityInBag;
+  const changePaymentMethod = () => {
+    for (let index = 0; index < payBy.length; index++) {
+      payBy[index].addEventListener('click', () => {
+        for (let index = 0; index < payBy.length; index++) {
+          payBy[index].classList.remove('active');
+        }
+        payBy[index].classList.add('active');
+      });
     }
-    return el;
-  });
-
-  for (let index = 0; index < payBy.length; index++) {
-    payBy[index].addEventListener('click', () => {
-      for (let index = 0; index < payBy.length; index++) {
-        payBy[index].classList.remove('active');
-      }
-      payBy[index].classList.add('active');
-    });
-  }
+  };
 
   const getLocalCart = () => {
-    items.forEach((el) => {
-      bag.forEach((element) => {
-        if (element === el.itemNo) {
-          bagItems.push(el);
-        }
+    if (jwt === null) {
+      items.forEach((el) => {
+        bag.forEach((element) => {
+          if (element === el.itemNo) {
+            bagItems.push(el);
+          }
+        });
       });
-    });
+      items.map((el) => {
+        if (el.inShoppingBag === true) {
+          totalPrice += el.currentPrice * el.quantityInBag;
+        }
+        return el;
+      });
+    } else if (jwt !== null) {
+      const productsInCart = useSelector((state) => state.productsInCart.data);
+      productsInCart.forEach((el) => {
+        bagItems.push(el);
+      });
+      bagItems.map((el) => {
+        totalPrice += el.product.currentPrice * el.cartQuantity;
+        return el;
+      });
+    }
   };
 
   return (
     <div>
       {getLocalCart()}
+      {changePaymentMethod()}
       <CheckoutHeader payment />
       <div className="payment__container">
         <div className="registration">
@@ -71,7 +90,7 @@ export default function PaymentPage(props) {
                     <Visa />
                   </div>
                 </div>
-                <PaymentForm />
+                <PaymentForm history={history} />
               </div>
             </div>
 
@@ -121,24 +140,45 @@ export default function PaymentPage(props) {
           </div>
           <div className="registration-left__block">
             <p className="registration__title">SUMMARY</p>
-            {bagItems.map((el) => {
-              return (
-                <div className="card" key={el.itemNo}>
-                  <img
-                    src={el.imageUrls[0]}
-                    alt="image"
-                    width="150px"
-                    height="150px"
-                  />
-                  <div className="card-text-content">
-                    <p className="card-text-content__title">{el.name}</p>
-                    <p className="card-text-content__price">
-                      ${el.currentPrice}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            {jwt === null
+              ? bagItems.map((el) => {
+                  return (
+                    <div className="card" key={el.itemNo}>
+                      <img
+                        src={el.imageUrls[0]}
+                        alt="image"
+                        width="150px"
+                        height="150px"
+                      />
+                      <div className="card-text-content">
+                        <p className="card-text-content__title">{el.name}</p>
+                        <p className="card-text-content__price">
+                          ${el.currentPrice}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })
+              : bagItems.map((el) => {
+                  return (
+                    <div className="card" key={el.product.itemNo}>
+                      <img
+                        src={el.product.imageUrls[0]}
+                        alt="image"
+                        width="150px"
+                        height="150px"
+                      />
+                      <div className="card-text-content">
+                        <p className="card-text-content__title">
+                          {el.product.name}
+                        </p>
+                        <p className="card-text-content__price">
+                          ${el.product.currentPrice}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
             <hr className="decor-line" />
             <p className="registration-coupone">ENTER COUPONE CODE</p>
             <p className="registration-price">
@@ -155,13 +195,16 @@ export default function PaymentPage(props) {
             </p>
             <p className="total-price">
               <span>TOTAL</span>
-              <span>${totalPrice += 5}</span>
+              <span>${(totalPrice += 5)}</span>
             </p>
-            <NavLink to="/thank_you_screen">
-              <Button className="next__button btn" variant="dark" type="button">
-                Next
-              </Button>
-            </NavLink>
+            <button
+              className="next__button btn"
+              variant="dark"
+              type="submit"
+              form="payment-form"
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>

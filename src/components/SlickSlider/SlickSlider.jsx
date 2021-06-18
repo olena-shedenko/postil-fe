@@ -16,52 +16,53 @@ export default function SimpleSlider({ img, name, currentPrice }) {
     className: '',
     variableWidth: true,
   };
+
   return (
     // eslint-disable-next-line
     <Slider {...settings}>
       <div className="">
         <div className="slider__img-wrapper">
-          <img src={img[0]} alt="heart" className="slider__img" />
+          <img src={`${img[0]}`} alt="heart" className="slider__img" />
         </div>
-        <div className="product__info">
-          <h1 className="product__name">{name}</h1>
-          <h5 className="product__price">USD ${currentPrice}</h5>
-        </div>
-      </div>
-      <div className="">
-        <div className="slider__img-wrapper">
-          <img src={img[0]} alt="heart" className="slider__img" />
-        </div>
-        <div className="product__info">
-          <h1 className="product__name">{name}</h1>
-          <h5 className="product__price">USD ${currentPrice}</h5>
+        <div className="slider__info">
+          <h1 className="slider__name">{name}</h1>
+          <h5 className="slider__price">USD ${currentPrice}</h5>
         </div>
       </div>
       <div className="">
         <div className="slider__img-wrapper">
           <img src={img[0]} alt="heart" className="slider__img" />
         </div>
-        <div className="product__info">
-          <h1 className="product__name">{name}</h1>
-          <h5 className="product__price">USD ${currentPrice}</h5>
+        <div className="slider__info">
+          <h1 className="slider__name">{name}</h1>
+          <h5 className="slider__price">USD ${currentPrice}</h5>
         </div>
       </div>
       <div className="">
         <div className="slider__img-wrapper">
           <img src={img[0]} alt="heart" className="slider__img" />
         </div>
-        <div className="product__info">
-          <h1 className="product__name">{name}</h1>
-          <h5 className="product__price">USD ${currentPrice}</h5>
+        <div className="slider__info">
+          <h1 className="slider__name">{name}</h1>
+          <h5 className="slider__price">USD ${currentPrice}</h5>
         </div>
       </div>
       <div className="">
         <div className="slider__img-wrapper">
           <img src={img[0]} alt="heart" className="slider__img" />
         </div>
-        <div className="product__info">
-          <h1 className="product__name">{name}</h1>
-          <h5 className="product__price">USD ${currentPrice}</h5>
+        <div className="slider__info">
+          <h1 className="slider__name">{name}</h1>
+          <h5 className="slider__price">USD ${currentPrice}</h5>
+        </div>
+      </div>
+      <div className="">
+        <div className="slider__img-wrapper">
+          <img src={img[0]} alt="heart" className="slider__img" />
+        </div>
+        <div className="slider__info">
+          <h1 className="slider__name">{name}</h1>
+          <h5 className="slider__price">USD ${currentPrice}</h5>
         </div>
       </div>
       <div className="">

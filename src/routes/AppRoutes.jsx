@@ -33,7 +33,6 @@ const AppRoutes = () => {
       <Route path="/product/:id" component={OneProduct} />
       <Route path="/contact" />
       <Route path="/contact" render={() => <AboutUs />} />
-      <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
       <Route path="/contact-us" render={() => <ContactUs />} />
       <Route
         exact
