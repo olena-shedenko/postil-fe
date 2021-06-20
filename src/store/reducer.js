@@ -30,6 +30,7 @@ import {
   REQUEST_REMOVE_PRODUCT_FROM_CART,
   SUCCESS_REMOVE_PRODUCT_FROM_CART,
   ERROR_REMOVE_PRODUCT_FROM_CART,
+  TOGGLE_SHOW_FILTERS,
 } from './types';
 
 const initialState = {
@@ -59,6 +60,8 @@ const initialState = {
   currentPage: 0,
   perPage: 18,
   cart: null,
+  showFilters: false,
+  filteredProducts: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -161,6 +164,9 @@ const reducer = (state = initialState, action) => {
     }
     case SET_CART: {
       return { ...state, cart: action.payload };
+    }
+    case TOGGLE_SHOW_FILTERS: {
+      return { ...state, showFilters: !state.showFilters };
     }
     default:
       return state;

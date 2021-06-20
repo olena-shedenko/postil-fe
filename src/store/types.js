@@ -38,3 +38,4 @@ export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_PER_PAGE = 'SET_PER_PAGE';
 
 export const SET_CART = 'SET_CART';
+export const TOGGLE_SHOW_FILTERS = 'TOGGLE_SHOW_FILTERS';
