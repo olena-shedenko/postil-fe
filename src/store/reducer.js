@@ -34,6 +34,7 @@ import {
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
   FILTER_NAME,
+  TOGGLE_SHOW_FILTERS,
 } from './types';
 
 const initialState = {
@@ -63,6 +64,8 @@ const initialState = {
   currentPage: 0,
   perPage: 18,
   cart: [],
+  showFilters: false,
+  filteredProducts: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -185,6 +188,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         productsInCart: { ...state.productsInCart, data: [] },
       };
+    }
+    case TOGGLE_SHOW_FILTERS: {
+      return { ...state, showFilters: !state.showFilters };
     }
     default:
       return state;
