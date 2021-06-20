@@ -34,6 +34,7 @@ import {
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
+  SET_CATEGORY,
 } from './types';
 
 const initialState = {
@@ -186,6 +187,11 @@ const reducer = (state = initialState, action) => {
         productsInCart: { ...state.productsInCart, data: [] },
       };
     }
+    case SET_CATEGORY:
+      return {
+        ...state,
+        categories: { ...state.categories, data: action.payload },
+      };
     default:
       return state;
   }
