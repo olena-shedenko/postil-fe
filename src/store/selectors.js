@@ -29,8 +29,6 @@ export const sliceProductsForPagination = (state) => {
 
 export const getCart = (state) => state.cart;
 
-export const getCategories = (state) => state.categories;
-
 // const sortAsc = (arr, field) => {
 //   return arr.sort((a, b) => {
 //     if (a[field] > b[field]) return 1;
