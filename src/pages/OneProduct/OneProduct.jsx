@@ -46,11 +46,15 @@ const OneProduct = () => {
         sizes={product.sizes}
         currentPrice={product.currentPrice}
       />
-      <SlickSlider
-        name={shortInfo.name}
-        img={shortInfo.imageUrls}
-        currentPrice={shortInfo.currentPrice}
-      />
+      {categories.map(({ imageUrls, name, currentPrice }) => {
+        return (
+          <SlickSlider
+            img={imageUrls}
+            name={name}
+            currentPrice={currentPrice}
+          />
+        );
+      })}
     </div>
   );
 };

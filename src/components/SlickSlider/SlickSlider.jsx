@@ -22,7 +22,7 @@ export default function SimpleSlider({ img, name, currentPrice }) {
     <Slider {...settings}>
       <div className="">
         <div className="slider__img-wrapper">
-          <img src={`${img[0]}`} alt="heart" className="slider__img" />
+          <img src={img[0]} alt="heart" className="slider__img" />
         </div>
         <div className="slider__info">
           <h1 className="slider__name">{name}</h1>
