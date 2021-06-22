@@ -75,6 +75,7 @@ export const removeProductFromCart = (id) => (dispatch) => {
       dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_CART, payload: err });
     });
 };
+
 export const getBlogPosts = () => (dispatch) => {
   axios('http://localhost:3000/blogposts.json').then((res) =>
     dispatch({ type: GET_BLOG_POSTS, payload: res.data })
