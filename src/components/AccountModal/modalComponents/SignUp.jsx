@@ -5,8 +5,6 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import '../AccountModal.scss';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { setModalLogIn } from '../../../store/operations';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from '../../Button/Button';
@@ -35,9 +33,7 @@ const validationFormSchema = Yup.object().shape({
     .required('Agree to ToS and Privecy Policy'),
 });
 
-const SignUp = ({ handleSubmit }) => {
-  const dispatch = useDispatch();
-
+const SignUp = ({ handleSubmit, handleBottomLink }) => {
   return (
     <>
       <Formik
@@ -56,46 +52,49 @@ const SignUp = ({ handleSubmit }) => {
           return (
             <>
               <h5 className="mobile-modal-heading">Sign up</h5>
-              <Form className="form">
+              <Form data-testid="form" className="form">
                 <Input
+                  testId="input-name"
                   classname="form__input__field"
                   placeholder="Name Surname"
                   name="name"
                   type="text"
                 />
                 <Input
+                  testId="input-login"
                   classname="form__input__field"
                   placeholder="Login"
                   name="login"
                   type="text"
                 />
                 <Input
+                  testId="input-email"
                   classname="form__input__field"
                   placeholder="Email"
                   name="email"
                   type="text"
                 />
                 <Input
+                  testId="input-signup-password"
                   classname="form__input__field"
                   placeholder="Password"
                   name="password"
                   type="password"
                 />
                 <Input
+                  testId="confirm-password"
                   classname="form__input__field"
                   placeholder="Confirm Password"
                   name="passwordconf"
                   type="password"
                 />
                 <Checkbox name="accept" />
-                <span
-                  className="bottom-link"
-                  onClick={() => dispatch(setModalLogIn())}
-                >
+                <span className="bottom-link" onClick={handleBottomLink}>
                   i have an account
                 </span>
 
                 <Button
+                  testId="account-modal-button"
                   className="submit-button"
                   type="submit"
                   // eslint-disable-next-line react/no-children-prop
@@ -112,6 +111,7 @@ const SignUp = ({ handleSubmit }) => {
 
 SignUp.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  handleBottomLink: PropTypes.func.isRequired,
 };
 
 export default SignUp;

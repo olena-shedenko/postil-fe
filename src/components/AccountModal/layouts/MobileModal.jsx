@@ -5,7 +5,11 @@ import React from 'react';
 import '../AccountModal.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleAccountModal } from '../../../store/operations';
+import {
+  toggleAccountModal,
+  setModalLogIn,
+  setModalSignUp,
+} from '../../../store/operations';
 import SignUp from '../modalComponents/SignUp';
 import LogIn from '../modalComponents/LogIn';
 
@@ -27,9 +31,15 @@ const MobileModal = ({ loginSubmit, signUpSubmit }) => {
         />
 
         {forSignUp ? (
-          <SignUp handleSubmit={signUpSubmit} />
+          <SignUp
+            handleSubmit={signUpSubmit}
+            handleBottomLink={() => dispatch(setModalLogIn())}
+          />
         ) : (
-          <LogIn handleSubmit={loginSubmit} />
+          <LogIn
+            handleSubmit={loginSubmit}
+            handleBottomLink={() => dispatch(setModalSignUp())}
+          />
         )}
       </div>
     </>

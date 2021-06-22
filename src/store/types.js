@@ -38,3 +38,8 @@ export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_PER_PAGE = 'SET_PER_PAGE';
 
 export const SET_CART = 'SET_CART';
+
+export const SET_QUANTITY = 'SET_QUANTITY';
+export const SET_CART_AFTER_DELETE = 'SET_CART_AFTER_DELETE';
+
+export const CLEAR_CART = 'CLEAR_CART';
