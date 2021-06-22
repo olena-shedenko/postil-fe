@@ -89,7 +89,7 @@
       display: flex;
       align-items: baseline;
     }
-    &--nav.active {
+    &--nav.actived {
       border-bottom: 1px solid #373f41;
       transition: 0.5s ease-in-out;
       padding-bottom: 5px;
@@ -101,13 +101,13 @@
       display: flex;
       align-items: baseline;
     }
-    &--nav.active {
+    &--nav.actived {
       border-bottom: 1px solid #373f41;
       transition: 0.5s ease-in-out;
       padding-bottom: 5px;
     }
 
-    &--catalog.active {
+    &--catalog.actived {
       background: white;
       visibility: visible;
       opacity: 1;
@@ -138,7 +138,7 @@
     font-size: 14px;
   }
   .dropdown {
-    &--catalog.active {
+    &--catalog.actived {
       width: 15%;
     }
   }
@@ -185,7 +185,7 @@
       transition: all 0.5s ease;
     }
 
-    &--menu.active {
+    &--menu.actived {
       border-top: 4px solid #373f41;
       background: white;
       left: 0;
@@ -219,7 +219,7 @@
       top: 10%;
       transition: 1s;
     }
-    &--catalog.active {
+    &--catalog.actived {
       left: 0;
       margin-left: 0;
       width: 86%;
