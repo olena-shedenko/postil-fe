@@ -50,3 +50,13 @@
     }
   }
 }
+
+@media (max-width: 425px) {
+  .bagpopup {
+    &__item {
+      &__text {
+        font-size: 14px;
+      }
+    }
+  }
+}
