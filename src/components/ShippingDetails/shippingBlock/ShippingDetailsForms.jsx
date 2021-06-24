@@ -25,7 +25,9 @@ const ShippingDetailsForms = () => {
     setPaid(!paid);
     setFree(false);
   }
-  const onSubmit = () => {};
+  const onSubmit = (values) => {
+    sessionStorage.setItem('shipping-details', JSON.stringify(values));
+  };
   return (
     <div>
       <Formik
