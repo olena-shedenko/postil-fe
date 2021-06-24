@@ -15,21 +15,9 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
               <img src={img[0]} alt="bed-sheets" className="product__img" />
             </div>
             <div className="product__wrapper-small">
-              <img
-                src={img[1]}
-                alt="bed-sheets"
-                className="product__img-small"
-              />
-              <img
-                src={img[2]}
-                alt="bed-sheets"
-                className="product__img-small"
-              />
-              <img
-                src={img[3]}
-                alt="bed-sheets"
-                className="product__img-small"
-              />
+              <img src={img[1]} alt="beddings" className="product__img-small" />
+              <img src={img[2]} alt="beddings" className="product__img-small" />
+              <img src={img[3]} alt="beddings" className="product__img-small" />
             </div>
           </div>
           <div className="product__info">
@@ -106,7 +94,7 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
 };
 
 Product.propTypes = {
-  img: PropTypes.string.isRequired,
+  img: PropTypes.instanceOf(Array).isRequired,
   name: PropTypes.string.isRequired,
   itemNo: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,

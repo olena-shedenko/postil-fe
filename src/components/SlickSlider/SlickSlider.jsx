@@ -5,7 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import './SlickSlider.scss';
 import PropTypes from 'prop-types';
 
-export default function SimpleSlider({ img, name, currentPrice }) {
+export default function SimpleSlider({ categories }) {
+  /* eslint no-console: 0 */
+  console.log(' categories:', categories);
   const settings = {
     dots: false,
     infinite: true,
@@ -20,21 +22,23 @@ export default function SimpleSlider({ img, name, currentPrice }) {
   return (
     // eslint-disable-next-line
     <Slider {...settings}>
-      <div className="">
-        <div className="slider__img-wrapper">
-          <img src={img[0]} alt="heart" className="slider__img" />
-        </div>
-        <div className="slider__info">
-          <h1 className="slider__name">{name}</h1>
-          <h5 className="slider__price">USD ${currentPrice}</h5>
-        </div>
-      </div>
+      {categories.map(({ _id, imageUrls, name, currentPrice }) => {
+        return (
+          <div key={_id} className="">
+            <div className="slider__img-wrapper">
+              <img src={imageUrls[0]} alt="beddings" className="slider__img" />
+            </div>
+            <div className="slider__info">
+              <h1 className="slider__name">{name}</h1>
+              <h5 className="slider__price">USD ${currentPrice}</h5>
+            </div>
+          </div>
+        );
+      })}
     </Slider>
   );
 }
 
 SimpleSlider.propTypes = {
-  img: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  currentPrice: PropTypes.number.isRequired,
+  categories: PropTypes.instanceOf(Array).isRequired,
 };
