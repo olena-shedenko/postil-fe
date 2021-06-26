@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './SlickSlider.scss';
@@ -24,15 +25,21 @@ export default function SimpleSlider({ categories }) {
     <Slider {...settings}>
       {categories.map(({ _id, imageUrls, name, currentPrice }) => {
         return (
-          <div key={_id} className="">
-            <div className="slider__img-wrapper">
-              <img src={imageUrls[0]} alt="beddings" className="slider__img" />
+          <Link to={{ pathname: `/product/${_id}` }}>
+            <div className="">
+              <div className="slider__img-wrapper">
+                <img
+                  src={imageUrls[0]}
+                  alt="beddings"
+                  className="slider__img"
+                />
+              </div>
+              <div className="slider__info">
+                <h1 className="slider__name">{name}</h1>
+                <h5 className="slider__price">USD ${currentPrice}</h5>
+              </div>
             </div>
-            <div className="slider__info">
-              <h1 className="slider__name">{name}</h1>
-              <h5 className="slider__price">USD ${currentPrice}</h5>
-            </div>
-          </div>
+          </Link>
         );
       })}
     </Slider>
