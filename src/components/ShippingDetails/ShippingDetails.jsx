@@ -7,7 +7,7 @@ const ShippingDetails = () => {
     <div className="container">
       <div className="container--block">
         <ShippingDetailsForms />
-        <ShippingCheckout buttonName="NEXT" to="/payment" />
+        <ShippingCheckout />
       </div>
     </div>
   );
