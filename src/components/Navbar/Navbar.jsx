@@ -150,7 +150,7 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div className={dropdown ? 'navbar--menu active' : 'navbar--menu'}>
+          <div className={dropdown ? 'navbar--menu actived' : 'navbar--menu'}>
             <div className="navbar--item">
               <Link
                 to="/about_us"
