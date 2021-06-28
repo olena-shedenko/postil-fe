@@ -8,6 +8,7 @@ import {
   FILTER_FABRIC,
   FILTER_CATALOG,
   FILTER_BY_CATEGORY,
+  FILTER_NAME,
   CLEAR_CATEGORY,
   SET_SELECTED_OPTION,
   SET_MIN_SLIDER_VALUE,
@@ -35,6 +36,10 @@ export const filterSize = (data) => {
 
 export const filterColor = (data) => {
   return { type: FILTER_COLOR, payload: data };
+};
+
+export const filterName = (data) => {
+  return { type: FILTER_NAME, payload: data };
 };
 
 export const filterFabric = (data) => {

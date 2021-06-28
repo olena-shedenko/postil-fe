@@ -33,6 +33,7 @@ import {
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
+  FILTER_NAME,
 } from './types';
 
 const initialState = {
@@ -123,6 +124,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, filters: { ...state.filters, sizes: action.payload } };
     case FILTER_COLOR:
       return { ...state, filters: { ...state.filters, color: action.payload } };
+    case FILTER_NAME:
+      return { ...state, filters: { ...state.filters, name: action.payload } };
     case FILTER_FABRIC:
       return {
         ...state,
