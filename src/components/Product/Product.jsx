@@ -4,21 +4,17 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import { ReactComponent as Favourites } from '../../images/svg/heart.svg';
 import { Facebook, Twitter, Instagram } from '../Icons';
+import SliderProduct from '../SliderProduct/SliderProduct';
 
 const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
+  /* eslint no-console: 0 */
+  console.log(img);
   return (
     <>
       <div className="product-container">
         <div className="product">
           <div className="product-img">
-            <div className="product__img-wrapper">
-              <img src={img[0]} alt="bed-sheets" className="product__img" />
-            </div>
-            <div className="product__wrapper-small">
-              <img src={img[1]} alt="beddings" className="product__img-small" />
-              <img src={img[2]} alt="beddings" className="product__img-small" />
-              <img src={img[3]} alt="beddings" className="product__img-small" />
-            </div>
+            <SliderProduct img={img} />
           </div>
           <div className="product__info">
             <h1 className="product__name">{name}</h1>
