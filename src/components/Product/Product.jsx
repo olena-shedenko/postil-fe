@@ -7,8 +7,6 @@ import { Facebook, Twitter, Instagram } from '../Icons';
 import SliderProduct from '../SliderProduct/SliderProduct';
 
 const Product = ({ img, name, itemNo, color, sizes, currentPrice }) => {
-  /* eslint no-console: 0 */
-  console.log(img);
   return (
     <>
       <div className="product-container">
