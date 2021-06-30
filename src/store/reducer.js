@@ -33,6 +33,11 @@ import {
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
+  SET_WISHLIST_PRODUCTS,
+  TOGGLE_WISHLIST,
+  SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
+  SUCCESS_ADD_PRODUCT_TO_WISHLIST,
+  ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
 } from './types';
 
 const initialState = {
@@ -41,9 +46,14 @@ const initialState = {
   isError: false,
   errMessage: null,
   openedBagPopup: false,
+  openedWishlist: false,
   productsInCart: {
     data: [],
     isLoading: false,
+  },
+  wishlist: {
+    data: [],
+    isLoading: true,
   },
   blogposts: [],
   items: {
@@ -183,6 +193,25 @@ const reducer = (state = initialState, action) => {
         productsInCart: { ...state.productsInCart, data: [] },
       };
     }
+    case TOGGLE_WISHLIST:
+      return { ...state, openedWishlist: !state.openedWishlist };
+    case SET_WISHLIST_PRODUCTS:
+      return {
+        ...state,
+        wishlist: { data: action.payload, isLoading: false },
+      };
+    case SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST:
+      return {
+        ...state,
+        wishlist: { ...state.wishlist, data: action.payload },
+      };
+    case SUCCESS_ADD_PRODUCT_TO_WISHLIST:
+      return {
+        ...state,
+        wishlist: { ...state.wishlist, data: action.payload },
+      };
+    case ERROR_REMOVE_PRODUCT_FROM_WISHLIST:
+      return { ...state, errMessage: action.payload };
     default:
       return state;
   }

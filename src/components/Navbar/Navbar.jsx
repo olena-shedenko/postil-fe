@@ -10,6 +10,7 @@ import {
   toggleBagPopup,
   toggleAccountModal,
   filterAndSortOperation,
+  toggleWishlist,
 } from '../../store/operations';
 
 import AccountModal from '../AccountModal/AccountModal';
@@ -18,6 +19,7 @@ import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 import BagPopup from '../BagPopup/BagPopup';
+import Wishlist from '../Wishlist/Wishlist';
 
 import {
   filterByCategory,
@@ -59,6 +61,7 @@ function Navbar() {
   return (
     <>
       <BagPopup />
+      <Wishlist />
       {accountModal && <AccountModal />}
       <div className="nav">
         <nav className="navbar">
@@ -184,7 +187,11 @@ function Navbar() {
                 }}
               />
             </div>
-            <div className="navbar--item  icon">
+            {/* eslint-disable-next-line */}
+            <div
+              onClick={() => dispatch(toggleWishlist())}
+              className="navbar--item  icon"
+            >
               <Favourites onClick={closeMenu} />
             </div>
             <div className="navbar--item icon">
