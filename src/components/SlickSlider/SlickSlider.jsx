@@ -7,8 +7,6 @@ import './SlickSlider.scss';
 import PropTypes from 'prop-types';
 
 export default function SimpleSlider({ categories }) {
-  /* eslint no-console: 0 */
-  console.log(' categories:', categories);
   const settings = {
     dots: false,
     infinite: true,

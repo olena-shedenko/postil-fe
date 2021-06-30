@@ -1,14 +1,14 @@
 import React from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 import './SliderProduct.scss';
 import PropTypes from 'prop-types';
 
 export default function SliderProduct({ img }) {
   const settings = {
     customPaging(i) {
-      return <img src={`${img}/abstract0${i + 1}`} alt="beddings" />;
+      return <img src={`${img}${i + 1}`} alt="beddings" />;
     },
     dots: true,
     dotsClass: 'slick-dots slick-thumb',
@@ -16,29 +16,29 @@ export default function SliderProduct({ img }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    className: '',
+    centerPadding: '20px',
   };
 
   return (
     // eslint-disable-next-line
     <Slider {...settings}>
-      {img.map(() => {
+      {img.map((item) => {
+        /* eslint no-console: 0 */
+        console.log('item', item);
         return (
           <>
-            <div className="slide__img-wrapper">
-              <div className="slide__img">
-                <img src={img[0]} alt="beddings" />
-              </div>
-              {/* <div className="slide__wrapper-small">
-                <div className="slide__img-small">
-                  <img src={img[1]} alt="beddings" />
-                </div>
-                <div className="slide__img-small">
-                  <img src={img[2]} alt="beddings" />
-                </div>
-                <div className="slide__img-small">
-                  <img src={img[3]} alt="beddings" />
-                </div>
-              </div> */}
+            <div className="slick-list image-wrapper">
+              <img src={item} alt="beddings" className="image-wrapper__image" />
+            </div>
+            <div>
+              <img src={item[1]} alt="beddings" />
+            </div>
+            <div>
+              <img src={item[2]} alt="beddings" />
+            </div>
+            <div>
+              <img src={item[3]} alt="beddings" />
             </div>
           </>
         );
@@ -46,21 +46,6 @@ export default function SliderProduct({ img }) {
     </Slider>
   );
 
-  // return img.map(() => {
-  //   return (
-  //     // eslint-disable-next-line
-  //     <Slider {...settings}>
-  //       <div className="slide__img-wrapper">
-  //         <img src={img[0]} alt="beddings" className="slide__img" />
-  //       </div>
-  //       <div className="slide__wrapper-small">
-  //         <img src={img[1]} alt="beddings" className="slide__img-small" />
-  //         {/* <img src={img[2]} alt="beddings" className="slide__img-small" />
-  //         <img src={img[3]} alt="beddings" className="slide__img-small" /> */}
-  //       </div>
-  //     </Slider>
-  //   );
-  // });
   // // eslint-disable-next-line
   // <Slider {...settings}>
   //   {img.map(() => {
@@ -94,14 +79,7 @@ export default function SliderProduct({ img }) {
 //     variableWidth: true,
 //   };
 
-//   return (
-//     // eslint-disable-next-line
-//     <Slider {...settings}>
-//       {/* {img.map(({_id, imageUrls}) => {
-//         return (
-
-//         )
-//       })} */}
+//
 //       <div className="product__img-wrapper">
 //         <img src={img[0]} alt="bed-sheets" className="product__img" />
 //       </div>
