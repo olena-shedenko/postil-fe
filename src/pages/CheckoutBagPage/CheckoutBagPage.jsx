@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import CheckoutBagItem from '../../components/CheckoutBagItem/CheckoutBagItem';
 import Button from '../../components/Button/Button';
+import NoItems from '../../components/NoItems/NoItems';
 
 export default function CheckoutBagPage(props) {
   const { history } = props;
@@ -49,6 +50,7 @@ export default function CheckoutBagPage(props) {
         <div className="registration">
           <div className="registration-right__block">
             <p className="registration__title">SHOPPING BAG</p>
+            {bagItems.length === 0 ? <NoItems /> : null}
             {jwt === null
               ? bagItems.map((el) => {
                   return (

@@ -1,20 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import * as Yup from 'yup';
 import PaymentImput from './PaymentImput';
 import './CartForm.scss';
-// import {
-//   SUCCESS_REMOVE_PRODUCT_FROM_CART,
-//   CLEAR_CART,
-// } from '../../store/types';
 import { deleteCart } from '../../store/operations';
 
 export default function PaymentForm(props) {
   const { history } = props;
   const dispatch = useDispatch();
+  const payBy = useSelector((state) => state.payByCard);
 
   const submitForm = (values) => {
     const payBy = document.getElementsByClassName('pay_by');
@@ -83,98 +80,188 @@ export default function PaymentForm(props) {
 
   return (
     <div>
-      <Formik
-        initialValues={{
-          cardNo: '',
-          cardValidityPeriod: '',
-          CVV: '',
-          cardHolder: '',
-        }}
-        onSubmit={submitForm}
-        validationSchema={validationFormSchema}
-      >
-        {(formikProps) => {
-          return (
-            <Form className="form" id="payment-form">
-              <div className="card-info">
-                {formikProps.values.cardNo === '' &&
-                formikProps.touched.cardNo ? (
+      {payBy ? (
+        <Formik
+          initialValues={{
+            cardNo: '',
+            cardValidityPeriod: '',
+            CVV: '',
+            cardHolder: '',
+          }}
+          onSubmit={submitForm}
+          validationSchema={validationFormSchema}
+        >
+          {(formikProps) => {
+            return (
+              <Form className="form" id="payment-form">
+                <div className="card-info">
+                  {formikProps.values.cardNo === '' &&
+                  formikProps.touched.cardNo ? (
+                    <PaymentImput
+                      name="cardNo"
+                      type="text"
+                      label="0000 0000 0000 0000"
+                      className="cardNo input-error"
+                      maxlength="16"
+                    />
+                  ) : (
+                    <PaymentImput
+                      name="cardNo"
+                      type="text"
+                      label="0000 0000 0000 0000"
+                      className="cardNo"
+                      maxlength="16"
+                    />
+                  )}
+                  {formikProps.values.cardValidityPeriod === '' &&
+                  formikProps.touched.cardValidityPeriod ? (
+                    <PaymentImput
+                      name="cardValidityPeriod"
+                      type="text"
+                      label="MM/YY"
+                      className="cardValidityPeriod input-error"
+                      maxlength="4"
+                    />
+                  ) : (
+                    <PaymentImput
+                      name="cardValidityPeriod"
+                      type="text"
+                      label="MM/YY"
+                      className="cardValidityPeriod"
+                      maxlength="4"
+                    />
+                  )}
+                  {formikProps.values.CVV === '' && formikProps.touched.CVV ? (
+                    <PaymentImput
+                      name="CVV"
+                      type="text"
+                      label="CVV"
+                      className="CVV input-error"
+                      maxlength="3"
+                    />
+                  ) : (
+                    <PaymentImput
+                      name="CVV"
+                      type="text"
+                      label="CVV"
+                      className="CVV"
+                      maxlength="3"
+                    />
+                  )}
+                </div>
+                {formikProps.values.cardHolder === '' &&
+                formikProps.touched.cardHolder ? (
                   <PaymentImput
-                    name="cardNo"
+                    name="cardHolder"
                     type="text"
-                    label="0000 0000 0000 0000"
-                    className="cardNo input-error"
-                    maxlength="16"
+                    label="Card Holder Name"
+                    className="cardHolder input-error"
                   />
                 ) : (
                   <PaymentImput
-                    name="cardNo"
+                    name="cardHolder"
                     type="text"
-                    label="0000 0000 0000 0000"
-                    className="cardNo"
-                    maxlength="16"
+                    label="Card Holder Name"
+                    className="cardHolder"
                   />
                 )}
-                {formikProps.values.cardValidityPeriod === '' &&
-                formikProps.touched.cardValidityPeriod ? (
+              </Form>
+            );
+          }}
+        </Formik>
+      ) : (
+        <Formik
+          initialValues={{
+            cardNo: '',
+            cardValidityPeriod: '',
+            CVV: '',
+            cardHolder: '',
+          }}
+          onSubmit={submitForm}
+        >
+          {(formikProps) => {
+            return (
+              <Form className="form" id="payment-form">
+                <div className="card-info">
+                  {formikProps.values.cardNo === '' &&
+                  formikProps.touched.cardNo ? (
+                    <PaymentImput
+                      name="cardNo"
+                      type="text"
+                      label="0000 0000 0000 0000"
+                      className="cardNo input-error"
+                      maxlength="16"
+                    />
+                  ) : (
+                    <PaymentImput
+                      name="cardNo"
+                      type="text"
+                      label="0000 0000 0000 0000"
+                      className="cardNo"
+                      maxlength="16"
+                    />
+                  )}
+                  {formikProps.values.cardValidityPeriod === '' &&
+                  formikProps.touched.cardValidityPeriod ? (
+                    <PaymentImput
+                      name="cardValidityPeriod"
+                      type="text"
+                      label="MM/YY"
+                      className="cardValidityPeriod input-error"
+                      maxlength="4"
+                    />
+                  ) : (
+                    <PaymentImput
+                      name="cardValidityPeriod"
+                      type="text"
+                      label="MM/YY"
+                      className="cardValidityPeriod"
+                      maxlength="4"
+                    />
+                  )}
+                  {formikProps.values.CVV === '' && formikProps.touched.CVV ? (
+                    <PaymentImput
+                      name="CVV"
+                      type="text"
+                      label="CVV"
+                      className="CVV input-error"
+                      maxlength="3"
+                    />
+                  ) : (
+                    <PaymentImput
+                      name="CVV"
+                      type="text"
+                      label="CVV"
+                      className="CVV"
+                      maxlength="3"
+                    />
+                  )}
+                </div>
+                {formikProps.values.cardHolder === '' &&
+                formikProps.touched.cardHolder ? (
                   <PaymentImput
-                    name="cardValidityPeriod"
+                    name="cardHolder"
                     type="text"
-                    label="MM/YY"
-                    className="cardValidityPeriod input-error"
-                    maxlength="4"
+                    label="Card Holder Name"
+                    className="cardHolder input-error"
                   />
                 ) : (
                   <PaymentImput
-                    name="cardValidityPeriod"
+                    name="cardHolder"
                     type="text"
-                    label="MM/YY"
-                    className="cardValidityPeriod"
-                    maxlength="4"
+                    label="Card Holder Name"
+                    className="cardHolder"
                   />
                 )}
-                {formikProps.values.CVV === '' && formikProps.touched.CVV ? (
-                  <PaymentImput
-                    name="CVV"
-                    type="text"
-                    label="CVV"
-                    className="CVV input-error"
-                    maxlength="3"
-                  />
-                ) : (
-                  <PaymentImput
-                    name="CVV"
-                    type="text"
-                    label="CVV"
-                    className="CVV"
-                    maxlength="3"
-                  />
-                )}
-              </div>
-              {formikProps.values.cardHolder === '' &&
-              formikProps.touched.cardHolder ? (
-                <PaymentImput
-                  name="cardHolder"
-                  type="text"
-                  label="Card Holder Name"
-                  className="cardHolder input-error"
-                />
-              ) : (
-                <PaymentImput
-                  name="cardHolder"
-                  type="text"
-                  label="Card Holder Name"
-                  className="cardHolder"
-                />
-              )}
-            </Form>
-          );
-        }}
-      </Formik>
+              </Form>
+            );
+          }}
+        </Formik>
+      )}
     </div>
   );
 }
 
 PaymentForm.propTypes = {
-  history: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };

@@ -1,40 +1,31 @@
 /* eslint-disable */
 
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckoutHeader from '../../components/CheckoutHeader/CheckoutHeader';
 import { ReactComponent as MasterCard } from '../../images/svg/masterCard.svg';
 import { ReactComponent as Visa } from '../../images/svg/visa-logo.svg';
 import { ReactComponent as HandsWithMoneysa } from '../../images/svg/HandsWithMoney.svg';
 import './PaymentPage.scss';
-import Button from '../../components/Button/Button';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
 import { setCartProducts } from '../../store/operations';
+import NoItems from '../../components/NoItems/NoItems';
+import { CHANGE_PAYMENT_METHOD } from '../../store/types';
 
 export default function PaymentPage(props) {
   const dispatch = useDispatch();
   const { history } = props;
   const items = useSelector((state) => state.items.data);
+  const payBy = useSelector((state) => state.payByCard);
   let totalPrice = 0;
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
-  const payBy = document.getElementsByClassName('pay_by');
   const jwt = sessionStorage.getItem('token');
+
   useEffect(() => {
     dispatch(setCartProducts());
   }, [dispatch]);
-
-  const changePaymentMethod = () => {
-    for (let index = 0; index < payBy.length; index++) {
-      payBy[index].addEventListener('click', () => {
-        for (let index = 0; index < payBy.length; index++) {
-          payBy[index].classList.remove('active');
-        }
-        payBy[index].classList.add('active');
-      });
-    }
-  };
 
   const getLocalCart = () => {
     if (jwt === null) {
@@ -66,14 +57,71 @@ export default function PaymentPage(props) {
   return (
     <div>
       {getLocalCart()}
-      {changePaymentMethod()}
       <CheckoutHeader payment />
       <div className="payment__container">
         <div className="registration">
           <div className="registration-right__block">
             <p className="registration__title">PAYMENT METHOD</p>
 
-            <div className="pay_by active">
+            {payBy ? (
+              <>
+                <div
+                  className="pay_by active"
+                  onClick={() =>
+                    dispatch({ type: CHANGE_PAYMENT_METHOD, payload: true })
+                  }
+                >
+                  <div className="pay__container">
+                    <div className="payment-by-card__header">
+                      <div className="pay__text-content">
+                        <div className="checked active" />
+                        <div className="">
+                          <p className="credit-card">Credit Card</p>
+                          <p className="attention">
+                            Please enter your credit card details
+                          </p>
+                        </div>
+                      </div>
+                      <div className="">
+                        <MasterCard />
+                        <Visa />
+                      </div>
+                    </div>
+                    <PaymentForm history={history} />
+                  </div>
+                </div>
+
+                <hr className="decor-line" />
+
+                <div
+                  className="pay_by"
+                  onClick={() =>
+                    dispatch({ type: CHANGE_PAYMENT_METHOD, payload: false })
+                  }
+                >
+                  <div className="pay__container">
+                    <div className="payment-by-card__header">
+                      <div className="pay__text-content">
+                        <div className="checked" />
+                        <div className="">
+                          <p className="credit-card">Payment to the courier</p>
+                          <p className="attention">
+                            Cash or card payment to the courier upon delivery
+                          </p>
+                        </div>
+                      </div>
+                      <HandsWithMoneysa />
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : <>
+            <div
+              className="pay_by"
+              onClick={() =>
+                dispatch({ type: CHANGE_PAYMENT_METHOD, payload: true })
+              }
+            >
               <div className="pay__container">
                 <div className="payment-by-card__header">
                   <div className="pay__text-content">
@@ -96,7 +144,12 @@ export default function PaymentPage(props) {
 
             <hr className="decor-line" />
 
-            <div className="pay_by">
+            <div
+              className="pay_by active"
+              onClick={() =>
+                dispatch({ type: CHANGE_PAYMENT_METHOD, payload: false })
+              }
+            >
               <div className="pay__container">
                 <div className="payment-by-card__header">
                   <div className="pay__text-content">
@@ -112,6 +165,7 @@ export default function PaymentPage(props) {
                 </div>
               </div>
             </div>
+          </>}
 
             <hr className="decor-line" />
             <p
@@ -140,6 +194,7 @@ export default function PaymentPage(props) {
           </div>
           <div className="registration-left__block">
             <p className="registration__title">SUMMARY</p>
+            {bagItems.length === 0 ? <NoItems /> : null}
             {jwt === null
               ? bagItems.map((el) => {
                   return (

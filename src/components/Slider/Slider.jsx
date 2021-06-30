@@ -121,7 +121,17 @@ export default function Slider() {
                 <span>at a price that wont keep you up at night.</span>
               </p>
               <NavLink to="/catalog">
-                <Button className="slide-button" type="button" variant="light">
+                <Button
+                  className="slide-button"
+                  type="button"
+                  variant="light"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
+                >
                   SHOP NEW ARRIVALS
                 </Button>
               </NavLink>
@@ -135,7 +145,17 @@ export default function Slider() {
                 <span>ON YOUR FIRST ORDER</span>
               </h3>
               <NavLink to="/catalog">
-                <Button className="slide-button" type="button" variant="light">
+                <Button
+                  className="slide-button"
+                  type="button"
+                  variant="light"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
+                >
                   SHOP NEW ARRIVALS
                 </Button>
               </NavLink>
@@ -148,7 +168,17 @@ export default function Slider() {
                 <span>ON YOUR FAVOURITE FRENCH LINEN</span>
               </h3>
               <NavLink to="/catalog">
-                <Button className="slide-button" type="button" variant="light">
+                <Button
+                  className="slide-button"
+                  type="button"
+                  variant="light"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
+                >
                   SHOP NEW ARRIVALS
                 </Button>
               </NavLink>

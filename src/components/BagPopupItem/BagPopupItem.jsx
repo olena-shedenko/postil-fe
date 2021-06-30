@@ -53,6 +53,6 @@ BagPopupItem.defaultProps = {
 
 BagPopupItem.propTypes = {
   quantity: PropTypes.number,
-  product: PropTypes.objectOf(PropTypes.object),
+  product: PropTypes.any,
   id: PropTypes.string,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import { addToCart } from '../../store/operations';
+import { addToCart, setLoading } from '../../store/operations';
 import Button from '../Button/Button';
 import './CatalogItem.scss';
 
@@ -55,5 +55,5 @@ CatalogItem.propTypes = {
   name: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
   itemNo: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  items: PropTypes.any,
 };

@@ -14,21 +14,27 @@ export default function BagPopup() {
 
   const opened = useSelector((state) => state.openedBagPopup);
   const products = useSelector((state) => state.productsInCart.data);
+  const items = useSelector((state) => state.items.data) || [];
   const jwt = sessionStorage.getItem('token');
   let totalPrice = 0;
   let itemCount = 0;
-  if (jwt === null) {
-    itemCount = 1;
-  } else if (jwt !== null) {
-    itemCount = 0;
+  
+  if(jwt !== null){
+    if (products) {
+      products.forEach((i) => {
+        totalPrice = i.cartQuantity * i.product.currentPrice + totalPrice;
+        itemCount = i.cartQuantity + itemCount;
+      });
+    }
+  }else if(jwt === null){
+    items.map((el) => {
+      if(el.inShoppingBag === true){
+        totalPrice = el.quantityInBag * el.currentPrice + totalPrice;
+        itemCount = el.quantityInBag + itemCount;
+      }
+    })
   }
-
-  if (products) {
-    products.forEach((i) => {
-      totalPrice = i.cartQuantity * i.product.currentPrice + totalPrice;
-      itemCount = i.cartQuantity + itemCount;
-    });
-  }
+  
 
   return (
     <>

@@ -33,7 +33,10 @@ import {
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
+  SET_PRODUCTS_IN_CART_LOADING,
+  CHANGE_PAYMENT_METHOD,
 } from './types';
+import { act } from 'react-dom/test-utils';
 
 const initialState = {
   accountModalAction: 'signUp',
@@ -48,11 +51,11 @@ const initialState = {
   blogposts: [],
   items: {
     data: [],
-    isLoading: true,
+    isLoading: false,
   },
   item: {
     data: [],
-    isLoading: true,
+    isLoading: false,
   },
   filters: {},
   sliderValues: {
@@ -62,6 +65,7 @@ const initialState = {
   currentPage: 0,
   perPage: 18,
   cart: [],
+  payByCard:true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -75,7 +79,7 @@ const reducer = (state = initialState, action) => {
     case REQUEST_PRODUCTS_IN_CART:
       return {
         ...state,
-        productsInCart: { ...state.productsInCart, isLoading: false },
+        productsInCart: { ...state.productsInCart },
       };
     case ERROR_REQUEST_PRODUCTS_IN_CART:
       return { ...state };
@@ -182,6 +186,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         productsInCart: { ...state.productsInCart, data: [] },
       };
+    }
+    case SET_PRODUCTS_IN_CART_LOADING: {
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, isLoading: action.payload },
+      };
+    }
+    case CHANGE_PAYMENT_METHOD: {
+      return{
+        ...state,
+        payByCard: action.payload
+      }
     }
     default:
       return state;

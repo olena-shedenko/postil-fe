@@ -65,6 +65,7 @@ const AccountModal = () => {
       .post('https://postil-bedding.herokuapp.com/api/customers', userInfo)
       .then(({ message }) => {
         if (!message) dispatch(toggleAccountModal());
+        dispatch(setCartProducts());
       })
       .catch(() => {
         dispatch(toggleAccountError('Such user already exists'));

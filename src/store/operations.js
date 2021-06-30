@@ -20,6 +20,7 @@ import {
   GET_BLOG_POSTS,
   SET_ITEMS,
   CLEAR_CART,
+  SET_PRODUCTS_IN_CART_LOADING,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -45,6 +46,7 @@ export const toggleBagPopup = () => (dispatch) => {
 
 export const setCartProducts = () => (dispatch) => {
   dispatch({ type: REQUEST_PRODUCTS_IN_CART });
+  dispatch({ type: SET_PRODUCTS_IN_CART_LOADING, payload: false });
   axios
     .get('https://postil-bedding.herokuapp.com/api/cart', {
       headers: {
@@ -245,4 +247,8 @@ export const deleteCart = () => (dispatch) => {
     .then(() => {
       dispatch({ type: CLEAR_CART });
     });
+};
+
+export const setLoading = () => (dispatch) => {
+  dispatch({ type: SET_PRODUCTS_IN_CART_LOADING, payload: true });
 };
