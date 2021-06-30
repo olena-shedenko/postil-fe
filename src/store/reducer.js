@@ -31,6 +31,10 @@ import {
   SUCCESS_REMOVE_PRODUCT_FROM_CART,
   ERROR_REMOVE_PRODUCT_FROM_CART,
   TOGGLE_SHOW_FILTERS,
+  SET_QUANTITY,
+  SET_CART_AFTER_DELETE,
+  CLEAR_CART,
+  FILTER_NAME,
 } from './types';
 
 const initialState = {
@@ -59,9 +63,10 @@ const initialState = {
   },
   currentPage: 0,
   perPage: 18,
-  cart: null,
   showFilters: false,
   filteredProducts: null,
+  cart: [],
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -123,6 +128,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, filters: { ...state.filters, sizes: action.payload } };
     case FILTER_COLOR:
       return { ...state, filters: { ...state.filters, color: action.payload } };
+    case FILTER_NAME:
+      return { ...state, filters: { ...state.filters, name: action.payload } };
     case FILTER_FABRIC:
       return {
         ...state,
@@ -165,8 +172,28 @@ const reducer = (state = initialState, action) => {
     case SET_CART: {
       return { ...state, cart: action.payload };
     }
+
     case TOGGLE_SHOW_FILTERS: {
       return { ...state, showFilters: !state.showFilters };
+
+    case SET_QUANTITY: {
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: action.payload },
+      };
+    }
+    case SET_CART_AFTER_DELETE: {
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: action.payload },
+      };
+    }
+    case CLEAR_CART: {
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, data: [] },
+      };
+
     }
     default:
       return state;

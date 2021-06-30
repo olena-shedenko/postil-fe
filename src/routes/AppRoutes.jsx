@@ -30,7 +30,6 @@ const AppRoutes = () => {
       <Route path="/blog" render={() => <Blog />} />
       <Route path="/catalog" render={() => <Catalog />} />
       <Route path="/contact" render={() => <AboutUs />} />
-      <Route exact path="/checkout_bag" render={() => <CheckoutBagPage />} />
       <Route path="/contact-us" render={() => <ContactUs />} />
       <Route
         exact

@@ -71,11 +71,12 @@
     &--catalog {
       padding: 32px 30px;
       display: grid;
-      position: absolute;
-      left: -200%;
+      position: fixed;
+      left: 29%;
+      visibility: hidden;
       top: 80px;
       border-top: 4px solid #373f41;
-      transition: 0.5s ease;
+      transition: 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 
       &__item {
         padding: 5%;
@@ -88,10 +89,10 @@
       display: flex;
       align-items: baseline;
     }
-    &--nav.active {
+    &--nav.actived {
       border-bottom: 1px solid #373f41;
       transition: 0.5s ease-in-out;
-      padding-bottom: 5px;
+      padding-bottom: 2px;
     }
 
     &--nav {
@@ -100,19 +101,19 @@
       display: flex;
       align-items: baseline;
     }
-    &--nav.active {
+    &--nav.actived {
       border-bottom: 1px solid #373f41;
       transition: 0.5s ease-in-out;
-      padding-bottom: 5px;
+      padding-bottom: 2px;
     }
 
-    &--catalog.active {
+    &--catalog.actived {
       background: white;
-      left: 33%;
+      visibility: visible;
       opacity: 1;
-      transition: 0.5s ease;
+      transition: 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);;
       z-index: 1;
-      margin-left: -100px;
+      font-size: 16px;
     }
   }
 }
@@ -127,8 +128,8 @@
     }
   }
   .dropdown {
-    &--catalog.active {
-      left: 28% !important;
+    &--catalog {
+      left: 19% !important;
     }
   }
 }
@@ -137,7 +138,7 @@
     font-size: 14px;
   }
   .dropdown {
-    &--catalog.active {
+    &--catalog.actived {
       width: 15%;
     }
   }
@@ -184,7 +185,7 @@
       transition: all 0.5s ease;
     }
 
-    &--menu.active {
+    &--menu.actived {
       border-top: 4px solid #373f41;
       background: white;
       left: 0;
@@ -200,7 +201,9 @@
   .dropdown {
     &--catalog {
       width: 100%;
-      left: 0;
+      padding: 0 !important;
+      left: 0 !important;
+      position: absolute !important;
       &__item {
         padding: 2% 2%;
       }
@@ -216,10 +219,11 @@
       top: 10%;
       transition: 1s;
     }
-    &--catalog.active {
-      left: 0 !important;
-      margin-left: 0 !important;
-      width: 100%;
+    &--catalog.actived {
+      left: 0;
+      margin-left: 0;
+      width: 86%;
+      padding: 32px 30px !important;
     }
   }
 }

@@ -10,6 +10,7 @@ export const getFilterByCategory = (state) => state.filters.categories;
 export const getSliderValues = (state) => state.sliderValues;
 export const getCurrentPage = (state) => state.currentPage;
 export const getPerPage = (state) => state.perPage;
+export const getName = (state) => state.filters.name;
 
 export const pageCounter = (state) => {
   const products = state.filteredProducts || state.items.data;

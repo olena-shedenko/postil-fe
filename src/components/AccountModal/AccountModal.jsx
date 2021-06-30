@@ -6,7 +6,11 @@ import './AccountModal.scss';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setCart } from '../../store/actions';
-import { toggleAccountModal, toggleAccountError } from '../../store/operations';
+import {
+  toggleAccountModal,
+  toggleAccountError,
+  setCartProducts,
+} from '../../store/operations';
 import MobileModal from './layouts/MobileModal';
 import DesktopModal from './layouts/DesktopModal';
 import ErrorMessage from './layouts/ErrorMessage';
@@ -37,6 +41,7 @@ const AccountModal = () => {
       })
       .then((res) => {
         if (res) dispatch(setCart(res.data));
+        dispatch(setCartProducts());
       })
       .catch(() => {
         dispatch(

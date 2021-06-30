@@ -18,6 +18,8 @@ import {
   TOGGLE_ACCOUNT_MODAL,
   SET_MODAL_FORGOT_PASSWORD,
   GET_BLOG_POSTS,
+  SET_ITEMS,
+  CLEAR_CART,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -75,6 +77,7 @@ export const removeProductFromCart = (id) => (dispatch) => {
       dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_CART, payload: err });
     });
 };
+
 export const getBlogPosts = () => (dispatch) => {
   axios('http://localhost:3000/blogposts.json').then((res) =>
     dispatch({ type: GET_BLOG_POSTS, payload: res.data })
@@ -95,7 +98,6 @@ export const getItems = () => (dispatch) => {
         el.inShoppingBag = !el.inShoppingBag;
         el.quantityInBag = 1;
       }
-      // el.inShoppingBag = true;
       return el;
     });
 
@@ -123,13 +125,15 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   const state = getState();
   let products = getProducts(state);
   const { filters, sliderValues } = state;
-  const { categories, color, fabric, sizes, selectedOption } = filters;
+  const { categories, color, fabric, sizes, selectedOption, name } = filters;
   const { min, max } = sliderValues;
 
   if (sizes) {
     products = products.filter((product) => product.sizes === sizes);
   }
-
+  if (name) {
+    products = products.filter((product) => product.name.includes(name));
+  }
   if (color) {
     products = products.filter((product) => product.color === color);
   }
@@ -158,11 +162,54 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
 };
 
 export const addToCart =
+  ({ productId, onSuccess, productNo, item }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    if (jwt !== null) {
+      axios
+        .put(
+          `https://postil-bedding.herokuapp.com/api/cart/${productId}`,
+          null,
+          {
+            headers: {
+              Authorization: jwt,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(setCart(res.data));
+          dispatch(setCartProducts());
+          if (typeof onSuccess === 'function') onSuccess();
+        });
+    } else if (jwt === null) {
+      const newArr = item.map((el) => {
+        if (el.itemNo === productNo) {
+          el.inShoppingBag = true;
+          el.quantityInBag += 1;
+        }
+        return el;
+      });
+
+      dispatch({ type: SET_ITEMS, payload: newArr });
+
+      // console.log(historys);
+      // history.go('/shopping_cart')
+      // history.goForward()
+      const cartArr = JSON.parse(localStorage.getItem('bag')) || [];
+      if (!cartArr.includes(productNo)) {
+        cartArr.push(productNo);
+      }
+      const cart = JSON.stringify(cartArr);
+      localStorage.setItem('bag', cart);
+    }
+  };
+
+export const removeFromCart =
   ({ productId, onSuccess }) =>
   (dispatch) => {
     const jwt = sessionStorage.getItem('token');
     axios
-      .put(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, null, {
+      .delete(`https://postil-bedding.herokuapp.com/api/cart/${productId}`, {
         headers: {
           Authorization: jwt,
         },
@@ -172,3 +219,33 @@ export const addToCart =
         if (typeof onSuccess === 'function') onSuccess();
       });
   };
+export const removeOneFromCart =
+  ({ productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    axios
+      .delete(
+        `https://postil-bedding.herokuapp.com/api/cart/product/${productId}`,
+        {
+          headers: {
+            Authorization: jwt,
+          },
+        }
+      )
+      .then((res) => {
+        dispatch(setCart(res.data));
+        if (typeof onSuccess === 'function') onSuccess();
+      });
+  };
+export const deleteCart = () => (dispatch) => {
+  const jwt = sessionStorage.getItem('token');
+  axios
+    .delete(`https://postil-bedding.herokuapp.com/api/cart`, {
+      headers: {
+        Authorization: jwt,
+      },
+    })
+    .then(() => {
+      dispatch({ type: CLEAR_CART });
+    });
+};
