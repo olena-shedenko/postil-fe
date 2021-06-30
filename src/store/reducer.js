@@ -38,6 +38,7 @@ import {
   SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
   SUCCESS_ADD_PRODUCT_TO_WISHLIST,
   ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
+  FILTER_NAME,
 } from './types';
 
 const initialState = {
@@ -133,6 +134,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, filters: { ...state.filters, sizes: action.payload } };
     case FILTER_COLOR:
       return { ...state, filters: { ...state.filters, color: action.payload } };
+    case FILTER_NAME:
+      return { ...state, filters: { ...state.filters, name: action.payload } };
     case FILTER_FABRIC:
       return {
         ...state,

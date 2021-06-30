@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../ShippingDetails.scss';
 import { Formik, Form, Field } from 'formik';
 import ShippingInput from '../shippingComponents/ShippingInput';
@@ -6,6 +7,7 @@ import validationDeliveryFormSchema from './ValidationSchema';
 import ShippingRadio from '../shippingComponents/ShippingRadio';
 import ShippingBack from '../../BagSummary/ShippingBack';
 import ShippingSelect from '../shippingComponents/ShippingSelect';
+import Button from '../../Button/Button';
 
 const selectOptions = [
   { key: 'Country', value: '' },
@@ -15,6 +17,7 @@ const selectOptions = [
 ];
 
 const ShippingDetailsForms = () => {
+  const history = useHistory();
   const [free, setFree] = useState(false);
   const [paid, setPaid] = useState(false);
   function selectFree() {
@@ -25,7 +28,11 @@ const ShippingDetailsForms = () => {
     setPaid(!paid);
     setFree(false);
   }
-  const onSubmit = () => {};
+
+  const onSubmit = (values) => {
+    sessionStorage.setItem('shipping-details', JSON.stringify(values));
+    history.push('/payment');
+  };
   return (
     <div>
       <Formik
@@ -121,11 +128,20 @@ const ShippingDetailsForms = () => {
                   }
                 />
               </Form>
+              <ShippingBack />
+              <Form>
+                <Button
+                  className="delivery--button btn"
+                  variant="dark"
+                  type="submit"
+                >
+                  NEXT
+                </Button>
+              </Form>
             </div>
           );
         }}
       </Formik>
-      <ShippingBack />
     </div>
   );
 };

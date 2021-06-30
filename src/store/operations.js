@@ -133,13 +133,15 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   const state = getState();
   let products = getProducts(state);
   const { filters, sliderValues } = state;
-  const { categories, color, fabric, sizes, selectedOption } = filters;
+  const { categories, color, fabric, sizes, selectedOption, name } = filters;
   const { min, max } = sliderValues;
 
   if (sizes) {
     products = products.filter((product) => product.sizes === sizes);
   }
-
+  if (name) {
+    products = products.filter((product) => product.name.includes(name));
+  }
   if (color) {
     products = products.filter((product) => product.color === color);
   }
