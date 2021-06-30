@@ -30,11 +30,11 @@ import {
   REQUEST_REMOVE_PRODUCT_FROM_CART,
   SUCCESS_REMOVE_PRODUCT_FROM_CART,
   ERROR_REMOVE_PRODUCT_FROM_CART,
+  TOGGLE_SHOW_FILTERS,
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
   FILTER_NAME,
-  TOGGLE_SHOW_FILTERS,
 } from './types';
 
 const initialState = {
@@ -63,9 +63,9 @@ const initialState = {
   },
   currentPage: 0,
   perPage: 18,
-  cart: [],
   showFilters: false,
   filteredProducts: null,
+  cart: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -171,6 +171,10 @@ const reducer = (state = initialState, action) => {
     case SET_CART: {
       return { ...state, cart: action.payload };
     }
+
+    case TOGGLE_SHOW_FILTERS: {
+      return { ...state, showFilters: !state.showFilters };
+    }
     case SET_QUANTITY: {
       return {
         ...state,
@@ -188,9 +192,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         productsInCart: { ...state.productsInCart, data: [] },
       };
-    }
-    case TOGGLE_SHOW_FILTERS: {
-      return { ...state, showFilters: !state.showFilters };
     }
     default:
       return state;
