@@ -1,9 +1,26 @@
-.slick-dots,
-.slick-thumb {
-  width: 150px;
-  height: 150px;
-  padding-right: 10px;
-  background-color: gray;
+.main-slider {
+  position: relative;
+  width: 525px;
+
+  &__image {
+    width: 525px;
+    height: 525px;
+    border-radius: 5px;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  &__thumb {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    display: block;
+  }
 }
 
 .slick-arrow,
@@ -21,18 +38,4 @@
 .slick-prev:before,
 .slick-next:before {
   opacity: 1;
-}
-
-.slick-list {
-  height: 525px;
-}
-
-.image-wrapper {
-  width: 525px;
-  height: 525px;
-
-  &__image {
-    width: 100%;
-    height: 100%;
-  }
 }

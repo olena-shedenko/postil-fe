@@ -21,20 +21,19 @@ const OneProduct = () => {
         )
       : null
   );
-  console.log('Categories', categories);
 
   if (!product) return null;
 
-  /* eslint no-console: 0 */
-  console.log('productId:', params.id);
-  /* eslint no-console: 0 */
-  console.log('product from state:', product);
-  /* eslint no-console: 0 */
-  console.log('product name:', product.name);
-  /* eslint no-console: 0 */
-  console.log('product color:', product.color);
-  /* eslint no-console: 0 */
-  console.log('product categories:', product.categories);
+  // /* eslint no-console: 0 */
+  // console.log('productId:', params.id);
+  // /* eslint no-console: 0 */
+  // console.log('product from state:', product);
+  // /* eslint no-console: 0 */
+  // console.log('product name:', product.name);
+  // /* eslint no-console: 0 */
+  // console.log('product color:', product.color);
+  // /* eslint no-console: 0 */
+  // console.log('product categories:', product.categories);
   return (
     <div className="container">
       <Breadcrumbs />

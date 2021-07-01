@@ -2,6 +2,10 @@ h1,
 h5 {
   margin: 0;
 }
+.product > * {
+  min-width: 0px;
+}
+
 .product {
   display: flex;
   font-family: 'Mulish', 'Abel', sans-serif;
@@ -16,37 +20,14 @@ h5 {
     font-family: 'Abel', sans-serif;
   }
 
-  &__img-wrapper {
-    width: 525px;
-    height: 525px;
-    padding-bottom: 23px;
-  }
-
-  &__img {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-  }
-
-  &__wrapper-small {
-    width: 150px;
-    height: 150px;
-    display: flex;
-  }
-
-  &__img-small {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-  }
-
   &__info {
     display: flex;
     flex-direction: column;
-    margin-left: 8%;
+    margin-left: 40%;
 
     .ft-social-icons {
       margin: 0;
+      padding-bottom: 20px;
     }
   }
 
@@ -135,12 +116,6 @@ h5 {
     color: #373f41;
   }
 }
-
-// .small {
-//   width: 150px;
-//   height: 150px;
-//   display: flex;
-// }
 
 .btn {
   &__add {
