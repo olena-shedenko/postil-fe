@@ -305,28 +305,26 @@ export const addToWishlist =
   (dispatch) => {
     const jwt = sessionStorage.getItem('token');
     if (jwt !== null) {
-      items.forEach((el) => {
-        if (el.itemNo === productNo) {
-          dispatch(removeProductFromWishlist(productId));
-        }
-      });
-
-      axios
-        .put(
-          `https://postil-bedding.herokuapp.com/api/wishlist/${productId}`,
-          null,
-          {
-            headers: {
-              Authorization: jwt,
-            },
-          }
-        )
-        .then((res) => {
-          dispatch({
-            type: SUCCESS_ADD_PRODUCT_TO_WISHLIST,
-            payload: res.data.products,
+      if (!items.find((x) => x.itemNo === productNo)) {
+        axios
+          .put(
+            `https://postil-bedding.herokuapp.com/api/wishlist/${productId}`,
+            null,
+            {
+              headers: {
+                Authorization: jwt,
+              },
+            }
+          )
+          .then((res) => {
+            dispatch({
+              type: SUCCESS_ADD_PRODUCT_TO_WISHLIST,
+              payload: res.data.products,
+            });
+            if (typeof onSuccess === 'function') onSuccess();
           });
-          if (typeof onSuccess === 'function') onSuccess();
-        });
+      } else {
+        alert('Already in wishlist');
+      }
     }
   };

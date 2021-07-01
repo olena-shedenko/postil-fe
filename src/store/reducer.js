@@ -93,7 +93,10 @@ const reducer = (state = initialState, action) => {
     case SET_PRODUCTS_IN_CART:
       return {
         ...state,
-        productsInCart: { ...state.productsInCart, data: action.payload },
+        productsInCart: {
+          ...state.productsInCart,
+          data: [...action.payload.reverse()],
+        },
       };
     case SET_MODAL_FORGOT_PASSWORD:
       return { ...state, accountModalAction: action.payload };
@@ -119,7 +122,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         productsInCart: {
           ...state.productsInCart,
-          data: action.payload.data.products,
+          data: [...action.payload.data.products.reverse()],
         },
       };
     case ERROR_REMOVE_PRODUCT_FROM_CART:
@@ -176,7 +179,13 @@ const reducer = (state = initialState, action) => {
       return { ...state, perPage: action.payload };
     }
     case SET_CART: {
-      return { ...state, cart: action.payload };
+      return {
+        ...state,
+        cart: {
+          ...action.payload,
+          products: [...action.payload.products.reverse()],
+        },
+      };
     }
     case SET_QUANTITY: {
       return {
@@ -201,17 +210,17 @@ const reducer = (state = initialState, action) => {
     case SET_WISHLIST_PRODUCTS:
       return {
         ...state,
-        wishlist: { data: action.payload, isLoading: false },
+        wishlist: { data: [...action.payload.reverse()], isLoading: false },
       };
     case SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST:
       return {
         ...state,
-        wishlist: { ...state.wishlist, data: action.payload },
+        wishlist: { ...state.wishlist, data: [...action.payload.reverse()] },
       };
     case SUCCESS_ADD_PRODUCT_TO_WISHLIST:
       return {
         ...state,
-        wishlist: { ...state.wishlist, data: action.payload },
+        wishlist: { ...state.wishlist, data: [...action.payload.reverse()] },
       };
     case ERROR_REMOVE_PRODUCT_FROM_WISHLIST:
       return { ...state, errMessage: action.payload };

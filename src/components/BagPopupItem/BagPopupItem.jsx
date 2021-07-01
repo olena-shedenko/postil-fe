@@ -40,6 +40,7 @@ function BagPopupItem(props) {
                 onSuccess: () => dispatch(toggleBagPopup()),
                 productNo: product.itemNo,
                 items,
+                product,
               })
             )
           }
