@@ -323,8 +323,6 @@ export const addToWishlist =
             });
             if (typeof onSuccess === 'function') onSuccess();
           });
-      } else {
-        alert('Already in wishlist');
       }
     }
   };
