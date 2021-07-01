@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BagPopupItem.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  removeProductFromCart,
-  setCartProducts,
-  addToWishlist,
-  toggleBagPopup,
-} from '../../store/operations';
+import { useDispatch } from 'react-redux';
+import { removeProductFromCart, setCartProducts } from '../../store/operations';
 
 function BagPopupItem(props) {
   const { quantity, product, id } = props;
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.wishlist.data);
 
   return (
     <div className="bagpopup__item">
@@ -30,22 +24,6 @@ function BagPopupItem(props) {
             src={`${process.env.PUBLIC_URL}/images/bagPopup/close-icon.svg`}
             alt="close"
           />
-        </button>
-        <button
-          type="button"
-          onClick={() =>
-            dispatch(
-              addToWishlist({
-                productId: id,
-                onSuccess: () => dispatch(toggleBagPopup()),
-                productNo: product.itemNo,
-                items,
-                product,
-              })
-            )
-          }
-        >
-          add
         </button>
         <img
           className="bagpopup__item__image"
