@@ -8,6 +8,7 @@
 .catalog-main {
   width: 100%;
   grid-column: 1;
+  padding: 15px;
 }
 .main-btns {
   display: flex;
@@ -47,7 +48,7 @@
 .aside {
   width: 100%;
   grid-column: 1;
-  padding-left: 0.625rem;
+  padding: 15px;
   &__title {
     font-size: 2rem;
     text-transform: uppercase;
@@ -55,6 +56,19 @@
     font-family: Abel, sans-serif;
     margin-bottom: 0.875rem;
   }
+  &-btn {
+    padding: 8px;
+    text-transform: uppercase;
+    border: 1px solid #8c8c8c;
+    font-family: Abel, sans-serif;
+    cursor: pointer;
+  }
+}
+
+.filters {
+  border: 1px solid #c7c2c2;
+  padding: 15px;
+  margin-top: 15px;
 }
 .aside-section {
   &__title {
@@ -308,12 +322,14 @@
 
   .catalog-main {
     grid-column: 2;
+    padding: 0;
   }
   .range-slider-input {
     width: 24%;
   }
   .aside {
     width: 100%;
+    border: none;
   }
   .btns-group {
     flex-direction: column;
@@ -361,6 +377,11 @@
       width: 45%;
     }
   }
+  .filters {
+    border: none;
+    padding: 0;
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 992px) {
@@ -404,4 +425,11 @@
   .range-slider-input {
     width: 27.5%;
   }
+}
+// END OF MEDIA QUERIES
+
+.is-loading {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
 }
