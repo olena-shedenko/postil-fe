@@ -11,8 +11,7 @@ import {
 } from '../../../store/operations';
 import Button from '../../Button/Button';
 
-function WishlistItem(props) {
-  const { product, id, items } = props;
+function WishlistItem({ product, id, items }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -79,7 +78,7 @@ WishlistItem.defaultProps = {
 };
 
 WishlistItem.propTypes = {
-  product: PropTypes.objectOf(PropTypes.object),
+  product: PropTypes.instanceOf(Object),
   id: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.array),
+  items: PropTypes.instanceOf(Array),
 };
