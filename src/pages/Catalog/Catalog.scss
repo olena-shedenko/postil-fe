@@ -2,11 +2,13 @@
   width: 100%;
   display: grid;
   padding-bottom: 5rem;
+  box-sizing: border-box;
 }
 
 // MAIN SECTION BUTTONS STYLES
 .catalog-main {
-  width: 100%;
+  width: 100vw;
+  box-sizing: border-box;
   grid-column: 1;
   padding: 15px;
 }
@@ -46,7 +48,8 @@
 // ASIDE SECTION STYLES
 
 .aside {
-  width: 100%;
+  box-sizing: border-box;
+  width: 100vw;
   grid-column: 1;
   padding: 15px;
   &__title {
