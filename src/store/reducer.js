@@ -34,6 +34,8 @@ import {
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
+  SET_PRODUCTS_IN_CART_LOADING,
+  CHANGE_PAYMENT_METHOD,
   SET_WISHLIST_PRODUCTS,
   TOGGLE_WISHLIST,
   SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
@@ -41,6 +43,7 @@ import {
   ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
   FILTER_NAME,
 } from './types';
+// import { act } from 'react-dom/test-utils';
 
 const initialState = {
   accountModalAction: 'signUp',
@@ -60,11 +63,11 @@ const initialState = {
   blogposts: [],
   items: {
     data: [],
-    isLoading: true,
+    isLoading: false,
   },
   item: {
     data: [],
-    isLoading: true,
+    isLoading: false,
   },
   filters: {},
   sliderValues: {
@@ -76,6 +79,7 @@ const initialState = {
   showFilters: false,
   filteredProducts: null,
   cart: [],
+  payByCard: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -89,7 +93,7 @@ const reducer = (state = initialState, action) => {
     case REQUEST_PRODUCTS_IN_CART:
       return {
         ...state,
-        productsInCart: { ...state.productsInCart, isLoading: false },
+        productsInCart: { ...state.productsInCart },
       };
     case ERROR_REQUEST_PRODUCTS_IN_CART:
       return { ...state };
@@ -210,6 +214,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         productsInCart: { ...state.productsInCart, data: [] },
+      };
+    }
+    case SET_PRODUCTS_IN_CART_LOADING: {
+      return {
+        ...state,
+        productsInCart: { ...state.productsInCart, isLoading: action.payload },
+      };
+    }
+    case CHANGE_PAYMENT_METHOD: {
+      return {
+        ...state,
+        payByCard: action.payload,
       };
     }
     case TOGGLE_WISHLIST:
