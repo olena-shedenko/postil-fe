@@ -46,13 +46,22 @@ const ShippingCheckout = () => {
       <div className="delivery--product">
         {jwt === null
           ? bagItems.map((el) => {
-              return <ShippingCheckoutBag key={el.itemNo} item={el} />;
+              return (
+                <ShippingCheckoutBag
+                  key={el._id}
+                  items={items}
+                  item={el}
+                  cartQuantity={el.quantityInBag}
+                />
+              );
             })
           : bagItems.map((el) => {
               return (
                 <ShippingCheckoutBag
-                  key={el.product.itemNo}
+                  key={el._id}
+                  items={items}
                   item={el.product}
+                  cartQuantity={el.cartQuantity}
                 />
               );
             })}
