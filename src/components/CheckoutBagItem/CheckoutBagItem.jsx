@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import './CheckoutBagItem.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_ITEMS, SET_QUANTITY } from '../../store/types';
+import { SET_ITEMS, SET_QUANTITY, SET_CART_AFTER_DELETE } from '../../store/types';
 import {
   addToCart,
   removeOneFromCart,
@@ -22,6 +22,26 @@ export default function CheckoutBagItem(props) {
   const {
     item: { imageUrls, name, currentPrice, _id },
   } = props;
+
+  const deleteFromCart = (item) => {
+    if (jwt === null) {
+      const newArr = items.map((el) => {
+        if (el.itemNo === item.itemNo) {
+          el.inShoppingBag = !el.inShoppingBag;
+          el.quantityInBag = 0;
+        }
+        return el;
+      });
+
+      dispatch({ type: SET_ITEMS, payload: newArr });
+      localStorageToggleBag(item);
+    } else if (jwt !== null) {
+      const newCartArr = productsInCart.filter(
+        (el) => el.product.itemNo !== item
+      );
+      dispatch({ type: SET_CART_AFTER_DELETE, payload: newCartArr });
+    }
+  };
 
   const addItem = (item) => {
     if (jwt === null) {
@@ -79,7 +99,14 @@ export default function CheckoutBagItem(props) {
         }
         return el;
       });
+
       dispatch({ type: SET_QUANTITY, payload: newArr });
+
+      productsInCart.map((el) => {
+        if (el.cartQuantity === 0) {
+          deleteFromCart(item);
+        }
+      });
     }
   };
 
