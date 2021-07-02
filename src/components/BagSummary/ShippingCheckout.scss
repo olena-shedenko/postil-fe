@@ -32,11 +32,10 @@
   }
   &--button{
     outline: none;
+    margin-bottom: 4vh;
     border-radius: 4px;
     padding: 15px 80px;
-    margin-left: 52vw;
-    margin-top: 4vh;
-    position: absolute;
+    float: right;
     font-family: Abel, monospace;
     font-style: normal;
     font-weight: normal;
@@ -102,13 +101,7 @@
     line-height: 48px;
   }
 }
-@media screen and (max-width: 1024px) {
-  .delivery{&--button{
-    justify-content: center;
-    margin: 0;
-    position: initial;
-  }}
-}
+
 @media screen and (max-width: 767px) {
   .delivery-container {
 width: 94%;
@@ -124,9 +117,3 @@ width: 94%;
     }
   }
 }
-@media screen and (min-width: 3400px) {.delivery{
-  &--button{
-    margin-top: 0;
-    position: initial;
-  }
-}}

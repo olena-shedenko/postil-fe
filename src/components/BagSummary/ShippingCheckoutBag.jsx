@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function ShippingCheckoutBag(props) {
   const {
-    item: { imageUrls, name, currentPrice, quantity },
+    item: { imageUrls, name, currentPrice, quantityInBag },
   } = props;
   return (
     <div className="delivery--item">
@@ -20,7 +20,7 @@ function ShippingCheckoutBag(props) {
         <div className="delivery--text">
           <p className="delivery--text__title">{name}</p>
           <p className="delivery--text__price">Price: ${currentPrice}</p>
-          <p className="delivery--text__count">Count: {quantity}</p>
+          <p className="delivery--text__count">Count: {quantityInBag}</p>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@ ShippingCheckoutBag.propTypes = {
     name: PropTypes.string,
     imageUrls: PropTypes.node,
     currentPrice: PropTypes.number,
-    quantity: PropTypes.number,
+    quantityInBag: PropTypes.number,
   }),
 };
 ShippingCheckoutBag.defaultProps = {

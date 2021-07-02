@@ -43,9 +43,9 @@ const Footer = () => {
             <Link className="ft-item__link" to="/about_us">
               About Us
             </Link>
-            <Link className="ft-item__link" to="/reviews">
+            {/* <Link className="ft-item__link" to="/reviews">
               Reviews
-            </Link>
+            </Link> */}
             <Link className="ft-item__link" to="/blog">
               Blog
             </Link>

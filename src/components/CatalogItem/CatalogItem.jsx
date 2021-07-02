@@ -52,5 +52,5 @@ CatalogItem.propTypes = {
   name: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
   itemNo: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
 };

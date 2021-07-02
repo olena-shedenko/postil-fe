@@ -176,5 +176,5 @@ export default function PaymentForm(props) {
 }
 
 PaymentForm.propTypes = {
-  history: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
