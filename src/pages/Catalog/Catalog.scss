@@ -7,7 +7,7 @@
 
 // MAIN SECTION BUTTONS STYLES
 .catalog-main {
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
   grid-column: 1;
   padding: 15px;
@@ -364,9 +364,6 @@
       line-height: 1.25rem;
       width: 46%;
     }
-  }
-  .catalog-main {
-    // width: 100%;
   }
   .catalog-main-select {
     // width: 100%;
