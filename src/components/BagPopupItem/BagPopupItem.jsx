@@ -1,12 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BagPopupItem.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeProductFromCart, setCartProducts } from '../../store/operations';
+import { SET_ITEMS } from '../../store/types';
 
 function BagPopupItem(props) {
   const { quantity, product, id } = props;
   const dispatch = useDispatch();
+  const jwt = sessionStorage.getItem('token');
+  const items = useSelector((state) => state.items.data) || [];
+
+  const localStorageToggleBag = (item) => {
+    let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
+
+    if (cartArr.includes(item.itemNo)) {
+      const newCartArr = cartArr.filter((el) => el !== item.itemNo);
+      cartArr = newCartArr;
+    } else {
+      cartArr.push(item.itemNo);
+    }
+
+    const cart = JSON.stringify(cartArr);
+    localStorage.setItem('bag', cart);
+  };
+
+  const deleteFromCart = (item) => {
+    if (jwt === null) {
+      const newArr = items.map((el) => {
+        if (el.itemNo === item.itemNo) {
+          el.inShoppingBag = !el.inShoppingBag;
+          el.quantityInBag = 0;
+        }
+        return el;
+      });
+
+      dispatch({ type: SET_ITEMS, payload: newArr });
+      localStorageToggleBag(item);
+    } else if (jwt !== null) {
+      dispatch(removeProductFromCart(id));
+      dispatch(setCartProducts());
+    }
+  };
 
   return (
     <div className="bagpopup__item">
@@ -15,8 +50,7 @@ function BagPopupItem(props) {
           className="bagpopup__item__image_close_wrap"
           type="button"
           onClick={() => {
-            dispatch(removeProductFromCart(id));
-            dispatch(setCartProducts());
+            deleteFromCart(product);
           }}
         >
           <img

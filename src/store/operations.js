@@ -79,6 +79,7 @@ export const removeProductFromCart = (id) => (dispatch) => {
       dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_CART, payload: err });
     });
 };
+
 export const getBlogPosts = () => (dispatch) => {
   axios('http://localhost:3000/blogposts.json').then((res) =>
     dispatch({ type: GET_BLOG_POSTS, payload: res.data })
@@ -126,13 +127,15 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   const state = getState();
   let products = getProducts(state);
   const { filters, sliderValues } = state;
-  const { categories, color, fabric, sizes, selectedOption } = filters;
+  const { categories, color, fabric, sizes, selectedOption, name } = filters;
   const { min, max } = sliderValues;
 
   if (sizes) {
     products = products.filter((product) => product.sizes === sizes);
   }
-
+  if (name) {
+    products = products.filter((product) => product.name.includes(name));
+  }
   if (color) {
     products = products.filter((product) => product.color === color);
   }

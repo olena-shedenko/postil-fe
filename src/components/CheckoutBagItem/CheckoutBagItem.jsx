@@ -28,6 +28,7 @@ export default function CheckoutBagItem(props) {
       const newArr = items.map((el) => {
         if (el.itemNo === item.itemNo) {
           el.inShoppingBag = !el.inShoppingBag;
+          el.quantityInBag = 0;
         }
         return el;
       });

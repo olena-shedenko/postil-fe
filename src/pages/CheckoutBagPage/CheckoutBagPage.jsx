@@ -117,7 +117,17 @@ export default function CheckoutBagPage(props) {
               <span>${(totalPrice += 5)}</span>
             </p>
             <NavLink to="/delivery">
-              <Button className="buy__button btn" variant="dark" type="button">
+              <Button
+                className="buy__button btn"
+                variant="dark"
+                type="button"
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  })
+                }
+              >
                 Buy
               </Button>
             </NavLink>

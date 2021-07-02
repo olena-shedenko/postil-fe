@@ -12,6 +12,7 @@ export default function PaymentForm(props) {
   const { history } = props;
   const dispatch = useDispatch();
   const payBy = useSelector((state) => state.payByCard);
+  const person = JSON.parse(sessionStorage.getItem("shipping-details"));
 
   const submitForm = (values) => {
     const payBy = document.getElementsByClassName('pay_by');
@@ -22,15 +23,19 @@ export default function PaymentForm(props) {
         name: values.cardHolder,
         paymentProcessor: values.cardHolder,
         ...values,
+        ...person,
       };
       const jwt = sessionStorage.getItem('token');
       axios
-        .post('https://postil-bedding.herokuapp.com/api/payment-methods', {
+        .post(
+          'https://postil-bedding.herokuapp.com/api/payment-methods',
           newPaymentMethod,
-          headers: {
-            Authorization: jwt,
-          },
-        })
+          {
+            headers: {
+              Authorization: jwt,
+            },
+          }
+        )
         .then(() => {
           history.push('/thank_you_screen');
           dispatch(deleteCart());
@@ -43,9 +48,10 @@ export default function PaymentForm(props) {
         });
     } else if (payBy[1].classList[1] === 'active') {
       const newPaymentMethod = {
-        customId: 'unknown',
-        name: 'unknown',
+        customId: person.phone,
+        name: person.name,
         paymentProcessor: 'courier',
+        ...person,
       };
       const jwt = sessionStorage.getItem('token');
       axios

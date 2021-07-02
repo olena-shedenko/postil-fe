@@ -4,8 +4,8 @@
     position: relative;
 
     &__image {
-      &_wrap {
-      }
+      // &_wrap {
+      // }
 
       width: 100%;
 
@@ -46,6 +46,16 @@
 
       &:last-child {
         border-radius: 0 3px 3px 3px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .bagpopup {
+    &__item {
+      &__text {
+        font-size: 14px;
       }
     }
   }

@@ -257,6 +257,12 @@ export default function PaymentPage(props) {
               variant="dark"
               type="submit"
               form="payment-form"
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                })
+              }
             >
               Next
             </button>

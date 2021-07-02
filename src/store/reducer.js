@@ -35,6 +35,7 @@ import {
   CLEAR_CART,
   SET_PRODUCTS_IN_CART_LOADING,
   CHANGE_PAYMENT_METHOD,
+  FILTER_NAME,
 } from './types';
 import { act } from 'react-dom/test-utils';
 
@@ -127,6 +128,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, filters: { ...state.filters, sizes: action.payload } };
     case FILTER_COLOR:
       return { ...state, filters: { ...state.filters, color: action.payload } };
+    case FILTER_NAME:
+      return { ...state, filters: { ...state.filters, name: action.payload } };
     case FILTER_FABRIC:
       return {
         ...state,
