@@ -32,6 +32,7 @@ export default function BagPopup() {
         totalPrice = el.quantityInBag * el.currentPrice + totalPrice;
         itemCount = el.quantityInBag + itemCount;
       }
+      return el;
     });
   }
 

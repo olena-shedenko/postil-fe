@@ -43,7 +43,7 @@ import {
   ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
   FILTER_NAME,
 } from './types';
-import { act } from 'react-dom/test-utils';
+// import { act } from 'react-dom/test-utils';
 
 const initialState = {
   accountModalAction: 'signUp',

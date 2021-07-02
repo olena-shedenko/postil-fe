@@ -28,7 +28,7 @@ function BagPopupItem(props) {
   const deleteFromCart = (item) => {
     if (jwt === null) {
       const newArr = items.map((element) => {
-        let el = element;
+        const el = element;
         if (el.itemNo === item.itemNo) {
           el.inShoppingBag = !el.inShoppingBag;
           el.quantityInBag = 0;
