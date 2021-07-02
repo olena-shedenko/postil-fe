@@ -10,6 +10,7 @@ export const getFilterByCategory = (state) => state.filters.categories;
 export const getSliderValues = (state) => state.sliderValues;
 export const getCurrentPage = (state) => state.currentPage;
 export const getPerPage = (state) => state.perPage;
+export const getName = (state) => state.filters.name;
 
 export const pageCounter = (state) => {
   const products = state.filteredProducts || state.items.data;
@@ -27,6 +28,8 @@ export const sliceProductsForPagination = (state) => {
 };
 
 export const getCart = (state) => state.cart;
+export const getShowFilters = (state) => state.showFilters;
+export const getItemsIsLoading = (state) => state.items.isLoading;
 
 // const sortAsc = (arr, field) => {
 //   return arr.sort((a, b) => {

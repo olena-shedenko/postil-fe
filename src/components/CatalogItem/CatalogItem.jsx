@@ -25,9 +25,6 @@ const CatalogItem = ({ id, img, name, currentPrice, itemNo, items }) => {
             type="button"
             className="hover-btn__btn"
             onClick={() => {
-              //   const id = product._id;
-              // eslint-disable-next-line no-console
-              // console.log(id);
               dispatch(
                 addToCart({
                   productId: id,
@@ -55,5 +52,5 @@ CatalogItem.propTypes = {
   name: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
   itemNo: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
 };

@@ -10,6 +10,7 @@ import {
   toggleBagPopup,
   toggleAccountModal,
   filterAndSortOperation,
+  toggleWishlist,
 } from '../../store/operations';
 
 import AccountModal from '../AccountModal/AccountModal';
@@ -18,6 +19,7 @@ import { ReactComponent as Bars } from '../../images/svg/threebars.svg';
 import './Navbar.scss';
 import Search from './Search';
 import BagPopup from '../BagPopup/BagPopup';
+import Wishlist from '../Wishlist/Wishlist';
 
 import {
   filterByCategory,
@@ -59,6 +61,7 @@ function Navbar() {
   return (
     <>
       <BagPopup />
+      <Wishlist />
       {accountModal && <AccountModal />}
       <div className="nav">
         <nav className="navbar">
@@ -70,7 +73,7 @@ function Navbar() {
             role="presentation"
             onMouseEnter={onMouseEnter}
             onClick={handleCatalog}
-            className={catalog ? 'dropdown--nav active' : 'dropdown--nav'}
+            className={catalog ? 'dropdown--nav actived' : 'dropdown--nav'}
           >
             <Link to="/catalog" className="navbar--links" onClick={closeMenu}>
               Catalog
@@ -79,7 +82,7 @@ function Navbar() {
             <div
               data-testid="catalog"
               className={
-                catalog ? 'dropdown--catalog active' : 'dropdown--catalog'
+                catalog ? 'dropdown--catalog actived' : 'dropdown--catalog'
               }
               onMouseLeave={onMouseLeave}
             >
@@ -150,7 +153,7 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div className={dropdown ? 'navbar--menu active' : 'navbar--menu'}>
+          <div className={dropdown ? 'navbar--menu actived' : 'navbar--menu'}>
             <div className="navbar--item">
               <Link
                 to="/about_us"
@@ -184,13 +187,17 @@ function Navbar() {
                 }}
               />
             </div>
-            <div className="navbar--item  icon">
+            {/* eslint-disable-next-line */}
+            <div
+              onClick={() => dispatch(toggleWishlist())}
+              className="navbar--item  icon"
+            >
               <Favourites onClick={closeMenu} />
             </div>
             <div className="navbar--item icon">
               <div className="navbar--item icon">
                 {/* eslint-disable-next-line */}
-                    <div
+                <div
                   className="navbar--links"
                   onClick={() => dispatch(toggleBagPopup())}
                 >

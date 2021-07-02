@@ -1,4 +1,7 @@
 .delivery{
+  &-container{
+    margin-bottom: 6vw;
+  }
   &--product{
     max-height: 230px;
     width: 19vw;
@@ -7,7 +10,14 @@
     min-width: 200px;
   }
   &--product::-webkit-scrollbar {
-    display: none;
+    background-color: #ddd;
+    border-radius: 8px;
+    width: 7px;
+    overflow: hidden;
+  }
+  &--product::-webkit-scrollbar-thumb{
+    background-color: #8a9394;
+    border-radius: 8px;
   }
   &--item{
     display: flex;
@@ -22,9 +32,9 @@
   }
   &--button{
     outline: none;
+    margin-bottom: 4vh;
     border-radius: 4px;
     padding: 15px 80px;
-    margin-bottom: 80px;
     float: right;
     font-family: Abel, monospace;
     font-style: normal;
@@ -91,6 +101,7 @@
     line-height: 48px;
   }
 }
+
 @media screen and (max-width: 767px) {
   .delivery-container {
 width: 94%;

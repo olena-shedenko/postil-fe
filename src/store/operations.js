@@ -20,6 +20,14 @@ import {
   GET_BLOG_POSTS,
   SET_ITEMS,
   CLEAR_CART,
+  TOGGLE_WISHLIST,
+  REQUEST_SET_WISHLIST_PRODUCTS,
+  SET_WISHLIST_PRODUCTS,
+  ERROR_SET_WISHLIST_PRODUCTS,
+  REQUEST_REMOVE_PRODUCT_FROM_WISHLIST,
+  SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
+  ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
+  SUCCESS_ADD_PRODUCT_TO_WISHLIST,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -77,6 +85,7 @@ export const removeProductFromCart = (id) => (dispatch) => {
       dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_CART, payload: err });
     });
 };
+
 export const getBlogPosts = () => (dispatch) => {
   axios('http://localhost:3000/blogposts.json').then((res) =>
     dispatch({ type: GET_BLOG_POSTS, payload: res.data })
@@ -124,13 +133,15 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
   const state = getState();
   let products = getProducts(state);
   const { filters, sliderValues } = state;
-  const { categories, color, fabric, sizes, selectedOption } = filters;
+  const { categories, color, fabric, sizes, selectedOption, name } = filters;
   const { min, max } = sliderValues;
 
   if (sizes) {
     products = products.filter((product) => product.sizes === sizes);
   }
-
+  if (name) {
+    products = products.filter((product) => product.name.includes(name));
+  }
   if (color) {
     products = products.filter((product) => product.color === color);
   }
@@ -246,3 +257,72 @@ export const deleteCart = () => (dispatch) => {
       dispatch({ type: CLEAR_CART });
     });
 };
+
+export const toggleWishlist = () => (dispatch) => {
+  dispatch({ type: TOGGLE_WISHLIST });
+};
+
+export const setWishlist = () => (dispatch) => {
+  dispatch({ type: REQUEST_SET_WISHLIST_PRODUCTS });
+  axios
+    .get('https://postil-bedding.herokuapp.com/api/wishlist', {
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+    .then((wishlist) => {
+      dispatch({
+        type: SET_WISHLIST_PRODUCTS,
+        payload: wishlist.data.products,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_SET_WISHLIST_PRODUCTS, payload: err });
+    });
+};
+
+export const removeProductFromWishlist = (id) => (dispatch) => {
+  dispatch({ type: REQUEST_REMOVE_PRODUCT_FROM_WISHLIST });
+  axios
+    .delete(`https://postil-bedding.herokuapp.com/api/wishlist/${id}`, {
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+    .then((data) => {
+      dispatch({
+        type: SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
+        payload: data.data.products,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_WISHLIST, payload: err });
+    });
+};
+
+export const addToWishlist =
+  ({ items, productNo, productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    if (jwt !== null) {
+      if (!items.find((x) => x.itemNo === productNo)) {
+        axios
+          .put(
+            `https://postil-bedding.herokuapp.com/api/wishlist/${productId}`,
+            null,
+            {
+              headers: {
+                Authorization: jwt,
+              },
+            }
+          )
+          .then((res) => {
+            dispatch({
+              type: SUCCESS_ADD_PRODUCT_TO_WISHLIST,
+              payload: res.data.products,
+            });
+            if (typeof onSuccess === 'function') onSuccess();
+          });
+      }
+    }
+  };

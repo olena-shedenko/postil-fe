@@ -1,6 +1,6 @@
-.bagpopup {
+.wishlist {
   &-wrap {
-    z-index: 10000;
+    z-index: 1000;
     background: rgba(55, 63, 65, 0.7);
     position: fixed;
     top: 0;
@@ -27,12 +27,13 @@
   &-header {
     display: flex;
     justify-content: space-between;
-    
+
     &__title {
       color: #373f41;
       font-weight: 300;
       font-size: 16px;
       display: inline-block;
+      text-transform: uppercase;
     }
 
     &__close {
@@ -49,49 +50,19 @@
   }
 
   &-price {
-      margin-top: 15px;
-      font-size: 18px;
-      letter-spacing: .04em;
-      color: #373F41;
+    margin-top: 15px;
+    font-size: 18px;
+    letter-spacing: .04em;
+    color: #373F41;
   }
 
-  &-buttons {
-      margin-top: 35px;
-      display: flex;
-      flex-direction: column;
-
-    &.centered {
-      margin-top: 0;
-      height: 90%;
-      place-content: center;
-
-      & .bagpopup-buttons__item {
-        margin: 0;
-        transform: translateY(-10px);
-      }
-    }
-
-      & a {
-        width: 100%;
-      }
-
-      &__item {
-        font-size: 18px;
-        cursor: pointer;
-        width: 100%;
-        padding: 10px 0;
-        margin-bottom: 10px;
-
-        &:not(:last-child) {
-            margin-bottom: 10px;
-        }
-      }
+  &-items {
+    margin-top: 15px;
   }
 }
 
-
 @media (max-width: 425px) {
-  .bagpopup {
+  .wishlist {
     &-content {
       top: 0;
       bottom: 0;
