@@ -79,7 +79,7 @@ const initialState = {
   showFilters: false,
   filteredProducts: null,
   cart: [],
-  payByCard:true,
+  payByCard: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -223,10 +223,10 @@ const reducer = (state = initialState, action) => {
       };
     }
     case CHANGE_PAYMENT_METHOD: {
-      return{
+      return {
         ...state,
-        payByCard: action.payload
-      }
+        payByCard: action.payload,
+      };
     }
     case TOGGLE_WISHLIST:
       return { ...state, openedWishlist: !state.openedWishlist };

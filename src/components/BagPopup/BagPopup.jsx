@@ -18,23 +18,22 @@ export default function BagPopup() {
   const jwt = sessionStorage.getItem('token');
   let totalPrice = 0;
   let itemCount = 0;
-  
-  if(jwt !== null){
+
+  if (jwt !== null) {
     if (products) {
       products.forEach((i) => {
         totalPrice = i.cartQuantity * i.product.currentPrice + totalPrice;
         itemCount = i.cartQuantity + itemCount;
       });
     }
-  }else if(jwt === null){
+  } else if (jwt === null) {
     items.map((el) => {
-      if(el.inShoppingBag === true){
+      if (el.inShoppingBag === true) {
         totalPrice = el.quantityInBag * el.currentPrice + totalPrice;
         itemCount = el.quantityInBag + itemCount;
       }
-    })
+    });
   }
-  
 
   return (
     <>

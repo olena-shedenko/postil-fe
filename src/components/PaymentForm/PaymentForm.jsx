@@ -11,8 +11,8 @@ import { deleteCart } from '../../store/operations';
 export default function PaymentForm(props) {
   const { history } = props;
   const dispatch = useDispatch();
-  const payBy = useSelector((state) => state.payByCard);
-  const person = JSON.parse(sessionStorage.getItem("shipping-details"));
+  const payByCard = useSelector((state) => state.payByCard);
+  const person = JSON.parse(sessionStorage.getItem('shipping-details'));
 
   const submitForm = (values) => {
     const payBy = document.getElementsByClassName('pay_by');
@@ -86,7 +86,7 @@ export default function PaymentForm(props) {
 
   return (
     <div>
-      {payBy ? (
+      {payByCard ? (
         <Formik
           initialValues={{
             cardNo: '',

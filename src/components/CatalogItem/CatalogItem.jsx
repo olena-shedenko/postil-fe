@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import { addToCart, setLoading } from '../../store/operations';
+import { addToCart } from '../../store/operations';
 import Button from '../Button/Button';
 import './CatalogItem.scss';
 
