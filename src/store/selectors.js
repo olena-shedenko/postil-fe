@@ -28,6 +28,8 @@ export const sliceProductsForPagination = (state) => {
 };
 
 export const getCart = (state) => state.cart;
+export const getShowFilters = (state) => state.showFilters;
+export const getItemsIsLoading = (state) => state.items.isLoading;
 
 // const sortAsc = (arr, field) => {
 //   return arr.sort((a, b) => {

@@ -1,6 +1,7 @@
 .cg-item {
   position: relative;
   text-align: center;
+  min-width: 0px;
   &:hover .item-hover {
     opacity: 1;
     transition-property: opacity;
@@ -14,14 +15,14 @@
     transition-delay: 0.1s;
   }
   &__img {
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: block;
   }
   &__name {
     margin: 0;
     position: absolute;
-    width: 100vw;
+    width: 100%;
     // left: 14px;
     bottom: 21px;
     background-color: #373f41;

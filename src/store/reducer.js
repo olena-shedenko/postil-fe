@@ -30,11 +30,17 @@ import {
   REQUEST_REMOVE_PRODUCT_FROM_CART,
   SUCCESS_REMOVE_PRODUCT_FROM_CART,
   ERROR_REMOVE_PRODUCT_FROM_CART,
+  TOGGLE_SHOW_FILTERS,
   SET_QUANTITY,
   SET_CART_AFTER_DELETE,
   CLEAR_CART,
   SET_PRODUCTS_IN_CART_LOADING,
   CHANGE_PAYMENT_METHOD,
+  SET_WISHLIST_PRODUCTS,
+  TOGGLE_WISHLIST,
+  SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
+  SUCCESS_ADD_PRODUCT_TO_WISHLIST,
+  ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
   FILTER_NAME,
 } from './types';
 import { act } from 'react-dom/test-utils';
@@ -45,9 +51,14 @@ const initialState = {
   isError: false,
   errMessage: null,
   openedBagPopup: false,
+  openedWishlist: false,
   productsInCart: {
     data: [],
     isLoading: false,
+  },
+  wishlist: {
+    data: [],
+    isLoading: true,
   },
   blogposts: [],
   items: {
@@ -65,6 +76,8 @@ const initialState = {
   },
   currentPage: 0,
   perPage: 18,
+  showFilters: false,
+  filteredProducts: null,
   cart: [],
   payByCard:true,
 };
@@ -87,7 +100,10 @@ const reducer = (state = initialState, action) => {
     case SET_PRODUCTS_IN_CART:
       return {
         ...state,
-        productsInCart: { ...state.productsInCart, data: action.payload },
+        productsInCart: {
+          ...state.productsInCart,
+          data: [...action.payload.reverse()],
+        },
       };
     case SET_MODAL_FORGOT_PASSWORD:
       return { ...state, accountModalAction: action.payload };
@@ -113,7 +129,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         productsInCart: {
           ...state.productsInCart,
-          data: action.payload.data.products,
+          data: [...action.payload.data.products.reverse()],
         },
       };
     case ERROR_REMOVE_PRODUCT_FROM_CART:
@@ -170,7 +186,17 @@ const reducer = (state = initialState, action) => {
       return { ...state, perPage: action.payload };
     }
     case SET_CART: {
-      return { ...state, cart: action.payload };
+      return {
+        ...state,
+        cart: {
+          ...action.payload,
+          products: [...action.payload.products.reverse()],
+        },
+      };
+    }
+
+    case TOGGLE_SHOW_FILTERS: {
+      return { ...state, showFilters: !state.showFilters };
     }
     case SET_QUANTITY: {
       return {
@@ -202,6 +228,25 @@ const reducer = (state = initialState, action) => {
         payByCard: action.payload
       }
     }
+    case TOGGLE_WISHLIST:
+      return { ...state, openedWishlist: !state.openedWishlist };
+    case SET_WISHLIST_PRODUCTS:
+      return {
+        ...state,
+        wishlist: { data: [...action.payload.reverse()], isLoading: false },
+      };
+    case SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST:
+      return {
+        ...state,
+        wishlist: { ...state.wishlist, data: [...action.payload.reverse()] },
+      };
+    case SUCCESS_ADD_PRODUCT_TO_WISHLIST:
+      return {
+        ...state,
+        wishlist: { ...state.wishlist, data: [...action.payload.reverse()] },
+      };
+    case ERROR_REMOVE_PRODUCT_FROM_WISHLIST:
+      return { ...state, errMessage: action.payload };
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import ShippingCheckoutBag from './ShippingCheckoutBag';
 import './ShippingCheckout.scss';
+import Button from '../Button/Button';
 
 const ShippingCheckout = () => {
   const items = useSelector((state) => state.items.data);
@@ -38,7 +39,6 @@ const ShippingCheckout = () => {
       });
     }
   };
-
   return (
     <div className="delivery-container">
       {getLocalCart()}
@@ -74,6 +74,10 @@ const ShippingCheckout = () => {
         <span>TOTAL</span>
         <span>${(totalPrice += 5)}</span>
       </p>
+
+      <Button className="delivery--button btn" variant="dark" type="submit">
+        NEXT
+      </Button>
     </div>
   );
 };
