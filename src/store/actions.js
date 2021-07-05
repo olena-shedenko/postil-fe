@@ -17,6 +17,7 @@ import {
   SET_CURRENT_PAGE,
   SET_PER_PAGE,
   SET_CART,
+  TOGGLE_SHOW_FILTERS,
 } from './types';
 
 export const setProduct = (data) => {
@@ -85,4 +86,8 @@ export const setPerPage = (data) => {
 
 export const setCart = (data) => {
   return { type: SET_CART, payload: data };
+};
+
+export const toggleShowFilters = (data) => {
+  return { type: TOGGLE_SHOW_FILTERS, payload: data };
 };

@@ -19,6 +19,12 @@ export default function Popular() {
                   variant="bordered"
                   className="text-block__button btn"
                   type="button"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
                 >
                   Shop
                 </Button>
@@ -34,6 +40,12 @@ export default function Popular() {
                   variant="bordered"
                   className="text-block__button btn"
                   type="button"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
                 >
                   Shop
                 </Button>
@@ -49,6 +61,12 @@ export default function Popular() {
                   variant="bordered"
                   className="text-block__button btn"
                   type="button"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
                 >
                   Shop
                 </Button>
@@ -64,6 +82,12 @@ export default function Popular() {
                   variant="bordered"
                   className="text-block__button btn"
                   type="button"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }
                 >
                   Shop
                 </Button>
@@ -72,7 +96,17 @@ export default function Popular() {
           </li>
         </ul>
         <NavLink to="/catalog">
-          <Button variant="bordered" className="see-all__btn btn" type="button">
+          <Button
+            variant="bordered"
+            className="see-all__btn btn"
+            type="button"
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+            }
+          >
             SEE ALL {' >'}
           </Button>
         </NavLink>

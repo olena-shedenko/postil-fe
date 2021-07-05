@@ -20,6 +20,15 @@ import {
   GET_BLOG_POSTS,
   SET_ITEMS,
   CLEAR_CART,
+  SET_PRODUCTS_IN_CART_LOADING,
+  TOGGLE_WISHLIST,
+  REQUEST_SET_WISHLIST_PRODUCTS,
+  SET_WISHLIST_PRODUCTS,
+  ERROR_SET_WISHLIST_PRODUCTS,
+  REQUEST_REMOVE_PRODUCT_FROM_WISHLIST,
+  SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
+  ERROR_REMOVE_PRODUCT_FROM_WISHLIST,
+  SUCCESS_ADD_PRODUCT_TO_WISHLIST,
 } from './types';
 import { filteredProducts, setCart } from './actions';
 import { getProducts } from './selectors';
@@ -45,6 +54,7 @@ export const toggleBagPopup = () => (dispatch) => {
 
 export const setCartProducts = () => (dispatch) => {
   dispatch({ type: REQUEST_PRODUCTS_IN_CART });
+  dispatch({ type: SET_PRODUCTS_IN_CART_LOADING, payload: false });
   axios
     .get('https://postil-bedding.herokuapp.com/api/cart', {
       headers: {
@@ -249,3 +259,75 @@ export const deleteCart = () => (dispatch) => {
       dispatch({ type: CLEAR_CART });
     });
 };
+
+export const setLoading = () => (dispatch) => {
+  dispatch({ type: SET_PRODUCTS_IN_CART_LOADING, payload: true });
+};
+export const toggleWishlist = () => (dispatch) => {
+  dispatch({ type: TOGGLE_WISHLIST });
+};
+
+export const setWishlist = () => (dispatch) => {
+  dispatch({ type: REQUEST_SET_WISHLIST_PRODUCTS });
+  axios
+    .get('https://postil-bedding.herokuapp.com/api/wishlist', {
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+    .then((wishlist) => {
+      dispatch({
+        type: SET_WISHLIST_PRODUCTS,
+        payload: wishlist.data.products,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_SET_WISHLIST_PRODUCTS, payload: err });
+    });
+};
+
+export const removeProductFromWishlist = (id) => (dispatch) => {
+  dispatch({ type: REQUEST_REMOVE_PRODUCT_FROM_WISHLIST });
+  axios
+    .delete(`https://postil-bedding.herokuapp.com/api/wishlist/${id}`, {
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+    .then((data) => {
+      dispatch({
+        type: SUCCESS_REMOVE_PRODUCT_FROM_WISHLIST,
+        payload: data.data.products,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ERROR_REMOVE_PRODUCT_FROM_WISHLIST, payload: err });
+    });
+};
+
+export const addToWishlist =
+  ({ items, productNo, productId, onSuccess }) =>
+  (dispatch) => {
+    const jwt = sessionStorage.getItem('token');
+    if (jwt !== null) {
+      if (!items.find((x) => x.itemNo === productNo)) {
+        axios
+          .put(
+            `https://postil-bedding.herokuapp.com/api/wishlist/${productId}`,
+            null,
+            {
+              headers: {
+                Authorization: jwt,
+              },
+            }
+          )
+          .then((res) => {
+            dispatch({
+              type: SUCCESS_ADD_PRODUCT_TO_WISHLIST,
+              payload: res.data.products,
+            });
+            if (typeof onSuccess === 'function') onSuccess();
+          });
+      }
+    }
+  };

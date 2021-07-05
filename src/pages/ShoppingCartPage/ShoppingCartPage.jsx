@@ -7,9 +7,12 @@ import { NavLink } from 'react-router-dom';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 import Button from '../../components/Button/Button';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import NoItems from '../../components/NoItems/NoItems';
+// import Loading from '../../components/Loading/Loading';
 
 export default function ShoppingCart() {
   const items = useSelector((state) => state.items.data) || [];
+  // let loading = useSelector((state) => state.productsInCart.isLoading);
   let totalPrice = 0;
   const bagItems = [];
   const bag = JSON.parse(localStorage.getItem('bag')) || [];
@@ -51,6 +54,7 @@ export default function ShoppingCart() {
           <p className="bag-header__title">SHOPPING BAG</p>
           <p className="bag-header__price">TOTAL USD ${totalPrice}.00</p>
         </div>
+        {bagItems.length === 0 ? <NoItems /> : null}
         {jwt === null
           ? bagItems.map((el) => {
               return (
@@ -72,11 +76,23 @@ export default function ShoppingCart() {
                 />
               );
             })}
-        <NavLink to="/checkout_bag">
-          <Button className="checkout-btn btn" variant="dark" type="button">
-            PROCEED TO CHECKOUT
-          </Button>
-        </NavLink>
+        {bagItems.length !== 0 ? (
+          <NavLink to="/checkout_bag">
+            <Button
+              className="checkout-btn btn"
+              variant="dark"
+              type="button"
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                })
+              }
+            >
+              PROCEED TO CHECKOUT
+            </Button>
+          </NavLink>
+        ) : null}
       </div>
     </div>
   );

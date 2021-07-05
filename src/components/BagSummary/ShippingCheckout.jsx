@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import ShippingCheckoutBag from './ShippingCheckoutBag';
 import './ShippingCheckout.scss';
+import Button from '../Button/Button';
 
 const ShippingCheckout = () => {
   const items = useSelector((state) => state.items.data);
@@ -38,7 +39,6 @@ const ShippingCheckout = () => {
       });
     }
   };
-
   return (
     <div className="delivery-container">
       {getLocalCart()}
@@ -46,13 +46,22 @@ const ShippingCheckout = () => {
       <div className="delivery--product">
         {jwt === null
           ? bagItems.map((el) => {
-              return <ShippingCheckoutBag key={el.itemNo} item={el} />;
+              return (
+                <ShippingCheckoutBag
+                  key={el._id}
+                  items={items}
+                  item={el}
+                  cartQuantity={el.quantityInBag}
+                />
+              );
             })
           : bagItems.map((el) => {
               return (
                 <ShippingCheckoutBag
-                  key={el.product.itemNo}
+                  key={el._id}
+                  items={items}
                   item={el.product}
+                  cartQuantity={el.cartQuantity}
                 />
               );
             })}
@@ -74,6 +83,10 @@ const ShippingCheckout = () => {
         <span>TOTAL</span>
         <span>${(totalPrice += 5)}</span>
       </p>
+
+      <Button className="delivery--button btn" variant="dark" type="submit">
+        NEXT
+      </Button>
     </div>
   );
 };
