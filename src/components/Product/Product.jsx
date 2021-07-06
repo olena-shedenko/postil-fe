@@ -1,24 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addToCart } from '../../store/operations';
 import './Product.scss';
 import Button from '../Button/Button';
 import { Facebook, Twitter, Instagram } from '../Icons';
-// import Icon from '../Icon/Icon';
 import SliderProduct from '../SliderProduct/SliderProduct';
 
-const Product = ({
-  img,
-  name,
-  itemNo,
-  color,
-  sizes,
-  currentPrice,
-  items,
-  _id,
-}) => {
+const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
+  // /* eslint no-console: 0 */
+  // console.log('id', id);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -67,44 +59,34 @@ const Product = ({
                 <p className="product__preorder">pre-order</p>
               </h5>
               <div>
-                <Link to="/shopping_cart">
-                  <Button
-                    variant="dark"
-                    type="button"
-                    className="btn__add"
-                    onClick={() => {
-                      // const id = _id;
-                      // // eslint-disable-next-line no-console
-                      // console.log(id);
-                      dispatch(
-                        addToCart({
-                          productId: id,
-                          productNo: itemNo,
-                          item: items,
-                          historys: history,
-                          onSuccess: () => history.push('/shopping_cart'),
-                        })
-                      );
-                    }}
-                  >
-                    ADD TO BAG
-                  </Button>
-                </Link>
+                <Button
+                  variant="dark"
+                  type="button"
+                  className="btn__add"
+                  onClick={() => {
+                    dispatch(
+                      addToCart({
+                        productId: id,
+                        productNo: itemNo,
+                        historys: history,
+                        onSuccess: () => history.push('/shopping_cart'),
+                      })
+                    );
+                  }}
+                >
+                  ADD TO BAG
+                </Button>
+
                 {/* <Button variant="dark" type="button" className="btn__add">
                   ADD TO BAG
                 </Button> */}
               </div>
               <div>
-                4
                 {/* <Button variant="dark" type="button" className="btn">
                   <div className="navbar--item  icon">
                     <Favourites fill="white" />
                   </div>
                 </Button> */}
-                {/* <Icon
-                  onClick={() => toggleLiked(item)}
-                  filled={isFavourite ? '#373F41' : 'none'}
-                /> */}
               </div>
             </div>
 
@@ -137,8 +119,7 @@ Product.propTypes = {
   color: PropTypes.string.isRequired,
   sizes: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
-  _id: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Product;
