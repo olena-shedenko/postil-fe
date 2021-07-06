@@ -17,6 +17,7 @@ export default function SliderProduct({ img }) {
     slidesToShow: 1,
     slidesToScroll: 1,
     className: 'main-slider',
+    centerPadding: '100px',
   };
 
   return (
@@ -24,7 +25,7 @@ export default function SliderProduct({ img }) {
     <Slider {...settings}>
       {img.map((item) => {
         return (
-          <div className="main-slider">
+          <div>
             <img src={item} alt="beddings" className="main-slider__image" />
           </div>
         );
