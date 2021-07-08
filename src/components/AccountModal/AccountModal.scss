@@ -64,6 +64,7 @@
       color: #373f41;
       background-color: #ffffff;
       outline: none;
+      cursor: pointer;
       &__login {
         border-top: none;
         border-right: none;
@@ -133,6 +134,7 @@
     background-color: #373f41;
     margin-top: 35px;
     font-size: 18px;
+    cursor: pointer;
     &:hover {
       background-color: #2a3335;
     }
@@ -147,6 +149,7 @@
       align-self: flex-start;
       margin: 4px 15px 0 0;
     }
+    input[type="checkbox" i] {cursor: pointer}
   }
   .checkbox {
     &-text-wrap {
@@ -173,6 +176,7 @@
     margin: 30px 0 20px 0;
     color: #373f41;
     text-transform: uppercase;
+    cursor: pointer;
   }
   .cross-button {
     position: absolute;
