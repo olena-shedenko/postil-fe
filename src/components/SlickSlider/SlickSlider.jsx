@@ -29,7 +29,7 @@ export default function SimpleSlider({ categories }) {
       {
         breakpoint: 630,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
