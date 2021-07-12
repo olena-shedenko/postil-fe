@@ -54,12 +54,14 @@
 }
 
 // MEDIA QUERY SECTION
+@media (min-width: 450px) {
+}
+
+@media (min-width: 630px) {
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+}
+
 @media (min-width: 1200px) {
-  .slider {
-    &__img-wrapper {
-      width: 350px;
-      height: 380px;
-      padding: 20px;
-    }
-  }
 }
