@@ -5,11 +5,11 @@ import React from 'react';
 import './AccountModal.scss';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { setCart } from '../../store/actions';
 import {
   toggleAccountModal,
   toggleAccountError,
   setCartProducts,
+  setWishlist,
 } from '../../store/operations';
 import MobileModal from './layouts/MobileModal';
 import DesktopModal from './layouts/DesktopModal';
@@ -33,15 +33,8 @@ const AccountModal = () => {
         if (typeof window !== 'undefined')
           sessionStorage.setItem('token', data.token);
         dispatch(toggleAccountModal());
-        axios.get('https://postil-bedding.herokuapp.com/api/cart', {
-          headers: {
-            Authorization: data.token,
-          },
-        });
-      })
-      .then((res) => {
-        if (res) dispatch(setCart(res.data));
         dispatch(setCartProducts());
+        dispatch(setWishlist());
       })
       .catch(() => {
         dispatch(

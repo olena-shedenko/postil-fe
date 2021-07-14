@@ -1,5 +1,6 @@
 .cg-item {
   position: relative;
+  display: block;
   text-align: center;
   min-width: 0px;
   &:hover .item-hover {
@@ -73,6 +74,13 @@
     cursor: pointer;
   }
 }
+.favourite {
+  align-self: flex-end;
+  padding-right: 10px;
+  position: absolute;
+  top: 10px;
+}
+// MEDIA QUERY
 @media (min-width: 630px) {
   .cg-item {
     &__img {
