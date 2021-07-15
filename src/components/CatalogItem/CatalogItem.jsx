@@ -64,25 +64,27 @@ const CatalogItem = ({ item }) => {
         <h5 className="item-hover__name">{item.name}</h5>
         <p className="item-hover__price">${item.currentPrice}</p>
         <div className="item-hover__btn hover-btn">
-          <Button
-            variant="light-bordered"
-            type="button"
-            className="hover-btn__btn"
-            onClick={() => {
-              //   const id = product._id;
-              // eslint-disable-next-line no-console
-              // console.log(id);
-              dispatch(
-                addToCart({
-                  productId: item._id,
-                  historys: history,
-                  onSuccess: () => history.push('/shopping_cart'),
-                })
-              );
-            }}
-          >
-            BUY NOW
-          </Button>
+          <Link to="/shopping_cart">
+            <Button
+              variant="light-bordered"
+              type="button"
+              className="hover-btn__btn"
+              onClick={() => {
+                //   const id = product._id;
+                // eslint-disable-next-line no-console
+                // console.log(id);
+                dispatch(
+                  addToCart({
+                    productId: item._id,
+                    historys: history,
+                    onSuccess: () => history.push('/shopping_cart'),
+                  })
+                );
+              }}
+            >
+              BUY NOW
+            </Button>
+          </Link>
         </div>
       </div>
     </Link>

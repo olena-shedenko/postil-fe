@@ -14,8 +14,8 @@ function BagPopupItem(props) {
   const localStorageToggleBag = (item) => {
     let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
 
-    if (cartArr.includes(item.itemNo)) {
-      const newCartArr = cartArr.filter((el) => el !== item.itemNo);
+    if (cartArr.includes(item._id)) {
+      const newCartArr = cartArr.filter((el) => el !== item._id);
       cartArr = newCartArr;
     } else {
       cartArr.push(item.itemNo);
@@ -29,7 +29,7 @@ function BagPopupItem(props) {
     if (jwt === null) {
       const newArr = items.map((element) => {
         const el = element;
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.inShoppingBag = !el.inShoppingBag;
           el.quantityInBag = 0;
         }
