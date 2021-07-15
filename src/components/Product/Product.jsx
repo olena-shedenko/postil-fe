@@ -2,11 +2,16 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addToCart } from '../../store/operations';
+import {
+  addToCart,
+  // addToWishlist,
+  // removeProductFromWishlist,
+} from '../../store/operations';
 import './Product.scss';
 import Button from '../Button/Button';
 import { Facebook, Twitter, Instagram } from '../Icons';
 import SliderProduct from '../SliderProduct/SliderProduct';
+// import Icon from '../Icon/Icon';
 
 const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
   // /* eslint no-console: 0 */
@@ -76,16 +81,41 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
                 >
                   ADD TO BAG
                 </Button>
-
-                {/* <Button variant="dark" type="button" className="btn__add">
-                  ADD TO BAG
-                </Button> */}
               </div>
               <div>
-                {/* <Button variant="dark" type="button" className="btn">
-                  <div className="navbar--item  icon">
-                    <Favourites fill="white" />
-                  </div>
+                {/* <Button
+                  className="btn favourite"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    if (id.inWishList) {
+                      dispatch(removeProductFromWishlist(id._id));
+                    } else {
+                      dispatch(addToWishlist(id._id));
+                    }
+                  }}
+                >
+                  {id.inWishList ? (
+                    <Icon
+                      color="#373f41"
+                      title="Remove from Wishlist"
+                      inWishList
+                      // onClick={(event) => {
+                      //   event.preventDefault();
+                      //   event.stopPropagation();
+                      //   dispatch(removeProductFromWishlist(item._id));
+                      // }}
+                    />
+                  ) : (
+                    <Icon
+                      color="#373f41"
+                      title="Add to Wishlist"
+                      // onClick={(event) => {
+                      //   event.preventDefault();
+                      //   event.stopPropagation();
+                      //   dispatch(addToWishlist(item._id));
+                      // }}
+                    />
+                  )}
                 </Button> */}
               </div>
             </div>

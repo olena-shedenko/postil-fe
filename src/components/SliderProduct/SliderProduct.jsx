@@ -11,7 +11,7 @@ export default function SliderProduct({ img }) {
       );
     },
     dots: true,
-    dotsClass: 'slick-dots slick-thumb',
+    dotsClass: 'slick-dots slick-thumb dots-custom',
     infinite: true,
     speed: 500,
     slidesToShow: 1,
