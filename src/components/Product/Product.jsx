@@ -4,14 +4,14 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   addToCart,
-  // addToWishlist,
-  // removeProductFromWishlist,
+  addToWishlist,
+  removeProductFromWishlist,
 } from '../../store/operations';
 import './Product.scss';
 import Button from '../Button/Button';
 import { Facebook, Twitter, Instagram } from '../Icons';
 import SliderProduct from '../SliderProduct/SliderProduct';
-// import Icon from '../Icon/Icon';
+import Icon from '../Icon/Icon';
 
 const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
   // /* eslint no-console: 0 */
@@ -83,14 +83,14 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
                 </Button>
               </div>
               <div>
-                {/* <Button
+                <Button
                   className="btn favourite"
                   onClick={(event) => {
                     event.preventDefault();
                     if (id.inWishList) {
-                      dispatch(removeProductFromWishlist(id._id));
+                      dispatch(removeProductFromWishlist(id));
                     } else {
-                      dispatch(addToWishlist(id._id));
+                      dispatch(addToWishlist(id));
                     }
                   }}
                 >
@@ -99,24 +99,11 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
                       color="#373f41"
                       title="Remove from Wishlist"
                       inWishList
-                      // onClick={(event) => {
-                      //   event.preventDefault();
-                      //   event.stopPropagation();
-                      //   dispatch(removeProductFromWishlist(item._id));
-                      // }}
                     />
                   ) : (
-                    <Icon
-                      color="#373f41"
-                      title="Add to Wishlist"
-                      // onClick={(event) => {
-                      //   event.preventDefault();
-                      //   event.stopPropagation();
-                      //   dispatch(addToWishlist(item._id));
-                      // }}
-                    />
+                    <Icon filled="#373f41" title="Add to Wishlist" />
                   )}
-                </Button> */}
+                </Button>
               </div>
             </div>
 
