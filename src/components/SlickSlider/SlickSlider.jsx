@@ -20,16 +20,14 @@ export default function SimpleSlider({ categories }) {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: true,
-          dots: false,
         },
       },
       {
         breakpoint: 630,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },

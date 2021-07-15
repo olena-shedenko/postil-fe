@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/prefer-default-export */
 export const getProduct = (state) => state.items.data;
 export const getProducts = (state) => state.items.data;
@@ -5,7 +6,7 @@ export const getFilteredProducts = (state) => state.filteredProducts;
 export const getFilterSize = (state) => state.filters.sizes;
 export const getFilterColor = (state) => state.filters.color;
 export const getFilterFabric = (state) => state.filters.fabric;
-export const getCatalogProducts = (state) =>
+export const getCatalogItems = (state) =>
   state.filteredProducts || state.items.data;
 export const getFilterByCategory = (state) => state.filters.categories;
 export const getSliderValues = (state) => state.sliderValues;
@@ -18,19 +19,22 @@ export const pageCounter = (state) => {
   return products ? Math.ceil(products.length / state.perPage) : 0;
 };
 
-export const sliceProductsForPagination = (state) => {
-  const products = state.filteredProducts || state.items.data;
-  return products
-    ? products.slice(
-        state.currentPage * state.perPage,
-        state.currentPage * state.perPage + state.perPage
-      )
-    : [];
+export const catalogItemsSelector = (state) => {
+  const { currentPage, perPage, filteredProducts, items, wishlist } = state;
+  const wishlistIds = wishlist.data.map(({ _id }) => _id);
+  const catalogItems = (filteredProducts || items.data).map((item) => ({
+    ...item,
+    inWishList: wishlistIds.indexOf(item._id) >= 0,
+  }));
+  return perPage
+    ? catalogItems.slice(currentPage * perPage, currentPage * perPage + perPage)
+    : catalogItems;
 };
 
 export const getCart = (state) => state.cart;
 export const getShowFilters = (state) => state.showFilters;
 export const getItemsIsLoading = (state) => state.items.isLoading;
+export const getWishList = (state) => state.wishlist.data.products;
 
 // const sortAsc = (arr, field) => {
 //   return arr.sort((a, b) => {

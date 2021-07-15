@@ -11,37 +11,12 @@ export default function SliderProduct({ img }) {
       );
     },
     dots: true,
-    dotsClass: 'slick-dots slick-thumb',
+    dotsClass: 'slick-dots slick-thumb dots-custom',
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     className: 'main-slider',
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 630,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 450,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
 
   return (
