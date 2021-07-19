@@ -84,7 +84,7 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
               </div>
               <div>
                 <Button
-                  className="btn favourite"
+                  className="btn favourites"
                   onClick={(event) => {
                     event.preventDefault();
                     if (id.inWishList) {
@@ -101,7 +101,7 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
                       inWishList
                     />
                   ) : (
-                    <Icon filled="#373f41" title="Add to Wishlist" />
+                    <Icon color="#373f41" title="Add to Wishlist" />
                   )}
                 </Button>
               </div>
