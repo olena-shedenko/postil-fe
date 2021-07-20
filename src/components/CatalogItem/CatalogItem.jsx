@@ -68,14 +68,11 @@ const CatalogItem = ({ item }) => {
             variant="light-bordered"
             type="button"
             className="hover-btn__btn"
-            onClick={() => {
-              //   const id = product._id;
-              // eslint-disable-next-line no-console
-              // console.log(id);
+            onClick={(e) => {
+              e.preventDefault();
               dispatch(
                 addToCart({
                   productId: item._id,
-                  historys: history,
                   onSuccess: () => history.push('/shopping_cart'),
                 })
               );
