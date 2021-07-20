@@ -49,4 +49,26 @@
 }
 
 @media (min-width: 1200px) {
+  .main-slider {
+    width: 450px;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 10%;
+    }
+
+    &__image {
+      width: 450px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    &__thumb {
+      width: 90px;
+      height: auto;
+      border-radius: 5px;
+      display: block;
+      margin: 0 -5.2em;
+    }
+  }
 }
