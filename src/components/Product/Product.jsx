@@ -16,18 +16,17 @@ import Icon from '../Icon/Icon';
 const Product = ({
   img,
   name,
-  itemNo,
   color,
   sizes,
   currentPrice,
   id,
   description,
-  wishlist,
+  inWishList,
 }) => {
   // /* eslint no-console: 0 */
   // console.log('id', id);
   /* eslint no-console: 0 */
-  console.log('wish', wishlist);
+  console.log('wish', inWishList);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -54,7 +53,7 @@ const Product = ({
                 className="ft-icons__inst-icon ft-icons__icon"
               />
             </div>
-            <h5 className="product__id">Product id: {itemNo}</h5>
+            <h5 className="product__id">Product id: {id}</h5>
             <h5 className="product__color">Color</h5>
             <div
               style={{
@@ -84,8 +83,6 @@ const Product = ({
                     dispatch(
                       addToCart({
                         productId: id,
-                        productNo: itemNo,
-                        historys: history,
                         onSuccess: () => history.push('/shopping_cart'),
                       })
                     );
@@ -99,14 +96,14 @@ const Product = ({
                   className="btn favourites"
                   onClick={(event) => {
                     event.preventDefault();
-                    if (wishlist) {
+                    if (inWishList) {
                       dispatch(removeProductFromWishlist(id));
                     } else {
                       dispatch(addToWishlist(id));
                     }
                   }}
                 >
-                  {id.inWishList ? (
+                  {inWishList ? (
                     <Icon
                       color="#373f41"
                       title="Remove from Wishlist"
@@ -138,13 +135,12 @@ const Product = ({
 Product.propTypes = {
   img: PropTypes.instanceOf(Array).isRequired,
   name: PropTypes.string.isRequired,
-  itemNo: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   sizes: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  wishlist: PropTypes.instanceOf(Array).isRequired,
+  inWishList: PropTypes.bool.isRequired,
 };
 
 export default Product;
