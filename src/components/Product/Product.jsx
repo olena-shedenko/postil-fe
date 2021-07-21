@@ -13,9 +13,21 @@ import { Facebook, Twitter, Instagram } from '../Icons';
 import SliderProduct from '../SliderProduct/SliderProduct';
 import Icon from '../Icon/Icon';
 
-const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
+const Product = ({
+  img,
+  name,
+  itemNo,
+  color,
+  sizes,
+  currentPrice,
+  id,
+  description,
+  wishlist,
+}) => {
   // /* eslint no-console: 0 */
   // console.log('id', id);
+  /* eslint no-console: 0 */
+  console.log('wish', wishlist);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -82,12 +94,12 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
                   ADD TO BAG
                 </Button>
               </div>
-              <div>
+              <div className="btn__fav">
                 <Button
                   className="btn favourites"
                   onClick={(event) => {
                     event.preventDefault();
-                    if (id.inWishList) {
+                    if (wishlist) {
                       dispatch(removeProductFromWishlist(id));
                     } else {
                       dispatch(addToWishlist(id));
@@ -109,15 +121,9 @@ const Product = ({ img, name, itemNo, color, sizes, currentPrice, id }) => {
 
             <div className="product__description">
               <h5 className="product__description-title">
-                - PRODUCT DESCRIPTION
+                PRODUCT DESCRIPTION
               </h5>
-              <p className="product__description-text">
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts.Far far
-                away, behind the word mountains, far from the countries Vokalia
-                and Consonantia, there live the blind texts
-              </p>
-              <h5 className="product__reviews">+ REVIEWS</h5>
+              <p className="product__description-text">{description}</p>
             </div>
           </div>
         </div>
@@ -136,7 +142,9 @@ Product.propTypes = {
   color: PropTypes.string.isRequired,
   sizes: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  wishlist: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Product;

@@ -45,6 +45,7 @@ const OneProduct = () => {
         sizes={product.sizes}
         currentPrice={product.currentPrice}
         id={product._id}
+        description={product.description}
       />
       <SlickSlider categories={categories} />
     </div>

@@ -80,7 +80,7 @@ h5 {
     text-transform: uppercase;
     margin-block-start: 0;
     margin-block-end: 0;
-    padding-right: calc(100% - 1em - 18.37em);
+    padding-right: calc(100% - 1.25em - 9.37em);
   }
 
   &__preorder {
@@ -107,14 +107,6 @@ h5 {
     color: rgba($color: #5c5e60, $alpha: 0.5);
     padding-bottom: 30px;
   }
-
-  &__reviews {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #373f41;
-  }
 }
 
 .btn {
@@ -126,7 +118,6 @@ h5 {
     width: 180px;
     padding: 11px 23px;
     border-radius: 3px;
-    // margin-right: 15px;
     cursor: pointer;
   }
 }
@@ -135,7 +126,8 @@ h5 {
   align-self: flex-end;
   padding-right: 10px;
   position: absolute;
-  top: 548px;
+  top: 35.125em;
+  right: 11.063em;
 }
 
 .slider {
@@ -147,7 +139,8 @@ h5 {
     color: #373f41;
     font-family: 'Abel', sans-serif;
     text-align: center;
-    padding-top: 4.68em;
+    margin-top: 4.68em;
+    padding-bottom: 1.875em;
   }
 }
 
@@ -212,7 +205,7 @@ h5 {
       font-size: 28px;
       line-height: 48px;
       text-align: center;
-      padding: 40px 240px 0 0;
+      // padding: 40px 240px 0 0;
     }
   }
 }
@@ -249,7 +242,6 @@ h5 {
 
     &__price {
       font-size: 20px;
-      padding-right: 20%;
     }
 
     &__preorder {
@@ -262,11 +254,6 @@ h5 {
     }
 
     &__description-text {
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    &__reviews {
       font-size: 14px;
       line-height: 20px;
     }
@@ -283,14 +270,13 @@ h5 {
     &__title {
       font-size: 25px;
       line-height: 38px;
-      padding-top: 1.68em;
     }
   }
   .favourites {
     align-self: flex-end;
     padding-right: 10px;
     position: absolute;
-    top: 78%;
-    right: 13%;
+    // top: 78%;
+    // right: 13%;
   }
 }
