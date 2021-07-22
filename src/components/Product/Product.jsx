@@ -25,8 +25,7 @@ const Product = ({
 }) => {
   // /* eslint no-console: 0 */
   // console.log('id', id);
-  /* eslint no-console: 0 */
-  console.log('wish', inWishList);
+
   const dispatch = useDispatch();
   const history = useHistory();
 

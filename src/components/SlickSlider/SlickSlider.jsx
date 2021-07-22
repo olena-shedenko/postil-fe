@@ -56,7 +56,7 @@ export default function SimpleSlider({ categories }) {
                 />
               </div>
               <div className="slider__info">
-                <h1 className="slider__name">{name}</h1>
+                <h3 className="slider__name">{name}</h3>
                 <h5 className="slider__price">USD ${currentPrice}</h5>
               </div>
             </div>

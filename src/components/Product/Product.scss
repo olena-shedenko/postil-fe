@@ -80,7 +80,7 @@ h5 {
     text-transform: uppercase;
     margin-block-start: 0;
     margin-block-end: 0;
-    padding-right: calc(100% - 1.25em - 9.37em);
+    padding-right: calc(100% - 0.75em - 10.37em);
   }
 
   &__preorder {
@@ -126,7 +126,7 @@ h5 {
   align-self: flex-end;
   padding-right: 10px;
   position: absolute;
-  top: 35.125em;
+  top: 38.125em;
   right: 11.063em;
 }
 
@@ -148,7 +148,7 @@ h5 {
 @media (min-width: 450px) and (max-width: 629px) {
   .product {
     &__info {
-      margin: 550px 0 0 -15%;
+      margin: 47.43em 0;
     }
 
     &__name {
@@ -158,7 +158,19 @@ h5 {
 
     &__price {
       font-size: 25px;
-      padding-right: 20%;
+      padding-right: calc(100% - 0.75em - 13.37em);
+    }
+
+    .favourites {
+      top: 91.125em;
+      right: 0.063em;
+    }
+  }
+  .slider {
+    &__title {
+      font-size: 28px;
+      margin-top: -26.52em;
+      padding-bottom: 0.875em;
     }
   }
 }
@@ -166,12 +178,28 @@ h5 {
 @media (min-width: 630px) and (max-width: 991px) {
   .product {
     &__info {
-      margin: 650px 0 0 -15%;
+      margin: 46.43em 0 0 -15%;
     }
 
     &__name {
       font-size: 30px;
       line-height: 22px;
+    }
+
+    &__price {
+      padding-right: calc(100% - 0.75em - 14.37em);
+    }
+
+    .favourites {
+      top: 90.125em;
+      right: 12.063em;
+    }
+  }
+  .slider {
+    &__title {
+      font-size: 28px;
+      margin-top: 1.48em;
+      padding-bottom: 0.875em;
     }
   }
 }
@@ -185,9 +213,6 @@ h5 {
 
     &__info {
       margin: 650px 0 0 -15%;
-    }
-    &__price {
-      padding-right: 150px;
     }
   }
 
@@ -205,7 +230,6 @@ h5 {
       font-size: 28px;
       line-height: 48px;
       text-align: center;
-      // padding: 40px 240px 0 0;
     }
   }
 }
@@ -221,7 +245,7 @@ h5 {
     }
 
     &__info {
-      margin-left: 27em;
+      margin-left: 30em;
     }
 
     &__id {
@@ -276,7 +300,5 @@ h5 {
     align-self: flex-end;
     padding-right: 10px;
     position: absolute;
-    // top: 78%;
-    // right: 13%;
   }
 }
