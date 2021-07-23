@@ -24,11 +24,11 @@ function NextArrow({ style, onClick }) {
 function PrevArrow({ style, onClick }) {
   return (
     <div
-      className="slick-arrow slick-next prev-arrow"
+      className="slick-arrow slick-prev prev-arrow"
       style={{ ...style, display: 'flex' }}
       onClick={onClick}
     >
-      <img src="/images/arrows/prev-arrow.svg" alt="arrow" />
+      <img src="/images/arrows/next-arrow.svg" alt="arrow" />
     </div>
   );
 }
