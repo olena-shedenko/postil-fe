@@ -5,6 +5,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import './SliderProduct.scss';
 import PropTypes from 'prop-types';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function PrevArrow({ style, onClick }) {
   return (
@@ -13,7 +15,7 @@ function PrevArrow({ style, onClick }) {
       style={{ ...style, display: 'flex' }}
       onClick={onClick}
     >
-      <img src="/images/arrows/prev-arrow.svg" alt="arrow" />
+      <img src="/images/arrows/next-arrow.svg" alt="arrow" />
     </div>
   );
 }

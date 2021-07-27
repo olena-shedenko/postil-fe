@@ -80,7 +80,7 @@ h5 {
     text-transform: uppercase;
     margin-block-start: 0;
     margin-block-end: 0;
-    padding-right: calc(100% - 0.75em - 10.37em);
+    padding-right: calc(100% - 0.75em - 15.37em);
   }
 
   &__preorder {
@@ -123,11 +123,8 @@ h5 {
 }
 
 .favourites {
-  align-self: flex-end;
-  padding-right: 10px;
-  position: absolute;
-  top: 38.125em;
-  right: 11.063em;
+  // align-self: flex-end;
+  margin-left: 2em;
 }
 
 .slider {
@@ -160,11 +157,6 @@ h5 {
       font-size: 25px;
       padding-right: calc(100% - 0.75em - 13.37em);
     }
-
-    .favourites {
-      top: 91.125em;
-      right: 0.063em;
-    }
   }
   .slider {
     &__title {
@@ -189,11 +181,6 @@ h5 {
     &__price {
       padding-right: calc(100% - 0.75em - 14.37em);
     }
-
-    .favourites {
-      top: 90.125em;
-      right: 12.063em;
-    }
   }
   .slider {
     &__title {
@@ -212,7 +199,7 @@ h5 {
     }
 
     &__info {
-      margin: 650px 0 0 -15%;
+      margin: 46.43em 0 0 -15%;
     }
   }
 
@@ -295,10 +282,5 @@ h5 {
       font-size: 25px;
       line-height: 38px;
     }
-  }
-  .favourites {
-    align-self: flex-end;
-    padding-right: 10px;
-    position: absolute;
   }
 }
