@@ -1,5 +1,5 @@
 .main-slider {
-  width: 32.8em;
+  width: 100%;
 
   .dots-custom,
   .slick-dots li {
@@ -29,12 +29,15 @@
     height: 64px;
     justify-content: center;
     align-items: center;
-    transform: translate(0, 0);
     z-index: 9;
   }
 
   &.arrow-prev::before {
     content: '';
+  }
+
+  &.arrow-prev:hover {
+    background: #fff;
   }
 }
 
@@ -46,11 +49,14 @@
     height: 64px;
     justify-content: center;
     align-items: center;
-    transform: rotate(180deg);
   }
 
   &.arrow-next::before {
     content: '';
+  }
+
+  &.arrow-next:hover {
+    background: #fff;
   }
 }
 
@@ -80,7 +86,7 @@
 
 @media (min-width: 1200px) {
   .main-slider {
-    width: 450px;
+    width: 50%;
 
     .dots-custom,
     .slick-dots li {

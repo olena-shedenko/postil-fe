@@ -2,13 +2,18 @@ h1,
 h5 {
   margin: 0;
 }
-.product > * {
-  min-width: 0px;
-}
+// .product > * {
+//   min-width: 0px;
+// }
 
 .product {
+  width: 100%;
   display: flex;
   font-family: 'Mulish', 'Abel', sans-serif;
+
+  &-img {
+    width: 50%;
+  }
 
   &__name {
     font-size: 32px;
@@ -23,7 +28,8 @@ h5 {
   &__info {
     display: flex;
     flex-direction: column;
-    margin-left: 35.25em;
+    margin-left: 25px;
+    width: 50%;
 
     .ft-social-icons {
       margin: 0;
@@ -115,8 +121,7 @@ h5 {
     font-weight: 400;
     line-height: 32px;
     font-family: 'Abel', sans-serif;
-    width: 180px;
-    padding: 11px 23px;
+    padding: 11px 33px;
     border-radius: 3px;
     cursor: pointer;
   }
@@ -145,7 +150,7 @@ h5 {
 @media (min-width: 450px) and (max-width: 629px) {
   .product {
     &__info {
-      margin: 47.43em 0;
+      width: 50%;
     }
 
     &__name {
@@ -170,7 +175,7 @@ h5 {
 @media (min-width: 630px) and (max-width: 991px) {
   .product {
     &__info {
-      margin: 46.43em 0 0 -15%;
+      width: 50%;
     }
 
     &__name {
@@ -198,9 +203,9 @@ h5 {
       line-height: 22px;
     }
 
-    &__info {
-      margin: 46.43em 0 0 -15%;
-    }
+    // &__info {
+    //   margin: 46.43em 0 0 -15%;
+    // }
   }
 
   .btn {
@@ -231,9 +236,9 @@ h5 {
       line-height: 28px;
     }
 
-    &__info {
-      margin-left: 30em;
-    }
+    // &__info {
+    //   margin-left: 30em;
+    // }
 
     &__id {
       font-size: 12px;
@@ -273,7 +278,6 @@ h5 {
   .btn {
     &__add {
       font-size: 14px;
-      width: 120%;
     }
   }
 

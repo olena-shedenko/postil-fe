@@ -124,7 +124,7 @@ const Product = ({
           </div>
         </div>
       </div>
-      <div className="slider-container">
+      <div className="slider-header">
         <h1 className="slider__title">related items</h1>
       </div>
     </>
