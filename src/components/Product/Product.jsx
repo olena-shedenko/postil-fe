@@ -104,12 +104,12 @@ const Product = ({
                 >
                   {inWishList ? (
                     <Icon
-                      color="#373f41"
+                      color="#fff"
                       title="Remove from Wishlist"
                       inWishList
                     />
                   ) : (
-                    <Icon color="#373f41" title="Add to Wishlist" />
+                    <Icon color="#fff" title="Add to Wishlist" />
                   )}
                 </Button>
               </div>

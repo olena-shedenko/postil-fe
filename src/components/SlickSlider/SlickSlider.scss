@@ -54,7 +54,6 @@
     height: 64px;
     justify-content: center;
     align-items: center;
-    transform: rotate(180deg);
   }
 }
 
@@ -66,7 +65,6 @@
     height: 64px;
     justify-content: center;
     align-items: center;
-    transform: translate(0, 0);
     z-index: 9;
   }
 }
@@ -77,14 +75,25 @@
 }
 
 // MEDIA QUERY SECTION
-@media (min-width: 450px) {
-}
+// @media (min-width: 450px) {
+// }
 
-@media (min-width: 630px) {
-}
+// @media (min-width: 630px) {
+// }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-}
+// @media (min-width: 992px) and (max-width: 1200px) {
+// }
 
 @media (min-width: 1200px) {
+  .slider {
+    &__name {
+      font-size: 0.9rem;
+      line-height: 34px;
+    }
+
+    &__price {
+      font-size: 0.9rem;
+      line-height: 29px;
+    }
+  }
 }

@@ -15,7 +15,7 @@ function PrevArrow({ style, onClick }) {
       style={{ ...style, display: 'flex' }}
       onClick={onClick}
     >
-      <img src="/images/arrows/next-arrow.svg" alt="arrow" />
+      <img src="/images/arrows/prev-arrow.svg" alt="arrow" />
     </div>
   );
 }

@@ -28,7 +28,7 @@ function PrevArrow({ style, onClick }) {
       style={{ ...style, display: 'flex' }}
       onClick={onClick}
     >
-      <img src="/images/arrows/next-arrow.svg" alt="arrow" />
+      <img src="/images/arrows/prev-arrow.svg" alt="arrow" />
     </div>
   );
 }
@@ -48,7 +48,7 @@ export default function SimpleSlider({ categories }) {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
