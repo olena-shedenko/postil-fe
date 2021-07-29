@@ -3,7 +3,7 @@
 
   .dots-custom,
   .slick-dots li {
-    margin: 0 3.43em;
+    margin: 0 55px;
   }
 
   &__image {
@@ -13,11 +13,11 @@
   }
 
   &__thumb {
-    width: 120px;
+    width: 100px;
     height: auto;
     border-radius: 5px;
     display: block;
-    margin: 0 -6.25em;
+    margin: 0 -84px;
   }
 }
 
@@ -64,28 +64,32 @@
 @media (min-width: 450px) and (max-width: 630px) {
   .main-slider {
     width: 100%;
+
     .dots-custom,
     .slick-dots li {
-      margin: 0 35px;
-    }
-
-    &__thumb {
-      width: 90px;
-      height: auto;
-      border-radius: 5px;
-      display: block;
-      margin: 0 -69px;
+      margin: 0 45px;
     }
   }
 }
 
-@media (min-width: 631px) and (max-width: 992px) {
+@media (min-width: 631px) and (max-width: 991px) {
   .main-slider {
     width: 100%;
 
     .dots-custom,
     .slick-dots li {
-      margin: 0 35px;
+      margin: 0 45px;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 28px;
     }
 
     &__image {
@@ -95,41 +99,13 @@
     }
 
     &__thumb {
-      width: 86px;
-      height: auto;
-      border-radius: 5px;
-      display: block;
-      margin: 0 -69px;
+      width: 75px;
+      margin: 0 -56px;
     }
   }
 }
 
-@media (min-width: 993px) and (max-width: 1187px) {
-  .main-slider {
-    width: 100%;
-
-    .dots-custom,
-    .slick-dots li {
-      margin: 0 35px;
-    }
-
-    &__image {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-
-    &__thumb {
-      width: 86px;
-      height: auto;
-      border-radius: 5px;
-      display: block;
-      margin: 0 -69px;
-    }
-  }
-}
-
-@media (min-width: 1188px) {
+@media (min-width: 1201px) {
   .main-slider {
     width: 100%;
 
@@ -146,9 +122,6 @@
 
     &__thumb {
       width: 90px;
-      height: auto;
-      border-radius: 5px;
-      display: block;
       margin: 0 -69px;
     }
   }

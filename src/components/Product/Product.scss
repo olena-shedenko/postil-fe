@@ -108,7 +108,7 @@ h5 {
     line-height: 30px;
     font-weight: 400;
     color: rgba($color: #5c5e60, $alpha: 0.5);
-    padding-bottom: 30px;
+    padding: 0 10px 30px 0;
   }
 }
 
@@ -147,13 +147,15 @@ h5 {
 // MEDIA QUERY SECTION
 @media (min-width: 450px) and (max-width: 629px) {
   .product {
+    display: block;
+
     &-img {
       width: 100%;
     }
 
     &__info {
       width: 100%;
-      margin-left: 0;
+      margin: 125px 0 0 10px;
     }
 
     &__name {
@@ -176,22 +178,31 @@ h5 {
 
 @media (min-width: 630px) and (max-width: 991px) {
   .product {
-    &__info {
+    display: block;
+
+    &-img {
       width: 100%;
     }
 
+    &__info {
+      width: 100%;
+      margin: 125px 0 0 20px;
+    }
+
     &__name {
-      font-size: 30px;
+      font-size: 25px;
       line-height: 22px;
     }
 
     &__price {
-      padding-right: calc(100% - 310px);
+      font-size: 25px;
+      padding-right: calc(100% - 400px);
     }
   }
   .slider {
     &__title {
       font-size: 28px;
+      margin-top: 50px;
     }
   }
 }
@@ -215,70 +226,10 @@ h5 {
 
   .slider {
     &__title {
-      font-size: 28px;
-      line-height: 48px;
-      text-align: center;
+      margin-top: 50px;
     }
   }
 }
 
 @media (min-width: 1200px) {
-  .product {
-    display: flex;
-    font-family: 'Mulish', 'Abel', sans-serif;
-
-    &__name {
-      font-size: 25px;
-      line-height: 28px;
-    }
-
-    &__id {
-      font-size: 12px;
-    }
-
-    &__color {
-      font-size: 12px;
-    }
-
-    &__size-title {
-      font-size: 12px;
-    }
-
-    &__size {
-      font-size: 12px;
-    }
-
-    &__price {
-      font-size: 20px;
-      padding-right: calc(100% - 325px);
-    }
-
-    &__preorder {
-      font-size: 12px;
-    }
-
-    &__description-title {
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    &__description-text {
-      font-size: 13px;
-      line-height: 18px;
-    }
-  }
-
-  .btn {
-    &__add {
-      font-size: 14px;
-    }
-  }
-
-  .slider {
-    &__title {
-      font-size: 25px;
-      line-height: 38px;
-      margin-top: 50px;
-    }
-  }
 }
