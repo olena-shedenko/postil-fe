@@ -97,14 +97,10 @@ export const getBlogPosts = () => (dispatch) => {
 export const getItems = () => (dispatch) => {
   dispatch({ type: LOAD_ITEMS_REQUEST, payload: true });
   axios('https://postil-bedding.herokuapp.com/api/products').then((res) => {
-    const favouriteInLocal = JSON.parse(localStorage.getItem('liked')) || [];
     const cartInLocal = JSON.parse(localStorage.getItem('bag')) || [];
     const newArr = res.data.map((el) => {
       el.quantityInBag = 0;
-      if (favouriteInLocal.includes(el.itemNo)) {
-        el.isFavorite = !el.isFavorite;
-      }
-      if (cartInLocal.includes(el.itemNo)) {
+      if (cartInLocal.includes(el._id)) {
         el.inShoppingBag = !el.inShoppingBag;
         el.quantityInBag = 1;
       }
@@ -209,12 +205,8 @@ export const addToCart =
         // return el;
         /* } */
       );
-
       dispatch({ type: SET_ITEMS, payload: newArr });
 
-      // console.log(historys);
-      // history.go('/shopping_cart')
-      // history.goForward()
       const cartArr = JSON.parse(localStorage.getItem('bag')) || [];
       if (!cartArr.includes(productId)) {
         cartArr.push(productId);

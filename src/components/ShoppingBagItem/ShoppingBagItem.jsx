@@ -8,16 +8,20 @@ import {
   SET_CART_AFTER_DELETE,
 } from '../../store/types';
 import Icon from '../Icon/Icon';
+import { catalogItemsSelector } from '../../store/selectors';
 import {
   addToCart,
   removeFromCart,
   setCartProducts,
   removeOneFromCart,
+  removeProductFromWishlist,
+  addToWishlist,
 } from '../../store/operations';
 
 export default function ShoppingBagItem(props) {
   const dispatch = useDispatch();
   const jwt = sessionStorage.getItem('token');
+  const wish = useSelector(catalogItemsSelector) || [];
 
   useEffect(() => {
     dispatch(setCartProducts());
@@ -27,7 +31,7 @@ export default function ShoppingBagItem(props) {
   const productsInCart =
     useSelector((state) => state.productsInCart.data) || [];
   const {
-    item: { color, imageUrls, name, currentPrice, isFavourite, sizes, _id },
+    item: { color, imageUrls, name, currentPrice, sizes, _id },
   } = props;
   const colors = color.split('/');
   const size = sizes.split(', ');
@@ -35,7 +39,7 @@ export default function ShoppingBagItem(props) {
   const deleteFromCart = (item) => {
     if (jwt === null) {
       const newArr = items.map((el) => {
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.inShoppingBag = !el.inShoppingBag;
           el.quantityInBag = 0;
         }
@@ -55,47 +59,21 @@ export default function ShoppingBagItem(props) {
   const localStorageToggleBag = () => {
     let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
 
-    if (cartArr.includes(item.itemNo)) {
-      const newCartArr = cartArr.filter((el) => el !== item.itemNo);
+    if (cartArr.includes(item._id)) {
+      const newCartArr = cartArr.filter((el) => el !== item._id);
       cartArr = newCartArr;
     } else {
-      cartArr.push(item.itemNo);
+      cartArr.push(item._id);
     }
 
     const cart = JSON.stringify(cartArr);
     localStorage.setItem('bag', cart);
   };
 
-  const toggleLiked = (item) => {
-    const newArr = items.map((el) => {
-      if (el.itemNo === item.itemNo) {
-        el.isFavourite = !el.isFavourite;
-      }
-      return el;
-    });
-
-    dispatch({ type: SET_ITEMS, payload: newArr });
-    localStorageToggleLiked(item);
-  };
-
-  const localStorageToggleLiked = (item) => {
-    let likedArr = JSON.parse(localStorage.getItem('liked')) || [];
-
-    if (likedArr.includes(item.itemNo)) {
-      const newlikedArr = likedArr.filter((el) => el !== item.itemNo);
-      likedArr = newlikedArr;
-    } else {
-      likedArr.push(item.itemNo);
-    }
-
-    const liked = JSON.stringify(likedArr);
-    localStorage.setItem('liked', liked);
-  };
-
   const addItem = (item) => {
     if (jwt === null) {
       const newArr = items.map((el) => {
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.quantityInBag += 1;
         }
         return el;
@@ -116,7 +94,7 @@ export default function ShoppingBagItem(props) {
   const removeItem = (item) => {
     if (jwt === null) {
       const newArr = items.map((el) => {
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.quantityInBag -= 1;
           if (el.quantityInBag === 0) {
             el.inShoppingBag = !el.inShoppingBag;
@@ -328,10 +306,48 @@ export default function ShoppingBagItem(props) {
           )}
           <p className="favorites">
             Add to favorites
-            <Icon
-              onClick={() => toggleLiked(item)}
-              filled={isFavourite ? '#373F41' : 'none'}
-            />
+            {jwt === null && (
+              <Icon
+                color="#000"
+                title="Add to Wishlist"
+                onClick={() => {
+                  dispatch(addToWishlist(item._id));
+                }}
+              />
+            )}
+            {jwt !== null &&
+              wish.map((el) => {
+                if (el._id === item._id) {
+                  return el.inWishList ? (
+                    <Icon
+                      color="#000"
+                      title="Remove from Wishlist"
+                      inWishList
+                      onClick={(event) => {
+                        event.preventDefault();
+                        if (el.inWishList) {
+                          dispatch(removeProductFromWishlist(item._id));
+                        } else {
+                          dispatch(addToWishlist(item._id));
+                        }
+                      }}
+                    />
+                  ) : (
+                    <Icon
+                      color="#000"
+                      title="Add to Wishlist"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        if (el.inWishList) {
+                          dispatch(removeProductFromWishlist(item._id));
+                        } else {
+                          dispatch(addToWishlist(item._id));
+                        }
+                      }}
+                    />
+                  );
+                }
+              })}
           </p>
         </div>
       </div>

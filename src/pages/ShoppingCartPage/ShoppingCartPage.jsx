@@ -22,7 +22,7 @@ export default function ShoppingCart() {
     if (jwt === null) {
       items.forEach((el) => {
         bag.forEach((element) => {
-          if (element === el.itemNo) {
+          if (element === el._id) {
             bagItems.push(el);
           }
         });
@@ -44,7 +44,7 @@ export default function ShoppingCart() {
       });
     }
   };
-
+  
   return (
     <div>
       {getLocalCart()}
