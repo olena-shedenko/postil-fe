@@ -61,6 +61,22 @@
 }
 
 // MEDIA QUERY SECTION
+@media (min-width: 320px) and (max-width: 449px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 28px;
+    }
+
+    &__thumb {
+      width: 73px;
+      margin: 0 -56px;
+    }
+  }
+}
+
 @media (min-width: 450px) and (max-width: 630px) {
   .main-slider {
     width: 100%;

@@ -145,6 +145,79 @@ h5 {
 }
 
 // MEDIA QUERY SECTION
+@media (min-width: 320px) and (max-width: 449px) {
+  .product {
+    display: block;
+
+    &-img {
+      width: 100%;
+    }
+
+    &__info {
+      width: 100%;
+      margin: 125px 0 0 10px;
+    }
+
+    &__name {
+      font-size: 17px;
+      line-height: 20px;
+    }
+
+    &__id {
+      font-size: 12px;
+    }
+
+    &__color {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    &__size-title {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    &__size {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    &__preorder {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    &__price {
+      font-size: 17px;
+    }
+
+    &__description-title {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    &__description-text {
+      font-size: 11px;
+      line-height: 20px;
+    }
+  }
+
+  .btn {
+    &__add {
+      font-size: 12px;
+      padding: 10px 25px;
+      margin-left: 20px;
+    }
+  }
+
+  .slider {
+    &__title {
+      font-size: 22px;
+      margin-top: 50px;
+    }
+  }
+}
+
 @media (min-width: 450px) and (max-width: 629px) {
   .product {
     display: block;
@@ -229,7 +302,4 @@ h5 {
       margin-top: 50px;
     }
   }
-}
-
-@media (min-width: 1200px) {
 }

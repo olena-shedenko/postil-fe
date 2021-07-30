@@ -23,9 +23,6 @@ const Product = ({
   description,
   inWishList,
 }) => {
-  // /* eslint no-console: 0 */
-  // console.log('id', id);
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -139,7 +136,7 @@ Product.propTypes = {
   currentPrice: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  inWishList: PropTypes.bool.isRequired,
+  inWishList: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Product;
