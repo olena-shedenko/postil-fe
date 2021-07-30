@@ -188,22 +188,15 @@ export const addToCart =
           dispatch({ type: SET_PRODUCTS_IN_CART, payload: cart.data.products });
           if (typeof onSuccess === 'function') onSuccess();
         });
-    } /* if (jwt === null) */ else {
-      const newArr = items.map(
-        (el /* { */) =>
-          el._id === productId
-            ? {
-                ...el,
-                inShoppingBag: true,
-                quantityInBag: el.quantityInBag + 1,
-              }
-            : el
-        // if (el._id === productId) {
-        //   el.inShoppingBag = true;
-        //   el.quantityInBag += 1;
-        // }
-        // return el;
-        /* } */
+    } else {
+      const newArr = items.map((el) =>
+        el._id === productId
+          ? {
+              ...el,
+              inShoppingBag: true,
+              quantityInBag: el.quantityInBag + 1,
+            }
+          : el
       );
       dispatch({ type: SET_ITEMS, payload: newArr });
 
@@ -213,6 +206,7 @@ export const addToCart =
       }
       const cart = JSON.stringify(cartArr);
       localStorage.setItem('bag', cart);
+      onSuccess();
     }
   };
 
