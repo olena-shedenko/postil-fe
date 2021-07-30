@@ -31,7 +31,7 @@ export default function PaymentPage(props) {
     if (jwt === null) {
       items.forEach((el) => {
         bag.forEach((element) => {
-          if (element === el.itemNo) {
+          if (element === el._id) {
             bagItems.push(el);
           }
         });
