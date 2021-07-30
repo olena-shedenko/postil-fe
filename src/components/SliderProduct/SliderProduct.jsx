@@ -55,7 +55,7 @@ export default function SliderProduct({ img }) {
     <Slider {...settings}>
       {img.map((item) => {
         return (
-          <div>
+          <div key={img}>
             <img src={item} alt="beddings" className="main-slider__image" />
           </div>
         );

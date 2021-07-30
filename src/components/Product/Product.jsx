@@ -136,7 +136,7 @@ Product.propTypes = {
   currentPrice: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  inWishList: PropTypes.instanceOf(Array).isRequired,
+  inWishList: PropTypes.bool.isRequired,
 };
 
 export default Product;
