@@ -26,7 +26,7 @@ export default function CheckoutBagItem(props) {
   const deleteFromCart = (item) => {
     if (jwt === null) {
       const newArr = items.map((el) => {
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.inShoppingBag = !el.inShoppingBag;
           el.quantityInBag = 0;
         }
@@ -46,7 +46,7 @@ export default function CheckoutBagItem(props) {
   const addItem = (item) => {
     if (jwt === null) {
       const newArr = items.map((el) => {
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.quantityInBag += 1;
         }
         return el;
@@ -68,10 +68,10 @@ export default function CheckoutBagItem(props) {
     let cartArr = JSON.parse(localStorage.getItem('bag')) || [];
 
     if (cartArr.includes(item.itemNo)) {
-      const newCartArr = cartArr.filter((el) => el !== item.itemNo);
+      const newCartArr = cartArr.filter((el) => el !== item._id);
       cartArr = newCartArr;
     } else {
-      cartArr.push(item.itemNo);
+      cartArr.push(item._id);
     }
 
     const cart = JSON.stringify(cartArr);
@@ -81,7 +81,7 @@ export default function CheckoutBagItem(props) {
   const removeItem = (item) => {
     if (jwt === null) {
       const newArr = items.map((el) => {
-        if (el.itemNo === item.itemNo) {
+        if (el._id === item._id) {
           el.quantityInBag -= 1;
           if (el.quantityInBag === 0) {
             el.inShoppingBag = !el.inShoppingBag;

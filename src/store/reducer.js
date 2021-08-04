@@ -3,6 +3,7 @@ import {
   TOGGLE_ACCOUNT_ERROR,
   TOGGLE_ACCOUNT_MODAL,
   GET_BLOG_POSTS,
+  SET_PRODUCT,
   SET_PRODUCTS,
   FILTERED_PRODUCTS,
   CLEAR_FILTERED_PRODUCTS,
@@ -122,6 +123,8 @@ const reducer = (state = initialState, action) => {
       };
     case SET_ITEMS:
       return { ...state, items: { ...state.items, data: action.payload } };
+    case SET_PRODUCT:
+      return { ...state, item: action.payload };
     case REQUEST_REMOVE_PRODUCT_FROM_CART:
       return { ...state };
     case SUCCESS_REMOVE_PRODUCT_FROM_CART:

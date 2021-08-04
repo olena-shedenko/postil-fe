@@ -5,6 +5,7 @@ import { getItems } from './store/operations';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import AppRoutes from './routes/AppRoutes';
+import ErrorMessage from './components/AccountModal/layouts/ErrorMessage';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <ErrorMessage />
       <Navbar />
       <AppRoutes />
       <Footer />

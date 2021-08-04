@@ -31,7 +31,7 @@ import {
   SUCCESS_ADD_PRODUCT_TO_WISHLIST,
 } from './types';
 import { filteredProducts, setCart } from './actions';
-import { getProducts } from './selectors';
+import { getProducts, getWishList } from './selectors';
 
 export const setModalSignUp = () => (dispatch) => {
   dispatch({ type: SET_MODAL_SIGN_UP, payload: 'signUp' });
@@ -97,14 +97,10 @@ export const getBlogPosts = () => (dispatch) => {
 export const getItems = () => (dispatch) => {
   dispatch({ type: LOAD_ITEMS_REQUEST, payload: true });
   axios('https://postil-bedding.herokuapp.com/api/products').then((res) => {
-    const favouriteInLocal = JSON.parse(localStorage.getItem('liked')) || [];
     const cartInLocal = JSON.parse(localStorage.getItem('bag')) || [];
     const newArr = res.data.map((el) => {
       el.quantityInBag = 0;
-      if (favouriteInLocal.includes(el.itemNo)) {
-        el.isFavorite = !el.isFavorite;
-      }
-      if (cartInLocal.includes(el.itemNo)) {
+      if (cartInLocal.includes(el._id)) {
         el.inShoppingBag = !el.inShoppingBag;
         el.quantityInBag = 1;
       }
@@ -172,8 +168,10 @@ export const filterAndSortOperation = () => (dispatch, getState) => {
 };
 
 export const addToCart =
-  ({ productId, onSuccess, productNo, item }) =>
-  (dispatch) => {
+  ({ productId, onSuccess }) =>
+  (dispatch, getState) => {
+    const state = getState();
+    const items = getProducts(state);
     const jwt = sessionStorage.getItem('token');
     if (jwt !== null) {
       axios
@@ -186,31 +184,29 @@ export const addToCart =
             },
           }
         )
-        .then((res) => {
-          dispatch(setCart(res.data));
-          dispatch(setCartProducts());
+        .then((cart) => {
+          dispatch({ type: SET_PRODUCTS_IN_CART, payload: cart.data.products });
           if (typeof onSuccess === 'function') onSuccess();
         });
-    } else if (jwt === null) {
-      const newArr = item.map((el) => {
-        if (el.itemNo === productNo) {
-          el.inShoppingBag = true;
-          el.quantityInBag += 1;
-        }
-        return el;
-      });
-
+    } else {
+      const newArr = items.map((el) =>
+        el._id === productId
+          ? {
+              ...el,
+              inShoppingBag: true,
+              quantityInBag: el.quantityInBag + 1,
+            }
+          : el
+      );
       dispatch({ type: SET_ITEMS, payload: newArr });
 
-      // console.log(historys);
-      // history.go('/shopping_cart')
-      // history.goForward()
       const cartArr = JSON.parse(localStorage.getItem('bag')) || [];
-      if (!cartArr.includes(productNo)) {
-        cartArr.push(productNo);
+      if (!cartArr.includes(productId)) {
+        cartArr.push(productId);
       }
       const cart = JSON.stringify(cartArr);
       localStorage.setItem('bag', cart);
+      onSuccess();
     }
   };
 
@@ -305,29 +301,29 @@ export const removeProductFromWishlist = (id) => (dispatch) => {
     });
 };
 
-export const addToWishlist =
-  ({ items, productNo, productId, onSuccess }) =>
-  (dispatch) => {
-    const jwt = sessionStorage.getItem('token');
-    if (jwt !== null) {
-      if (!items.find((x) => x.itemNo === productNo)) {
-        axios
-          .put(
-            `https://postil-bedding.herokuapp.com/api/wishlist/${productId}`,
-            null,
-            {
-              headers: {
-                Authorization: jwt,
-              },
-            }
-          )
-          .then((res) => {
-            dispatch({
-              type: SUCCESS_ADD_PRODUCT_TO_WISHLIST,
-              payload: res.data.products,
-            });
-            if (typeof onSuccess === 'function') onSuccess();
+export const addToWishlist = (id) => (dispatch, getState) => {
+  const jwt = sessionStorage.getItem('token');
+  const state = getState();
+  const items = getWishList(state);
+  if (jwt !== null) {
+    if (!items || !items.find((item) => item._id === id)) {
+      axios
+        .put(`https://postil-bedding.herokuapp.com/api/wishlist/${id}`, null, {
+          headers: {
+            Authorization: jwt,
+          },
+        })
+        .then((res) => {
+          dispatch({
+            type: SUCCESS_ADD_PRODUCT_TO_WISHLIST,
+            payload: res.data.products,
           });
-      }
+        });
     }
-  };
+  } else {
+    // alert('Please, Sign In or Log In to add product in wishlist');
+    dispatch(
+      toggleAccountError('Please, Sign In or Log In to add product in wishlist')
+    );
+  }
+};

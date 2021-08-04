@@ -9,6 +9,7 @@ import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import Blog from '../pages/Blog/Blog';
 import Catalog from '../pages/Catalog/Catalog';
+import OneProduct from '../pages/OneProduct/OneProduct';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import TermsAndServices from '../pages/TermsAndServices/TermsAndServices';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
@@ -29,6 +30,8 @@ const AppRoutes = () => {
       <Route path="/bedroom" />
       <Route path="/blog" render={() => <Blog />} />
       <Route path="/catalog" render={() => <Catalog />} />
+      <Route path="/product/:id" component={OneProduct} />
+      <Route path="/contact" />
       <Route path="/contact" render={() => <AboutUs />} />
       <Route path="/contact-us" render={() => <ContactUs />} />
       <Route
