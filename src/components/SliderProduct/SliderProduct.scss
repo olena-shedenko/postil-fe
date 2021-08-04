@@ -1,0 +1,144 @@
+.main-slider {
+  width: 100%;
+
+  .dots-custom,
+  .slick-dots li {
+    margin: 0 55px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  &__thumb {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 0 -84px;
+  }
+}
+
+.slick-prev {
+  &.arrow-prev {
+    margin-left: 15px;
+    background: #fff;
+    width: 35px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+  }
+
+  &.arrow-prev::before {
+    content: '';
+  }
+
+  &.arrow-prev:hover {
+    background: #fff;
+  }
+}
+
+.slick-next {
+  &.arrow-next {
+    margin-right: 15px;
+    background: #fff;
+    width: 35px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.arrow-next::before {
+    content: '';
+  }
+
+  &.arrow-next:hover {
+    background: #fff;
+  }
+}
+
+// MEDIA QUERY SECTION
+@media (min-width: 320px) and (max-width: 449px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 28px;
+    }
+
+    &__thumb {
+      width: 73px;
+      margin: 0 -56px;
+    }
+  }
+}
+
+@media (min-width: 450px) and (max-width: 630px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 45px;
+    }
+  }
+}
+
+@media (min-width: 631px) and (max-width: 991px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 45px;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 28px;
+    }
+
+    &__image {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    &__thumb {
+      width: 75px;
+      margin: 0 -56px;
+    }
+  }
+}
+
+@media (min-width: 1201px) {
+  .main-slider {
+    width: 100%;
+
+    .dots-custom,
+    .slick-dots li {
+      margin: 0 36px;
+    }
+
+    &__image {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    &__thumb {
+      width: 90px;
+      margin: 0 -69px;
+    }
+  }
+}

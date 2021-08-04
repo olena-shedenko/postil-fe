@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/prefer-default-export */
+export const getProduct = (state) => state.items.data;
 export const getProducts = (state) => state.items.data;
 export const getFilteredProducts = (state) => state.filteredProducts;
 export const getFilterSize = (state) => state.filters.sizes;
@@ -33,7 +34,7 @@ export const catalogItemsSelector = (state) => {
 export const getCart = (state) => state.cart;
 export const getShowFilters = (state) => state.showFilters;
 export const getItemsIsLoading = (state) => state.items.isLoading;
-export const getWishList = (state) => state.wishlist.data.products;
+export const getWishList = (state) => state.wishlist.data;
 
 // const sortAsc = (arr, field) => {
 //   return arr.sort((a, b) => {
